@@ -1,0 +1,267 @@
+@charset "utf-8";
+/* CSS Document */
+
+body  {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background: #F0F0F0;
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+}
+.main #containerLogin { 
+	position:absolute; /* adding position: relative allows you to position the two sidebars relative to this container */
+	width: 100%;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
+	background: #FFFFFF;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	border-bottom:0px solid #39C;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+} 
+
+.main #container { 
+	position:absolute; /* adding position: relative allows you to position the two sidebars relative to this container */
+	width: 100%;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
+
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	border-bottom:0px solid #39C;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+} 
+
+/* Tips for absolutely positioned sidebars with header and footer:
+1. Absolutely positioned (AP) elements must be given a top and side value, either right or left. (As a default, if no top value is given, the AP element will begin directly after the last element in the source order of the page. This means, if the sidebars are first element in the #container in the document's source order, they will appear at the top of the #container even without being given a top value. However, if they are moved later in the source order for any reason, they'll need a top value to appear where you desire.
+2. Absolutely positioned (AP) elements are taken out of the flow of the document. This means the elements around them don't know they exist and don't account for them when taking up their proper space on the page. Thus, an AP div should only be used as a side column if you are sure the middle #mainContent div will always contain the most content. If either sidebar were to contain more content, that sidebar would run over the bottom of the parent div, and in this case the footer as well, and the sidebar would not appear to be contained.
+3. If the above mentioned requirements are met, absolutely positioned sidebars can be an easy way to control the source order of the document.
+4. If the source order is changed, the top value should be equal to the height of the header since this will cause the columns to visually meet the header.
+*/
+.main #header {
+	position:fixed;
+	width:100%;
+	height: 70px; /* if you're changing the source order of the columns, you'll may want to use a height on the header so that you can give the columns a predictable top value */
+	background: #ffffff; 
+		border-bottom:5px solid #39C;
+	padding: 0 0px 0 0px;  /* this padding matches the left alignment of the elements in the divs that appear beneath it. If an image is used in the #header instead of text, you may want to remove the padding. */
+} 
+.main #header1 {
+	position:fixed;
+	width:100%;
+	height: 70px; /* if you're changing the source order of the columns, you'll may want to use a height on the header so that you can give the columns a predictable top value */
+	background: #ffffff; 
+		border-bottom:5px solid #39C;
+	padding: 0 0px 0 0px;  /* this padding matches the left alignment of the elements in the divs that appear beneath it. If an image is used in the #header instead of text, you may want to remove the padding. */
+} 
+.main #header h1 {
+	margin: 50; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
+	padding: 10px 0; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
+}
+.main #sidebar1 {
+	position: absolute;
+	top: 150px;
+	left: 0;
+	width: 10px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #EBEBEB; /* the background color will be displayed for the length of the content in the column, but no further */
+	padding: 15px 10px 15px 20px; /* padding keeps the content of the div away from the edges */
+}
+.main #sidebar2 {
+	position: absolute;
+	top: 150px;
+	right: 0;
+	width: 10px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #EBEBEB; /* the background color will be displayed for the length of the content in the column, but no further */
+	padding: 15px 10px 15px 20px; /* padding keeps the content of the div away from the edges */
+}
+
+.main #mainContentLogin {
+	position:static;
+	width:96%;
+	margin-top:120px;
+	border:0px;
+	padding:0px;
+	background-color:#FFF;
+
+padding-bottom:20px;
+ /* the right and left margins on this div element creates the two outer columns on the sides of the page. No matter how much content the sidebar divs contain, the column space will remain. */
+	margin-left:2%; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+		margin-right:2%; 
+		font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:25px; padding:5px;
+
+	
+}
+.main #mainContent {
+
+	position:static;
+	width:80%;
+	margin-top:100px;
+	border:0px;
+	padding:0px;
+padding-bottom:20px;
+ /* the right and left margins on this div element creates the two outer columns on the sides of the page. No matter how much content the sidebar divs contain, the column space will remain. */
+	margin-left:10%; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+		margin-right:10%; 
+		font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:25px; padding:10px;
+
+}
+
+.main #footer { width:100%; position:fixed;
+	bottom:0px;
+	text-align:center;
+	height:10px;
+	padding:10px; /* this padding matches the left alignment of the elements in the divs that appear above it. */
+	background:#69C;
+	font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFF; 
+} 
+.main #footer p {
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+	padding: 10px 0; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+}
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+
+
+/* login page */
+div.transbox {
+	position:static;
+	margin:auto; width:350px; height:300px;
+  background-color: #ffffff;
+  border:1px solid #ccc; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 20px; 
+}
+
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+h2{
+background-color: #FEFFED;
+padding: 30px 35px;
+margin: -10px -50px;
+text-align:center;
+border-radius: 10px 10px 0 0;
+}
+hr{
+margin: 10px -50px;
+border: 0;
+border-top: 1px solid #ccc;
+margin-bottom: 40px;
+}
+div.container{
+width: 900px;
+height: 610px;
+margin:35px auto;
+font-family: 'Raleway', sans-serif;
+}
+div.main{
+width: 300px;
+padding: 10px 50px 25px;
+border: 2px solid gray;
+border-radius: 10px;
+font-family: raleway;
+float:left;
+margin-top:50px;
+}
+input[type=text],input[type=password]{
+width: 100%;
+height: 30px;
+padding: 5px;
+margin-bottom: 0px;
+margin-top: 0px;
+border: 2px solid #ccc;
+color: #4f4f4f;
+font-size: 16px;
+border-radius: 5px;
+}
+label{
+color: #464646;
+text-shadow: 0 1px 0 #fff;
+font-size: 14px;
+font-weight: bold;
+}
+center{
+font-size:22px;
+}
+.note{
+	padding-top:10px;
+color:#000000;
+font-family:Arial, Helvetica, sans-serif; font-size:12px; 
+}
+.valid{
+color:green;
+}
+.back{
+text-decoration: none;
+border: 1px solid rgb(0, 143, 255);
+background-color: rgb(0, 214, 255);
+padding: 3px 20px;
+border-radius: 2px;
+color: black;
+}
+input[type=button]{
+font-size: 14px;
+background-color:#3986D2;
+border: 1px solid #ccc;
+color: #ffffff;
+font-weight: bold;
+cursor: pointer;
+width: 20px;
+border-radius: 5px;
+padding: 5px 0;
+outline:none;
+}
+input[type=button]:hover{
+background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
+}
+input[type=button_login]{
+	text-align:center;
+font-size: 14px;
+background-color:#3986D2;
+border: 1px solid #ccc;
+color: #ffffff;
+font-weight: bold;
+cursor: pointer;
+width: 20%;
+border-radius: 5px;
+padding: 5px 0;
+outline:none;
+}
+input[type=button_login]:hover{
+background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
+}
+/* end */
+
+.tbody
+{font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:25px; padding:10px; text-align:left;}
+
+/* proposal */
+.propals_t
+{background-color:#FF0; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:25px; padding:10px; text-align:center;}
+.propals_c
+{background-color:#fff; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:25px; padding:5px; text-align:center;}
+/* end proposal */
+
+/* dashboard */
+.dash
+{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:5px; text-align:center; background-color:#099; color:#FFF; font-weight:bold;}
+.dash_a
+{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:center; background-color:#FF9; color:#000; font-weight:bold;}
+.dash_c
+{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:center; background-color:#F0F0F0; color:#000; font-weight:bold;}
+/* end dashboard */
+
+/* start proposal */
+.pro
+{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:5px; text-align:center; background-color:#099; color:#FFF; font-weight:bold;}
+
+.pro_0
+{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:left; background-color:#efefef; color:#000; font-weight:normal;}
+.pro_1
+{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:center; background-color:#efefef; color:#000; font-weight:normal;}
+
+/* end proposal */
+
+
+
+
