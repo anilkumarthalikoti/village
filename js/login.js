@@ -4,7 +4,7 @@
 	 
 	 this.validate=function(){
 	 $.ajax({
-			url:"db/login.php",
+			url:"server/login.php",
 			method:"post",
 			data:$("form[name='login_form']").serialize()
 			}).done(function(data){

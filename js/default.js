@@ -3,7 +3,8 @@
 $(document).ready(function(){
 						   
  
-$("div[class='viewport']").before("<div class='header'><img src='images/logo.png' width='300' height='60'  /></div>");	
+$("div[class='viewport']").before("<div class='header'></div>");	
+$("div[class='header']").load("header.html");
 $("div[class='viewport']").after("<div class='fotter'><div>@2016 All rights reserved</div></div>");	
 $("div[class='content']").before("<div class='interceptor'></div>");
 $("div[class='viewport']").before("<div class='interceptor'></div>");
@@ -21,8 +22,10 @@ $.ajax({
 		 }
   });
 
-$("div[class='viewport']").append("<div class='view_menu'></div>");
-$("div[class='view_menu']").load("menu.php");
+$("div[class='viewport']").before("<div class='viewport_menu'></div>");
+$("div[class='viewport_menu']").load("menu.php");
+						 
 						   
-						   
-						   })
+						   });
+
+ 
