@@ -10,6 +10,7 @@
 	width:100%;
 	height:70px;
 	border-bottom:5px solid #349BCE;
+	background:#FFFFFF;
 	}
 	.content{
 	position:absolute;
@@ -24,10 +25,12 @@
 	.viewport{
 	position:absolute;
 	top:75px;
-	left:200px;
+	left:255px;
 	bottom:32px;
 	right:0;
 	overflow:auto;
+	background:#FFFFFF;
+	padding:15px;
 	
 	}
 	
@@ -37,7 +40,9 @@
 	left:0px;
 	bottom:32px;
 	right:0;
-	width:199px;
+	width:250px;
+	border:1px solid #000000;
+	background:#FFFFFF;
 	
 	}
 	.fotter{
@@ -146,3 +151,160 @@
 	.button_login:hover{
 	background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
 	}
+	 
+
+<!-- css menu-->
+ #cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#cssmenu {
+  width: 250px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  font-size:12px;
+}
+#cssmenu ul ul {
+  display: none;
+}
+.align-right {
+  float: right;
+}
+#cssmenu > ul > li > a {
+  padding: 10px 15px;
+  border-left: 1px solid #1682ba;
+  border-right: 1px solid #1682ba;
+  border-top: 1px solid #1682ba;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 14px;
+ 
+  text-decoration: none;
+  color: #000000;
+  
+  background:#FFFFFF;
+ 
+}
+#cssmenu > ul > li > a:hover,
+#cssmenu > ul > li.active > a,
+#cssmenu > ul > li.open > a {
+  color:#990000;
+  font-weight:bold;
+ 
+ 
+}
+#cssmenu > ul > li.open > a {
+//  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #1682ba;
+}
+#cssmenu > ul > li:last-child > a,
+#cssmenu > ul > li.last > a {
+  border-bottom: 1px solid #1682ba;
+}
+.holder {
+  width: 20px;
+  height: 15px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align:center;
+  background-color:#CCCCCC;
+  padding-top:3px;
+  font-weight:bold;
+   -webkit-border-radius: 20px;
+		-moz-border-radius:  20px;
+		border-radius:  20px; 
+  
+}
+.holder::after,
+.holder::before {
+  
+ 
+}
+.holder::after {
+  
+}
+#cssmenu > ul > li > a:hover > span::after,
+#cssmenu > ul > li.active > a > span::after,
+#cssmenu > ul > li.open > a > span::after {
+  border-color: #eeeeee;
+}
+.holder::before {
+  
+}
+#cssmenu ul ul li a {
+  cursor: pointer;
+  border-bottom: 1px solid #32373e;
+  border-left: 1px solid #32373e;
+  border-right: 1px solid #32373e;
+  padding: 10px 20px;
+  z-index: 1;
+  text-decoration: none;
+  font-size: 13px;
+  color: #000000;
+  background: #FFFFFF;
+   
+}
+#cssmenu ul ul li:hover > a,
+#cssmenu ul ul li.open > a,
+#cssmenu ul ul li.active > a {
+   
+  color:#990000;
+  font-weight:bold;
+}
+#cssmenu ul ul li:first-child > a {
+  box-shadow: none;
+}
+#cssmenu ul ul ul li:first-child > a {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+#cssmenu ul ul ul li a {
+  padding-left: 30px;
+}
+#cssmenu > ul > li > ul > li:last-child > a,
+#cssmenu > ul > li > ul > li.last > a {
+  border-bottom: 0;
+}
+#cssmenu > ul > li > ul > li.open:last-child > a,
+#cssmenu > ul > li > ul > li.last.open > a {
+  border-bottom: 1px solid #32373e;
+}
+#cssmenu > ul > li > ul > li.open:last-child > ul > li:last-child > a {
+  border-bottom: 0;
+}
+#cssmenu ul ul li.has-sub > a::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 5px;
+  height: 5px;
+  right: 20px;
+  z-index: 10;
+  top: 11.5px;
+  border-top: 2px solid #eeeeee;
+  border-left: 2px solid #eeeeee;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+#cssmenu ul ul li.active > a::after,
+#cssmenu ul ul li.open > a::after,
+#cssmenu ul ul li > a:hover::after {
+  border-color: #ffffff;
+}
+
+
+ 
