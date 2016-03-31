@@ -25,12 +25,12 @@
 	.viewport{
 	position:absolute;
 	top:75px;
-	left:255px;
+	left:252px;
 	bottom:32px;
 	right:0;
 	overflow:auto;
 	background:#FFFFFF;
-	padding:15px;
+	 
 	
 	}
 	
@@ -103,10 +103,11 @@
 	
 	input[type=text],input[type=password]{
 	 
-	height: 30px;
+	height: 20px;
 	border: 2px solid #ccc;
 	color: #4f4f4f;
 	border-radius: 5px;
+	margin:5px;
 	 
 	}
 	
@@ -143,9 +144,10 @@
 	cursor: pointer;
  
 	border-radius: 5px;
-	height:35px;
+	height:25px;
 	width:auto;
-	min-width:150px;
+	min-width:80px;
+	margin:10px;
   
 	}
 	.button_login:hover{
@@ -284,21 +286,7 @@
   border-bottom: 0;
 }
 #cssmenu ul ul li.has-sub > a::after {
-  display: block;
-  position: absolute;
-  content: "";
-  width: 5px;
-  height: 5px;
-  right: 20px;
-  z-index: 10;
-  top: 11.5px;
-  border-top: 2px solid #eeeeee;
-  border-left: 2px solid #eeeeee;
-  -webkit-transform: rotate(-135deg);
-  -moz-transform: rotate(-135deg);
-  -ms-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  transform: rotate(-135deg);
+ 
 }
 #cssmenu ul ul li.active > a::after,
 #cssmenu ul ul li.open > a::after,
@@ -306,5 +294,63 @@
   border-color: #ffffff;
 }
 
+.sublink{
+width:7px;
+height:32px;
+background-color:#990000;
+float:right; 
+position:absolute;
 
+right:0;
+top:0;
+z-index:10;
+bottom:0px;
+border-bottom:1px solid #00000;
+}
+ .inv {
+    display: none;
+}
+.title{
+background-color:#339933;
+color:#ffffff;
+font-weight:bold;
+text-align:left;
+text-transform:capitalize;
+width:100%;
+height:35px;
+border-bottom:3px solid #999999;
+margin-bottom:20px;
  
+ 
+}
+.title span{
+
+padding-left:20px;
+margin-top:10px;
+
+}
+table.grid thead{
+background-color:#CFCFCF;
+color:#666666;
+}
+table.grid tbody tr:nth-child(even){
+background-color:#FFFFFF;
+}
+table.grid tbody tr:nth-child(odd){
+background-color:#E8E8E8;
+}
+table{
+border-spacing: 0px;
+    border-collapse: separate;
+ 
+	}
+	td{
+	padding:0;
+	height:30px;
+	}
+	th{
+	height:35px;
+	border-right:1px solid #E8E8E8;
+	
+	}
+	
