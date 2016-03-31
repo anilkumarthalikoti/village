@@ -22,8 +22,8 @@ foreach($link as $links){
    <li link_id='1'><a href="village.php"><span>Add Village</span></a></li>
    <li link_id='2'><a href="scheme.php"><span>Add Scheme</span></a></li>
       <li link_id='3'><a href="password.php"><span>Reset Password</span></a></li>
-	   <li link_id='17'><a href="password.php"><span>Role creation</span></a></li>
-	    <li link_id='18'><a href="password.php"><span>Role mapping</span></a></li>
+	   <li link_id='17'><a href="rolecreation.php"><span>Role creation</span></a></li>
+	    <li link_id='18'><a href="rolemapping.php"><span>Role mapping</span></a></li>
 
   </ul>
 	  
@@ -42,7 +42,7 @@ foreach($link as $links){
    
    <li class='has-sub'><a href='#'><span>Officer</span></a>
       <ul>
-         <li class='has-sub'><a href='#'><span>Proposal</span></a>
+         <li class='has-sub'><a href='#' class="submstr"><span>Proposal</span></a>
            <ul>
       <li link_id='9'><a href="proposal_chd.php"><span>MIS/PMKSY</span></a></li>
    <li link_id='10'><a href="#"><span>CHD</span></a></li>
@@ -90,6 +90,7 @@ $('#cssmenu li.has-sub>a').on('click', function(){
 	});
 
 	$('#cssmenu>ul>li.has-sub>a').append('<div class="holder"></div>');
+	$(' ul li.has-sub ul li.has-sub a.submstr').append('<div class="holder"></div>');
 $('div[class="holder"]').each(function(){
 var val=$(this).parent().parent().find("li").length;
 $(this).html(val);
@@ -151,5 +152,6 @@ $('div[class="holder"]').each(function(){
 var val=$(this).parent().parent().find("li").length;
 $(this).html(val);
 });
+$("li[link_id]").append("<div class='sublink'></div>");
 });
 </script>

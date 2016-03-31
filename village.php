@@ -127,12 +127,10 @@ function villageVal(village)
 
 
 
-
+<div class="title"><span>Adding City</span></div>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
-      <tr>
-        <td colspan="4" class="tbody" style="background-color:#099; color:#FFF; font-size:16px; padding:10px; text-align:center">Adding City</td>
-      </tr>
+       
       <tr>
         <td width="2%" class="tbody">&nbsp;</td>
         <td width="18%" class="tbody">State  :</td>
