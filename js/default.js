@@ -28,4 +28,37 @@ $("div[class='viewport_menu']").load("menu.php");
 						   
 						   });
 
- 
+ document.onmousedown=disableclick;
+status="Right Click Disabled";
+function disableclick(event)
+{
+  if(event.button==2)
+   {
+     //alert(status);
+     return false;    
+   }
+}
+
+
+
+function isNull(element){
+	var key="#"+element;
+	if($(key).val().trim().length==0){
+		return true;
+		}
+		return false;
+	}
+	
+	
+	function tval(element){
+		var key="#"+element;
+	 return $(key).val().trim(); 
+		}
+		
+	function isNullC(groupName){
+		var key="input[name='"+groupName+"']:checked";
+		if($(key).length==0){
+			return true;
+			}
+		return false;
+		}	
