@@ -34,6 +34,14 @@ CREATE TABLE village.user_roles (
 	ROLE_ID int(10) NOT NULL,
 	IS_ACTIVE varchar(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE village.items
+(item_id INT NOT NULL AUTO_INCREMENT,
+item_name VARCHAR(255) NOT NULL,
+item_type SMALLINT NOT NULL,
+PRIMARY KEY (item_id),
+UNIQUE (item_name, item_type))ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 INSERT INTO village.app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
 INSERT INTO village.page_links(linkid, linkname) VALUES (2, 'ADD SCHEMA');
 INSERT INTO village.page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');

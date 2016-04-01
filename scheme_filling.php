@@ -12,7 +12,7 @@
   <?php
 session_start();
 require "server/app_connector.php";
-$mysqli = $database;
+$con = $database;
  
 ?>
 <form method="POST" action="" name="form1">
@@ -107,11 +107,14 @@ $mysqli = $database;
         <td width="19%" class="tbody">Scheme :</td>
         <td width="30%"><select name="select3"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
           <option>Select</option>
-          <option>CHD</option>
-          <option>MIS/PMKSY</option>
-          <option>NHM/MIDH</option>
-          <option>RKVY
-            </option>
+          <?php
+		  $datas=$con->query("select * from items where item_type=0");
+		  foreach($data as $datas){
+		 
+		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
+		   
+		  }
+		  ?>
           
           </select>
           </td>
@@ -119,134 +122,89 @@ $mysqli = $database;
         <td width="31%">&nbsp;</td>
         </tr>
       <tr>
-        <td width="19%" class="tbody">Component :</td>
-        <td colspan="3" align="left"><select name="select3"  type="text"  id="textfield1" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px; width:300px">
-          <option>Select</option>
-          <option>B1. Production of planting material</option>
-          <option>B10. Technology Dissemination through demonstration/ front line demonstration - (FLD)</option>
-          <option>B11.  Human Resource Development (HRD)</option>
-          <option>B11.  Human Resource Development (HRD)</option>
-          <option>B2. Establishment of New Gardens (Area Expansion)</option>
+        <td width="19%" class="tbody">Sub-schema :</td>
+        <td colspan="3" align="left"><select name="subschema"><option>Select</option>
+          <?php
+		  $datas=$con->query("select * from items where item_type=1");
+		  foreach($data as $datas){
+		 
+		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
+		   
+		  }
+		  ?>
           
           </select>
           </td>
         </tr>
       <tr>
-        <td class="tbody">Sub Scheme
+        <td class="tbody">Component
           </td>
-        <td colspan="3" align="left"><select name="select3"  type="text"  id="textfield1" style="padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px; width:350px">
-          <option>Select</option>
-          <option>A. RESEARCH AND DEVELOPMENT</option>
-          <option>B. PLANTATION INFRASTRUCTURE DEVELOPMENT</option>
-          <option>B. PLANTATION INFRASTRUCTURE DEVELOPMENT</option>
-          <option>C. Integrated Post Harvest Management (PHM)</option>
-          <option>C. Integrated Post Harvest Management (PHM)</option>
-          <option>D. Establishment of Marketing Infrastructure for horticultural produce in Govt./Private/ Co operative sector</option>
-          <option>D. Establishment of Marketing Infrastructure for horticultural produce in Govt./Private/ Co operative sector</option>
-          <option>E. Special Interventions</option>
-          <option>E. Special Interventions</option>
-          <option>F. Centre of Excellence for Horticulture</option>
-          <option>G. Mission Management</option>
-          <option>G. Mission Management</option>
-          <option>H. Publicity & Propoganda</option>
-          <option>H. Publicity & Propoganda</option>
-          <option>I. Institutional Strengthening, hire/purchase of vehicles, hardware/software.</option>
-          <option style="text-align:justify;">J. Flexi Fund-(This fund will be utilised to need based components which are covered under the MIDH programmes by KSHMA with SLEC approval)</option>
+        <td colspan="3" align="left"><select name="component"><option>Select</option>
+          <?php
+		  $datas=$con->query("select * from items where item_type=2");
+		  foreach($data as $datas){
+		 
+		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
+		   
+		  }
+		  ?>
+          
           </select></td>
         </tr>
       <tr>
         <td class="tbody">Sub Component-1/Item/Crop   :</td>
-        <td colspan="3" align="left"><select name="select3"  type="text"  id="textfield1" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px; width:350px">
+        <td colspan="3" align="left"><select name="component_1"><option>Select</option>
+          <?php
+		  $datas=$con->query("select * from items where item_type=3");
+		  foreach($data as $datas){
+		 
+		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
+		   
+		  }
+		  ?>
           
-          <option>Select</option>
-          <option>I. Fruits</option>
-          <option>II. Vegetable (For maximum area of 2 ha per beneficiary)</option>
-          <option>III. Flowers (For a maximum of 2 ha per beneficiary)
-            </option>
-          <option>III. Flowers (For a maximum of 2 ha per beneficiary)</option>
-          <option>IV. Spices ( For a maximum area of 4 ha per beneficiary)</option>
-          <option>IV. Spices ( For a maximum area of 4 ha per beneficiary)</option>
-          <option>V. Aromatic Plants (For a maximum area of 4 ha per beneficiary)</option>
-          <option>V. Aromatic Plants (For a maximum area of 4 ha per beneficiary)</option>
-          <option>VI. Plantation crops (For a maximum area of 4 ha per beneficiary)</option>
-          <option>VI. Plantation crops (For a maximum area of 4 ha per beneficiary)</option>
-          <option>VII. 1st Year Maintenance of Fruits Perennials (60:20:20)</option>
-          <option>VII. 1st Year Maintenance of Fruits Perennials (60:20:20)</option>
-          <option>VIII. 2nd Year Maintenance of Fruits Perennials (60:20:20)</option>
-          <option>VIII. 2nd Year Maintenance of Fruits Perennials (60:20:20)</option>
-          <option>IX. 1st Year Maintenance of Non-Perennials (75:25)</option>
-          <option>IX. 1st Year Maintenance of Non-Perennials (75:25)</option>
-          <option>X. 1st Year Maintenance of Plantation Crops (60:20:20)</option>
-          <option>X. 1st Year Maintenance of Plantation Crops (60:20:20)</option>          
-          <option>XI. 2nd Year Maintenance of Plantation Crops (Rs.0.04 lks/ha)</option>
-          <option class="z">XI. 2nd Year Maintenance of Plantation Crops (Rs.0.04 lks/ha)</option>          
-
-          <option>XI. Mushrooms</option>
-          <option>XI. Mushrooms</option>
           </select></td>
         </tr>
       <tr>
         <td width="19%" class="tbody">Sub Component-2/Item/Crop  :</td>
-        <td colspan="3" align="left"><select name="select3"  type="text"  id="textfield1"  style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-          <option>Select</option>
-          <option>i) Grape</option>
-          <option>i) Grape</option>
-          <option>ii) Banana (sucker)</option>
-          <option>ii) Banana (sucker)</option>
-          <option>iii) Banana (TC)</option>
-          <option>iii) Banana (TC)</option>
-          <option>iv ) Pineapple (sucker)</option>
-          <option>iv ) Pineapple (sucker)</option>
-          <option>v) Pineapple (TC)</option>
-          <option>v) Pineapple (TC)</option>
-          <option>vi) Papaya</option>
-          <option>vi) Papaya</option>
-          <option>vii) Normal and High density planting - Mango</option>
-          <option>vii) Normal and High density planting - Mango</option>
-          <option>viii) Normal and High density planting - Pomegranate</option>
-          <option>viii) Normal and High density planting - Pomegranate</option>
-          <option>ix) Normal and High density planting - Sapota</option>
-          <option>ix) Normal and High density planting - Sapota</option>
-          <option>x) Normal and High density planting - Lime/Lemon</option>
-          <option>x) Normal and High density planting - Lime/Lemon</option>
-          <option>xi) Normal and High density planting - </option>
-          <option>xi) Normal and High density planting - Mandarine</option>
-          <option>xii) Normal and High density planting - Sweet Orange</option>
-          <option>xii) Normal and High density planting - Sweet Orange</option>
-          <option>xiii) Normal and High density planting - </option>
-          <option>xiii) Normal and High density planting - Fig</option>
-          <option>xiv) Normal and High density planting - Guava</option>
-          <option>xiv) Normal and High density planting - Guava</option>
+        <td colspan="3" align="left"><select name="component_1"><option>Select</option>
+          <?php
+		  $datas=$con->query("select * from items where item_type=4");
+		  foreach($data as $datas){
+		 
+		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
+		   
+		  }
+		  ?>
           
           </select>
           </td>
         </tr>
       <tr>
         <td class="tbody">Sub Component-3/Item/Crop  :</td>
-        <td colspan="3" align="left"><select name="select3"  type="text"  id="textfield1" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px; width:">
-          
-          <option>Select</option>
-          <option>a) Integrated package with drip irrigation and trellis.</option>
-          <option>a) Integrated package with drip irrigation and trellis.</option>
-          <option>a) Integrated package with drip irrigation and trellis.</option>
-          <option>a) Integrated package with drip irrigation and trellis.</option>
-          <option>b) Without integration</option>
-          <option>b) Without integration</option>
-          
+        <td colspan="3" align="left"><select name="component_4"><option>Select</option>
+          <?php
+		  $datas=$con->query("select * from items where item_type=4");
+		  foreach($data as $datas){
+		 
+		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
+		   
+		  }
+		  ?>
           
           </select></td>
         </tr>
       <tr>
         <td width="19%" class="tbody">Sub Component-4/Item/Crop  :</td>
-        <td colspan="3" align="left"><select name="select3"  type="text"  id="textfield1" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px; width:550px ">
-          
-          <option>Select</option>
-          
-          <option>4 m X 4 m (625 plants) (Rs. 0.4368 lakh/Ha)</option>
-          <option>3 m X 3 m (1111 plants) (Rs. 0.5184 lakh/Ha)</option>
-          <option>3 m X 3 m (1111 plants) (Rs. 0.5184 lakh/Ha)</option>
-          <option>1.8 m X 1.8 m (3086 plants) (Rs. 0.8544 lakh/Ha)</option>
+        <td colspan="3" align="left"><select name="component_5"><option>Select</option>
+          <?php
+		  $datas=$con->query("select * from items where item_type=5");
+		  foreach($data as $datas){
+		 
+		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
+		   
+		  }
+		  ?>
           
           </select></td>
         </tr>

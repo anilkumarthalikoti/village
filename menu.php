@@ -21,7 +21,7 @@ foreach($link as $links){
  <li><a class="ajxsub" href="#"><b>Admin</b></a>
   <ul>
    <li link_id="1"><a href="village.php"><b>Add Village</b></a></li>
-   <li link_id="2"><a href="scheme.php"><b>Add Scheme</b></a></li>
+   <li link_id="2"><a href="scheme.php"><b>Scheme</b></a></li>
       <li link_id="3"><a href="password.php"><b>Reset Password</b></a></li>
 	   <li link_id="17"><a href="rolecreation.php"><b>Role Creation </b></a></li>
        <li link_id="18"><a href="rolemapping.php"><b>Role Mapping </b></a></li>
