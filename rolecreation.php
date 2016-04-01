@@ -24,10 +24,10 @@ if(!empty( $_POST ) )
 if($_POST["method_call"]=="newrole"){
 if(strlen(trim($_POST["role_name"]))!=0){
 $role_name=strtoupper(trim($_POST["role_name"]));
-//$query1="insert into role_mstr(ROLE_NAME) values('".$role_name."')";
+$query1="insert into role_mstr(ROLE_NAME) values('".$role_name."')";
  
-$con->insert("role_mstr",array("ROLE_NAME"=>$role_name));
- 
+$con->query($query1);
+ var_dump($con->error());
 }
 }
 //Update role dtls
@@ -67,7 +67,7 @@ $con->query($query1);
 	 $data=$con->query($query_roles)->fetchAll();
 	 $i=1;
 	 foreach($data as $role){
-	 echo "<tr onclick='rolecreate.setRole(this.id)' role_id='".$role['ROLE_ID']."' id='".$role['ROLE_ID']."'><td>".$i."</td><td>".$role['ROLE_NAME']."</td></tr>";
+	 echo "<tr onclick='rolecreate.setRole(this.id)' role_id='".$role['role_id']."' id='".$role['role_id']."'><td>".$i."</td><td>".$role['ROLE_NAME']."</td></tr>";
 	 $i++;
 	 }
 	 ?>
