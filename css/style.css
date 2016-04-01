@@ -318,7 +318,7 @@ a {cursor:pointer;}
     clear:both;           
     width:100%; 
     
-      
+       min-height:300px;
   border-top: solid 1px #CCC;
     text-align:left;
  
