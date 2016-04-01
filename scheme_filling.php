@@ -41,10 +41,10 @@ $mysqli = $database;
       </tr>
       <tr>
         <td width="19%" class="tbody"> Name  :</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         <td width="20%" class="tbody">Father/Husband Name  :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         </tr>
       <tr>

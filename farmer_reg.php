@@ -10,6 +10,8 @@
 <script src="/js/common.js" type="text/javascript"></script>
 <script src="/js/kannada.js" type="text/javascript"></script>
  <script src="js/farmer_reg.js" type="text/javascript"></script>
+ 
+ 
 </head>
 
 <body>
@@ -19,9 +21,9 @@
  <div class="title"><span>Registration</span></div>
 
 
- <table   width="100%" cellpadding="0" cellspacing="0">
+ <table   width="100%" cellpadding="0" cellspacing="0"  >
  <tr><td align="right" style="border-bottom:1px solid #CCCCCC;"><input type="text" placeholder="Search" class="search"></input><select><option>Reg.No</option><option>Name</option><option>Ration card no</option><option>Adhar</option></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
- <tr><td>
+ <tr><td  valign="top" style="padding:0; margin:0;">
  <ul id="tabs">
 
       <li><a id="tab1">Farmer/Beneficiary Details</a></li>
@@ -38,20 +40,20 @@
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td>First Name  :</td>
-        <td><input name="fname" type="text" id="username" placeholder="Enter First Name"  onBlur="fnameVal(fname);"required/>					<span class="error">*</span> 
-          <input name="fname1" alt="ka" type="text" id="username" placeholder="Enter First Name Unicode"  /></td>
+        <td><input name="fname" type="text" id="username" placeholder="Enter First Name"  onBlur="fnameVal(fname);"required/>					
+          <input name="fname1" alt="ka" type="text" id="username" placeholder="Enter First Name Unicode"  /><span class="error">*</span> </td>
           </tr>
            
           <tr>
             <td >Father/Husbend Name  :</td>
-        <td ><input name="fhname" type="text" id="username" placeholder="Enter Father/Husbend Name Name" onBlur="fhnameVal(fhname);" required/><span class="error">* </span>
-          <input name="text" type="text" id="username" placeholder="Enter Father/Husbend Name Unicode" alt="ka" /></td>
+        <td ><input name="fhname" type="text" id="username" placeholder="Enter Father/Husbend Name Name" onBlur="fhnameVal(fhname);" required/> 
+          <input name="text" type="text" id="username" placeholder="Enter Father/Husbend Name Unicode" alt="ka" /><span class="error">*</span> </td>
           </tr>
         
           <tr>
             <td >Last Name  :</td>
-        <td  ><input name="lname" type="text" id="username" placeholder="Enter last Name Name"  onblur="lnameVal(lname);" required/><span class="error">* </span>
-          <input name="text" type="text" id="username" placeholder="Enter last Name Unicode" alt="ka" /></td>
+        <td  ><input name="lname" type="text" id="username" placeholder="Enter last Name Name"  onblur="lnameVal(lname);" required/> 
+          <input name="text" type="text" id="username" placeholder="Enter last Name Unicode" alt="ka" /><span class="error">*</span> </td>
           </tr>
           <tr>
             <td >Gender :</td>
@@ -91,8 +93,7 @@
           </tr>
           <tr>
             <td  class="tbody">Physically Challanged :</td>
-            <td  ><input name="physical" type="text" id="username" placeholder="Enter Qualification"  /> 
-              <input name="text" type="text" id="username" placeholder="Enter last Name Unicode" alt="ka" /></td>
+            <td  ><input type="radio" value="No" name="physicalchalanged" checked="checked" />No<input type="radio" value="Yes" name="physicalchalanged" />Yes </td>
           </tr>
          
         </table>
@@ -484,19 +485,21 @@
 		<td>
   			 
   		</td>
-		<td height="350">
-  			&nbsp;
+		<td height="350">&nbsp;
+  			
   		</td>
 		<td  >
   			 
   		</td>
-		<td >
-  			&nbsp;
+		<td >&nbsp;
+  			
   		</td>
 		
 		</tr>
-  </table>
+  </table></div>
+  <div style="float:right;"><span style="margin-right:20px;"><input type="button" class="button_login" value="Save"/></span></div>
  </td></tr>
+ 
  </table>
 </div>
 </form>
