@@ -309,8 +309,8 @@ function click_address(form)
         <td width="56%" valign="top" align="left"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="15%" class="tbody">Cooprative Society Name  :</td>
-        <td width="41%"><input name="cooprative" type="text" id="username" placeholder="Society Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;" onblur="validate_cooprative(cooprative);"required/><span class="error">* </span><br />
-          <input name="cooprative1" type="text" id="username" placeholder="Enter in kannada Unicode" style="height:15px; width:300px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
+        <td width="41%"><input name="cooprative" type="text" id="username" placeholder="Society Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;" onBlur="validate_cooprative(cooprative);"required/><span class="error">* </span><br />
+          <input name="cooprative1" lang="ka" type="text" id="username" charset="utf-8" onKeyDown="toggleKBMode(event)" onKeyPress="javascript:convertThis(event)" placeholder="Enter in kannada Unicode" style="height:15px; width:300px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
           </tr>
           <tr>
             <td colspan="2" style="height:10px;"></td>
@@ -318,7 +318,7 @@ function click_address(form)
           <tr>
             <td width="15%" class="tbody">Authorised Persone Name  :</td>
         <td width="41%"><input name="authorised" type="text" id="username" placeholder="Enter Authorised person Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"onblur="validate_authorised(authorised);"required/><span class="error">* </span><br />
-          <input name="authorised1" type="text" id="username" placeholder="Enter Authorised person Name Unicode" style="height:15px; width:300px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
+          <input name="authorised1" type="text" id="username" lang="ka" placeholder="Enter Authorised person Name Unicode" style="height:15px; width:300px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
           </tr>
           <tr>
             <td colspan="2" style="height:10px;"></td>
@@ -346,7 +346,7 @@ function click_address(form)
         <option>Female</option>
                 <option>Other</option>
 
-      </select><input name="gender1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
+      </select><input lang="ka" name="gender1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
           </tr>
           <tr>
              <td width="15%" class="tbody">Cast :</td>
@@ -473,7 +473,7 @@ function click_address(form)
         </tr>
       <tr>
         <td width="14%" class="tbody">District  :</td>
-        <td width="32%"><select name="dist"  type="text"  id="dist_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_dist();">
+        <td width="32%"><select name="dist"  type="text"  id="dist_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onBlur="validate_dist();">
           
 		  <option>Select</option>
           <option>Iteam 1</option>
@@ -488,7 +488,7 @@ function click_address(form)
       </tr>
       <tr>
         <td width="14%" class="tbody">Taluk   :</td>
-        <td width="32%"><select name="taluk"  type="text"  id="taluk_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_taluk();">
+        <td width="32%"><select name="taluk"  type="text"  id="taluk_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onBlur="validate_taluk();">
          
 			<option>Select</option>
           <option>Iteam 1</option>
@@ -503,7 +503,7 @@ function click_address(form)
       </tr>
       <tr>
         <td width="14%" class="tbody">Hobli   :</td>
-        <td width="32%"><select name="hobli"  type="text"  id="hobli_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_hobli();">
+        <td width="32%"><select name="hobli"  type="text"  id="hobli_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onBlur="validate_hobli();">
           
 		  <option>Select</option>
           <option>Iteam 1</option>
@@ -518,7 +518,7 @@ function click_address(form)
       </tr>
       <tr>
         <td width="14%" class="tbody">Village  :</td>
-        <td width="32%"><select name="village"  type="text"  id="village_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_village();">
+        <td width="32%"><select name="village"  type="text"  id="village_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onBlur="validate_village();">
           
 		  <option>Select</option>
           <option>Iteam 1</option>
@@ -547,7 +547,7 @@ function click_address(form)
       </tr>
       <tr>
         <td width="14%" class="tbody">Panchayat  :</td>
-        <td width="32%"><select name="panchayat"  type="text"  id="panchyat_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_panchyat();">
+        <td width="32%"><select name="panchayat"  type="text"  id="panchyat_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onBlur="validate_panchyat();">
           
 		  <option>Select</option>
           <option>Iteam 1</option>
