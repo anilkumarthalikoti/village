@@ -26,7 +26,7 @@ var kbmode = "roman";
 var pkbmode = "roman";
 var SplKeys = new Array();
 var toShowHelp = true;
-var webhome = "http://www.higopi.com";
+var webhome = "";
 
 SplKeys["ZR"] = 0;
 SplKeys["BS"] = 8;

@@ -56,8 +56,12 @@ var rolecreate=new function(){
 		}
 		
 		this.setRole=function(role){
-		 var key="#"+role;
-		 alert($(key).attr("role_id"));
+		 
+		 $("table[id='role_mstr'] tbody tr").removeClass("active");
+		 var key="table[id='role_mstr'] tbody tr[id='"+role+"']";
+	 
+		 $(key).addClass("active");
+		 
 			$("input[name='role_id_selected']").val($(key).attr("role_id"));
 			}
 	}

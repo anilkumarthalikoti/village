@@ -24,8 +24,41 @@ $.ajax({
 
 $("div[class='viewport']").before("<div class='viewport_menu'></div>");
 $("div[class='viewport_menu']").load("menu.php");
-						 
+	<!-- Tabs code-->		 
+ $('#tabs li a:not(:first)').addClass('inactive');
+$('.container').hide();
+$('.container:first').show();
+    
+$('#tabs li a').click(function(){
+    var t = $(this).attr('id');
+  if($(this).hasClass('inactive')){ //this is the start of our condition 
+    $('#tabs li a').addClass('inactive');           
+    $(this).removeClass('inactive');
+    
+    $('.container').hide();
+    $('#'+ t + 'C').fadeIn('slow');
+ }
+});			 
+			 
+			 
+			  $("[alt='ka']").each(function(){
+					$(this).attr("charset","utf-8");	   
 						   
+						   
+						   $(this).keydown(function(e){
+															
+														toggleKBMode(e)	;
+															});
+						   
+						   
+						      $(this).keypress(function(e){
+															
+														convertThis(e);
+															});
+						   
+						   
+														 });
+			 
 						   });
 
  document.onmousedown=disableclick;
