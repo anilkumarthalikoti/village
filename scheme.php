@@ -15,40 +15,7 @@
 session_start();
 require "server/app_connector.php";
 $conn=$database;
-if(!empty($_POST)){
- $item_name=trim(strtoupper($_POST["item_name"]));
-$item_type=trim($_POST["item_type"]);
-$scheme_select=NULL;
-if(!empty($_POST["scheme_select"])){
-$scheme_select=trim($_POST["scheme_select"]);
-}
  
-
-
-$id=$conn->insert("items",array("item_name"=>$item_name, "item_type"=>$item_type ));
- if($scheme_select!=NULL){
- if($id!=0){
- 
-$mapid=$conn->insert("item_mapping",array("schemeid"=>$scheme_select,"subschemeid"=>$id));
- 
- if($mapid==0){
- $conn->delete("items",array("item_id"=>$id));
- }
-}else{
- 
- $result1=$conn->select("items",array("item_id"), array("AND"=> array("item_name"=>$item_name,"item_type"=>$item_type)));
- 
- $subscheme_id=NULL;
- foreach(  $result1   as $row){
- $subscheme_id= $row["item_id"];
- } 
- 
-  
-  $mapid=$conn->insert("item_mapping",array("schemeid"=>$scheme_select,"subschemeid"=>$subscheme_id));
- 
-}
-}
-}
 ?>
 <div class="viewport">
   <ul id="tabs">
@@ -124,7 +91,7 @@ echo "<option value='".$row["item_id"]."'>".$row["item_name"]."</option>";
 </thead>
 <tbody>
 <?php 
-$query="select a.item_id,a.item_name,(select b.item_name from items b where b.item_id=m.subschemeid ) subitem from items a ,item_mapping m where m.schemeid= a.item_id and a.item_type=0";
+$query="select a.item_id,a.item_name,(select b.item_name from items b where b.item_id=m.subschemeid ) subitem from items a ,subschemes m where m.schemeid= a.item_id and a.item_type=0";
 $result=$conn->query($query);
 $rowid=0;
 foreach($result as $row){
@@ -150,6 +117,49 @@ $rowid++;
 <input type="hidden" name="item_type" value="2"/>
 
 
+<table class="margin-left margin-top">
+<tr><td class="label">Select scheme</td><td>:</td><td>
+<select name="scheme_select" id="scheme_selected" onchange="scheme.updatesubscheme()">
+<option value="-1">Select</option>
+
+<?php 
+$result =$conn->select("items",array("item_id","item_name"),array("item_type"=>0));
+foreach($result as $row)
+echo "<option value='".$row["item_id"]."'>".$row["item_name"]."</option>";
+?>
+</select></td></tr>
+<tr><td class="label">Select Sub scheme</td><td>:</td>
+<td>
+<select name="sub_scheme_select" id="sub_scheme_select">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr><td class="label">Enter component</td><td>:</td><td><input type="text" name="item_name" placeholder="Enter Component" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onclick="scheme.saveData('component')" /></td></tr>
+<tr><td colspan="3">
+
+<table class="grid">
+<thead>
+<tr><th colspan="4">Components</th></tr>
+<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th></tr>
+
+</thead>
+<tbody>
+<?php 
+$query="select a.item_id,a.item_name,(select b.item_name from items b where b.item_id=m.subschemeid ) subitem from items a ,subschemes m where m.schemeid= a.item_id and a.item_type=0";
+$result=$conn->query($query);
+$rowid=0;
+foreach($result as $row){
+echo "<tr scheme='".$row['item_id']."'><td>".$rowid."</td><td>".$row['item_name']."</td><td>".$row['subitem']."</td></tr>";
+$rowid++;
+}
+?>
+
+</tbody>
+</table>
+
+</td></tr>
+</table>
 
 
 </form>
@@ -160,6 +170,12 @@ $rowid++;
 <input type="hidden" name="saveType" value="item"/>
  
 </form>
+<table id="existing">
+<?php
+
+
+?>
+</table>
 </div>
  
 
