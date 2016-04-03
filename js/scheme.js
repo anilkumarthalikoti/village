@@ -1,14 +1,16 @@
- var schema=new function(){
+ var scheme=new function(){
  
-	this.saveData=function(){
+	this.saveData=function(form_name){
+		alert('d');
+		var formKey="form[name='"+form_name+"']";
 		
 		$.ajax({
 			url:"scheme.php",
 			method:"post",
-			data:$("form[name='form1']").serialize()
+			data:$(formKey).serialize()
 			}).done(function(data){
 				 
-				//	window.location="scheme.php";
+				 alert(data);
 					 
 				});
 		

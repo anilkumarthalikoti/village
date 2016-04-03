@@ -40,7 +40,7 @@ $('#tabs li a').click(function(){
  }
 });			 
 			 
-			 
+	 
 			  $("[alt='ka']").each(function(){
 					$(this).attr("charset","utf-8");	   
 						   
