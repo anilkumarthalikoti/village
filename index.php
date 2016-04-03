@@ -29,8 +29,8 @@ window.location="/home.php";
 <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" >
   <tr>
    
-    <td class="xlarge" align="center" valign="middle" height="100%">
-<div class="transbox xlarge margin_small" >
+    <td class="login_dialog" align="center" valign="middle" height="100%">
+<div class="transbox login_dialog margin_small" >
 <div class="dialogTitle">Login</div>
     <table width="100%" border="0" cellspacing="5" style="line-height:35px;" cellpadding="0"  >
 
