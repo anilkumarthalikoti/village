@@ -12,10 +12,10 @@ if(!empty($_POST["scheme_select"])){
 $scheme_select=trim($_POST["scheme_select"]);
 }
 if(!empty($_POST["subscheme_select"])){
-$subscheme_select=trim($_POST["scheme_select"]);
+$subscheme_select=trim($_POST["subscheme_select"]);
 } 
 if(!empty($_POST["component_select"])){
-$component_select=trim($_POST["scheme_select"]);
+$component_select=trim($_POST["component_select"]);
 }
 $saveType="NAN";
 if(!empty($_POST["saveType"])){
@@ -26,8 +26,21 @@ $id=$conn->insert("items",array("item_name"=>$item_name, "item_type"=>$item_type
  if($scheme_select!=NULL){
  if($id!=0){
  //New process
+ $mapid=-1;
+ switch(saveType){
+ case "sub_scheme":
 $mapid=$conn->insert("subschemes",array("schemeid"=>$scheme_select,"subschemeid"=>$id));
- 
+ break;
+ case "component";
+$mapid=$conn->insert("component",array("schemeid"=>$scheme_select,"subschemeid"=>$subscheme_select,"component"=>$id));
+
+break; 
+
+case "subcomponent";
+$mapid=$conn->insert("subcomponent",array("schemeid"=>$scheme_select,"subschemeid"=>$subscheme_select,"component"=>$component_select,"subcomponent"=>$id));
+
+break; 
+ }
  if($mapid==0){
  $conn->delete("items",array("item_id"=>$id));
  }
@@ -60,13 +73,13 @@ if(!empty($_GET["scheme_select"])){
 $query="select b.item_id,b.item_name  from subschemes a, items b where a.subschemeid= b.item_id and a.schemeid=".$_GET["scheme_select"];
  
 $result=$conn->query($query);
-$jsontext= "'[";
+$jsontext= "[";
 foreach($result as $row){
-$jsontext .= "{'item_id':'".$row["item_id"] . "', 'item_name':'" . $row["item_name"] . "'},";
+$jsontext .= '{"item_id":"'.$row["item_id"].'", "item_name":"'. $row["item_name"] . '"},';
 }
 $jsontext = substr_replace($jsontext, '', -1); // to get rid of extra comma
-$jsontext .= "]'";
-echo $jsontext;
+$jsontext .= "]";
+print $jsontext;
 }
 
 
