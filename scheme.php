@@ -7,7 +7,9 @@
 <link href="css/menu.css" type="text/css" rel="stylesheet" />
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/default.js" type="text/javascript"></script>
-<script type="text/javascript" src="/js/scheme.js"></script>
+<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="js/scheme.js"></script>
+
 </head>
 
 <body>
@@ -167,7 +169,7 @@ $rowid++;
 </div>
 <div class="container" id="tab4C">
 <form name="item">
-<input type="hidden" name="saveType" value="item"/>
+<input type="hidden" name="saveType" value="subcomponent"/>
  
 </form>
 <table id="existing">
