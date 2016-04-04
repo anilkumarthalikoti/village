@@ -5,7 +5,7 @@
 <link href="css/menu.css" type="text/css" rel="stylesheet" />
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/default.js" type="text/javascript"></script>
- 
+ <script src="js/scheme_filling.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -20,9 +20,7 @@ $con = $database;
  <div class="title"><span>Schema filling</span></div>
 
 
- <table   width="100%" cellpadding="0" cellspacing="0">
- <tr><td align="right" style="border-bottom:1px solid #CCCCCC;"><input type="text" placeholder="Search" class="search"></input><select><option>Reg.No</option><option>Name</option><option>Ration card no</option><option>Adhar</option></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
- <tr><td>
+ 
  <ul id="tabs">
 
       <li><a id="tab1">Registration Details</a></li>
@@ -33,12 +31,8 @@ $con = $database;
 <div class="container" id="tab1C">
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td class="tbody">&nbsp;</td>
-        <td>&nbsp;</td>
-        <td class="tbody">&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
+      
+       
       <tr>
         <td width="19%" class="tbody"> Name  :</td>
         <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
@@ -53,42 +47,42 @@ $con = $database;
         </tr>
       <tr>
         <td width="19%" class="tbody">House No.:</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         <td width="20%" class="tbody">Survey No.:</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         </tr>
       <tr>
         <td width="19%" class="tbody"> Village/City Name:</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         <td width="20%" class="tbody">Village :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         </tr>
       <tr>
         <td width="19%" class="tbody">Hobali</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         <td width="20%" class="tbody">Hobali :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         </tr>
       <tr>
         <td width="19%" class="tbody">Taluk :</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         <td width="20%" class="tbody">Taluk :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         </tr>
       <tr>
         <td width="19%" class="tbody">District :</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         <td width="20%" class="tbody">District :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
+        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
           </td>
         </tr>
 		</table>
@@ -105,7 +99,7 @@ $con = $database;
         </tr>
       <tr>
         <td width="19%" class="tbody">Scheme :</td>
-        <td width="30%"><select name="select3"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
+        <td width="30%"><select name="scheme_select"    id="scheme_select" onchange="schemefilling.updatesubscheme('subscheme_select','scheme_select')"   >
           <option>Select</option>
           <?php
 		  $datas=$con->query("select * from items where item_type=0");
@@ -123,15 +117,8 @@ $con = $database;
         </tr>
       <tr>
         <td width="19%" class="tbody">Sub-schema :</td>
-        <td colspan="3" align="left"><select name="subschema"><option>Select</option>
-          <?php
-		  $datas=$con->query("select * from items where item_type=1");
-		  foreach($data as $datas){
-		 
-		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
-		   
-		  }
-		  ?>
+        <td colspan="3" align="left"><select name="subscheme_select" id='subscheme_select' onchange="schemefilling.updatecomponent();"><option>Select</option>
+         
           
           </select>
           </td>
@@ -139,43 +126,21 @@ $con = $database;
       <tr>
         <td class="tbody">Component
           </td>
-        <td colspan="3" align="left"><select name="component"><option>Select</option>
-          <?php
-		  $datas=$con->query("select * from items where item_type=2");
-		  foreach($data as $datas){
-		 
-		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
-		   
-		  }
-		  ?>
+        <td colspan="3" align="left"><select name="component_select"><option>Select</option>
+          
           
           </select></td>
         </tr>
       <tr>
         <td class="tbody">Sub Component-1/Item/Crop   :</td>
         <td colspan="3" align="left"><select name="component_1"><option>Select</option>
-          <?php
-		  $datas=$con->query("select * from items where item_type=3");
-		  foreach($data as $datas){
-		 
-		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
-		   
-		  }
-		  ?>
           
           </select></td>
         </tr>
       <tr>
         <td width="19%" class="tbody">Sub Component-2/Item/Crop  :</td>
         <td colspan="3" align="left"><select name="component_1"><option>Select</option>
-          <?php
-		  $datas=$con->query("select * from items where item_type=4");
-		  foreach($data as $datas){
-		 
-		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
-		   
-		  }
-		  ?>
+          
           
           </select>
           </td>
@@ -183,55 +148,29 @@ $con = $database;
       <tr>
         <td class="tbody">Sub Component-3/Item/Crop  :</td>
         <td colspan="3" align="left"><select name="component_4"><option>Select</option>
-          <?php
-		  $datas=$con->query("select * from items where item_type=4");
-		  foreach($data as $datas){
-		 
-		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
-		   
-		  }
-		  ?>
+          
           
           </select></td>
         </tr>
       <tr>
         <td width="19%" class="tbody">Sub Component-4/Item/Crop  :</td>
         <td colspan="3" align="left"><select name="component_5"><option>Select</option>
-          <?php
-		  $datas=$con->query("select * from items where item_type=5");
-		  foreach($data as $datas){
-		 
-		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
-		   
-		  }
-		  ?>
+          
           
           </select></td>
         </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        </tr>
+     
       </table></td>
   </tr>
   <tr>
-    <td style="border-top:1px solid #000; border-bottom:0px solid #000; font-size:18px; font-weight:bold; padding:5px;" align="center"><form name="form4" method="post" action="">
-      <label>
+    <td style="border-top:1px solid #000; border-bottom:0px solid #000; font-size:18px; font-weight:bold; padding:5px;" align="center"> 
         <input type="submit" name="button2" id="button2" value="Submit">
-        </label>
-      <label>
+       
         <input type="submit" name="Reset" id="Reset" value="Reset">
-        </label>
-      </form></td>
+       
+     </td>
   </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
+   
 </table>
 
 
@@ -240,9 +179,6 @@ $con = $database;
 
 </div>
  
- 
- </td></tr>
- </table>
 </div>
 </form>
  
