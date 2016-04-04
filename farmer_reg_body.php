@@ -1,1040 +1,388 @@
-<!DOCTYPE HTML> 
-<html>
-<head>
-<style>
-.error {color: #FF0000;}
-</style>
-<script language="javascript">
-document.onmousedown=disableclick;
-status="Right Click Disabled";
-function disableclick(event)
-{
-  if(event.button==2)
-   {
-     alert(status);
-     return false;    
-   }
-}
-function fnameVal(fname)    //First name validation
-{
-                var letters = /^[A-Za-z .,]+$/;
-                if(fname.value.match(letters))
-                        {
-                         return true;
-                        }
-						else  
-  {  
-     alert("Enter First Name");  
-	 document.form1.fname.focus();  
-     return false;  
-  }  
-}
-    
-function fhnameVal(fhname)  //Father/Husbend name validation
-{
-                var letters = /^[A-Za-z .,]+$/;
-                if(fhname.value.match(letters))
-                        {
-                         return true;
-                        }
-						else  
-  {  
-     alert("Enter Father/Husbend Name");  
-	 document.form1.fhname.focus();  
-     return false;  
-  }  
-}
- 
-function lnameVal(lname) //Last name validation
-{
-                var letters = /^[A-Za-z .,]+$/;
-                if(lname.value.match(letters))
-                        {
-                         return true;
-                        }
-						else  
-  {  
-     alert("Enter Last Name");  
-	 document.form1.lname.focus();  
-     return false;  
-  }  
-}
-function validate_gender() //Gender validation
-{
-var dropdown = document.getElementById('gender_id');
-if(dropdown.selectedIndex==0){
-alert("Please select Gender");
-dropdown.focus();
-return false; 
-}else{
-return true;
-}
-}
+ <div class="sub2_title" ><u>F</u>armer/Beneficiary Details</div>
+     <table   width="100%" cellpadding="0" cellspacing="0"  >
+       <tr>
+         <td align="right" style="border-bottom:1px solid #CCCCCC;"><input name="text" type="text" class="search" placeholder="Search" />
+             <select name="select">
+               <option>Reg.No</option>
+               <option>Name</option>
+               <option>Ration card no</option>
+               <option>Adhar</option>
+             </select>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+       </tr>
+       <tr>
+         <td  valign="top" style="padding:0; margin:0;"><ul id="tabs">
+             <li><a id="tab1"><u>F</u>armer/Beneficiary Details</a></li>
+           <li><a id="tab2"><u>A</u>ccount Details</a></li>
+           <li><a id="tab3">A<u>d</u>dress Details</a></li>
+           <li><a id="tab4"><u>L</u>oan Details</a></li>
+           <li><a id="tab5"><u>B</u>ank Details</a></li>
+           <li><a id="tab6">D<u>o</u>cuments to upload</a></li>
+         </ul>
+             <div class="container" id="tab1C">
+               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                   <td class="f_text">First Name  :</td>
+                   <td class="f_text"><input name="firstname" type="text" id="firstname" placeholder="Enter First Name"  onblur="fnameVal(fname);"required/>
+                       <input name="firstname_k" alt="ka" type="text" id="firstname_k" placeholder="Enter First Name Unicode"  />
+                     <span class="error">*</span> </td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Father/Husbend Name  :</td>
+                   <td class="f_text"><input name="fathername" type="text" id="fathername" placeholder="Enter Father/Husbend Name Name" onblur="fhnameVal(fhname);" required/>
+                       <input name="fathername_k" type="text" id="fathername_k" placeholder="Enter Father/Husbend Name Unicode" alt="ka" />
+                     <span class="error">*</span> </td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Last Name  :</td>
+                   <td class="f_text"><input name="lastname" type="text" id="lastname" placeholder="Enter last Name Name"  />
+                       <input name="lastname_k" type="text" id="lastname_k" placeholder="Enter last Name Unicode" alt="ka" />
+                     <span class="error">*</span> </td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Gender :</td>
+                   <td class="f_text"><input type="radio" name="gender" value="MALE" />Male/????<input type="radio" name="gender" value="FEMALE" />Female/??????
 
-function validate_cast() //cast validtion
-{
-var dropdown = document.getElementById('cast_id');
-if(dropdown.selectedIndex==0){
-alert("Please select cast");
-dropdown.focus();
-return false; 
-}else{
-return true;
-}
-}
-function adharnumber(inputtxt)  //Adhar number validation
-{  
-  var adharno = /^\d{12}$/;  
-  if(inputtxt.value.match(adharno))  
-  {  
-      return true;  
-  }  
-  else  
-  {  
-     alert("Not a valid Adhar Number");  
-	 document.form1.adhar.focus();  
-     return false;  
-  }  
-  }  
-  
-function validate_voter() //voter card validation
-{
-var empt = document.forms["form1"]["voter"].value;
-if (empt == "")
-{
-alert("Please Enter voter Id number");
-document.form1.voter.focus();
-return false;
-}
-else 
-{
-return true; 
-}
-}
-
-/* function ValidatePAN(inputtxt)  //Pan card validation
-{  
-  var panno = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;  
-  if(inputtxt.value.match(panno))  
-  {  
-      return true;  
-  }  
-  else  
-  {  
-     alert("Not a valid Pan Number");  
-	 document.form1.pan.focus();  
-     return false;  
-  }  
-  }   */
-  function validate_state() //state validation
-{
-var dropdown = document.getElementById('state_id');
-if(dropdown.selectedIndex==0){
-alert("Please select state");
-dropdown.focus();
-return false; 
-}else{
-return true;
-}
-}
-function validate_dist() //District validation
-{
-var dropdown = document.getElementById('dist_id');
-if(dropdown.selectedIndex==0){
-alert("Please select District");
-dropdown.focus();
-return false; 
-}else{
-return true;
-}
-}
-function validate_taluk() //Taluk validation
-{
-var dropdown = document.getElementById('taluk_id');
-if(dropdown.selectedIndex==0){
-alert("Please select Taluk");
-dropdown.focus();
-return false; 
-}else{
-return true;
-}
-}
-function validate_hobli() //Hobli validation
-{
-var dropdown = document.getElementById('hobli_id');
-if(dropdown.selectedIndex==0){
-alert("Please select Hobli");
-dropdown.focus();
-return false; 
-}else{
-return true;
-}
-}
-function validate_village() //Village validation
-{
-var dropdown = document.getElementById('village_id');
-if(dropdown.selectedIndex==0){
-alert("Please select Village");
-dropdown.focus();
-return false; 
-}else{
-return true;
-}
-}
-function validate_panchyat() //Panchyat validation
-{
-var dropdown = document.getElementById('panchyat_id');
-if(dropdown.selectedIndex==0){
-alert("Please select Panchyat");
-dropdown.focus();
-return false; 
-}else{
-return true;
-}
-}
-  function validate_pincode(inputtxt) //pincode validation
-      {
-      var numbers = /^[0-9]+$/;
-      if(inputtxt.value.match(numbers))
-      {
-      
-      return true;
-      }
-      else
-      {
-      alert('Please Enter pincode');
-      document.form1.pincode.focus();
-      return false;
-      }
-      }
-function phonenumber(inputtxt)  //Mobile number validation
-{  
-  var phoneno = /^\d{10}$/;  
-  if(inputtxt.value.match(phoneno))  
-  {  
-      return true;  
-  }  
-  else  
-  {  
-     alert("Not a valid Phone Number");  
-	 document.form1.mobileno.focus();  
-     return false;  
-  }  
-  }  
-
-function validate_lands() //Land survey validation
-{
-var empt = document.forms["form1"]["land"].value;
-if (empt == "")
-{
-alert("Please Enter Land servey number");
-document.form1.land.focus();
-return false;
-}
-else 
-{
-return true; 
-}
-}
+                     <span class="error">* </span> </td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Cast :</td>
+                   <td class="f_text"><select name="cast"  type="text"  id="cast_id"   onblur="validate_cast();">
+                       <option>Select</option>
+                       <option>Others</option>
+                       <option>General</option>
+                       <option>OBC</option>
+                       <option>Minority</option>
+                       <option>SC</option>
+                     </select>
+                       <input name="cast1" type="text" id="username" placeholder="Unicode" alt="ka"  />
+                     <span class="error">* </span></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Age in years :</td>
+                   <td class="f_text"><input name="dob" type="text" id="dob" placeholder="Enter age in years"  /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Qualification :</td>
+                   <td class="f_text"><input name="qualification" type="text" id="qualification" placeholder="Enter Qualification" />
+                       <input name="qualification_k" type="text" id="qualification_k" placeholder="Enter last Name Unicode" alt="ka" /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Physically Challanged :</td>
+                   <td class="f_text"><input type="radio" value="No" name="physicalchalanged" checked="checked" />
+                     No
+                       <input type="radio" value="Yes" name="physicalchalanged" />
+                     Yes </td>
+                 </tr>
+               </table>
+             </div>
+           <div class="container" id="tab2C">
+               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                   <td class="f_text">Aadhar No.:</td>
+                   <td class="f_text"><input name="aadhar" type="text" id="aadhar" placeholder="0000 0000 0000" maxlength="14"  />
+                       <span class="error">* </span></td>
+                   <td class="f_text">EPIC No.: </td>
+                   <td class="f_text"><input name="voter" type="text" id="voter" placeholder="Enter Voter Id Card No."  onblur="validate_voter(document.form1.voter)" required/>
+                       <span class="error">* </span> </td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Ration Card No.: </td>
+                   <td class="f_text"><input name="rationcard" type="text" id="rationcard" placeholder="Enter Ration Card No."  /></td>
+                   <td class="f_text">PAN Card No.:</td>
+                   <td class="f_text"><input name="pancard" type="text" id="pancard" placeholder="Enter PAN Card No." maxlength="10"   onblur="ValidatePAN(pan);" required/>
+                       <span class="error">* </span></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Ration Card Type.: </td>
+                   <td class="f_text"><select name="rationcardtype"  type="text"  id="rationcardtype"   >
+                       <option>APL</option>
+                       <option>BPL</option>
+                   </select></td>
+                   <td class="f_text">KISAN Card No.:</td>
+                   <td class="f_text"><input name="kishancard" type="text" id="kishancard" placeholder="Enter KISAN Card No."  /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Income Per Annum :</td>
+                   <td class="f_text"><input name="income" type="text" id="income" placeholder="Enter Income."  /></td>
+                   <td class="f_text">Email ID : </td>
+                   <td class="f_text"><input name="mailid" type="text" id="mailid" placeholder="Enter Email ID"  /></td>
+                 </tr>
+               </table>
+           </div>
+           <div class="container" id="tab3C">
+               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                   <td class="f_text">State  :</td>
+                   <td class="f_text"><select name="state"  type="text"  id="state"  onblur="validate_state();">
+                       <option value="-1">Select</option>
+                       <option value="1">Karnataka</option>
+                        
+                     </select>
+                       <input name="state_k" type="text" id="state_k" placeholder="Unicode" />
+                     <span class="error">* </span></td>
+                   <td class="f_text">House No :</td>
+                   <td class="f_text"><input name="houseno" type="text" id="houseno" placeholder="Enter House No." /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">District  :</td>
+                   <td class="f_text"><select name="district"   id="district"   onblur="validate_dist();">
+                       <option>Select</option>
+                       <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="district" type="text" id="username" placeholder="Unicode" alt="ka" />
+                     <span class="error">* </span></td>
+                   <td class="f_text">Street  :</td>
+                   <td class="f_text"><input name="street" type="text" id="street" placeholder="Enter Street"  /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Taluk   :</td>
+                   <td class="f_text"><select name="taluk"  type="text"  id="taluk_id"   onblur="validate_taluk();">
+                       <option>Select</option>
+                       <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="taluk_k" type="text" id="taluk_k" placeholder="Taluk" />
+                     <span class="error">* </span></td>
+                   <td class="f_text">Location   :</td>
+                   <td class="f_text"><input name="location" type="text" id="username" placeholder="Enter Street"  /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Hobli   :</td>
+                   <td class="f_text"><select name="hobli"  type="text"  id="hobli"   onblur="validate_hobli();">
+                       <option>Select</option>
+                       <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="hobli_k" type="text" id="hobli_k" placeholder="Hobli" alt="ka" />
+                     <span class="error">* </span></td>
+                   <td class="f_text">Land Mark   :</td>
+                   <td class="f_text"><input name="landmark" type="text" id="landmark" placeholder="Enter Street"  /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Village  :</td>
+                   <td class="f_text"><select name="village"  type="text"  id="village"   >
+                       <option>Select</option>
+                     <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="village_k" type="text" id="username" placeholder="Village" />
+                     <span class="error">* </span></td>
+                   <td class="f_text">Pin Code   :</td>
+                   <td class="f_text"><input name="pincode" type="text" id="pincode" placeholder="Pincode"    />
+                       <span class="error">* </span></td>
+                 </tr>
+                  
+                 <tr>
+                   <td class="f_text">Panchayat  :</td>
+                   <td class="f_text"><select name="panchayat"  type="text"  id="panchyat_id"   onblur="validate_panchyat();">
+                       <option>Select</option>
+                        <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="panchayat_k" type="text" id="panchayat_k" placeholder="Unicode" />
+                     <span class="error">* </span></td>
+                   <td class="f_text">Landline Phone No  :</td>
+                   <td class="f_text"><input name="landlineno" type="text" id="landlineno" placeholder="Enter Landline Phone No"  /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Constituency  :</td>
+                   <td class="f_text"><select name="constituency"  type="text"  id="textfield1"  >
+                       <option>Select</option>
+                       <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="text" type="text" id="username" placeholder="Unicode" /></td>
+                   <td class="f_text">Mobile No  :</td>
+                   <td class="f_text"><input name="mobileno" type="text" id="mobileno" placeholder="Enter Mobile No" maxlength="10"  />
+                       <span class="error">* </span></td>
+                 </tr>
+               </table>
+           </div>
+           <div class="container" id="tab4C">
+               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                   <td class="f_text">State  :</td>
+                   <td class="f_text"><select name="landstate"     id="landstate"  >
+                       <option>Select</option>
+                      <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="landstate_k" type="text" id="landstate_k" placeholder="Unicode" /></td>
+                   <td class="f_text">Village  :</td>
+                   <td class="f_text"><select name="landvillage"  type="text"  id="landvillage"  >
+                       <option>Select</option>
+                       <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="landvillage_k" type="text" id="landvillage_k" placeholder="Unicode" /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">District  :</td>
+                   <td class="f_text"><select name="landdistrict"     id="landdistrict"  >
+                       <option>Select</option>
+                       <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="landdistrict_k" type="text" id="landdistrict" placeholder="Unicode" /></td>
+                   <td class="f_text">Panchayat  :</td>
+                   <td class="f_text">
+				   <select name="landpanchayat"    id="landpanchayat"  >
+                       <option>Select</option>
+                       <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="landpanchayat_k" type="text" id="landpanchayat_k" placeholder="Unicode" /></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Taluk   :</td>
+                   <td class="f_text">
+				   <select name="landtaluk_k"  id="landtaluk_k"  >
+                       <option>Select</option>
+                   <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="ataluk1" type="text" id="username" placeholder="Unicode" /></td>
+                   <td class="f_text">Hobli  :</td>
+                   <td class="f_text"><select name="landhobli"  id="landhobli"  >
+                       <option>Select</option>
+                     <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="landhobli_k" type="text" id="landhobli_k" placeholder="Unicode" /></td>
+                 </tr>
+                 <tr>
+                   
+                   <td class="f_text" colspan="3">Constituency  :</td>
+                   <td class="f_text"><select name="landconstituency"  type=  id="landconstituency"  >
+                       <option>Select</option>
+                      <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="landconstituency_k"   placeholder="Unicode" /></td>
+                 </tr>
+               </table>
+           </div>
+           <div class="container" id="tab5C">
+               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                 <tr>
+                   <td class="f_text">Name of Bank  :</td>
+                   <td width="35%" class="f_text"><select name="bank"     id="bank"   >
+                       <option>Select</option>
+                       <option value="1">Axis Bank</option>
+                       <option value="2">Bank of India</option>
+                       <option value="3">Bank of Baroda</option>
+                       <option value="4">ICICI</option>
+                     </select>
+                       <input name="bank_k" type="text" id="bank_k" placeholder="Unicode" />
+                     <span class="error">* </span></td>
+                   <td width="17%" class="f_text">Branch IFSC Code   :</td>
+                   <td class="f_text"><input name="ifsc" type="text" id="ifcs" placeholder="Enter IFSC code "  />
+                       <span class="error">* </span></td>
+                 </tr>
+                 <tr>
+                   <td class="f_text">Branch Name   :</td>
+                   <td width="35%" class="f_text"><select name="branch"  type="text"  id="branch"   onblur="validate_Branch();">
+                       <option>Select</option>
+                      <option value="1">Iteam 1</option>
+                       <option value="2">Iteam 2</option>
+                       <option value="3">Iteam 3</option>
+                       <option value="4">Iteam 4</option>
+                     </select>
+                       <input name="bn" type="text" id="username" placeholder="Unicode"  />
+                     <span class="error">*</span></td>
+                   <td width="17%" class="f_text">Account No :</td>
+                   <td><input name="accountno" type="text" id="accountno" placeholder="Enter Account No."   />
+                       <span class="error">* </span></td>
+                 </tr>
+               </table>
+           </div>
+           <div class="container" id="tab6C">
+               <table cellspacing="5" id="fileupload">
+                 <tr>
+                   <td><input name="button" type="button" value="Applicant photo"/>
+                   </td>
+                   <td><input name="button" type="button" value="Adhar photo"/>
+                   </td>
+                   <td><input name="button" type="button" value="Ration card"/>
+                   </td>
+                   <td><input name="button" type="button" value="Voter"/>
+                   </td>
+                   <td><input name="button" type="button" value="Pan"/>
+                   </td>
+                   <td><input name="button" type="button" value="Chakibandi"/>
+                   </td>
+                   <td><input name="button" type="button" value="Kisan"/>
+                   </td>
+                   <td><input name="button" type="button" value="Income"/>
+                   </td>
+                   <td><input name="button" type="button" value="Cast certificate"/>
+                   </td>
+                   <td><input name="button" type="button" value="Bank passbook"/>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td height="350">&nbsp;</td>
+                   <td  ></td>
+                   <td >&nbsp;</td>
+                 </tr>
+               </table>
+           </div>
+           <div style="float:right;"><span style="margin-right:20px;">
+             <input name="button" type="button" class="button_login" value="Save" onclick=""/>
+           </span></div></td>
+       </tr>
+     </table>
 	 
-function arc(inputtxt)   //Land arc validation
-   {  
-      var numbers = /^[-+]?[0-9]+$/;  
-      if(inputtxt.value.match(numbers))  
-      {  
-      return true;  
-      }  
-      else  
-      {  
-      alert('Enter the Total Area in Acre');  
-      document.form1.taa.focus();  
-      return false;  
-      }  
-   } 
-
-function hec(inputtxt)  //Land Hector validation
-   {  
-      var numbers = /^[-+]?[0-9]+$/;  
-      if(inputtxt.value.match(numbers))  
-      {  
-      return true;  
-      }  
-      else  
-      {  
-      alert('Enter the Total Area in Hector');  
-      document.form1.tah.focus();  
-      return false;  
-      }  
-   } 
-
-function account_no(inputtxt)   //Bank account validation
-   {  
-      var numbers = /^[-+]?[0-9]+$/;  
-      if(inputtxt.value.match(numbers))  
-      {  
-      return true;  
-      }  
-      else  
-      {  
-      alert('Enter the Account Number');  
-      document.form1.account.focus();  
-      return false;  
-      }  
-   } 
-
-
-function validate_bname() //Bank name validation
-{
-var dropdown = document.getElementById('bank_id');
-if(dropdown.selectedIndex==0){
-alert("Please select Bank");
-dropdown.focus();
-return false; 
-}else{
-age_group_info.innerHTML="";
-return true;
-}
-}
-
-function validate_Branch() //Bank branch validation
-{
-var dropdown = document.getElementById('branch_id');
-if(dropdown.selectedIndex==0){
-alert("Please select Bank Branch");
-dropdown.focus();
-return false; 
-}else{
-age_group_info.innerHTML="";
-return true;
-}
-}
-
-function validate_bankifsc(inputtxt) //Bank ifsc validation
-{ 
-var letters = /^[0-9a-zA-Z]+$/;
-if(inputtxt.value.match(letters))
-{
-return true;
-}
-else
-{
-alert('Invalid Ifsc code');
-document.form1.bifsc.focus();
-return false;
-}
-}
-</script>
-<script language="javascript" type="text/javascript">
-function click_address(form) 
-{
-	if(form["chk"].checked) 
-	{
-		 form["astate"].value = form["state"].value;
-		 form["adist"].value = form["dist"].value;
-		 form["ataluk"].value = form["taluk"].value;
-		 form["ahobli"].value = form["hobli"].value;
-		 form["avillage"].value = form["village"].value;
-		 form["apanchayat"].value = form["panchayat"].value;
-		 form["aconstituency"].value = form["constituency"].value;
-		 
-	}
-}
-
-</script>
-</head>
-<body >
-<form method="post" name="form1" action=""  >
-<table width="75%" border="0" cellspacing="0" cellpadding="0" style=" border:1px solid #CCC" align="center" bgcolor="#FFFFFF">
-  <tr>
-    <td bgcolor="#339933" style="color:#FFF; padding:10px; font-weight:bold; font-family:Arial, Helvetica, sans-serif" align="center">Application Enrolment Form</td>
-  </tr>
-  <tr>
-    <td align="center" style="padding:10px; padding-bottom:0px;">
-              <input name="text" type="text" id="username" placeholder="Search for existing Applicant" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
-                               <input type="submit" name="button3" id="button3" value="Search">
-    </td>
-  </tr>
-  <tr>
-    <td align="center" style="padding:0px"><h1>Farmer/Beneficiary Details</h1></td>
-  </tr>
-  <tr>
-  <td align="center">Select Applicant Type &nbsp; &nbsp;
-  <select id="target">
-            <option value="content_1">Individual</option>
-            <option value="content_2">Cooperative Society</option>
-</select>
-</td></tr>
-  
-  <tr>
-    <td width="100%" align="center">
+	 <script type="text/javascript">
+	 	<!-- Tabs code-->		 
+ $('#tabs li a:not(:first)').addClass('inactive');
+$('.container').hide();
+$('.container:first').show();
     
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style=" border:0px solid #CCC" align="center" bgcolor="#FFFFFF">
-  <tr><td>&nbsp;</td></tr>
-  <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="56%" valign="top" align="left"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td width="15%" class="tbody">First Name  :</td>
-        <td width="41%"><input name="fname" type="text" id="username" placeholder="Enter First Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;" onblur="fnameVal(fname);"required/><span class="error">*</span><br/>
-          <input name="fname1" type="text" id="username" placeholder="Enter First Name Unicode" style="height:15px; width:300px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-          </tr>
-          <tr>
-            <td colspan="2" style="height:10px;"></td>
-            </tr>
-          <tr>
-            <td width="15%" class="tbody">Father/Husbend Name  :</td>
-        <td width="41%"><input name="fhname" type="text" id="username" placeholder="Enter Father/Husbend Name Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;" onblur="fhnameVal(fhname);" required/><span class="error">* </span><br />
-          <input name="text" type="text" id="username" placeholder="Enter Father/Husbend Name Unicode" style="height:15px; width:300px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-          </tr>
-          <tr>
-            <td colspan="2" style="height:10px;"></td>
-            </tr>
-          <tr>
-            <td width="15%" class="tbody">Last Name  :</td>
-        <td width="41%"><input name="lname" type="text" id="username" placeholder="Enter last Name Name" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"onblur="lnameVal(lname);" required/><span class="error">* </span><br />
-          <input name="text" type="text" id="username" placeholder="Enter last Name Unicode" style="height:15px; width:300px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-          </tr>
-          <tr>
-            <td width="15%" class="tbody">Gender :</td>
-        <td width="41%"><select name="gender"  type="text"  id="gender_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_gender();" />
-		<option>Select</option>
-        <option>Male</option>
-        <option>Female</option>
-                <option>Other</option>
-
-      </select><input name="gender1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span>
-	  </td>
-          </tr>
-          <tr>
-             <td width="15%" class="tbody">Cast :</td>
-        <td width="41%"><select name="cast"  type="text"  id="cast_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;"onblur="validate_cast();">
-		
-		<option>Select</option>
-        <option>Others</option>
-
-        <option>General</option>
-                <option>OBC</option>
-                                <option>Minority</option>
-                                                <option>SC</option>
-
-      </select><input name="cast1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
-          </tr>
-           <tr>
-            <td colspan="2" style="height:10px;"></td>
-            </tr>
-          <tr>
-            <td width="15%" class="tbody">Age in years :</td>
-        <td width="41%"><input name="age" type="text" id="username" placeholder="Enter age in years" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-          </tr>
-            <tr>
-            <td colspan="2" style="height:5px;"></td>
-            </tr>
-          <tr>
-            <td width="15%" class="tbody">Qualification :</td>
-        <td width="41%"><input name="qualification" type="text" id="username" placeholder="Enter Qualification" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><br />
-          <input name="text" type="text" id="username" placeholder="Enter last Name Unicode" style="height:15px; width:300px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-          </tr>
-          <tr>
-            <td width="15%" class="tbody">Physically Challanged :</td>
-            <td width="41%"><input name="physical" type="text" id="username" placeholder="Enter Qualification" style="height:15px; width:300px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><br />
-              <input name="text" type="text" id="username" placeholder="Enter last Name Unicode" style="height:15px; width:300px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-        </table></td>
-        <td width="44%" valign="top" align="left"><table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr>
-        <td class="tmenu" align="right" style="padding-right:10px;">Aadhar No.: <input name="adhar" type="text" id="username" placeholder="0000 0000 0000" maxlength="12" style="height:15px; width:150px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;" onblur="adharnumber(document.form1.adhar)"required/><span class="error">* </span></td>
-  </tr>
-  <tr>
-    <td class="tmenu" align="right" style="height:50px;">&nbsp;</td>
-  </tr>
-  <tr>
-        <td class="tmenu" align="right" style="padding-right:10px;">EPIC No.: <input name="voter" type="text" id="username" placeholder="Enter Voter Id Card No." style="height:15px; width:150px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"onblur="validate_voter(document.form1.voter)" required/><span class="error">* <br/></span> </td> 
-  </tr>
-   <tr>
-    <td class="tmenu" align="right" style="height:50px;"></td>
-  </tr>
-  <tr>
-    <td class="tmenu" align="right" style="padding-right:10px;">Ration Card No.: 
-      <input name="ration" type="text" id="username" placeholder="Enter Ration Card No." style="height:15px; width:150px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-  </tr>
-  <tr>
-    <td class="tmenu" align="right" style="padding-right:10px;">Ration Card Type.:  <select name="select3"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-
-        <option>APL</option>
-
-        <option>BPL</option>
-
-      </select></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="tmenu" align="right" style="padding-right:10px;">PAN Card No.: <input name="pan" type="text" id="username" placeholder="Enter PAN Card No." maxlength="10" style="height:15px; width:150px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;" onblur="ValidatePAN(pan);" required/><span class="error">* <br/></span>
-	</td>
-  </tr>
-    <tr>
-    <td class="tmenu" align="right" style="height:45px;"></td>
-  </tr>
-  <tr>
-    <td class="tmenu" align="right" style="padding-right:10px;">KISAN Card No.: <input name="kisan" type="text" id="username" placeholder="Enter KISAN Card No." style="height:15px; width:150px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="tmenu" align="right" style="padding-right:10px;">Income Per Annum :      <input name="income" type="text" id="username" placeholder="Enter Income." style="height:15px; width:150px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-  </tr>
-  <tr>
-    <td class="tmenu" align="right" style="height:40px;"></td>
-  </tr>
-  <tr>
-    <td class="tmenu" align="right" style="padding-right:10px;">Email ID : <input name="email" type="text" id="username" placeholder="Enter Email ID" style="height:15px; width:150px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-</table>
-</td>
-      </tr>
-    </table></td></tr>
-  <tr>
-    <td style="border-top:1px solid #000; border-bottom:1px solid #000; font-size:18px; font-weight:bold; padding:5px;" align="center">Address Details</td>
-  </tr>
-  <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="14%" class="tbody">State  :</td>
-        <td width="32%"><select name="state"  type="text"  id="state_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;"onblur="validate_state();">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="state1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
-        <td width="20%" class="tbody">House No :</td>
-        <td width="34%"><input name="house" type="text" id="username" placeholder="Enter House No." style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        </tr>
-      <tr>
-        <td width="14%" class="tbody">District  :</td>
-        <td width="32%"><select name="dist"  type="text"  id="dist_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_dist();">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="district" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
-        <td width="20%" class="tbody">Street  :</td>
-        <td width="34%"><input name="street" type="text" id="username" placeholder="Enter Street" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-      </tr>
-      <tr>
-        <td width="14%" class="tbody">Taluk   :</td>
-        <td width="32%"><select name="taluk"  type="text"  id="taluk_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_taluk();">
-         
-			<option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="taluk1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
-        <td width="20%" class="tbody">Location   :</td>
-        <td width="34%"><input name="location" type="text" id="username" placeholder="Enter Street" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-      </tr>
-      <tr>
-        <td width="14%" class="tbody">Hobli   :</td>
-        <td width="32%"><select name="hobli"  type="text"  id="hobli_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_hobli();">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="hobli1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
-        <td width="20%" class="tbody">Land Mark   :</td>
-        <td width="34%"><input name="landmark" type="text" id="username" placeholder="Enter Street" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-      </tr>
-      <tr>
-        <td width="14%" class="tbody">Village  :</td>
-        <td width="32%"><select name="village"  type="text"  id="village_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_village();">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="village1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
-        <td width="20%" class="tbody">Pin Code   :</td>
-        <td width="34%"><input name="pincode" type="text" id="username" placeholder="Enter Street" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"onblur="validate_pincode(document.form1.pincode)" required/><span class="error">* </span></td>
-      </tr>
-      <tr>
-        <td width="14%" class="tbody">District  :</td>
-        <td width="32%"><select name="select3"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="text" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td width="20%" class="tbody">Street  :</td>
-        <td width="34%"><input name="street" type="text" id="username" placeholder="Enter Street" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-      </tr>
-      <tr>
-        <td width="14%" class="tbody">Panchayat  :</td>
-        <td width="32%"><select name="panchayat"  type="text"  id="panchyat_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_panchyat();">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="panchayat1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
-        <td width="20%" class="tbody">Landline Phone No  :</td>
-        <td width="34%"><input name="landno" type="text" id="username" placeholder="Enter Landline Phone No" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-      </tr>
-      <tr>
-        <td width="14%" class="tbody">Constituency  :</td>
-        <td width="32%"><select name="constituency"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-		   <option>Select</option>
-          <option>Iteam 1</option>
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-          </select><input name="text" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td width="20%" class="tbody">Mobile No  :</td>
-        <td width="34%"><input name="mobileno" type="text" id="username" placeholder="Enter Mobile No" maxlength="10" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"onblur="phonenumber(document.form1.mobileno)"/><span class="error">* </span></td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-   <td style="border-top:1px solid #000; border-bottom:1px solid #000; font-size:18px; font-weight:bold; padding:5px;" align="center">Land Details</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>
-      <label>
-        <input type="checkbox" name="click" id="chk" onClick="click_address(this.form)">Check Here if land Address is same as above address
-      </label>
-   
-    </td>
-  </tr>
-  <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="14%" class="tbody">State  :</td>
-        <td width="32%"><select name="astate"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="astate1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td width="20%" class="tbody">Village  :</td>
-        <td width="34%"><select name="avillage"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="avillage1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        </tr>
-      <tr>
-        <td width="14%" class="tbody">District  :</td>
-        <td width="32%"><select name="adist"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="adist1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td width="20%" class="tbody">District  :</td>
-        <td width="34%"><select name="select3"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-          <option>Select</option>
-		  <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="text" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-      </tr>
-      <tr>
-        <td width="14%" class="tbody">Taluk   :</td>
-        <td width="32%"><select name="ataluk"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-          <option>Select</option>
-		  <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="ataluk1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td width="20%" class="tbody">Panchayat  :</td>
-        <td width="34%"><select name="apanchayat"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-          <option>Select</option>
-		  <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="apanchayat1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-      </tr>
-      <tr>
-        <td width="14%" class="tbody">Hobli   :</td>
-        <td width="32%"><select name="ahobli"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-          <option>Select</option>
-		  <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-        </select><input name="ahobli1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td width="20%" class="tbody">Constituency  :</td>
-        <td width="34%"><select name="aconstituency"  type="text"  id="textfield1" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-          </select><input name="aconstituency1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-      </tr>
-      <tr>
-        <td  class="tbody">&nbsp;</td>
-        <td >&nbsp;</td>
-        <td  class="tbody">&nbsp;</td>
-        <td >&nbsp;</td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="15%"  class="tbody">Land Servey No.:</td>
-        <td width="29%" ><input name="land" type="text" id="username" placeholder="Enter Land Servey No" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;" onblur="validate_lands(document.form1.land)"required/><span class="error">* </span><br />
-          <input name="land1" type="text" id="username" placeholder="Enter last Name Unicode" style="height:15px; width:200px; color:#333; border:1px solid #333; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/>
-		 </td>
-
-        <td width="20%"  class="tbody" valign="top" style="padding:0px; height:25px	">Total Area in Acre :</td>
-        <td width="36%" valign="top" style="height:25px	"><input name="taa" type="text" id="username" placeholder="Enter Acre" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;" onblur="arc(document.form1.taa)"required/><span class="error">* </span></td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td  class="tbody" valign="top" style="padding:0px">Total Area in Hector :</td>
-        <td valign="top"><input name="tah" type="text" id="username" placeholder="Enter Hector" style="height:15px; width:200px; color:#333; border:1px solid #000; font-family:Arial, Helvetica, sans-serif; font-size:13px;"onblur="hec(document.form1.tah)" required/><span class="error">* </span></td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-     <td style="border-top:1px solid #000; border-bottom:1px solid #000; font-size:18px; font-weight:bold; padding:5px;" align="center">Bank Details</td>
-  </tr>
-  <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="14%" class="tbody">Name of Bank  :</td>
-        <td width="35%"><select name="bank"  type="text"  id="bank_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;"onblur="validate_bname();">
-          
-		  <option>Select</option>
-          <option>Axis Bank</option>
-          
-          <option>Bank of India</option>
-          <option>Bank of Baroda</option>
-          <option>ICICI</option>
-          
-        </select><input name="bank1" type="text" id="username" placeholder="Unicode" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">* </span></td>
-        <td width="17%" class="tbody">Branch IFSC Code   :</td>
-        <td width="34%"><input name="bifsc" type="text" id="username" placeholder="Enter IFSC code " style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"onblur="validate_bankifsc(document.form1.bifsc)"/><span class="error">* </span></td>
-        </tr>
-      <tr>
-        <td width="14%" class="tbody">Branch Name   :</td>
-        <td width="35%"><select name="branch_name"  type="text"  id="branch_id" width="190px" style=" padding-left:10px; border:1px solid #ddd; -webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 10px; height:25px;" onblur="validate_Branch();">
-          
-		  <option>Select</option>
-          <option>Iteam 1</option>
-          
-          <option>Iteam 2</option>
-          <option>Iteam 3</option>
-          <option>Iteam 4</option>
-          
-          </select><input name="bn" type="text" id="username" placeholder="Unicode" style="height:15px; width:150px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/><span class="error">*</span></td>
-        <td width="17%" class="tbody">Account No :</td>
-        <td width="34%"><input name="account" type="text" id="username" placeholder="Enter Account No." style="height:15px; width:150px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"onblur="account_no(document.form1.account)"/><span class="error">* </span></td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-     <td style="border-top:1px solid #000; border-bottom:1px solid #000; font-size:18px; font-weight:bold; padding:5px;" align="center">Document to Upload</td>
-  </tr>
-  <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="3%">&nbsp;</td>
-        <td width="25%">&nbsp;</td>
-        <td width="16%">&nbsp;</td>
-        <td width="7%">&nbsp;</td>
-        <td width="2%">&nbsp;</td>
-        <td width="20%">&nbsp;</td>
-        <td width="17%">&nbsp;</td>
-        <td width="7%">&nbsp;</td>
-        <td width="3%">&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>Applicant Photo :</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-        <td>Aadhar Card</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td colspan="9" style="height:5px"></td>
-        </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>RTC :</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-        <td>EPIC (Voter ID)</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td colspan="9" style="height:5px"></td>
-        </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>Chakbandi :</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-        <td>Ration Card</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-      </tr>
-     <tr>
-        <td colspan="9" style="height:5px"></td>
-        </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>Khata Utar :</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-        <td>PAN Card</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td colspan="9" style="height:5px"></td>
-        </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>Cast Certificate (SC/ST)</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-        <td>Kissan Card</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-          </label>
-        </form></td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td colspan="9" style="height:5px"></td>
-        </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>Income Certificate</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-            </label>
-          </form></td>
-        <td>&nbsp;</td>
-        <td>Bank Pass Book</td>
-        <td><input name="text" type="text" id="username" placeholder="" style="height:15px; width:100px; color:#333; border:1px solid #ddd; font-family:Arial, Helvetica, sans-serif; font-size:13px;"/></td>
-        <td><form name="form3" method="post" action="">
-          <label>
-            <input type="submit" name="button" id="button" value="Brows">
-            </label>
-          </form></td>
-        <td>&nbsp;</td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-     <td style="border-top:1px solid #000; border-bottom:0px solid #000; font-size:18px; font-weight:bold; padding:5px;" align="center">
-	<?php
-if(isset($_POST["submit"]))
-{
-            
-			$mysqli = mysqli_connect( 'localhost', 'root', '1234', 'farmer' );
-            // Check our connection
-		if ( $mysqli->connect_error ) 
-		{
-			die( 'Connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect_error );
-		}
-		
-		
-		// Insert our data
-		
-		  $sql = "INSERT INTO farmer  VALUES ( '{$mysqli->real_escape_string($_POST['fname'])}',
-			 '{$mysqli->real_escape_string($_POST['fhname'])}',
-			 '{$mysqli->real_escape_string($_POST['lname'])}',
-			 '{$mysqli->real_escape_string($_POST['gender'])}',
-			 '{$mysqli->real_escape_string($_POST['cast'])}',
-			 '{$mysqli->real_escape_string($_POST['adhar'])}',
-			 '{$mysqli->real_escape_string($_POST['voter'])}',
-			'{$mysqli->real_escape_string($_POST['pan'])}',
-			'{$mysqli->real_escape_string($_POST['state'])}' ,
-			'{$mysqli->real_escape_string($_POST['dist'])}', 
-			'{$mysqli->real_escape_string($_POST['taluk'])}', 
-			'{$mysqli->real_escape_string($_POST['hobli'])}', 
-			'{$mysqli->real_escape_string($_POST['village'])}', 
-			'{$mysqli->real_escape_string($_POST['pincode'])}', 
-			'{$mysqli->real_escape_string($_POST['panchayat'])}', 
-			'{$mysqli->real_escape_string($_POST['mobileno'])}', 
-			'{$mysqli->real_escape_string($_POST['land'])}', 
-			'{$mysqli->real_escape_string($_POST['taa'])}', 
-			'{$mysqli->real_escape_string($_POST['tah'])}',
-			'{$mysqli->real_escape_string($_POST['bank'])}', 
-			'{$mysqli->real_escape_string($_POST['bifsc'])}', 
-			'{$mysqli->real_escape_string($_POST['branch_name'])}', 
-			'{$mysqli->real_escape_string($_POST['account'])}' )";  
-			 
-		$insert = $mysqli->query($sql);
-		
-		if($insert)
-		{				
-			echo "<script type='text/javascript'>\n";
-			echo "alert(' Succesflly Stored');\n";
-			echo "</script>";
-		}
-		else
-		{
-			die("Error: {$mysqli->errno} : {$mysqli->error}");
-		}
-		
-		 	$mysqli->close();
-		 	
-}
-?>
-	<label>
-         <input type="submit" name="submit" id="button2" value="submit" >
-       </label>
-       <label>
-         <input type="reset" name="Reset" id="Reset" value="Reset">
-       </label>
-     </form></td>
-  </tr>    
-    </td></tr>
-	</table>
-	</form>
-	</body>
-	</html>
-	
- 
-
+$('#tabs li a').click(function(){
+    var t = $(this).attr('id');
+  if($(this).hasClass('inactive')){ //this is the start of our condition 
+    $('#tabs li a').addClass('inactive');           
+    $(this).removeClass('inactive');
+    
+    $('.container').hide();
+    $('#'+ t + 'C').fadeIn('slow');
+ }
+});	
+	 
+	 </script>

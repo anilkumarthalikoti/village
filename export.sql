@@ -8,53 +8,58 @@ CREATE TABLE village.app_login (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE village.component (
-	id bigint(19) NOT NULL,
+	id bigint(19) NOT NULL AUTO_INCREMENT,
 	schemeid int(10),
 	subschemeid int(10),
 	component int(10),
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE KEY(schemeid,subschemeid,component)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE village.farmerdetails (
-	id int(10) NOT NULL,
-	firstname varchar(150) NOT NULL,
-	fathername varchar(150) NOT NULL,
-	lastname varchar(150) NOT NULL,
-	gender varchar(1) NOT NULL,
-	cast varchar(25) NOT NULL,
-	dob date,
-	qualification varchar(255),
-	physicallychallanged varchar(1),
-	aadhar varchar(25) NOT NULL,
-	voter varchar(25) NOT NULL,
-	pancard varchar(25) NOT NULL,
-	rationcard varchar(25),
-	rationcardtype varchar(25),
-	kishancard varchar(25),
-	income varchar(15),
-	mailid varchar(150),
-	state int(10),
-	district int(10),
-	taluk int(10),
-	hobli int(10),
-	village int(10),
-	panchayat int(10),
-	constituency int(10),
-	houseno varchar(25),
-	street varchar(150),
-	location varchar(150),
-	landmark varchar(150),
-	pincode varchar(25) NOT NULL,
-	landlineno varchar(15),
-	mobileno varchar(15),
-	PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+CREATE TABLE `farmerdetails` (
+  `id` int(10) NOT NULL,
+  `firstname` varchar(150) NOT NULL,
+  `fathername` varchar(150) NOT NULL,
+  `lastname` varchar(150) NOT NULL,
+  `gender` varchar(1) NOT NULL,
+  `cast` varchar(25) NOT NULL,
+  `dob` date DEFAULT NULL,
+  `qualification` varchar(255) DEFAULT NULL,
+  `physicallychallanged` varchar(1) DEFAULT NULL,
+  `aadhar` varchar(25) NOT NULL,
+  `voter` varchar(25) NOT NULL,
+  `pancard` varchar(25) NOT NULL,
+  `rationcard` varchar(25) DEFAULT NULL,
+  `rationcardtype` varchar(25) DEFAULT NULL,
+  `kishancard` varchar(25) DEFAULT NULL,
+  `income` varchar(15) DEFAULT NULL,
+  `mailid` varchar(150) DEFAULT NULL,
+  `state` int(10) DEFAULT NULL,
+  `district` int(10) DEFAULT NULL,
+  `taluk` int(10) DEFAULT NULL,
+  `hobli` int(10) DEFAULT NULL,
+  `village` int(10) DEFAULT NULL,
+  `panchayat` int(10) DEFAULT NULL,
+  `constituency` int(10) DEFAULT NULL,
+  `houseno` varchar(25) DEFAULT NULL,
+  `street` varchar(150) DEFAULT NULL,
+  `location` varchar(150) DEFAULT NULL,
+  `landmark` varchar(150) DEFAULT NULL,
+  `pincode` varchar(25) NOT NULL,
+  `landlineno` varchar(15) DEFAULT NULL,
+  `mobileno` varchar(15) DEFAULT NULL,
+  `landhobli` varchar(25) DEFAULT NULL,
+  `bank` varchar(25) DEFAULT NULL,
+  `ifcs` varchar(25) DEFAULT NULL,
+  `branch` varchar(25) DEFAULT NULL,
+  `accountno` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
 CREATE TABLE village.items (
-	item_id bigint(19) NOT NULL,
+	item_id bigint(19) NOT NULL auto_increment,
 	item_name varchar(150) NOT NULL,
 	item_type int(10) NOT NULL,
-	PRIMARY KEY (item_id)
+	PRIMARY KEY (item_id),
+	unique key (item_name,item_type)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE village.page_links (
@@ -76,7 +81,7 @@ CREATE TABLE village.role_mstr (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE village.schemefilling (
-	id int(10) NOT NULL,
+	id bigint(10) NOT NULL auto_increment,
 	regid int(10) NOT NULL,
 	schemeid int(10) NOT NULL,
 	subschemeid int(10),
@@ -88,6 +93,7 @@ CREATE TABLE village.schemefilling (
 	regdate date,
 	regby int(10),
 	PRIMARY KEY (id)
+	
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE village.signup (
@@ -100,16 +106,17 @@ CREATE TABLE village.signup (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE village.subcomponent (
-	id bigint(19) NOT NULL,
+	id bigint(19) NOT NULL auto_increment,
 	schemeid int(10) NOT NULL,
 	subschemid int(10) NOT NULL,
 	component int(10) NOT NULL,
 	subcomponent int(10) NOT NULL,
 	PRIMARY KEY (id)
+	
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE village.subschemes (
-	id bigint(19) NOT NULL,
+	id bigint(19) NOT NULL auto_increment,
 	schemeid int(10) NOT NULL,
 	subschemeid int(10) NOT NULL,
 	PRIMARY KEY (id)
@@ -122,36 +129,6 @@ CREATE TABLE village.user_roles (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO village.app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
-
-INSERT INTO village.component(id, schemeid, subschemeid, component) VALUES (1, 1, 7, 10);
-
-INSERT INTO village.component(id, schemeid, subschemeid, component) VALUES (2, 1, 7, 11);
-
-INSERT INTO village.component(id, schemeid, subschemeid, component) VALUES (3, 1, 7, 12);
-
-INSERT INTO village.component(id, schemeid, subschemeid, component) VALUES (4, 1, 7, 13);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (10, 'C1', 2);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (11, 'C2', 2);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (12, 'C3', 2);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (13, 'C4', 2);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (15, 'I1', 3);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (1, 'S1', 0);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (2, 'S2', 0);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (3, 'S3', 0);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (7, 'S4', 1);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (8, 'S5', 1);
-
-INSERT INTO village.items(item_id, item_name, item_type) VALUES (9, 'S6', 1);
 
 INSERT INTO village.page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');
 
@@ -229,31 +206,11 @@ INSERT INTO village.role_mstr(ROLE_ID, ROLE_NAME) VALUES (1, 'ADMIN_ROLE');
 
 INSERT INTO village.signup(fname, lname, desigination, department, email, mobileno) VALUES ('anil', 'kumar', 'developer', 'dev', 'anil2k12@gmail.com', '8106231231');
 
-INSERT INTO village.subcomponent(id, schemeid, subschemeid, component, subcomponent) VALUES (1, 1, 7, 10, 15);
-
-INSERT INTO village.subschemes(id, schemeid, subschemeid) VALUES (1, 1, 4);
-
-INSERT INTO village.subschemes(id, schemeid, subschemeid) VALUES (2, 1, 7);
-
-INSERT INTO village.subschemes(id, schemeid, subschemeid) VALUES (3, 1, 8);
-
-INSERT INTO village.subschemes(id, schemeid, subschemeid) VALUES (4, 1, 9);
+INSERT INTO village.user_roles(LOGIN_ID, ROLE_ID, IS_ACTIVE) VALUES ('1', 1, 'Y');
 
 INSERT INTO village.user_roles(LOGIN_ID, ROLE_ID, IS_ACTIVE) VALUES ('ADMIN', 1, 'Y');
 
-CREATE UNIQUE INDEX schemaid ON village.component (schemeid,subschemeid,component);
-
-CREATE INDEX item_id_2 ON village.items (item_id);
-
 CREATE UNIQUE INDEX item_name ON village.items (item_name,item_type);
 
-CREATE UNIQUE INDEX item_name_2 ON village.items (item_name,item_type);
-
-CREATE UNIQUE INDEX schemeid_2 ON village.subcomponent (schemeid,subschemeid,component,subcomponent);
-
-CREATE INDEX item_id ON village.items (item_id);
-
-CREATE UNIQUE INDEX schemeid ON village.subcomponent (schemeid,subschemeid,component,subcomponent,schemeid,subschemeid);
-
-CREATE UNIQUE INDEX aadhar ON village.farmerdetails (aadhar,voter,pancard);
+CREATE UNIQUE INDEX schemeid ON village.subcomponent (schemeid,subschemid,component,subcomponent,schemeid,subschemeid);
 
