@@ -6,12 +6,13 @@ CREATE TABLE village.app_login (
 	isadmin varchar(1),
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-CREATE TABLE village.items (
-	item_id int(10) NOT NULL,
-	item_name varchar(200) NOT NULL,
-	item_type int(10) NOT NULL,
-	PRIMARY KEY (item_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE village.items
+(item_id INT NOT NULL AUTO_INCREMENT,
+item_name VARCHAR(150) NOT NULL,
+item_type INT NOT NULL,
+PRIMARY KEY (item_id),
+UNIQUE (item_name, item_type))
+ ENGINE=InnoDB DEFAULT CHARSET=latin1;
 CREATE TABLE village.page_links (
 	linkid int(10) NOT NULL,
 	linkname varchar(100) NOT NULL,
