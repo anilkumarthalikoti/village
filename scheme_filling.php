@@ -12,7 +12,7 @@
   <?php
 session_start();
 require "server/app_connector.php";
-$con = $database;
+$conn = $database;
  
 ?>
 <form method="POST" action="" name="form1">
@@ -102,8 +102,8 @@ $con = $database;
         <td width="30%"><select name="scheme_select"    id="scheme_select" onchange="schemefilling.updatesubscheme('subscheme_select','scheme_select')"   >
           <option>Select</option>
           <?php
-		  $datas=$con->query("select * from items where item_type=0");
-		  foreach($data as $datas){
+		  $datas=$conn->query("select * from items where item_type=0");
+		  foreach($datas as $data){
 		 
 		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
 		   
@@ -126,7 +126,7 @@ $con = $database;
       <tr>
         <td class="tbody">Component
           </td>
-        <td colspan="3" align="left"><select name="component_select"><option>Select</option>
+        <td colspan="3" align="left"><select name="component_select" id="component_select"><option>Select</option>
           
           
           </select></td>
