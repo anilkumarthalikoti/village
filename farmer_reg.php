@@ -16,7 +16,12 @@
 
 <body>
  
-
+<?php 
+session_start();
+require "server/app_connector.php";
+$conn=$database;
+ 
+?>
    <div class="viewport">
      <div class="title" >Application Enrolment Form</div>
      <div class="sub1_title" >Select Applicant Type
@@ -146,66 +151,59 @@
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
                    <td class="f_text">State  :</td>
-                   <td class="f_text"><select name="userstate"  type="text"  id="userstate"  >
+                   <td class="f_text"><select name="userstate"  type="text"  id="state_selected" onchange="farmer.updatedistrict('tab3C')"  >
                        <option value="-1">Select</option>
-                       <option value="1">Karnataka</option>
+ 					   <?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>0));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
+					   
                         
                      </select>
-                       <input   type="text" id="userstate_k" placeholder="Unicode" />
+                      
                      <span class="error">* </span></td>
                    <td class="f_text">House No :</td>
                    <td class="f_text"><input name="houseno" type="text" id="houseno" placeholder="Enter House No." /></td>
                  </tr>
                  <tr>
                    <td class="f_text">District  :</td>
-                   <td class="f_text"><select name="district"   id="district"   >
+                   <td class="f_text"><select name="district"  id="district_selected" onchange="farmer.updatetaluka('tab3C')"  >
                        <option>Select</option>
-                       <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                        
                      </select>
-                       <input  type="text"  placeholder="Unicode" alt="ka" />
+                    
                      <span class="error">* </span></td>
                    <td class="f_text">Street  :</td>
                    <td class="f_text"><input name="street" type="text" id="street" placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
                    <td class="f_text">Taluk   :</td>
-                   <td class="f_text"><select name="taluk"  type="text"  id="taluk_id"    >
+                   <td class="f_text"><select name="taluk"  type="text"  id="taluka_selected" onchange="farmer.updatehobli('tab3C')"    >
                        <option>Select</option>
-                       <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                        
                      </select>
-                       <input   type="text" id="taluk_k" placeholder="Taluk" />
+                      
                      <span class="error">* </span></td>
                    <td class="f_text">Location   :</td>
-                   <td class="f_text"><input name="location" type="text" id="username" placeholder="Enter Street"  /></td>
+                   <td class="f_text"><input name="location" type="text"   placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
                    <td class="f_text">Hobli   :</td>
-                   <td class="f_text"><select name="hobli"  type="text"  id="hobli"   >
+                   <td class="f_text"><select name="hobli"  type="text"  id="hobli_selected" onchange="farmer.updatevillage('tab3C')"   >
                        <option>Select</option>
-                       <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                     
                      </select>
-                       <input  type="text" id="hobli_k" placeholder="Hobli" alt="ka" />
+                
                      <span class="error">* </span></td>
                    <td class="f_text">Land Mark   :</td>
                    <td class="f_text"><input name="landmark" type="text" id="landmark" placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
                    <td class="f_text">Village  :</td>
-                   <td class="f_text"><select name="village"  type="text"  id="village"   >
+                   <td class="f_text"><select name="village"  type="text"  id="village_selected" onchange="farmer.updatepanchaitay('tab3C')"   >
                        <option>Select</option>
-                     <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                      
                      </select>
                        <input   type="text" id="username" placeholder="Village" />
                      <span class="error">* </span></td>
@@ -216,14 +214,11 @@
                   
                  <tr>
                    <td class="f_text">Panchayat  :</td>
-                   <td class="f_text"><select name="panchayat"  type="text"  id="panchyat_id"   onblur="validate_panchyat();">
+                   <td class="f_text"><select name="panchayat"  type="text"  id="panchaitay_selected"  >
                        <option>Select</option>
-                        <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                       
                      </select>
-                       <input  type="text" id="panchayat_k" placeholder="Unicode" />
+                     
                      <span class="error">* </span></td>
                    <td class="f_text">Landline Phone No  :</td>
                    <td class="f_text"><input name="landlineno" type="text" id="landlineno" placeholder="Enter Landline Phone No"  /></td>
