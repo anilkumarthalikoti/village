@@ -64,7 +64,7 @@ $conn=$database;
 <input type="hidden" name="item_type" value="0"/>
 <table class="margin-left margin-top">
 <tr><td class="label">State</td>
-<td>:</td><td><input type="text" name="state_name" placeholder="Enter state" /> <input type="text" alt="ka" name="state_name_ka"/><input type="button" value="Save" onclick="states.saveData('addState');"/></td>
+<td>:</td><td><input type="text" name="state_name" placeholder="Enter state" /> <input type="text" alt="ka" name="state_name_ka"/><input type="button" value="Save" onClick="states.saveData('addState');"/></td>
 </tr>
 <tr><td colspan="3">
 <table class="grid small">
@@ -110,7 +110,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 ?>
 </select></td></tr>
 <tr><td class="label">Enter district</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter district" /><input type="text" name="state_name_ka" placeholder="Enter district" alt="ka" /></td></tr>
-<tr><td colspan="3"> <input type="button" value="Save" onclick="states.saveData('district')" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('district')" /></td></tr>
 <tr><td colspan="3">
 
 <table class="grid">
@@ -143,7 +143,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 
 <table class="margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
-<select name="state_selected" id="state_selected" onchange="states.updatevillage('taluka')">
+<select name="state_selected" id="state_selected" onChange="states.updatedistrict('taluka')">
 <option value="-1">Select</option>
 
 <?php 
@@ -159,7 +159,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
  
 </select></td></tr>
 <tr><td class="label">Enter taluka</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter taluka" /><input type="text" name="state_name_ka" placeholder="Enter taluka" alt="ka" /></td></tr>
-<tr><td colspan="3"> <input type="button" value="Save" onclick="states.saveData('taluka')" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('taluka')" /></td></tr>
 <tr><td colspan="3">
 
 <table class="grid">
@@ -188,7 +188,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 
 <table class="margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
-<select name="state_selected" id="state_selected" onchange="states.updatevillage('hobli')">
+<select name="state_selected" id="state_selected" onChange="states.updatedistrict('hobli')">
 <option value="-1">Select</option>
 
 <?php 
@@ -199,7 +199,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 <tr><td class="label">Select District</td><td>:</td>
 <td>
-<select name="district_selected" id="district_selected" onchange="states.updatetaluka('hobli');">
+<select name="district_selected" id="district_selected" onChange="states.updatetaluka('hobli');">
 <option value="-1">Select</option>
  
 </select></td></tr>
@@ -211,7 +211,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 
 <tr><td class="label">Enter hobli</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter hobli" /><input type="text" name="state_name_ka" placeholder="Enter hobli" alt="ka" /></td></tr>
-<tr><td colspan="3"> <input type="button" value="Save" onclick="states.saveData('hobli')" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('hobli')" /></td></tr>
 <tr><td colspan="3">
 
 <table class="grid">
@@ -245,7 +245,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 
 <table class="margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
-<select name="state_selected" id="state_selected" onchange="states.updatevillage('village')">
+<select name="state_selected" id="state_selected" onChange="states.updatedistrict('village')">
 <option value="-1">Select</option>
 
 <?php 
@@ -256,13 +256,13 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 <tr><td class="label">Select District</td><td>:</td>
 <td>
-<select name="district_selected" id="district_selected" onchange="states.updatetaluka('village');">
+<select name="district_selected" id="district_selected" onChange="states.updatetaluka('village');">
 <option value="-1">Select</option>
  
 </select></td></tr>
 <tr><td class="label">Select Taluka</td><td>:</td>
 <td>
-<select name="taluka_selected" id="taluka_selected" onchange="states.updatehobli('village')">
+<select name="taluka_selected" id="taluka_selected" onChange="states.updatehobli('village')">
 <option value="-1">Select</option>
  
 </select></td></tr>
@@ -273,7 +273,73 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
  
 </select></td></tr>
 <tr><td class="label">Enter village</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter village" /><input type="text" name="state_name_ka" placeholder="Enter hobli" alt="ka" /></td></tr>
-<tr><td colspan="3"> <input type="button" value="Save" onclick="states.saveData('village')" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('village')" /></td></tr>
+<tr><td colspan="3">
+
+<table class="grid">
+<thead>
+<tr><th colspan="4">Village</th></tr>
+ 
+</thead>
+<tbody>
+ 
+
+</tbody>
+</table>
+
+</td></tr>
+</table>
+
+
+</form>
+
+</div>
+ 
+
+
+<div class="container" id="tab6C">
+<form name="panchaitay">
+<input type="hidden" name="saveType" value="panchaitay"/>
+<input type="hidden" name="item_type" value="5"/>
+
+
+<table class="margin-left margin-top">
+<tr><td class="label">Select state</td><td>:</td><td>
+<select name="state_selected" id="state_selected" onChange="states.updatedistrict('panchaitay')">
+<option value="-1">Select</option>
+
+<?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>0));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
+</select></td></tr>
+<tr><td class="label">Select District</td><td>:</td>
+<td>
+<select name="district_selected" id="district_selected" onChange="states.updatetaluka('panchaitay');">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr><td class="label">Select Taluka</td><td>:</td>
+<td>
+<select name="taluka_selected" id="taluka_selected" onChange="states.updatehobli('panchaitay')">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr><td class="label">Select hobli</td><td>:</td>
+<td>
+<select name="hobli_selected" id="hobli_selected" onChange="states.updatevillage('panchaitay')">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr><td class="label">Select village</td><td>:</td>
+<td>
+<select name="village_selected" id="village_selected" >
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr><td class="label">Enter panchaitay</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter panchaitay" /><input type="text" name="state_name_ka" placeholder="Enter panchaitay" alt="ka" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('panchaitay')" /></td></tr>
 <tr><td colspan="3">
 
 <table class="grid">
