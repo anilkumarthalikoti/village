@@ -16,44 +16,113 @@ CREATE TABLE village.component (
 	UNIQUE KEY(schemeid,subschemeid,component)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 CREATE TABLE `farmerdetails` (
-  `id` int(10) NOT NULL,
-  `firstname` varchar(150) NOT NULL,
-  `fathername` varchar(150) NOT NULL,
-  `lastname` varchar(150) NOT NULL,
-  `gender` varchar(1) NOT NULL,
-  `cast` varchar(25) NOT NULL,
+  `id` bigint  NOT NULL   AUTO_INCREMENT,
+  `firstname` varchar(150) NOT NULL DEFAULT 'A' ,
+  `firstname_k` varchar(150) NOT NULL DEFAULT 'A',
+  `fathername` varchar(150) NOT NULL DEFAULT 'A',
+  `fathername_k` varchar(150) NOT NULL DEFAULT 'A',
+  `lastname` varchar(150) NOT NULL DEFAULT 'A',
+  `lastname_k` varchar(150) NOT NULL DEFAULT 'A',
+  `gender` varchar(1) NOT NULL DEFAULT 'A',
+  `usercast` varchar(25) NOT NULL DEFAULT 'A',
+  `usercast_k` varchar(150) NOT NULL DEFAULT 'A',
   `dob` date DEFAULT NULL,
   `qualification` varchar(255) DEFAULT NULL,
+   `qualification_k` varchar(150) DEFAULT NULL,
   `physicallychallanged` varchar(1) DEFAULT NULL,
-  `aadhar` varchar(25) NOT NULL,
-  `voter` varchar(25) NOT NULL,
-  `pancard` varchar(25) NOT NULL,
+  `aadhar` varchar(25) NOT NULL DEFAULT 'A',
+  `voter` varchar(25) NOT NULL DEFAULT 'A',
+  `pancard` varchar(25) NOT NULL DEFAULT 'A',
   `rationcard` varchar(25) DEFAULT NULL,
   `rationcardtype` varchar(25) DEFAULT NULL,
   `kishancard` varchar(25) DEFAULT NULL,
   `income` varchar(15) DEFAULT NULL,
   `mailid` varchar(150) DEFAULT NULL,
-  `state` int(10) DEFAULT NULL,
-  `district` int(10) DEFAULT NULL,
-  `taluk` int(10) DEFAULT NULL,
-  `hobli` int(10) DEFAULT NULL,
-  `village` int(10) DEFAULT NULL,
-  `panchayat` int(10) DEFAULT NULL,
-  `constituency` int(10) DEFAULT NULL,
-  `houseno` varchar(25) DEFAULT NULL,
-  `street` varchar(150) DEFAULT NULL,
-  `location` varchar(150) DEFAULT NULL,
-  `landmark` varchar(150) DEFAULT NULL,
-  `pincode` varchar(25) NOT NULL,
-  `landlineno` varchar(15) DEFAULT NULL,
-  `mobileno` varchar(15) DEFAULT NULL,
-  `landhobli` varchar(25) DEFAULT NULL,
-  `bank` varchar(25) DEFAULT NULL,
-  `ifcs` varchar(25) DEFAULT NULL,
-  `branch` varchar(25) DEFAULT NULL,
-  `accountno` varchar(25) DEFAULT NULL,
+  `userstate` int(10) DEFAULT NULL,
+  `district` int(10) DEFAULT -1,
+  `taluk` int(10) DEFAULT -1,
+  `hobli` int(10) DEFAULT -1,
+  `village` int(10) DEFAULT -1,
+    `panchayat` int(10) DEFAULT -1,
+  `constituency` int(10) DEFAULT -1,
+  `landstate` int(10) DEFAULT -1,
+  `landdistrict` int(10) DEFAULT -1,
+  `landtaluk` int(10) DEFAULT -1,
+  `landhobli` int(10) DEFAULT -1,
+  `landvillage` int(10) DEFAULT -1,
+  `landpanchayat` int(10) DEFAULT -1,
+  `landconstituency` int(10) DEFAULT -1,
+  `houseno` varchar(25) DEFAULT '',
+  `street` varchar(150) DEFAULT '',
+  `location` varchar(150) DEFAULT '',
+  `landmark` varchar(150) DEFAULT '',
+  `pincode` varchar(25) NOT NULL DEFAULT 'A',
+  `landlineno` varchar(15) DEFAULT '',
+  `mobileno` varchar(15) DEFAULT '',
+   `bank` varchar(25) DEFAULT '',
+  `ifsc` varchar(25) DEFAULT '',
+  `branch` varchar(25) DEFAULT '',
+  `accountno` varchar(25) DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+CREATE TABLE village.states (
+	id bigint(19) NOT NULL auto_increment,
+	state_name varchar(150) NOT NULL,
+	state_name_k varchar(150) NOT NULL,
+	item_type int(10) NOT NULL,
+	PRIMARY KEY (id),
+	unique key (state_name,item_type)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE village.district (
+	id bigint(19) NOT NULL auto_increment,
+	stateid int(10) NOT NULL,
+	districtid int(10) NOT NULL,
+	PRIMARY KEY (id),
+	unique key(stateid,districtid)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE village.taluka (
+	id bigint(19) NOT NULL auto_increment,
+	stateid int(10) NOT NULL,
+	districtid int(10) NOT NULL,
+	talukaid int(10) NOT NULL,
+	PRIMARY KEY (id),
+	unique key(stateid,districtid,talukaid)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE village.hobli (
+	id bigint(19) NOT NULL auto_increment,
+	stateid int(10) NOT NULL,
+	districtid int(10) NOT NULL,
+	talukaid int(10) NOT NULL,
+	hobliid int(10) NOT NULL,
+	PRIMARY KEY (id),
+	unique key(stateid,districtid,talukaid,hobliid)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE village.village (
+	id bigint(19) NOT NULL auto_increment,
+	stateid int(10) NOT NULL,
+	districtid int(10) NOT NULL,
+	talukaid int(10) NOT NULL,
+	hobliid int(10) NOT NULL,
+	villageid int(10) NOT NULL,
+	PRIMARY KEY (id),
+	unique key(stateid,districtid,talukaid,hobliid,villageid)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE village.panchayati (
+	id bigint(19) NOT NULL auto_increment,
+	stateid int(10) NOT NULL,
+	districtid int(10) NOT NULL,
+	talukaid int(10) NOT NULL,
+	hobliid int(10) NOT NULL,
+	villageid int(10) NOT NULL,
+	panchayatiid int(10) NOT NULL,
+	PRIMARY KEY (id),
+	unique key(stateid,districtid,talukaid,hobliid,villageid,panchayatiid)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE village.items (
 	item_id bigint(19) NOT NULL auto_increment,
 	item_name varchar(150) NOT NULL,

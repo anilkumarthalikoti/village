@@ -30,10 +30,10 @@
     <div id="viewframer" class="hide">
 	
 	
-	 <div class="sub2_title" ><u>F</u>armer/Beneficiary Details</div>
+
      <table   width="100%" cellpadding="0" cellspacing="0"  >
        <tr>
-         <td align="right" style="border-bottom:1px solid #CCCCCC;"><input name="text" type="text" class="search" placeholder="Search" />
+         <td align="right" style="border-bottom:1px solid #CCCCCC;"><input  type="text" class="search" placeholder="Search" />
              <select name="select">
                <option>Reg.No</option>
                <option>Name</option>
@@ -55,7 +55,7 @@
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
                    <td class="f_text">First Name  :</td>
-                   <td class="f_text"><input name="firstname" type="text" id="firstname" placeholder="Enter First Name"  onblur="fnameVal(fname);"required/>
+                   <td class="f_text"><input name="firstname" type="text" id="firstname" placeholder="Enter First Name"  />
                        <input name="firstname_k" alt="ka" type="text" id="firstname_k" placeholder="Enter First Name Unicode"  />
                      <span class="error">*</span> </td>
                  </tr>
@@ -73,21 +73,21 @@
                  </tr>
                  <tr>
                    <td class="f_text">Gender :</td>
-                   <td class="f_text"><input type="radio" name="gender" value="MALE" />Male/ಗಂಡು<input type="radio" name="gender" value="FEMALE" />Female/ಹೆಣ್ಣು
+                   <td class="f_text"><input type="radio" name="gender" value="M" />Male/ಗಂಡು<input type="radio" name="gender" value="F" />Female/ಹೆಣ್ಣು
 
                      <span class="error">* </span> </td>
                  </tr>
                  <tr>
                    <td class="f_text">Cast :</td>
-                   <td class="f_text"><select name="cast"  type="text"  id="cast_id"   onblur="validate_cast();">
+                   <td class="f_text"><select name="usercast"  type="text"  id="usercast"   >
                        <option>Select</option>
-                       <option>Others</option>
-                       <option>General</option>
-                       <option>OBC</option>
-                       <option>Minority</option>
-                       <option>SC</option>
+                       <option value="1">Others</option>
+                       <option value="2">General</option>
+                       <option value="3">OBC</option>
+                       <option value="4">Minority</option>
+                       <option value="5">SC</option>
                      </select>
-                       <input name="cast1" type="text" id="username" placeholder="Unicode" alt="ka"  />
+                       <input name="usercast_k" type="text" id="usercast_k" placeholder="Unicode" alt="ka"  />
                      <span class="error">* </span></td>
                  </tr>
                  <tr>
@@ -101,9 +101,9 @@
                  </tr>
                  <tr>
                    <td class="f_text">Physically Challanged :</td>
-                   <td class="f_text"><input type="radio" value="No" name="physicalchalanged" checked="checked" />
+                   <td class="f_text"><input type="radio" value="N" name="physicallychallanged" checked="checked" />
                      No
-                       <input type="radio" value="Yes" name="physicalchalanged" />
+                       <input type="radio" value="Y" name="physicallychallanged" />
                      Yes </td>
                  </tr>
                </table>
@@ -115,14 +115,14 @@
                    <td class="f_text"><input name="aadhar" type="text" id="aadhar" placeholder="0000 0000 0000" maxlength="14"  />
                        <span class="error">* </span></td>
                    <td class="f_text">EPIC No.: </td>
-                   <td class="f_text"><input name="voter" type="text" id="voter" placeholder="Enter Voter Id Card No."  onblur="validate_voter(document.form1.voter)" required/>
+                   <td class="f_text"><input name="voter" type="text" id="voter" placeholder="Enter Voter Id Card No."  />
                        <span class="error">* </span> </td>
                  </tr>
                  <tr>
                    <td class="f_text">Ration Card No.: </td>
                    <td class="f_text"><input name="rationcard" type="text" id="rationcard" placeholder="Enter Ration Card No."  /></td>
                    <td class="f_text">PAN Card No.:</td>
-                   <td class="f_text"><input name="pancard" type="text" id="pancard" placeholder="Enter PAN Card No." maxlength="10"   onblur="ValidatePAN(pan);" required/>
+                   <td class="f_text"><input name="pancard" type="text" id="pancard" placeholder="Enter PAN Card No." maxlength="10"    />
                        <span class="error">* </span></td>
                  </tr>
                  <tr>
@@ -146,54 +146,54 @@
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
                    <td class="f_text">State  :</td>
-                   <td class="f_text"><select name="state"  type="text"  id="state"  onblur="validate_state();">
+                   <td class="f_text"><select name="userstate"  type="text"  id="userstate"  >
                        <option value="-1">Select</option>
                        <option value="1">Karnataka</option>
                         
                      </select>
-                       <input name="state_k" type="text" id="state_k" placeholder="Unicode" />
+                       <input   type="text" id="userstate_k" placeholder="Unicode" />
                      <span class="error">* </span></td>
                    <td class="f_text">House No :</td>
                    <td class="f_text"><input name="houseno" type="text" id="houseno" placeholder="Enter House No." /></td>
                  </tr>
                  <tr>
                    <td class="f_text">District  :</td>
-                   <td class="f_text"><select name="district"   id="district"   onblur="validate_dist();">
+                   <td class="f_text"><select name="district"   id="district"   >
                        <option>Select</option>
                        <option value="1">Iteam 1</option>
                        <option value="2">Iteam 2</option>
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="district" type="text" id="username" placeholder="Unicode" alt="ka" />
+                       <input  type="text"  placeholder="Unicode" alt="ka" />
                      <span class="error">* </span></td>
                    <td class="f_text">Street  :</td>
                    <td class="f_text"><input name="street" type="text" id="street" placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
                    <td class="f_text">Taluk   :</td>
-                   <td class="f_text"><select name="taluk"  type="text"  id="taluk_id"   onblur="validate_taluk();">
+                   <td class="f_text"><select name="taluk"  type="text"  id="taluk_id"    >
                        <option>Select</option>
                        <option value="1">Iteam 1</option>
                        <option value="2">Iteam 2</option>
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="taluk_k" type="text" id="taluk_k" placeholder="Taluk" />
+                       <input   type="text" id="taluk_k" placeholder="Taluk" />
                      <span class="error">* </span></td>
                    <td class="f_text">Location   :</td>
                    <td class="f_text"><input name="location" type="text" id="username" placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
                    <td class="f_text">Hobli   :</td>
-                   <td class="f_text"><select name="hobli"  type="text"  id="hobli"   onblur="validate_hobli();">
+                   <td class="f_text"><select name="hobli"  type="text"  id="hobli"   >
                        <option>Select</option>
                        <option value="1">Iteam 1</option>
                        <option value="2">Iteam 2</option>
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="hobli_k" type="text" id="hobli_k" placeholder="Hobli" alt="ka" />
+                       <input  type="text" id="hobli_k" placeholder="Hobli" alt="ka" />
                      <span class="error">* </span></td>
                    <td class="f_text">Land Mark   :</td>
                    <td class="f_text"><input name="landmark" type="text" id="landmark" placeholder="Enter Street"  /></td>
@@ -207,7 +207,7 @@
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="village_k" type="text" id="username" placeholder="Village" />
+                       <input   type="text" id="username" placeholder="Village" />
                      <span class="error">* </span></td>
                    <td class="f_text">Pin Code   :</td>
                    <td class="f_text"><input name="pincode" type="text" id="pincode" placeholder="Pincode"    />
@@ -223,7 +223,7 @@
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="panchayat_k" type="text" id="panchayat_k" placeholder="Unicode" />
+                       <input  type="text" id="panchayat_k" placeholder="Unicode" />
                      <span class="error">* </span></td>
                    <td class="f_text">Landline Phone No  :</td>
                    <td class="f_text"><input name="landlineno" type="text" id="landlineno" placeholder="Enter Landline Phone No"  /></td>
@@ -255,7 +255,7 @@
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="landstate_k" type="text" id="landstate_k" placeholder="Unicode" /></td>
+                       <input   type="text" id="landstate_k" placeholder="Unicode" /></td>
                    <td class="f_text">Village  :</td>
                    <td class="f_text"><select name="landvillage"  type="text"  id="landvillage"  >
                        <option>Select</option>
@@ -264,7 +264,7 @@
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="landvillage_k" type="text" id="landvillage_k" placeholder="Unicode" /></td>
+                       <input   type="text" id="landvillage_k" placeholder="Unicode" /></td>
                  </tr>
                  <tr>
                    <td class="f_text">District  :</td>
@@ -275,7 +275,7 @@
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="landdistrict_k" type="text" id="landdistrict" placeholder="Unicode" /></td>
+                       <input   type="text" id="landdistrict" placeholder="Unicode" /></td>
                    <td class="f_text">Panchayat  :</td>
                    <td class="f_text">
 				   <select name="landpanchayat"    id="landpanchayat"  >
@@ -285,19 +285,19 @@
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="landpanchayat_k" type="text" id="landpanchayat_k" placeholder="Unicode" /></td>
+                       <input   type="text" id="landpanchayat_k" placeholder="Unicode" /></td>
                  </tr>
                  <tr>
                    <td class="f_text">Taluk   :</td>
                    <td class="f_text">
-				   <select name="landtaluk_k"  id="landtaluk_k"  >
+				   <select name="landtaluk"  id="landtaluk_k"  >
                        <option>Select</option>
                    <option value="1">Iteam 1</option>
                        <option value="2">Iteam 2</option>
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="ataluk1" type="text" id="username" placeholder="Unicode" /></td>
+                       <input  type="text" id="username" placeholder="Unicode" /></td>
                    <td class="f_text">Hobli  :</td>
                    <td class="f_text"><select name="landhobli"  id="landhobli"  >
                        <option>Select</option>
@@ -306,7 +306,7 @@
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="landhobli_k" type="text" id="landhobli_k" placeholder="Unicode" /></td>
+                       <input  type="text" id="landhobli_k" placeholder="Unicode" /></td>
                  </tr>
                  <tr>
                    
@@ -318,7 +318,7 @@
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="landconstituency_k"   placeholder="Unicode" /></td>
+                       <input id="landconstituency_k"   placeholder="Unicode" /></td>
                  </tr>
                </table>
            </div>
@@ -333,7 +333,7 @@
                        <option value="3">Bank of Baroda</option>
                        <option value="4">ICICI</option>
                      </select>
-                       <input name="bank_k" type="text" id="bank_k" placeholder="Unicode" />
+                       <input   type="text" id="bank_k" placeholder="Unicode" />
                      <span class="error">* </span></td>
                    <td width="17%" class="f_text">Branch IFSC Code   :</td>
                    <td class="f_text"><input name="ifsc" type="text" id="ifcs" placeholder="Enter IFSC code "  />
@@ -348,7 +348,7 @@
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
                      </select>
-                       <input name="bn" type="text" id="username" placeholder="Unicode"  />
+                       <input   type="text" id="branch_k" placeholder="Unicode"  />
                      <span class="error">*</span></td>
                    <td width="17%" class="f_text">Account No :</td>
                    <td><input name="accountno" type="text" id="accountno" placeholder="Enter Account No."   />
