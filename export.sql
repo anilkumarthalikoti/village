@@ -185,7 +185,7 @@ CREATE TABLE subschemes (
 	id bigint(19) NOT NULL auto_increment,
 	schemeid int(10) NOT NULL,
 	subschemeid int(10) NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
 	unique key(schemeid,subschemeid)
 ) ;
 
@@ -277,7 +277,5 @@ INSERT INTO user_roles(LOGIN_ID, ROLE_ID, IS_ACTIVE) VALUES ('1', 1, 'Y');
 
 INSERT INTO user_roles(LOGIN_ID, ROLE_ID, IS_ACTIVE) VALUES ('ADMIN', 1, 'Y');
 
-CREATE UNIQUE INDEX item_name ON items (item_name,item_type);
-
-CREATE UNIQUE INDEX schemeid ON subcomponent (schemeid,subschemid,component,subcomponent,schemeid,subschemeid);
+ 
 
