@@ -262,7 +262,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 <tr><td class="label">Select Taluka</td><td>:</td>
 <td>
-<select name="taluka_selected" id="taluka_selected" onchange="states.updatahobli('village')">
+<select name="taluka_selected" id="taluka_selected" onchange="states.updatehobli('village')">
 <option value="-1">Select</option>
  
 </select></td></tr>
