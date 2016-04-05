@@ -24,7 +24,7 @@
 		
 		
 		this.saveData=function(){
-			
+	 
 			$.ajax({
 			url:"server/farmer.php",
 			method:"post",
