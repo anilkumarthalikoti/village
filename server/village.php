@@ -6,8 +6,8 @@ $conn=$database;
  if(!empty($_POST)){
  
  $state_name=postVal("state_name");
- $state_name_k=postVal("state_name_ka");
-$item_type=postVal("item_type");
+ $state_name_k=$_POST["state_name_ka"];
+$item_type=$_POST["item_type"];
 $id=$conn->insert("states",array("state_name"=>$state_name,"state_name_k"=>$state_name_k,"item_type"=>$item_type));	
  $result=$conn->select("states",array("id"),array("AND"=>array("state_name"=>$state_name,"item_type"=>$item_type)));
  foreach($result as $row){
