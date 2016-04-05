@@ -2,16 +2,16 @@
 session_start();
 require "app_connector.php";
 $conn=$database;
+if(!empty($_POST)){
 $params=array();
-$data="";
- if(!empty($_POST)){
- foreach($_POST as $key=>$value){
- if(!($key=="text" || $key=="select") )
- $params[$key]=$value;
-  
- }
  
+foreach ($_POST as $key => $value){
  
- $conn->insert("farmerdetails",$params);
- }
+   
+       $params[$key]=$value;
+    
+}
+//$conn->debug();
+$conn->insert("farmerdetails",$params);
+}
 ?>

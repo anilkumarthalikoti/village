@@ -34,10 +34,10 @@ $id=$conn->insert("states",array("state_name"=>$state_name,"state_name_k"=>$stat
  $conn->insert("hobli",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$id));
  break;
  case "village":
-$conn->insert("village",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>village_selected,"villageid"=>$id));
+$conn->insert("village",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"villageid"=>$id));
  break;
   case "panchaitay":
-$conn->insert("panchaitay",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>village_selected,"villageid"=>$village_selected,"panchaitayid"=>$id));
+$conn->insert("panchaitay",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"villageid"=>$village_selected,"panchaitayid"=>$id));
  break;
  
  }
