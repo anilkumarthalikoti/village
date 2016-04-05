@@ -108,10 +108,10 @@
 		var params={};
 		var key="form[name='"+formname+"'] #state_selected option:selected";
 		var key1="form[name='"+formname+"'] #district_selected option:selected";
-		var key2="form[name='"+formname+"'] #hobli_selected option:selected";
+		var key2="form[name='"+formname+"'] #taluka_selected option:selected";
 		params["state_selected"]=$(key).val();
 		params["district_selected"]=$(key1).val();
-		params["hobli_selected"]=$(key2).val();
+		params["taluka_selected"]=$(key2).val();
 		params["responsefor"]="hobli";
 		
 		
