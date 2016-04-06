@@ -153,12 +153,32 @@
 		 	data:params
 			
 							}).done(function(data){
-								alert(data);
+							 
+									 data=data+"";
+										 var list=$.parseJSON(data);
+				  									$.each(list,function(key1,value){
+																		 var keys=Object.keys(value);
+																	 
+																		 var key="input[id='"+keys[0]+"']";
+																		 $(key).val(value[keys[0]]);
+																		 
+																		 });
 								
 								});
 			}
 		
-		
+		this.saveData=function(){
+			
+			$.ajax({
+			url:"server/schemefilling.php",
+			method:"post",
+			data:$("form[name='form1']").serialize()
+			}).done(function(data){
+				 
+				 
+					 
+				});
+			}
 	
 	}
 	

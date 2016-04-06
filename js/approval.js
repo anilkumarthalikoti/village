@@ -342,17 +342,14 @@
 			}
 		
 		
-		this.searchRegistration=function(){
-			
-			
-			}
+		 
 		
 		
 		
 		// Approval details update
 		
-		this.updateschemadetails=function(){
-			
+		this.updateschemadetails=function(searchby){
+			 $("#details_schema").load("schemedetails.php");
 			}
 	
 	}
