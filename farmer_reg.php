@@ -22,69 +22,71 @@ require "server/app_connector.php";
 $conn=$database;
  
 ?>
+<div class="title" >Application Enrolment Form</div>
    <div class="viewport">
-     <div class="title" >Application Enrolment Form</div>
-     <div class="sub1_title" >Select Applicant Type
+     
+     <div class="sub1_title" ><table><tr><td>Select Applicant Type
          <select name="applicationType" id="applicationType"   onchange="farmer.changeview();"  >
          
          <option value="0">Select</option>
          <option value="1">Individual</option>
          <option value="2">Cooperative Society</option></select>
-     </div>
-	  <form method="POST" action="" name="form1">
-    <div id="viewframer" class="hide">
-	
-	
-
-     <table   width="100%" cellpadding="0" cellspacing="0"  >
-       <tr>
-         <td align="right" style="border-bottom:1px solid #CCCCCC;"><input  type="text" class="search" placeholder="Search" />
+		 </td><td align="right"><table align="right"> <tr>
+         <td ><input  type="text" class="search" placeholder="Search" />
              <select name="select">
                <option>Reg.No</option>
                <option>Name</option>
                <option>Ration card no</option>
                <option>Adhar</option>
              </select>
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-       </tr>
+          </td>
+       </tr></table></td></tr></table>
+     </div>
+	  <form method="POST" action="" name="form1" enctype="multipart/form-data">
+    <div id="viewframer" class="hide-1">
+	
+	
+
+     <table   width="100%" cellpadding="0" cellspacing="0"  >
+      
        <tr>
          <td  valign="top" style="padding:0; margin:0;"><ul id="tabs">
              <li><a id="tab1"><u>F</u>armer/Beneficiary Details</a></li>
            <li><a id="tab2"><u>A</u>ccount Details</a></li>
            <li><a id="tab3">A<u>d</u>dress Details</a></li>
-           <li><a id="tab4"><u>L</u>oan Details</a></li>
+           <li><a id="tab4"><u>L</u>and Details</a></li>
            <li><a id="tab5"><u>B</u>ank Details</a></li>
            <li><a id="tab6">D<u>o</u>cuments to upload</a></li>
          </ul>
              <div class="container" id="tab1C">
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
-                   <td class="f_text">First Name  :</td>
-                   <td class="f_text"><input name="firstname" type="text" id="firstname" placeholder="Enter First Name"  />
+                   <td class="label">First Name  :</td>
+                   <td class="label"><input name="firstname" type="text" id="firstname" placeholder="Enter First Name"  />
                        <input name="firstname_k" alt="ka" type="text" id="firstname_k" placeholder="Enter First Name Unicode"  />
                      <span class="error">*</span> </td>
                  </tr>
                  <tr>
-                   <td class="f_text">Father/Husbend Name  :</td>
-                   <td class="f_text"><input name="fathername" type="text" id="fathername" placeholder="Enter Father/Husbend Name Name" onblur="fhnameVal(fhname);" required/>
+                   <td class="label">Father/Husbend Name  :</td>
+                   <td class="label"><input name="fathername" type="text" id="fathername" placeholder="Enter Father/Husbend Name Name" onblur="fhnameVal(fhname);" required/>
                        <input name="fathername_k" type="text" id="fathername_k" placeholder="Enter Father/Husbend Name Unicode" alt="ka" />
                      <span class="error">*</span> </td>
                  </tr>
                  <tr>
-                   <td class="f_text">Last Name  :</td>
-                   <td class="f_text"><input name="lastname" type="text" id="lastname" placeholder="Enter last Name Name"  />
+                   <td class="label">Last Name  :</td>
+                   <td class="label"><input name="lastname" type="text" id="lastname" placeholder="Enter last Name Name"  />
                        <input name="lastname_k" type="text" id="lastname_k" placeholder="Enter last Name Unicode" alt="ka" />
                      <span class="error">*</span> </td>
                  </tr>
                  <tr>
-                   <td class="f_text">Gender :</td>
-                   <td class="f_text"><input type="radio" name="gender" value="M" />Male/ಗಂಡು<input type="radio" name="gender" value="F" />Female/ಹೆಣ್ಣು
+                   <td class="label">Gender :</td>
+                   <td class="label"><input type="radio" name="gender" value="M" />Male/ಗಂಡು<input type="radio" name="gender" value="F" />Female/ಹೆಣ್ಣು
 
                      <span class="error">* </span> </td>
                  </tr>
                  <tr>
-                   <td class="f_text">Cast :</td>
-                   <td class="f_text"><select name="usercast"  type="text"  id="usercast"   >
+                   <td class="label">Cast :</td>
+                   <td class="label"><select name="usercast"  type="text"  id="usercast"   >
                        <option>Select</option>
                        <option value="1">Others</option>
                        <option value="2">General</option>
@@ -96,17 +98,17 @@ $conn=$database;
                      <span class="error">* </span></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Age in years :</td>
-                   <td class="f_text"><input name="dob" type="text" id="dob" placeholder="Enter age in years"  /></td>
+                   <td class="label">Date of birth :</td>
+                   <td class="label"><input name="dob" type="text" id="dob" placeholder="DD/MM/YYYY"  /></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Qualification :</td>
-                   <td class="f_text"><input name="qualification" type="text" id="qualification" placeholder="Enter Qualification" />
+                   <td class="label">Qualification :</td>
+                   <td class="label"><input name="qualification" type="text" id="qualification" placeholder="Enter Qualification" />
                        <input name="qualification_k" type="text" id="qualification_k" placeholder="Enter last Name Unicode" alt="ka" /></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Physically Challanged :</td>
-                   <td class="f_text"><input type="radio" value="N" name="physicallychallanged" checked="checked" />
+                   <td class="label">Physically Challanged :</td>
+                   <td class="label"><input type="radio" value="N" name="physicallychallanged" checked="checked" />
                      No
                        <input type="radio" value="Y" name="physicallychallanged" />
                      Yes </td>
@@ -116,42 +118,42 @@ $conn=$database;
            <div class="container" id="tab2C">
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
-                   <td class="f_text">Aadhar No.:</td>
-                   <td class="f_text"><input name="aadhar" type="text" id="aadhar" placeholder="0000 0000 0000" maxlength="14"  />
+                   <td class="label">Aadhar No.:</td>
+                   <td class="label"><input name="aadhar" type="text" id="aadhar" placeholder="0000 0000 0000" maxlength="14"  />
                        <span class="error">* </span></td>
-                   <td class="f_text">EPIC No.: </td>
-                   <td class="f_text"><input name="voter" type="text" id="voter" placeholder="Enter Voter Id Card No."  />
+                   <td class="label">EPIC No.: </td>
+                   <td class="label"><input name="voter" type="text" id="voter" placeholder="Enter Voter Id Card No."  />
                        <span class="error">* </span> </td>
                  </tr>
                  <tr>
-                   <td class="f_text">Ration Card No.: </td>
-                   <td class="f_text"><input name="rationcard" type="text" id="rationcard" placeholder="Enter Ration Card No."  /></td>
-                   <td class="f_text">PAN Card No.:</td>
-                   <td class="f_text"><input name="pancard" type="text" id="pancard" placeholder="Enter PAN Card No." maxlength="10"    />
+                   <td class="label">Ration Card No.: </td>
+                   <td class="label"><input name="rationcard" type="text" id="rationcard" placeholder="Enter Ration Card No."  /></td>
+                   <td class="label">PAN Card No.:</td>
+                   <td class="label"><input name="pancard" type="text" id="pancard" placeholder="Enter PAN Card No." maxlength="10"    />
                        <span class="error">* </span></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Ration Card Type.: </td>
-                   <td class="f_text"><select name="rationcardtype"  type="text"  id="rationcardtype"   >
+                   <td class="label">Ration Card Type.: </td>
+                   <td class="label"><select name="rationcardtype"  type="text"  id="rationcardtype"   >
                        <option>APL</option>
                        <option>BPL</option>
                    </select></td>
-                   <td class="f_text">KISAN Card No.:</td>
-                   <td class="f_text"><input name="kishancard" type="text" id="kishancard" placeholder="Enter KISAN Card No."  /></td>
+                   <td class="label">KISAN Card No.:</td>
+                   <td class="label"><input name="kishancard" type="text" id="kishancard" placeholder="Enter KISAN Card No."  /></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Income Per Annum :</td>
-                   <td class="f_text"><input name="income" type="text" id="income" placeholder="Enter Income."  /></td>
-                   <td class="f_text">Email ID : </td>
-                   <td class="f_text"><input name="mailid" type="text" id="mailid" placeholder="Enter Email ID"  /></td>
+                   <td class="label">Income Per Annum :</td>
+                   <td class="label"><input name="income" type="text" id="income" placeholder="Enter Income."  /></td>
+                   <td class="label">Email ID : </td>
+                   <td class="label"><input name="mailid" type="text" id="mailid" placeholder="Enter Email ID"  /></td>
                  </tr>
                </table>
            </div>
            <div class="container" id="tab3C">
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
-                   <td class="f_text">State  :</td>
-                   <td class="f_text"><select name="userstate"  type="text"  id="state_selected" onchange="farmer.updatedistrict('tab3C')"  >
+                   <td class="label">State  :</td>
+                   <td class="label"><select name="userstate"  type="text"  id="state_selected" onchange="farmer.updatedistrict('tab3C')"  >
                        <option value="-1">Select</option>
  					   <?php 
 $result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>0));
@@ -163,78 +165,75 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
                      </select>
                       
                      <span class="error">* </span></td>
-                   <td class="f_text">House No :</td>
-                   <td class="f_text"><input name="houseno" type="text" id="houseno" placeholder="Enter House No." /></td>
+                   <td class="label">House No :</td>
+                   <td class="label"><input name="houseno" type="text" id="houseno" placeholder="Enter House No." /></td>
                  </tr>
                  <tr>
-                   <td class="f_text">District  :</td>
-                   <td class="f_text"><select name="district"  id="district_selected" onchange="farmer.updatetaluka('tab3C')"  >
+                   <td class="label">District  :</td>
+                   <td class="label"><select name="district"  id="district_selected" onchange="farmer.updatetaluka('tab3C')"  >
                        <option>Select</option>
                         
                      </select>
                     
                      <span class="error">* </span></td>
-                   <td class="f_text">Street  :</td>
-                   <td class="f_text"><input name="street" type="text" id="street" placeholder="Enter Street"  /></td>
+                   <td class="label">Street  :</td>
+                   <td class="label"><input name="street" type="text" id="street" placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Taluk   :</td>
-                   <td class="f_text"><select name="taluk"  type="text"  id="taluka_selected" onchange="farmer.updatehobli('tab3C')"    >
+                   <td class="label">Taluk   :</td>
+                   <td class="label"><select name="taluk"  type="text"  id="taluka_selected" onchange="farmer.updatehobli('tab3C')"    >
                        <option>Select</option>
                         
                      </select>
                       
                      <span class="error">* </span></td>
-                   <td class="f_text">Location   :</td>
-                   <td class="f_text"><input name="location" type="text"   placeholder="Enter Street"  /></td>
+                   <td class="label">Location   :</td>
+                   <td class="label"><input name="location" type="text"   placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Hobli   :</td>
-                   <td class="f_text"><select name="hobli"  type="text"  id="hobli_selected" onchange="farmer.updatevillage('tab3C')"   >
+                   <td class="label">Hobli   :</td>
+                   <td class="label"><select name="hobli"  type="text"  id="hobli_selected" onchange="farmer.updatevillage('tab3C')"   >
                        <option>Select</option>
                      
                      </select>
                 
                      <span class="error">* </span></td>
-                   <td class="f_text">Land Mark   :</td>
-                   <td class="f_text"><input name="landmark" type="text" id="landmark" placeholder="Enter Street"  /></td>
+                   <td class="label">Land Mark   :</td>
+                   <td class="label"><input name="landmark" type="text" id="landmark" placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Village  :</td>
-                   <td class="f_text"><select name="village"  type="text"  id="village_selected" onchange="farmer.updatepanchaitay('tab3C')"   >
+                   <td class="label">Village  :</td>
+                   <td class="label"><select name="village"  type="text"  id="village_selected" onchange="farmer.updatepanchaitay('tab3C')"   >
                        <option>Select</option>
                       
                      </select>
-                       <input   type="text" id="username" placeholder="Village" />
+                      
                      <span class="error">* </span></td>
-                   <td class="f_text">Pin Code   :</td>
-                   <td class="f_text"><input name="pincode" type="text" id="pincode" placeholder="Pincode"    />
+                   <td class="label">Pin Code   :</td>
+                   <td class="label"><input name="pincode" type="text" id="pincode" placeholder="Pincode"    />
                        <span class="error">* </span></td>
                  </tr>
                   
                  <tr>
-                   <td class="f_text">Panchayat  :</td>
-                   <td class="f_text"><select name="panchayat"  type="text"  id="panchaitay_selected"  >
+                   <td class="label">Panchayat  :</td>
+                   <td class="label"><select name="panchayat"  type="text"  id="panchaitay_selected"  >
                        <option>Select</option>
                        
                      </select>
                      
                      <span class="error">* </span></td>
-                   <td class="f_text">Landline Phone No  :</td>
-                   <td class="f_text"><input name="landlineno" type="text" id="landlineno" placeholder="Enter Landline Phone No"  /></td>
+                   <td class="label">Landline Phone No  :</td>
+                   <td class="label"><input name="landlineno" type="text" id="landlineno" placeholder="Enter Landline Phone No"  /></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Constituency  :</td>
-                   <td class="f_text"><select name="constituency"  type="text"  id="textfield1"  >
-                       <option>Select</option>
-                       <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                   <td class="label">Constituency  :</td>
+                   <td class="label"  ><select name="constituency"  type="text"  id="textfield1"  >
+                       <option value="-1">Select</option>
+                       
                      </select>
-                       <input name="text" type="text" id="username" placeholder="Unicode" /></td>
-                   <td class="f_text">Mobile No  :</td>
-                   <td class="f_text"><input name="mobileno" type="text" id="mobileno" placeholder="Enter Mobile No" maxlength="10"  />
+                     </td>
+                   <td class="label">Mobile No  :</td>
+                   <td class="label"><input name="mobileno" type="text" id="mobileno" placeholder="Enter Mobile No" maxlength="10"  />
                        <span class="error">* </span></td>
                  </tr>
                </table>
@@ -242,86 +241,68 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
            <div class="container" id="tab4C">
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
-                   <td class="f_text">State  :</td>
-                   <td class="f_text"><select name="landstate"     id="landstate"  >
+                   <td class="label">State  :</td>
+                   <td class="label"><select name="landstate"     id="state_selected" onchange="farmer.updatedistrict('tab4C')"  >
                        <option>Select</option>
-                      <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                    <?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>0));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
                      </select>
-                       <input   type="text" id="landstate_k" placeholder="Unicode" /></td>
-                   <td class="f_text">Village  :</td>
-                   <td class="f_text"><select name="landvillage"  type="text"  id="landvillage"  >
-                       <option>Select</option>
-                       <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                   
+                   <td class="label">District  :</td>
+                   <td class="label"><select name="landdistrict"  type="text"  id="district_selected" onchange="farmer.updatetaluka('tab4C')"  >
+                       <option value="-1">Select</option>
                      </select>
-                       <input   type="text" id="landvillage_k" placeholder="Unicode" /></td>
+                      </td>
                  </tr>
                  <tr>
-                   <td class="f_text">District  :</td>
-                   <td class="f_text"><select name="landdistrict"     id="landdistrict"  >
+                   <td class="label">Taluk  :</td>
+                   <td class="label"><select name="landtaluk"     id="taluka_selected" onchange="farmer.updatehobli('tab4C')"  >
                        <option>Select</option>
-                       <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                       
                      </select>
-                       <input   type="text" id="landdistrict" placeholder="Unicode" /></td>
-                   <td class="f_text">Panchayat  :</td>
-                   <td class="f_text">
-				   <select name="landpanchayat"    id="landpanchayat"  >
+                    </td>
+                   <td class="label">Hobli  :</td>
+                   <td class="label">
+				   <select name="landhobli"    id="hobli_selected" onchange="farmer.updatevillage('tab4C')"  >
                        <option>Select</option>
-                       <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                      
                      </select>
-                       <input   type="text" id="landpanchayat_k" placeholder="Unicode" /></td>
+                    </td>
                  </tr>
                  <tr>
-                   <td class="f_text">Taluk   :</td>
-                   <td class="f_text">
-				   <select name="landtaluk"  id="landtaluk_k"  >
+                   <td class="label">Village   :</td>
+                   <td class="label">
+				   <select name="landvillage"  id="village_selected" onchange="farmer.updatepanchaitay('tab4C')"  >
                        <option>Select</option>
-                   <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                   
                      </select>
-                       <input  type="text" id="username" placeholder="Unicode" /></td>
-                   <td class="f_text">Hobli  :</td>
-                   <td class="f_text"><select name="landhobli"  id="landhobli"  >
+                      </td>
+                   <td class="label">Panchayat   :</td>
+                   <td class="label"><select name="landpanchayat" id="panchaitay_selected"    >
                        <option>Select</option>
-                     <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                    
                      </select>
-                       <input  type="text" id="landhobli_k" placeholder="Unicode" /></td>
+                       </td>
                  </tr>
                  <tr>
                    
-                   <td class="f_text" colspan="3">Constituency  :</td>
-                   <td class="f_text"><select name="landconstituency"  type=  id="landconstituency"  >
-                       <option>Select</option>
-                      <option value="1">Iteam 1</option>
-                       <option value="2">Iteam 2</option>
-                       <option value="3">Iteam 3</option>
-                       <option value="4">Iteam 4</option>
+                   <td class="label" >Constituency  :</td>
+                   <td class="label" colspan="3"><select name="landconstituency"  type=  id="landconstituency"  >
+                       <option value="-1">Select</option>
+                      
                      </select>
-                       <input id="landconstituency_k"   placeholder="Unicode" /></td>
+                        </td>
                  </tr>
                </table>
            </div>
            <div class="container" id="tab5C">
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
-                   <td class="f_text">Name of Bank  :</td>
-                   <td width="35%" class="f_text"><select name="bank"     id="bank"   >
+                   <td class="label">Name of Bank  :</td>
+                   <td width="35%" class="label"><select name="bank"     id="bank"   >
                        <option>Select</option>
                        <option value="1">Axis Bank</option>
                        <option value="2">Bank of India</option>
@@ -330,13 +311,13 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
                      </select>
                        <input   type="text" id="bank_k" placeholder="Unicode" />
                      <span class="error">* </span></td>
-                   <td width="17%" class="f_text">Branch IFSC Code   :</td>
-                   <td class="f_text"><input name="ifsc" type="text" id="ifcs" placeholder="Enter IFSC code "  />
+                   <td width="17%" class="label">Branch IFSC Code   :</td>
+                   <td class="label"><input name="ifsc" type="text" id="ifcs" placeholder="Enter IFSC code "  />
                        <span class="error">* </span></td>
                  </tr>
                  <tr>
-                   <td class="f_text">Branch Name   :</td>
-                   <td width="35%" class="f_text"><select name="branch"  type="text"  id="branch"   onblur="validate_Branch();">
+                   <td class="label">Branch Name   :</td>
+                   <td width="35%" class="label"><select name="branch"  type="text"  id="branch"   onblur="validate_Branch();">
                        <option>Select</option>
                       <option value="1">Iteam 1</option>
                        <option value="2">Iteam 2</option>
@@ -345,7 +326,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
                      </select>
                        <input   type="text" id="branch_k" placeholder="Unicode"  />
                      <span class="error">*</span></td>
-                   <td width="17%" class="f_text">Account No :</td>
+                   <td width="17%" class="label">Account No :</td>
                    <td><input name="accountno" type="text" id="accountno" placeholder="Enter Account No."   />
                        <span class="error">* </span></td>
                  </tr>
@@ -354,38 +335,38 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
            <div class="container" id="tab6C">
                <table cellspacing="5" id="fileupload">
                  <tr>
-                   <td><input name="button" type="button" value="Applicant photo"/>
+                   <td><input name="button" type="button" value="Applicant photo"/> <input type="file" class="hide" name="applicationphoto" id="applicationphoto"/>
                    </td>
-                   <td><input name="button" type="button" value="Adhar photo"/>
+                   <td><input name="button" type="button" value="Adhar photo"/><input type="file" class="hide" name="adharphoto" id="adharphoto"/>
                    </td>
-                   <td><input name="button" type="button" value="Ration card"/>
+                   <td><input name="button" type="button" value="Ration card"/><input type="file" class="hide" name="rationcardphoto" id="rationcardphoto"/>
                    </td>
-                   <td><input name="button" type="button" value="Voter"/>
+                   <td><input name="button" type="button" value="Voter"/><input type="file" class="hide" name="voterphoto" id="voterphoto"/>
                    </td>
-                   <td><input name="button" type="button" value="Pan"/>
+                   <td><input name="button" type="button" value="Pan"/><input type="file" class="hide" name="pancardphoto" id="pancardphoto"/>
                    </td>
-                   <td><input name="button" type="button" value="Chakibandi"/>
+                   <td><input name="button" type="button" value="Chakibandi"/><input type="file" class="hide" name="chakibandiphoto" id="chakibandiphoto"/>
                    </td>
-                   <td><input name="button" type="button" value="Kisan"/>
+                   <td><input name="button" type="button" value="Kisan"/><input type="file" class="hide" name="kisanphoto" id="kisanphoto"/>
                    </td>
-                   <td><input name="button" type="button" value="Income"/>
+                   <td><input name="button" type="button" value="Income"/><input type="file" class="hide" name="incomephoto" id="incomephoto"/>
                    </td>
-                   <td><input name="button" type="button" value="Cast certificate"/>
+                   <td><input name="button" type="button" value="Cast certificate"/><input type="file" class="hide" name="castphoto" id="castphoto"/>
                    </td>
-                   <td><input name="button" type="button" value="Bank passbook"/>
+                   <td><input name="button" type="button" value="Bank passbook"/><input type="file" class="hide" name="passbookphoto" id="passbookphoto"/>
                    </td>
                  </tr>
-                 <tr>
-                   <td></td>
-                   <td></td>
-                   <td></td>
-                   <td></td>
-                   <td></td>
-                   <td></td>
-                   <td></td>
-                   <td height="350">&nbsp;</td>
-                   <td  ></td>
-                   <td >&nbsp;</td>
+                 <tr id="imgview">
+                   <td id="0"></td>
+                   <td id="1"></td>
+                   <td id="2"></td>
+                   <td id="3"></td>
+                   <td id="4"></td>
+                   <td id="5"></td>
+                   <td id="6"></td>
+                   <td height="350" id="7">&nbsp;</td>
+                   <td  id="8" ></td>
+                   <td id="9">&nbsp;</td>
                  </tr>
                </table>
            </div>

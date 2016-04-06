@@ -44,13 +44,8 @@ foreach($link as $links){
  
  <li><a class="ajxsub" href="#"><b>Officer</b></a>
   <ul>
-   <li><a href="#"><b>Proposal</b></a>
-   <ul>
-      <li link_id="8"><a href="proposal_chd.php"><b>MIS/PMKSY</b></a></li>
-   <li link_id="9"><a href="#"><b>CHD</b></a></li>
-         <li link_id="10"><a href="#"><b>NHM/MIDH </b></a></li>
-            <li link_id="11"><a href="#"><b>RKVY </b></a></li>
-   </ul>
+   <li link_id='8'><a href="approval.php"><b>Proposal</b></a>
+    
    </li>
    
       <li link_id="12"><a href="#"><b>Track Records</b></a></li>
