@@ -11,7 +11,7 @@ foreach ($_POST as $key => $value){
        $params[$key]=$value;
     
 }
-//$conn->debug();
+ 
 $conn->insert("farmerdetails",$params);
 }
 ?>

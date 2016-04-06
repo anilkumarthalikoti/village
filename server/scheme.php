@@ -86,7 +86,7 @@ $jsontext .= "]";
 print $jsontext;
 }
 
-if((!(empty($_GET["subscheme_select"])) && (!empty($_GET["scheme_select"])))){
+if((!(empty($_GET["subscheme_select"])) && (!empty($_GET["scheme_select"]) && (empty($_GET["component_select"]))))){
 
 $query="select b.item_id,b.item_name  from component a, items b where b.item_id=a.component and a.subschemeid= ".$_GET["subscheme_select"]." and a.schemeid=".$_GET["scheme_select"];
  
@@ -99,4 +99,43 @@ $jsontext = substr_replace($jsontext, '', -1); // to get rid of extra comma
 $jsontext .= "]";
 print $jsontext;
 }
+
+if((!(empty($_GET["subscheme_select"])) && (!empty($_GET["scheme_select"])) && (!empty($_GET["component_select"])))){
+
+$query="select b.item_id,b.item_name,b.item_type  from subcomponent a, items b where b.item_id=a.subcomponent and a.subschemeid= ".$_GET["subscheme_select"]." and a.schemeid=".$_GET["scheme_select"]." and a.component=".$_GET["component_select"] ;
+ 
+$result=$conn->query($query);
+$jsontext= "[";
+foreach($result as $row){
+$jsontext .= '{"item_id":"'.$row["item_id"].'", "item_name":"'. $row["item_name"] . '","item_type":"'.$row['item_type'].'"},';
+}
+$jsontext = substr_replace($jsontext, '', -1); // to get rid of extra comma
+$jsontext .= "]";
+print $jsontext;
+}
+
+if(!empty($_GET['searchregistration'])){
+ 
+$searchfor=array();
+ 
+ $searchfor[$_GET['searchin']]=$_GET['searchregistration'];
+  $query="select a.*,(select state_name||'/'||state_name_k from states where id=userstate) state from farmerdetails a where  ".$searchfor[$_GET['searchin']]."='".$_GET['searchregistration']."'";
+
+$result=$conn->query($query);
+$jsontext= "[{";
+foreach($result as $row){
+foreach($row as $key=>$value){
+$jsontext .= '"'.$key.'":"'.$value.'", ';
+}
+}
+$jsontext .= '"END_RESULT":"END_RESULT"}]';
+ 
+print $jsontext;
+
+
+}
+
+ 
+
+
 ?>

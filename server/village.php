@@ -37,7 +37,7 @@ $id=$conn->insert("states",array("state_name"=>$state_name,"state_name_k"=>$stat
 $conn->insert("village",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"villageid"=>$id));
  break;
   case "panchaitay":
-$conn->insert("panchaitay",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"villageid"=>$village_selected,"panchaitayid"=>$id));
+$conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"villageid"=>$village_selected,"panchayatiid"=>$id));
  break;
  
  }
@@ -81,6 +81,7 @@ $query="";
  break;
  
  case "panchaitay":
+ 
  $query="select s.* from panchayati d,states s where d.panchayatiid= s.id and  d.villageid=".$village_selected."";
  break;
  
