@@ -7,7 +7,9 @@ $params=array();
  
 foreach ($_POST as $key => $value){
  
-   
+   if($key=="dob"){
+   $value=date("Y-m-d", strtotime($value) );
+   }
        $params[$key]=$value;
     
 }
