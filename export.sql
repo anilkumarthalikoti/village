@@ -135,15 +135,15 @@ CREATE TABLE page_links (
 ) ;
 
 CREATE TABLE role_dtl (
-	ROLE_ID int(10) NOT NULL,
-	PAGE_LINK_ID int(10) NOT NULL,
-	PRIMARY KEY (ROLE_ID,PAGE_LINK_ID)
+	role_id int(10) NOT NULL,
+	page_link_id int(10) NOT NULL,
+	PRIMARY KEY (role_id,page_link_id)
 ) ;
 
 CREATE TABLE role_mstr (
-	ROLE_ID int(10) NOT NULL,
-	ROLE_NAME varchar(100) NOT NULL,
-	PRIMARY KEY (ROLE_ID)
+	role_id int(10) NOT NULL,
+	role_name varchar(100) NOT NULL,
+	PRIMARY KEY (role_id)
 ) ;
 
 CREATE TABLE schemefilling (
@@ -191,9 +191,9 @@ CREATE TABLE subschemes (
 ) ;
 
 CREATE TABLE user_roles (
-	LOGIN_ID varchar(50),
-	ROLE_ID int(10) NOT NULL,
-	IS_ACTIVE varchar(1)
+	login_id varchar(50),
+	role_id int(10) NOT NULL,
+	is_active varchar(1)
 ) ;
 
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
@@ -234,49 +234,49 @@ INSERT INTO page_links(linkid, linkname) VALUES (17, 'ROLE CREATION');
 
 INSERT INTO page_links(linkid, linkname) VALUES (18, 'ROLE MAPPING');
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 1);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 1);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 2);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 2);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 3);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 3);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 4);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 4);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 5);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 5);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 6);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 6);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 7);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 7);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 8);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 8);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 9);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 9);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 10);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 10);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 11);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 11);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 12);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 12);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 13);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 13);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 14);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 14);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 15);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 15);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 16);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 16);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 17);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 17);
 
-INSERT INTO role_dtl(ROLE_ID, PAGE_LINK_ID) VALUES (1, 18);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 18);
 
-INSERT INTO role_mstr(ROLE_ID, ROLE_NAME) VALUES (1, 'ADMIN_ROLE');
+INSERT INTO role_mstr(role_id, role_name) VALUES (1, 'ADMIN_ROLE');
 
 INSERT INTO signup(fname, lname, desigination, department, email, mobileno) VALUES ('anil', 'kumar', 'developer', 'dev', 'anil2k12@gmail.com', '8106231231');
 
-INSERT INTO user_roles(LOGIN_ID, ROLE_ID, IS_ACTIVE) VALUES ('1', 1, 'Y');
+INSERT INTO user_roles(login_id, role_id, is_active) VALUES ('1', 1, 'Y');
 
-INSERT INTO user_roles(LOGIN_ID, ROLE_ID, IS_ACTIVE) VALUES ('ADMIN', 1, 'Y');
+INSERT INTO user_roles(login_id, role_id, is_active) VALUES ('ADMIN', 1, 'Y');
 
  
 

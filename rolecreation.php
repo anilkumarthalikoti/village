@@ -15,19 +15,17 @@
 <?php
 session_start();
 require "server/app_connector.php";
-$con=$database;
-$query_links="select * from page_links";
-$query_roles="select * from role_mstr";
+$conn=$database;
+ 
 if(!empty( $_POST ) )
 {
 //Add new role
 if($_POST["method_call"]=="newrole"){
 if(strlen(trim($_POST["role_name"]))!=0){
 $role_name=strtoupper(trim($_POST["role_name"]));
-$query1="insert into role_mstr(ROLE_NAME) values('".$role_name."')";
- 
-$con->query($query1);
- var_dump($con->error());
+
+$conn->insert("role_mstr",array("role_name"=>$role_name));
+  
 }
 }
 //Update role dtls
@@ -35,9 +33,9 @@ if($_POST["method_call"]=="update_role_dtl"){
  $role_id=$_POST["role_id_selected"];
  $dtl_role=$_POST["linkid"];
  foreach($dtl_role as $link){
-$query1="insert into role_dtl(ROLE_ID,PAGE_LINK_ID) values(".$role_id.",".$link.")";
  
-$con->query($query1);
+ $conn->insert("role_dtl",array("role_id"=>$role_id,"page_link_id"=>$link));
+ 
  }
  
 }
@@ -65,10 +63,10 @@ $con->query($query1);
 	  </thead>
 	  <tbody>
 	  <?php
-	 $data=$con->query($query_roles)->fetchAll();
+	 $result=$conn->select("role_mstr",array("role_id","role_name"));
 	 $i=1;
-	 foreach($data as $role){
-	 echo "<tr onclick='rolecreate.setRole(this.id)' role_id='".$role['role_id']."' id='".$role['role_id']."'><td>".$i."</td><td>".$role['ROLE_NAME']."</td></tr>";
+	 foreach($result as $role){
+	 echo "<tr onclick='rolecreate.setRole(this.id)' role_id='".$role['role_id']."' id='".$role['role_id']."'><td>".$i."</td><td>".$role['role_name']."</td></tr>";
 	 $i++;
 	 }
 	 ?>
@@ -86,7 +84,7 @@ $con->query($query1);
 	 </thead>
 	 <tbody>
 	 <?php
-	 $data=$con->query($query_links)->fetchAll();
+	 $data=$conn->select("page_links",array("linkname","linkid"));
 	 $i=1;
 	 foreach($data as $link){
 	 echo "<tr><td>".$i."</td><td>".$link['linkname']."</td><td><input type='checkbox' name='linkid[]' value='".$link['linkid']."'/></td></tr>";
