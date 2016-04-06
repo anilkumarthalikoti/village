@@ -44,6 +44,7 @@ require "server/app_connector.php";
 $conn=$database;
  
 ?>
+<div class="title">Location Details</div>
 <div class="viewport">
   <ul id="tabs">
 

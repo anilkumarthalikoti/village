@@ -43,15 +43,16 @@ $con->query($query1);
 }
 }
 ?>
-<div class="viewport">
 <div class="title"><span>Permission Creation</span></div> 
+<div class="viewport">
+
 
   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
     
     <tr>
 <td  ><form id="newRole" action="rolecreation.php" method="post">New Role:<input type="text" name="role_name" id="role_name"/>
 <input type="hidden" name="method_call" value="newrole" />
-<input type="button" onclick="rolecreate.createRole()" value="Add Role" class="button_login"/></form></td>
+<input type="button" onClick="rolecreate.createRole()" value="Add Role" class="button_login"/></form></td>
     </tr>
       <tr><td>
 	  <div>
@@ -81,7 +82,7 @@ $con->query($query1);
 	 <input type="hidden" name="method_call" value="update_role_dtl"/>
 	 <table width="100%" class="grid" style="margin:0;">
 	 <thead>
-	 <tr><th width="80"></th><th>Link name</th><th width="50"><input type="checkbox" id="checkAll" onclick="rolecreate.checkAll();" />All</th></tr>
+	 <tr><th width="80"></th><th>Link name</th><th width="50"><input type="checkbox" id="checkAll" onClick="rolecreate.checkAll();" />All</th></tr>
 	 </thead>
 	 <tbody>
 	 <?php
@@ -96,7 +97,7 @@ $con->query($query1);
 	 </table>
 	 </form>
 	 </div>
-	 <div style="height:40px; max-width:450px; "><input type="button" class="button_login" value="Save" onclick="rolecreate.updateRole();" style="float:right; margin-right:0;"/></div>
+	 <div style="height:40px; max-width:450px; "><input type="button" class="button_login" value="Save" onClick="rolecreate.updateRole();" style="float:right; margin-right:0;"/></div>
  </td></tr></table></div>
 	 </td></tr>
   </table>

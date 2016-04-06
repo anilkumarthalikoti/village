@@ -15,91 +15,44 @@ require "server/app_connector.php";
 $conn = $database;
  
 ?>
-<form method="POST" action="" name="form1">
-<div class="viewport">
  <div class="title"><span>Schema filling</span></div>
-
+<div class="viewport">
 
  
- <ul id="tabs">
-
-      <li><a id="tab1">Registration Details</a></li>
-      <li><a id="tab2">Schema Details</a></li>
-       
-
-</ul>
-<div class="container" id="tab1C">
+<form method="POST"  name="form1">
+ 
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      
-       
+      <tr><td><input  type="text" id="search" class="search" placeholder="Search"  />
+             <select name="select" id="searchin">
+               <option value="id">Reg.No</option>
+               <option value="rationcard">Ration card no</option>
+               <option value="aadhar">Adhar</option>
+			    <option value="voter">Voter</option>
+             </select><input type="button" value="Search" onclick="schemefilling.searchRegistration()"/></td></tr>
+       <tr><td>
+	   <table>
       <tr>
-        <td width="19%" class="tbody"> Name  :</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        <td width="20%" class="tbody">Father/Husband Name  :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
+        <td  class="label" > Name </td><td>:</td><td ><input   type="text"  placeholder="First Name"/></td>
+		  
+        <td calss="label">Father/Husband Name  </td><td>:</td><td ><input   type="text"  placeholder="Father/Husband name"  /></td>
         </tr>
-      <tr>
-        <td colspan="2" align="center" style="background-color:#CCC">Residentioan Address</td>
-        <td colspan="2" align="center" style="background-color:#CCC">Land Details</td>
-        </tr>
-      <tr>
-        <td width="19%" class="tbody">House No.:</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        <td width="20%" class="tbody">Survey No.:</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        </tr>
-      <tr>
-        <td width="19%" class="tbody"> Village/City Name:</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        <td width="20%" class="tbody">Village :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        </tr>
-      <tr>
-        <td width="19%" class="tbody">Hobali</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        <td width="20%" class="tbody">Hobali :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        </tr>
-      <tr>
-        <td width="19%" class="tbody">Taluk :</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        <td width="20%" class="tbody">Taluk :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        </tr>
-      <tr>
-        <td width="19%" class="tbody">District :</td>
-        <td width="30%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        <td width="20%" class="tbody">District :</td>
-        <td width="31%"><input name="text" type="text" id="username" placeholder="Enter First Name"  />
-          </td>
-        </tr>
-		</table>
-
-</div>
-<div class="container" id="tab2C">
+		<tr><td colspan="6">
+		
+		<table width="100%" border="0" class="headerSchemeFiling">
+	<thead><tr><th class="medium"></th><th></th><th class="medium">Residential Address</th><th>Land details</th><th>Scheme Details</th></tr></thead>
+		<tbody>
+		<tr><td class="label">House no/Survay no</td><td>:</td><td><input type="text" placeholder="House no"></input></td><td><input type="text" placeholder="Survay no"/></td><td rowspan="6" valign="top">
+		
+		
+		
+		
 <table>
-
-<tr>
-        <td width="19%" class="tbody" style="padding-bottom:5px; padding-top:5px">Financial Year :</td>
-        <td width="30%" style="background-color:#ccc; padding:5px; height:20px" align="center">(Current Finanical Year)</td>
-        <td width="20%" class="tbody" style="padding-bottom:5px; padding-top:5px">Date :</td>
-        <td width="31%" style="background-color:#ccc; padding:5px; height:20px" align="center">(System Date)</td>
-        </tr>
+ 
+ 
       <tr>
-        <td width="19%" class="tbody">Scheme :</td>
-        <td width="30%"><select name="scheme_select"    id="scheme_select" onchange="schemefilling.updatesubscheme('subscheme_select','scheme_select')"   >
+        <td class="label">Scheme :</td>
+        <td ><select name="scheme_select"    id="scheme_select" onchange="schemefilling.updatesubscheme('subscheme_select','scheme_select')"   >
           <option>Select</option>
           <?php
 		  $datas=$conn->query("select * from items where item_type=0");
@@ -112,58 +65,70 @@ $conn = $database;
           
           </select>
           </td>
-        <td width="20%" class="tbody">&nbsp;</td>
-        <td width="31%">&nbsp;</td>
+         
         </tr>
       <tr>
-        <td width="19%" class="tbody">Sub-schema :</td>
-        <td colspan="3" align="left"><select name="subscheme_select" id='subscheme_select' onchange="schemefilling.updatecomponent();"><option>Select</option>
+        <td class="label">Sub-schema :</td>
+        <td  align="left"><select name="subscheme_select" id='subscheme_select' onchange="schemefilling.updatecomponent();"><option>Select</option>
          
           
           </select>
           </td>
         </tr>
       <tr>
-        <td class="tbody">Component
+        <td class="label">Component
           </td>
-        <td colspan="3" align="left"><select name="component_select" id="component_select"><option>Select</option>
+        <td  align="left"><select name="component_select" id="component_select" onchange="schemefilling.updatecrops();"><option>Select</option>
           
           
           </select></td>
         </tr>
       <tr>
-        <td class="tbody">Sub Component-1/Item/Crop   :</td>
-        <td colspan="3" align="left"><select name="component_1"><option>Select</option>
+        <td class="label">Sub Component-1/Item/Crop   :</td>
+        <td   align="left"><select name="component_1" crop="crop"><option>Select</option>
           
           </select></td>
         </tr>
       <tr>
-        <td width="19%" class="tbody">Sub Component-2/Item/Crop  :</td>
-        <td colspan="3" align="left"><select name="component_1"><option>Select</option>
+        <td class="label">Sub Component-2/Item/Crop  :</td>
+        <td  align="left"><select name="component_2" crop="crop"><option>Select</option>
           
           
           </select>
           </td>
         </tr>
       <tr>
-        <td class="tbody">Sub Component-3/Item/Crop  :</td>
-        <td colspan="3" align="left"><select name="component_4"><option>Select</option>
+        <td class="label">Sub Component-3/Item/Crop  :</td>
+        <td   align="left"><select name="component_3" crop="crop"><option>Select</option>
           
           
           </select></td>
         </tr>
       <tr>
-        <td width="19%" class="tbody">Sub Component-4/Item/Crop  :</td>
-        <td colspan="3" align="left"><select name="component_5"><option>Select</option>
+        <td class="label">Sub Component-4/Item/Crop  :</td>
+        <td   align="left"><select name="component_4" crop="crop"><option>Select</option>
           
           
           </select></td>
         </tr>
      
-      </table></td>
+      </table>
+		
+		
+		
+		</td></tr>
+		<tr><td class="label">District</td><td>:</td><td><input type="text" placeholder="District"/></td><td><input type="text" placeholder="District"/></td></tr>
+		<tr><td class="label">Taluka</td><td>:</td><td><input type="text" placeholder="Taluka"/></td><td><input type="text" placeholder="Taluka"/></td></tr>
+		
+		<tr><td class="label">Hobli</td><td>:</td><td><input type="text" placeholder="Hobli"/></td><td><input type="text" placeholder="Hobli"/></td></tr>
+		<tr><td class="label">Village/City name</td><td>:</td><td><input type="text" placeholder="Village/City name"/></td><td><input type="text" placeholder="Village/City name"/></td></tr>
+		<tr><td class="label" colspan="4">  </td></tr>
+		</tbody>
+		</table>
+ 
   </tr>
   <tr>
-    <td style="border-top:1px solid #000; border-bottom:0px solid #000; font-size:18px; font-weight:bold; padding:5px;" align="center"> 
+    <td  style="border-top:1px solid #000; border-bottom:0px solid #000; font-size:18px; font-weight:bold; padding:5px;" align="center"> 
         <input type="submit" name="button2" id="button2" value="Submit">
        
         <input type="submit" name="Reset" id="Reset" value="Reset">
@@ -172,15 +137,14 @@ $conn = $database;
   </tr>
    
 </table>
-
-
-
-
-
-</div>
  
+
+
+
+
+ </form>
 </div>
-</form>
+
  
 </body>
 </html>

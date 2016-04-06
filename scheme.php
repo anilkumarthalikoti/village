@@ -19,6 +19,7 @@ require "server/app_connector.php";
 $conn=$database;
  
 ?>
+<div class="title">Scheme Details</div>
 <div class="viewport">
   <ul id="tabs">
 

@@ -9,6 +9,7 @@
 <script src="js/default.js" type="text/javascript"></script>
 </head>
 <body>
+<div class="title">Home</div>
 <div class="viewport">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>

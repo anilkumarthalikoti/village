@@ -174,10 +174,11 @@ CREATE TABLE signup (
 CREATE TABLE subcomponent (
 	id bigint(19) NOT NULL auto_increment,
 	schemeid int(10) NOT NULL,
-	subschemid int(10) NOT NULL,
+	subschemeid int(10) NOT NULL,
 	component int(10) NOT NULL,
 	subcomponent int(10) NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	unique(schemeid,subschemeid,component,subcomponent)
 	
 ) ;
 
