@@ -33,16 +33,16 @@ $conn = $database;
        <tr><td>
 	   <table>
       <tr>
-        <td  class="label" > Name </td><td>:</td><td ><input   type="text"  placeholder="First Name"/></td>
+        <td  class="label" > Name </td><td>:</td><td ><input   type="text"  id="firstname" placeholder="First Name"/><input type="hidden" id="regid" name="regid"/></td>
 		  
-        <td calss="label">Father/Husband Name  </td><td>:</td><td ><input   type="text"  placeholder="Father/Husband name"  /></td>
+        <td calss="label">Father/Husband Name  </td><td>:</td><td ><input   type="text"  id="fathername" placeholder="Father/Husband name"  /></td>
         </tr>
 		<tr><td colspan="6">
 		
 		<table width="100%" border="0" class="headerSchemeFiling">
 	<thead><tr><th class="medium"></th><th></th><th class="medium">Residential Address</th><th>Land details</th><th>Scheme Details</th></tr></thead>
 		<tbody>
-		<tr><td class="label">House no/Survay no</td><td>:</td><td><input type="text" placeholder="House no"></input></td><td><input type="text" placeholder="Survay no"/></td><td rowspan="6" valign="top">
+		<tr><td class="label">House no/Survay no</td><td>:</td><td><input id="houseno" type="text" placeholder="House no"></input></td><td><input type="text" id="survayno" placeholder="Survay no"/></td><td rowspan="6" valign="top">
 		
 		
 		
@@ -117,11 +117,11 @@ $conn = $database;
 		
 		
 		</td></tr>
-		<tr><td class="label">District</td><td>:</td><td><input type="text" placeholder="District"/></td><td><input type="text" placeholder="District"/></td></tr>
-		<tr><td class="label">Taluka</td><td>:</td><td><input type="text" placeholder="Taluka"/></td><td><input type="text" placeholder="Taluka"/></td></tr>
+		<tr><td class="label">District</td><td>:</td><td><input type="text" id="district_text" placeholder="District"/></td><td><input type="text" placeholder="District" id="district_text_l"/></td></tr>
+		<tr><td class="label">Taluka</td><td>:</td><td><input type="text" id="taluka_text" placeholder="Taluka"/></td><td><input type="text" placeholder="Taluka"  id="taluka_text_l"/></td></tr>
 		
-		<tr><td class="label">Hobli</td><td>:</td><td><input type="text" placeholder="Hobli"/></td><td><input type="text" placeholder="Hobli"/></td></tr>
-		<tr><td class="label">Village/City name</td><td>:</td><td><input type="text" placeholder="Village/City name"/></td><td><input type="text" placeholder="Village/City name"/></td></tr>
+		<tr><td class="label">Hobli</td><td>:</td><td><input type="text" id="hobli_text" placeholder="Hobli"/></td><td><input type="text" placeholder="Hobli" id="hobli_text_l"/></td></tr>
+		<tr><td class="label">Village/City name</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td><td><input type="text" placeholder="Village/City name" id="village_text_l"/></td></tr>
 		<tr><td class="label" colspan="4">  </td></tr>
 		</tbody>
 		</table>
