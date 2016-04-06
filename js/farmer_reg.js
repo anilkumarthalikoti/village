@@ -28,7 +28,8 @@
 			$.ajax({
 			url:"server/farmer.php",
 			method:"post",
-			data:$("div[id=='form1']").serialize()
+			data:$("form[name='form1']").serialize()
+			 
 			}).done(function(data){
 				 
 				 
@@ -90,8 +91,8 @@
 		
 	this.updatetaluka=function(formname){
 		var params={};
-		var key="div[id=='"+formname+"'] #state_selected option:selected";
-		var key1="div[id=='"+formname+"'] #district_selected option:selected";
+		var key="div[id='"+formname+"'] #state_selected option:selected";
+		var key1="div[id='"+formname+"'] #district_selected option:selected";
 		params["state_selected"]=$(key).val();
 		params["district_selected"]=$(key1).val();
 		params["responsefor"]="taluka";
@@ -104,7 +105,7 @@
 		 	data:params
 			
 							}).done(function(data){
-									 var key="div[id=='"+formname+"'] #taluka_selected";
+									 var key="div[id='"+formname+"'] #taluka_selected";
 								 	$(key+" option").remove();
 				 					 
 									 $(key).append($('<option>', {
@@ -132,9 +133,9 @@
 		
 		this.updatehobli=function(formname){
 		var params={};
-		var key="div[id=='"+formname+"'] #state_selected option:selected";
-		var key1="div[id=='"+formname+"'] #district_selected option:selected";
-		var key2="div[id=='"+formname+"'] #taluka_selected option:selected";
+		var key="div[id='"+formname+"'] #state_selected option:selected";
+		var key1="div[id='"+formname+"'] #district_selected option:selected";
+		var key2="div[id='"+formname+"'] #taluka_selected option:selected";
 		params["state_selected"]=$(key).val();
 		params["district_selected"]=$(key1).val();
 		params["taluka_selected"]=$(key2).val();
@@ -148,7 +149,7 @@
 		 	data:params
 			
 							}).done(function(data){
-									 var key="div[id=='"+formname+"'] #hobli_selected";
+									 var key="div[id='"+formname+"'] #hobli_selected";
 								 	$(key+" option").remove();
 				 					 
 									 $(key).append($('<option>', {
@@ -179,10 +180,10 @@
 		
 		this.updatevillage=function(formname){
 		var params={};
-		var key="div[id=='"+formname+"'] #state_selected option:selected";
-		var key1="div[id=='"+formname+"'] #district_selected option:selected";
-		var key2="div[id=='"+formname+"'] #taluka_selected option:selected";
-		var key3="div[id=='"+formname+"'] #hobli_selected option:selected";
+		var key="div[id='"+formname+"'] #state_selected option:selected";
+		var key1="div[id='"+formname+"'] #district_selected option:selected";
+		var key2="div[id='"+formname+"'] #taluka_selected option:selected";
+		var key3="div[id='"+formname+"'] #hobli_selected option:selected";
 		params["state_selected"]=$(key).val();
 		params["district_selected"]=$(key1).val();
 		params["taluka_selected"]=$(key2).val();
@@ -197,7 +198,7 @@
 		 	data:params
 			
 							}).done(function(data){
-									 var key="div[id=='"+formname+"'] #village_selected";
+									 var key="div[id='"+formname+"'] #village_selected";
 								 	$(key+" option").remove();
 				 					 
 									 $(key).append($('<option>', {
@@ -227,11 +228,11 @@
 		
 		this.updatepanchaitay=function(formname){
 		var params={};
-		var key="div[id=='"+formname+"'] #state_selected option:selected";
-		var key1="div[id=='"+formname+"'] #district_selected option:selected";
-		var key2="div[id=='"+formname+"'] #taluka_selected option:selected";
-		var key3="div[id=='"+formname+"'] #hobli_selected option:selected";
-		var key4="div[id=='"+formname+"'] #village_selected option:selected";
+		var key="div[id='"+formname+"'] #state_selected option:selected";
+		var key1="div[id='"+formname+"'] #district_selected option:selected";
+		var key2="div[id='"+formname+"'] #taluka_selected option:selected";
+		var key3="div[id='"+formname+"'] #hobli_selected option:selected";
+		var key4="div[id='"+formname+"'] #village_selected option:selected";
 		params["state_selected"]=$(key).val();
 		params["district_selected"]=$(key1).val();
 		params["taluka_selected"]=$(key2).val();
@@ -247,7 +248,7 @@
 		 	data:params
 			
 							}).done(function(data){
-									 var key="div[id=='"+formname+"'] #panchaitay_selected";
+									 var key="div[id='"+formname+"'] #panchaitay_selected";
 								 	$(key+" option").remove();
 				 					 
 									 $(key).append($('<option>', {
@@ -287,4 +288,37 @@
 	 
  
 				
-		 
+		 $(document).ready(function(){
+									
+									$("input[name='button']").parent().find("input[type='file']").prop("accept"," image/gif,image/jpeg,image/png");
+									$("input[name='button']").click(function(){
+																					
+																					 
+																					$(this).parent().find("input[type='file']").click();
+																					
+																					
+																					});
+									
+									$("input[name='button']").parent().find("input[type='file']").change(function(event){
+																												  
+			 if (window.File && window.FileReader && window.FileList && window.Blob) {
+  					// Great success! All the File APIs are supported.
+  var input=$(this);
+  var td=$(this).parent().index();
+  
+  var trkey="#fileupload tr#imgview td#"+td+"";
+  var img="<img width='120' alt='NO IMAGE' height='120' id='img"+td+"'></img>";
+  $(trkey).html(img);
+  $("#img"+td).attr("src",URL.createObjectURL(event.target.files[0]));
+  
+   
+  												} else {
+  													
+													
+										}
+																												  
+																												  
+																												  
+																												  });
+									
+									});

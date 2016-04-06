@@ -82,10 +82,81 @@
 		
 		
 		
+		this.updatecrops=function(){
+			
+			var params={};
+		 
+		params["scheme_select"]=$("#scheme_select option:selected").val();
+		params["subscheme_select"]=$("#subscheme_select option:selected").val();
+		params["component_select"]=$("#component_select option:selected").val();	
 		
 		
 		
+		$.ajax({
+			url:"server/scheme.php",
+			method:"get",
+		 	data:params
+			
+							}).done(function(data){
+									 
+								 	$("select[crop='crop'] option").remove();
+				 				 
+									 $("select[crop='crop']").append($('<option>', {
+  									  value: -1,
+    									text: "Select"
+										}));
+		 									data=data+"";
+										 var list=$.parseJSON(data);
+				  									$.each(list,function(key1,val){
+									   //4,5,6,7
+									   var item_type=val["item_type"];
+									   var key="";
+									   if(item_type==3){
+										   	key="select[name='component_1']";
+									   
+										   }
+										    if(item_type==4){
+										   	key="select[name='component_2']";
+									   
+										   }
+										    if(item_type==5){
+										   	key="select[name='component_3']";
+									   
+										   }
+										    if(item_type==6){
+										   	key="select[name='component_4']";
+									   
+										   }
+									   					$(key).append($('<option>', {
+   																				 value: val["item_id"],
+   																				 text: val["item_name"]
+																					}));
+														
+														
+														
+									   											});
+						 
+													});
 		
+		
+			}
+		
+		
+		this.searchRegistration=function(){
+			var params={};
+			params["searchregistration"]=$("#search").val();
+			params["searchin"]=$("#searchin option:selected").val();
+			
+			$.ajax({
+			url:"server/scheme.php",
+			method:"get",
+		 	data:params
+			
+							}).done(function(data){
+								alert(data);
+								
+								});
+			}
 		
 		
 	
@@ -97,8 +168,7 @@
 	
 	
 	$(document).ready(function(){
-							  $(document).bind('keydown.Alt+Shift+s',function (evt){
-																		  
-																		   });
-							   
+							 $("input[type='text']").attr("disabled","disabled");
+							   $("input[type='text']").addClass("medium");
+							   	 $("input[id='search']").attr("disabled",false);
 							   });

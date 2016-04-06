@@ -665,6 +665,10 @@ function getCursorPosition(textarea)
 
 function showCombi(e)
 {
+	var shownow=false;
+	if(!shownow){
+		return;
+		}
     if(document.getElementById('HelpDiv') == null)
     {
 	    helpdiv  = document.createElement('div');
