@@ -8,12 +8,21 @@ $conn=$database;
  $status=$_POST["status"];
  }
 ?>
+ <script type="text/javascript">
+ function updateselect(){
+if( $("#checkall").is(":checked")){
+ $("input[selectall='selectall']").prop("checked","checked");
+ }else{
+  $("input[selectall='selectall']").removeAttr("checked");
+ }
+ }
  
+ </script>
 <div style="height:300px; overflow:auto; max-height:400px;">
 <table    class="grid excel">
   <thead><tr><th>Reg.No</th><th>Date of Reg.</th><th>Full Name</th><th>Village</th><th>Cast</th><th>Land survey no</th><th>Land area</th> <th>Farmer type</th><th>Sector</th><th>Crop</th><th>Drip Installed area</th>
   <th>Status</th>
-  <th><input type="checkbox" onclick=""/>All</th></tr></thead>
+  <th><input type="checkbox" id="checkall" onclick="updateselect();"/>All</th></tr></thead>
   <?php 
   $query="select s.id, concat('F000',s.id) regid, DATE_FORMAT(s.regdate,'%d/%m/%Y') regdate, concat(f.firstname,' ',f.lastname ,'/',f.firstname_k,' ',f.lastname_k) name, (select concat(st.state_name,'/', st.state_name_k )  from states st where id= f.village and item_type=4) village,'-'usercast,'-' farmertype,'-' lsurvay,'-' la,'-' sector ,'-' crop,'-' dripare, case when s.status='P' then 'New-Pending' when s.status='R' then 'Rejected' when s.status='I' then 'Yet-pre inspection'  else 'Done' end    from schemefilling s, farmerdetails f where f.id= s.regid and f.hobli in (select hobliid from actionmapping where regid='".$id["id"]."') and s.id ";
   if($status!="R"){
@@ -37,7 +46,7 @@ $conn=$database;
   }
   $i++;
   }
-  echo "<td><input type='checkbox' name='selectedactions[]' value='".$regid."'/></td></tr>";
+  echo "<td><input type='checkbox' selectall='selectall' name='selectedactions[]' value='".$regid."'/></td></tr>";
   }
   ?>
   
