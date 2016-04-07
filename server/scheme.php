@@ -133,7 +133,7 @@ $query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where 
 $query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.landvillage) village_text_l";
 $query.="   from farmerdetails a";
  
-$query.= " where  ".$searchfor[$_GET['searchin']]."='".$_GET['searchregistration']."' limit 1";
+$query.= " where  ".$_GET['searchin']."='".$_GET['searchregistration']."' limit 1";
 
 $result=$conn->query($query);
 $jsontext= "[";

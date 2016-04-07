@@ -57,23 +57,33 @@ $conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$distr
  $hobli_selected=getVal("hobli_selected");
  $village_selected=getVal("village_selected");
  $panchaitay_selected=getVal("panchaitay_selected");
+ $regid=$_SESSION["logged_in"];
+ $restrict=getVal("restrict");
  
+ $aval="(select * from hobli where hobliid in(select hobliid from actionmapping where regid=".$regid["id"].")) res ";
 $query="";
  switch($responseFor){
  case "district":
  
  $query="select s.* from district d,states s where s.item_type=1 and d.districtid= s.id and  d.stateid=".$state_selected."";
-  
+ if($restrict=="1"){
+ $query= "select s.* from district d,states s,".$aval." where res.districtid=s.id and s.item_type=1 and d.districtid= s.id and  d.stateid=".$state_selected ;
+ } 
  break;
  case "taluka":
  
  $query="select s.* from taluka d,states s where d.talukaid= s.id and  d.districtid=".$district_selected."";
-  
+   if($restrict=="1"){
+ $query="select s.* from taluka d,states s,".$aval." where res.talukaid=s.id and d.talukaid= s.id and  d.districtid=".$district_selected."";
+ } 
  break;
  
  case "hobli":
- 
+  
  $query="select s.* from hobli d,states s where d.hobliid= s.id and  d.talukaid=".$taluka_selected."";
+  if($restrict=="1"){
+  $query="select s.* from hobli d,states s,".$aval." where res.hobliid=s.id and d.hobliid= s.id and  d.talukaid=".$taluka_selected."";
+ }
  break;
  
  case "village":

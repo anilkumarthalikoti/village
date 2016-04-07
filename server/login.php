@@ -13,5 +13,22 @@ $_SESSION["logged_in"]=$data;
 }
 echo $result;
 }
+ if($_POST["methodcall"]=="validate_user"){
+
+$result=$database->select("app_login",array("id"),array("login_id"=>strtoupper($_POST["userid"])));
+$id="";
+foreach($result as $row){
+$id=$row["id"];
+}
  
+echo $id;
+}
+if($_POST["methodcall"]=="save_action_mapping"){
+$hoblis=$_POST["hobli"];
+$id=$_POST["userregid"];
+$database->delete("actionmapping",array("regid"=>$id));
+ foreach($hoblis as $hobli){
+  $database->insert("actionmapping",array("regid"=>$id,"hobliid"=>$hobli));
+ }
+}
 ?>
