@@ -22,7 +22,7 @@
 		var key="form[name='"+formname+"'] #state_selected option:selected";
 		params["state_selected"]=$(key).val();
 		params["responsefor"]="district";
-		
+		params["restrict"]="1";
 		
 		
 						$.ajax({
@@ -69,7 +69,7 @@
 		params["state_selected"]=$(key).val();
 		params["district_selected"]=$(key1).val();
 		params["responsefor"]="taluka";
-		
+				params["restrict"]="1";
 		
 		
 						$.ajax({
@@ -113,7 +113,7 @@
 		params["district_selected"]=$(key1).val();
 		params["taluka_selected"]=$(key2).val();
 		params["responsefor"]="hobli";
-		
+				params["restrict"]="1";
 		
 		
 						$.ajax({
@@ -349,12 +349,39 @@
 		// Approval details update
 		
 		this.updateschemadetails=function(searchby){
-			 $("#details_schema").load("schemedetails.php");
+			 $("#details_schema").load("approval_schemedetails.php");
 			}
+			
+			
+			
+			
+			
+		this.search_application=function(){
+			
+			var params={};
+			params["status"]=$("#actionselect option:selected").val();
+			$.ajax({
+			url:"approval_actions.php",
+			method:"post",
+		 	data:params
+			
+							}).done(function(data){
+								
+								
+								$("div#actions").html(data);
+								
+								});
+			}	
+			
 	
 	}
 	
-	
+	$(document).ready(function(){
+							   
+							   
+							   $("#details_schema").load("approval_schemedetails.php");
+							   $("#actions").load("approval_actions.php");
+							   });
 	
 	
 	

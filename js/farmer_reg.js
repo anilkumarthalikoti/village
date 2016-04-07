@@ -49,7 +49,7 @@
 		var key="div[id='"+formname+"'] #state_selected option:selected";
 		params["state_selected"]=$(key).val();
 		params["responsefor"]="district";
-		
+		params["restrict"]=1;
 		
 		
 						$.ajax({
@@ -96,7 +96,7 @@
 		params["state_selected"]=$(key).val();
 		params["district_selected"]=$(key1).val();
 		params["responsefor"]="taluka";
-		
+			params["restrict"]=1;
 		
 		
 						$.ajax({
@@ -140,7 +140,7 @@
 		params["district_selected"]=$(key1).val();
 		params["taluka_selected"]=$(key2).val();
 		params["responsefor"]="hobli";
-		
+			params["restrict"]=1;
 		
 		
 						$.ajax({
