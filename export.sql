@@ -158,6 +158,8 @@ CREATE TABLE schemefilling (
 	item4 int(10),
 	regdate date,
 	regby int(10),
+	status VARCHAR(1) DEFAULT 'P',
+	landsurvayno VARCHAR(255),
 	PRIMARY KEY (id)
 	
 ) ;
@@ -195,6 +197,29 @@ CREATE TABLE user_roles (
 	role_id int(10) NOT NULL,
 	is_active varchar(1)
 ) ;
+CREATE TABLE  actionmapping
+(regid INT NOT NULL,
+hobliid INT NOT NULL,
+PRIMARY KEY (regid, hobliid));
+
+CREATE TABLE logtracking
+(schemefillingid INT,
+createdby INT NOT NULL,
+createdtime TIMESTAMP DEFAULT current_timestamp,
+remarks text,
+statusat VARCHAR(2));
+
+
+
+CREATE TABLE  schemerejection
+(schemefillingid INT NOT NULL,
+remarks text,
+rejectiondate date,
+rejected_by int,
+rejected_at VARCHAR(1),
+PRIMARY KEY (schemefillingid));
+
+
 
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
 

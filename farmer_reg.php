@@ -290,11 +290,11 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
                  <tr>
                    
                    <td class="label" >Constituency  :</td>
-                   <td class="label" colspan="3"><select name="landconstituency"  type=  id="landconstituency"  >
+                   <td class="label"  ><select name="landconstituency"  type=  id="landconstituency"  >
                        <option value="-1">Select</option>
                       
                      </select>
-                        </td>
+                      
                  </tr>
                </table>
            </div>

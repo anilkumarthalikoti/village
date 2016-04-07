@@ -122,7 +122,7 @@ $conn = $database;
 		
 		<tr><td class="label">Hobli</td><td>:</td><td><input type="text" id="hobli_text" placeholder="Hobli"/></td><td><input type="text" placeholder="Hobli" id="hobli_text_l"/></td></tr>
 		<tr><td class="label">Village/City name</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td><td><input type="text" placeholder="Village/City name" id="village_text_l"/></td></tr>
-		<tr><td class="label" colspan="4">  </td></tr>
+		<tr><td class="label" colspan="4"></td></tr>
 		</tbody>
 		</table>
  
