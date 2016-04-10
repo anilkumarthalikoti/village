@@ -16,7 +16,46 @@
 		
 		}
 	
-	
+	this.updateview=function(elementid){
+		var params={};
+		 
+		params["getschemes"]=true;
+		params["parent_id"]= $(elementid).val();
+			$.ajax({
+			url:"server/scheme.php",
+			method:"get",
+		 	data:params
+			
+							}).done(function(data){
+								var setelement=$(elementid).parent().closest('tr').next().find("select");
+								  
+								$(setelement).find('option') .remove();
+									 var key="";
+				 					key=setelement;
+									 $(key).append($('<option>', {
+  									  value: -1,
+    									text: "Select"
+										}));
+		 									data=data+"";
+										 var list=$.parseJSON(data);
+				  									$.each(list,function(key1,val){
+									  
+									  var id="";
+									  var name="";
+									  $.each(val,function(keyx,valx){
+										  console.log(keyx+":"+valx);
+										  id=keyx;
+										  name=valx;
+										  });
+									   								$(key).append($('<option>', {
+   																				 value: id,
+   																				 text: name
+																					}));
+									   
+									   											});
+						 
+													});
+		}
 	this.updatesubscheme=function(id,scheme){
 		
 			var params={};

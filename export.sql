@@ -140,6 +140,15 @@ CREATE TABLE items (
 	unique key (item_name,item_type)
 ) ;
 
+CREATE TABLE schemes (
+	id bigint(19) NOT NULL auto_increment,
+	name varchar(150) NOT NULL,
+	parent_id int(10) NOT NULL,
+	PRIMARY KEY (id),
+	unique key (name,parent_id)
+) ;
+
+
 CREATE TABLE page_links (
 	linkid int(10) NOT NULL,
 	linkname varchar(100) NOT NULL,
