@@ -132,14 +132,7 @@ CREATE TABLE panchayati (
 	unique key(stateid,districtid,talukaid,hobliid,constituencyid,panchayatiid)
 ) ;
 
-CREATE TABLE items (
-	item_id bigint(19) NOT NULL auto_increment,
-	item_name varchar(150) NOT NULL,
-	item_type int(10) NOT NULL,
-	PRIMARY KEY (item_id),
-	unique key (item_name,item_type)
-) ;
-
+ 
 CREATE TABLE schemes (
 	id bigint(19) NOT NULL auto_increment,
 	name varchar(150) NOT NULL,
@@ -193,25 +186,7 @@ CREATE TABLE signup (
 	email varchar(255) NOT NULL,
 	mobileno varchar(255) NOT NULL
 ) ;
-
-CREATE TABLE subcomponent (
-	id bigint(19) NOT NULL auto_increment,
-	schemeid int(10) NOT NULL,
-	subschemeid int(10) NOT NULL,
-	component int(10) NOT NULL,
-	subcomponent int(10) NOT NULL,
-	PRIMARY KEY (id),
-	unique(schemeid,subschemeid,component,subcomponent)
-	
-) ;
-
-CREATE TABLE subschemes (
-	id bigint(19) NOT NULL auto_increment,
-	schemeid int(10) NOT NULL,
-	subschemeid int(10) NOT NULL,
-	PRIMARY KEY (id),
-	unique key(schemeid,subschemeid)
-) ;
+ 
 
 CREATE TABLE user_roles (
 	login_id varchar(50),
