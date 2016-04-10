@@ -221,7 +221,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <tr><td class="label">Select sub component-1</td><td>:</td><td><select name="parent_id" id="component_select"><OPTION value="-1">Select</OPTION></select></td></tr>
 <tr>
   <td class="label">Enter sub component-2</td>
-  <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /><input type="hidden" name="parent_id"   value="4"/><input type="button" value="Save" onclick="scheme.saveData('subcomponent_2')" /></td></tr>
+  <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /> <input type="button" value="Save" onclick="scheme.saveData('subcomponent_2')" /></td></tr>
 
 <tr><td colspan="3">
 
@@ -270,7 +270,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <tr><td class="label">Select sub component-2</td><td>:</td><td><select name="parent_id" id="component_select"><OPTION value="-1">Select</OPTION></select></td></tr>
 <tr>
   <td class="label">Enter sub component-3</td>
-  <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /><input type="hidden" name="parent_id"   value="5"/><input type="button" value="Save" onclick="scheme.saveData('subcomponent_3')" /></td></tr>
+  <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /> <input type="button" value="Save" onclick="scheme.saveData('subcomponent_3')" /></td></tr>
 
 <tr><td colspan="3">
 
@@ -332,7 +332,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
   <td>:</td><td><select name="parent_id" id="component_select" onchange="scheme.updateview(this)"><OPTION value="-1">Select</OPTION></select></td></tr>
 <tr>
   <td class="label">Enter sub component-4</td>
-  <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /><input type="hidden" name="parent_id"   value="3"/><input type="button" value="Save" onclick="scheme.saveData('subcomponent_4')" /></td></tr>
+  <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /><input type="button" value="Save" onclick="scheme.saveData('subcomponent_4')" /></td></tr>
 
 <tr><td colspan="3">
 
