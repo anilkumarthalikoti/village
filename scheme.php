@@ -261,7 +261,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 </select></td></tr>
 <tr><td class="label">Select Sub scheme</td><td>:</td>
 <td>
-<select name="subscheme_select" id="sub_scheme_select2" onchange="scheme.updatecomponent()">
+<select name="subscheme_select" id="sub_scheme_select2" onchange="scheme.updateview(this)">
 <option value="-1">Select</option>
  
 </select></td></tr>
