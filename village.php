@@ -380,7 +380,7 @@ $rowid++;
 <div class="container" id="tab7C">
 <form name="village">
 <input type="hidden" name="saveType" value="village"/>
-<input type="hidden" name="item_type" value="5"/>
+<input type="hidden" name="item_type" value="6"/>
 
 
 <table class="margin-left margin-top">

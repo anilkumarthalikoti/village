@@ -44,7 +44,8 @@ $conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$distr
  break;
  
   case "village":
-$conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"constituencyid"=>$constituency_selected,"panchayatiid"=>$panchaitay_selected,"village_id"=>$id));
+//  $conn->debug();
+$conn->insert("village",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"constituencyid"=>$constituency_selected,"panchayatiid"=>$panchaitay_selected,"villageid"=>$id));
  break;
  
  }

@@ -146,7 +146,27 @@ $conn=$database;
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			   <tr>
 			   <td width="9%" >Select village</td>
-			   <td width="91%"  >			   </td>
+			   <td width="91%"  ><select name="village" class="xlarge">
+			   <option value="-1">Select</option>
+			   
+			   <?php 
+			   
+			   $query="select s.id, concat(s.state_name,'/',s.state_name_k,'      (',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.stateid)";
+			  
+			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.districtid)";
+			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.talukaid)";
+			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.constituencyid)";
+			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.panchayatiid)";
+			    $query.=" ,'') vname from village v ,states s where s.id= v.villageid";
+			   $result=$conn->query($query);
+			   echo $query;
+			   foreach($result as $row){
+			   echo "<option value='".$row["id"]."'>".$row["vname"]."</option>";
+			   }
+			   ?>
+			   
+			   
+			   </select>			   </td>
 			   </tr>
                  <tr>
                    
