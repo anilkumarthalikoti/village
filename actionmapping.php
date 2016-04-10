@@ -3,19 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Office_App</title>
-<link href="css/style.css" type="text/css" rel="stylesheet" />
-<link href="css/menu.css" type="text/css" rel="stylesheet" />
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/default.js" type="text/javascript"></script>
+ <?php 
+  require "interceptor.php";
+ require "server/app_connector.php";
+$conn=$database;
+ ?>
 <script src="js/actionmapping.js" type="text/javascript"></script>
 
 </head>
 <body>
-<?php
-session_start();
-require "server/app_connector.php";
-$conn=$database;
-?>
+
 <div class="title">Action Mapping</div>
 <div class="viewport">
 <form name="actionmapping" onsubmit="return false;">

@@ -1,6 +1,7 @@
-<?php 
-session_start();
-require "server/app_connector.php";
+ <?php 
+  require "interceptor.php";
+ require "server/app_connector.php";
+ 
 $conn=$database;
 $query="";
 $count="";

@@ -18,8 +18,11 @@ $id=$conn->insert("states",array("state_name"=>$state_name,"state_name_k"=>$stat
  $district_selected=postVal("district_selected");
  $taluka_selected=postVal("taluka_selected");
  $hobli_selected=postVal("hobli_selected");
+ $constituency_selected=postVal("constituency_selected");
+  $panchaitay_selected=postVal("panchaitay_selected");
  $village_selected=postVal("village_selected");
- $panchaitay_selected=postVal("panchaitay_selected");
+ 
+
  
  switch($saveType){
  case "district":
@@ -33,11 +36,15 @@ $id=$conn->insert("states",array("state_name"=>$state_name,"state_name_k"=>$stat
  case "hobli":
  $conn->insert("hobli",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$id));
  break;
- case "village":
-$conn->insert("village",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"villageid"=>$id));
+ case "constituency":
+$conn->insert("constituency",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"constituencyid"=>$id));
  break;
   case "panchaitay":
-$conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"villageid"=>$village_selected,"panchayatiid"=>$id));
+$conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"constituencyid"=>$constituency_selected,"panchayatiid"=>$id));
+ break;
+ 
+  case "village":
+$conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"constituencyid"=>$constituency_selected,"panchayatiid"=>$panchaitay_selected,"village_id"=>$id));
  break;
  
  }
@@ -57,6 +64,7 @@ $conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$distr
  $hobli_selected=getVal("hobli_selected");
  $village_selected=getVal("village_selected");
  $panchaitay_selected=getVal("panchaitay_selected");
+  $constituency_selected=getVal("constituency_selected");
  $regid=$_SESSION["logged_in"];
  $restrict=getVal("restrict");
  
@@ -85,15 +93,19 @@ $query="";
   $query="select s.* from hobli d,states s,".$aval." where res.hobliid=s.id and d.hobliid= s.id and  d.talukaid=".$taluka_selected."";
  }
  break;
+ case "constituency":
+  $query="select s.* from constituency d,states s where d.constituencyid= s.id and  d.hobliid=".$hobli_selected."";
+ break;
  
+  case "panchaitay":
+ 
+ $query="select s.* from panchayati d,states s where d.panchayatiid= s.id and  d.constituencyid=".$constituency_selected."";
+ break;
  case "village":
- $query="select s.* from village d,states s where d.villageid= s.id and  d.hobliid=".$hobli_selected."";
+ $query="select s.* from village d,states s where d.villageid= s.id and  d.panchaitay=".$panchaitay_selected."";
  break;
  
- case "panchaitay":
- 
- $query="select s.* from panchayati d,states s where d.panchayatiid= s.id and  d.villageid=".$village_selected."";
- break;
+
  
  }
   $jsontext="[";

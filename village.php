@@ -2,59 +2,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Office_App</title>
-<link href="css/style.css" type="text/css" rel="stylesheet" />
-<link href="css/menu.css" type="text/css" rel="stylesheet" />
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/default.js" type="text/javascript"></script>
-<script src="js/common.js" type="text/javascript"></script>
-<script src="js/kannada.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
+ <?php 
+ require "interceptor.php";
+ require "server/app_connector.php";
+$conn=$database;
+ ?>
 <script type="text/javascript" src="js/village.js"></script>
-<script type="text/javascript">
-
-	
-	$(document).ready(function(){
- $("input[name='state_name_ka']").each(function(){
-					$(this).attr("charset","utf-8");	   
-						   
-						   
-						   $(this).keydown(function(e){
-															
-														toggleKBMode(e)	;
-															});
-						   
-						   
-						      $(this).keypress(function(e){
-															
-														convertThis(e);
-															});
-						   
-						   
-														 });
  
- 
- });
-</script>
 </head>
 
 <body>
-<?php 
-session_start();
-require "server/app_connector.php";
-$conn=$database;
  
-?>
 <div class="title">Location Details</div>
 <div class="viewport">
+<span></span>
   <ul id="tabs">
 
       <li><a id="tab1">State</a></li>
 	   <li><a id="tab2">District</a></li>
       <li><a id="tab3">Taluka</a></li>
 	   <li><a id="tab4">Hobli</a></li>
-	   <li><a id="tab5">Village</a></li>
-	    <li><a id="tab6">Panchayati</a></li>
-		
+	   <li><a id="tab5">Constituency</a></li>
+	    <li><a id="tab6">Panchayat</a></li>
+		<li><a id="tab7">Village</a></li>
 	     
        
 
@@ -65,7 +35,7 @@ $conn=$database;
 <input type="hidden" name="item_type" value="0"/>
 <table class="margin-left margin-top">
 <tr><td class="label">State</td>
-<td>:</td><td><input type="text" name="state_name" placeholder="Enter state" /> <input type="text" alt="ka" name="state_name_ka"/><input type="button" value="Save" onClick="states.saveData('addState');"/></td>
+<td>:</td><td><input type="text" name="state_name" placeholder="Enter state" /> <input type="text" alt="ka" name="state_name_ka" id="s1"/><input type="button" value="Save" onClick="states.saveData('addState');"/></td>
 </tr>
 <tr><td colspan="3">
 <table class="grid small">
@@ -110,20 +80,26 @@ foreach($result as $row)
 echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
 ?>
 </select></td></tr>
-<tr><td class="label">Enter district</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter district" /><input type="text" name="state_name_ka" placeholder="Enter district" alt="ka" /></td></tr>
+<tr><td class="label">Enter district</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter district" /><input type="text" name="state_name_ka" placeholder="Enter district" alt="ka" id="s2" /></td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('district')" /></td></tr>
 <tr><td colspan="3">
 
 <table class="grid">
 <thead>
 <tr><th colspan="3">Districts</th></tr>
- 
+
 
 </thead>
 <tbody>
 <?php 
- 
-?>
+$query="select * from states where item_type=1";
+$result=$conn->query($query);
+$rowid=0;
+foreach($result as $row){
+echo "<tr><td>".$rowid."</td><td>".$row['state_name']."</td><td>".$row['state_name_k']."</td></tr>";
+$rowid++;
+}
+?> 
 
 </tbody>
 </table>
@@ -144,7 +120,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 
 <table class="margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
-<select name="state_selected" id="state_selected" onChange="states.updatedistrict('taluka')">
+<select name="state_selected" id="state_selected" onChange="states.updateview('taluka','state_selected','district','district_selected')">
 <option value="-1">Select</option>
 
 <?php 
@@ -159,7 +135,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 <option value="-1">Select</option>
  
 </select></td></tr>
-<tr><td class="label">Enter taluka</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter taluka" /><input type="text" name="state_name_ka" placeholder="Enter taluka" alt="ka" /></td></tr>
+<tr><td class="label">Enter taluka</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter taluka" /><input id="s3" type="text" name="state_name_ka" placeholder="Enter taluka" alt="ka" /></td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('taluka')" /></td></tr>
 <tr><td colspan="3">
 
@@ -170,7 +146,15 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </thead>
 <tbody>
  
-
+<?php 
+$query="select * from states where item_type=2";
+$result=$conn->query($query);
+$rowid=0;
+foreach($result as $row){
+echo "<tr><td>".$rowid."</td><td>".$row['state_name']."</td><td>".$row['state_name_k']."</td></tr>";
+$rowid++;
+}
+?>
 </tbody>
 </table>
 
@@ -189,7 +173,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 
 <table class="margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
-<select name="state_selected" id="state_selected" onChange="states.updatedistrict('hobli')">
+<select name="state_selected" id="state_selected" onChange="states.updateview('hobli','state_selected','district','district_selected')">
 <option value="-1">Select</option>
 
 <?php 
@@ -200,18 +184,18 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 <tr><td class="label">Select District</td><td>:</td>
 <td>
-<select name="district_selected" id="district_selected" onChange="states.updatetaluka('hobli');">
+<select name="district_selected" id="district_selected" onChange="states.updateview('hobli','district_selected','taluka','taluka_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
-<tr><td class="label">Select District</td><td>:</td>
+<tr><td class="label">Select taluka</td><td>:</td>
 <td>
 <select name="taluka_selected" id="taluka_selected">
 <option value="-1">Select</option>
  
 </select></td></tr>
 
-<tr><td class="label">Enter hobli</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter hobli" /><input type="text" name="state_name_ka" placeholder="Enter hobli" alt="ka" /></td></tr>
+<tr><td class="label">Enter hobli</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter hobli" /><input type="text" name="state_name_ka" placeholder="Enter hobli" alt="ka" id="s4" /></td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('hobli')" /></td></tr>
 <tr><td colspan="3">
 
@@ -222,7 +206,15 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </thead>
 <tbody>
  
-
+<?php 
+$query="select * from states where item_type=3";
+$result=$conn->query($query);
+$rowid=0;
+foreach($result as $row){
+echo "<tr><td>".$rowid."</td><td>".$row['state_name']."</td><td>".$row['state_name_k']."</td></tr>";
+$rowid++;
+}
+?>
 </tbody>
 </table>
 
@@ -239,14 +231,14 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 
 
 <div class="container" id="tab5C">
-<form name="village">
-<input type="hidden" name="saveType" value="village"/>
+<form name="constituency">
+<input type="hidden" name="saveType" value="constituency"/>
 <input type="hidden" name="item_type" value="4"/>
 
 
 <table class="margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
-<select name="state_selected" id="state_selected" onChange="states.updatedistrict('village')">
+<select name="state_selected" id="state_selected" onChange="states.updateview('constituency','state_selected','district','district_selected')">
 <option value="-1">Select</option>
 
 <?php 
@@ -257,13 +249,13 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 <tr><td class="label">Select District</td><td>:</td>
 <td>
-<select name="district_selected" id="district_selected" onChange="states.updatetaluka('village');">
+<select name="district_selected" id="district_selected" onChange="states.updateview('constituency','district_selected','taluka','taluka_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
 <tr><td class="label">Select Taluka</td><td>:</td>
 <td>
-<select name="taluka_selected" id="taluka_selected" onChange="states.updatehobli('village')">
+<select name="taluka_selected" id="taluka_selected" onChange="states.updateview('constituency','taluka_selected','hobli','hobli_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
@@ -273,18 +265,29 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 <option value="-1">Select</option>
  
 </select></td></tr>
-<tr><td class="label">Enter village</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter village" /><input type="text" name="state_name_ka" placeholder="Enter hobli" alt="ka" /></td></tr>
-<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('village')" /></td></tr>
+<tr>
+  <td class="label">Enter constituency </td>
+  <td>:</td><td><input type="text" name="state_name" placeholder="Enter constituency" /><input type="text" name="state_name_ka" placeholder="Enter constituency" alt="ka" id="s5" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('constituency')" /></td></tr>
 <tr><td colspan="3">
 
 <table class="grid">
 <thead>
-<tr><th colspan="4">Village</th></tr>
+<tr><th colspan="4">Constituency</th></tr>
  
+
 </thead>
 <tbody>
  
-
+<?php 
+$query="select * from states where item_type=4";
+$result=$conn->query($query);
+$rowid=0;
+foreach($result as $row){
+echo "<tr><td>".$rowid."</td><td>".$row['state_name']."</td><td>".$row['state_name_k']."</td></tr>";
+$rowid++;
+}
+?>
 </tbody>
 </table>
 
@@ -306,7 +309,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 
 <table class="margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
-<select name="state_selected" id="state_selected" onChange="states.updatedistrict('panchaitay')">
+<select name="state_selected" id="state_selected" onChange="states.updateview('panchaitay','state_selected','district','district_selected');">
 <option value="-1">Select</option>
 
 <?php 
@@ -317,40 +320,136 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 <tr><td class="label">Select District</td><td>:</td>
 <td>
-<select name="district_selected" id="district_selected" onChange="states.updatetaluka('panchaitay');">
+<select name="district_selected" id="district_selected" onChange="states.updateview('panchaitay','district_selected','taluka','taluka_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
 <tr><td class="label">Select Taluka</td><td>:</td>
 <td>
-<select name="taluka_selected" id="taluka_selected" onChange="states.updatehobli('panchaitay')">
+<select name="taluka_selected" id="taluka_selected" onChange="states.updateview('panchaitay','taluka_selected','hobli','hobli_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
 <tr><td class="label">Select hobli</td><td>:</td>
 <td>
-<select name="hobli_selected" id="hobli_selected" onChange="states.updatevillage('panchaitay')">
+<select name="hobli_selected" id="hobli_selected" onChange="states.updateview('panchaitay','hobli_selected','constituency','constituency_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
-<tr><td class="label">Select village</td><td>:</td>
+<tr>
+  <td class="label">Select constituency </td>
+  <td>:</td>
 <td>
-<select name="village_selected" id="village_selected" >
+<select name="constituency_selected" id="constituency_selected" >
 <option value="-1">Select</option>
  
 </select></td></tr>
-<tr><td class="label">Enter panchaitay</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter panchaitay" /><input type="text" name="state_name_ka" placeholder="Enter panchaitay" alt="ka" /></td></tr>
+<tr><td class="label">Enter panchaitay</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter panchaitay" /><input type="text" name="state_name_ka" placeholder="Enter panchaitay" alt="ka" id="s6" /></td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('panchaitay')" /></td></tr>
 <tr><td colspan="3">
 
 <table class="grid">
 <thead>
-<tr><th colspan="4">Village</th></tr>
+<tr><th colspan="3">Panchayat</th></tr>
  
 </thead>
 <tbody>
  
+<?php 
+$query="select * from states where item_type=5";
+$result=$conn->query($query);
+$rowid=0;
+foreach($result as $row){
+echo "<tr><td>".$rowid."</td><td>".$row['state_name']."</td><td>".$row['state_name_k']."</td></tr>";
+$rowid++;
+}
+?>
+</tbody>
+</table>
 
+</td></tr>
+</table>
+
+
+</form>
+
+</div>
+ 
+
+
+<div class="container" id="tab7C">
+<form name="village">
+<input type="hidden" name="saveType" value="village"/>
+<input type="hidden" name="item_type" value="5"/>
+
+
+<table class="margin-left margin-top">
+<tr><td class="label">Select state</td><td>:</td><td>
+<select name="state_selected" id="state_selected" onChange="states.updateview('village','state_selected','district','district_selected');">
+<option value="-1">Select</option>
+
+<?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>0));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
+</select></td></tr>
+<tr><td class="label">Select District</td><td>:</td>
+<td>
+<select name="district_selected" id="district_selected" onChange="states.updateview('village','district_selected','taluka','taluka_selected');">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr><td class="label">Select Taluka</td><td>:</td>
+<td>
+<select name="taluka_selected" id="taluka_selected" onChange="states.updateview('village','taluka_selected','hobli','hobli_selected');">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr><td class="label">Select hobli</td><td>:</td>
+<td>
+<select name="hobli_selected" id="hobli_selected" onChange="states.updateview('village','hobli_selected','constituency','constituency_selected');">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr>
+  <td class="label">Select constituency </td>
+  <td>:</td>
+<td>
+<select name="constituency_selected" id="constituency_selected" onChange="states.updateview('village','constituency_selected','panchaitay','panchaitay_selected');">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+
+<tr>
+  <td class="label">Select panchayat </td>
+  <td>:</td>
+<td>
+<select name="panchaitay_selected" id="panchaitay_selected" >
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+
+<tr><td class="label">Enter village</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter village" /><input type="text" name="state_name_ka" placeholder="Enter village" alt="ka" id="s7" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('village')" /></td></tr>
+<tr><td colspan="3">
+
+<table class="grid">
+<thead>
+<tr><th colspan="3">Village</th></tr>
+ 
+</thead>
+<tbody>
+ 
+<?php 
+$query="select * from states where item_type=6";
+$result=$conn->query($query);
+$rowid=0;
+foreach($result as $row){
+echo "<tr><td>".$rowid."</td><td>".$row['state_name']."</td><td>".$row['state_name_k']."</td></tr>";
+$rowid++;
+}
+?>
 </tbody>
 </table>
 

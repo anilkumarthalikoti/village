@@ -3,21 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Office_App</title>
-<link href="css/style.css" type="text/css" rel="stylesheet" />
-<script src="js/jquery.js" type="text/javascript"></script>
+<?php
+   require "interceptor.php";
+ ?>
  
 <script src="js/login.js" type="text/javascript"></script>
-<?php
-    session_start();
 
- if(isset($_SESSION['logged_in'])) {
- ?>
-<script type="text/javascript">
-window.location="/home.php";
-</script> 
- <?php
- }
- ?>
 </head>
 
 <body>
@@ -42,12 +33,10 @@ window.location="/home.php";
  	<tr><td colspan="2" id="errorMsg"></td></tr>
 				 <tr>
     					<td  >
-								<input name="remember_me" type="checkbox" value="" />Remember Me       				  </td><td align="right" width="150px">		<input type="button" class="button_login" value=" Login " id="submit" onClick="login.validate()"  />   
+								<input name="remember_me" type="checkbox" value="" />Remember Me</td><td align="right" width="150px">		<input type="button" class="button_login" value=" Login " id="submit" onClick="login.validate()"  />   
               			</td>
     </tr>
-    <tr><td colspan="2" class="align_center">Don't have an account?  <a href="signup.php" style="color:#FF0000">Sign up</a> </td></tr>
-    
-  </table></td></tr>
+    </table></td></tr>
 </table>
 <div class="dialogBottom"></div>
 </div></td>

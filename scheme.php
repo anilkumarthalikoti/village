@@ -9,16 +9,15 @@
 <script src="js/default.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery.hotkeys.js"></script>
 <script type="text/javascript" src="js/scheme.js"></script>
-
+ <?php 
+  require "interceptor.php";
+ require "server/app_connector.php";
+$conn=$database;
+ ?>
 </head>
 
 <body>
-<?php 
-session_start();
-require "server/app_connector.php";
-$conn=$database;
  
-?>
 <div class="title">Scheme Details</div>
 <div class="viewport">
   <ul id="tabs">

@@ -3,25 +3,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Office_App</title>
-<link href="css/style.css" type="text/css" rel="stylesheet" />
-<link href="css/menu.css" type="text/css" rel="stylesheet" />
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/default.js" type="text/javascript"></script>
-<script src="js/common.js" type="text/javascript"></script>
-<script src="js/kannada.js" type="text/javascript"></script>
+ <?php 
+  require "interceptor.php";
+ require "server/app_connector.php";
+$conn=$database;
+ ?>
  <script src="js/farmer_reg.js" type="text/javascript"></script>
  
- 
+
 </head>
 
 <body>
- 
-<?php 
-session_start();
-require "server/app_connector.php";
-$conn=$database;
- 
-?>
+
 <div class="title" >Application Enrolment Form</div>
    <div class="viewport">
      
@@ -151,97 +144,53 @@ $conn=$database;
            </div>
            <div class="container" id="tab3C">
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			   <tr>
+			   <td width="9%" >Select village</td>
+			   <td width="91%"  >			   </td>
+			   </tr>
                  <tr>
-                   <td class="label">State  :</td>
-                   <td class="label"><select name="userstate"  type="text"  id="state_selected" onchange="farmer.updatedistrict('tab3C')"  >
-                       <option value="-1">Select</option>
- 					   <?php 
-$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>0));
-foreach($result as $row)
-echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
-?>
-					   
-                        
-                     </select>
-                      
-                     <span class="error">* </span></td>
+                   
                    <td class="label">House No :</td>
                    <td class="label"><input name="houseno" type="text" id="houseno" placeholder="Enter House No." /></td>
                  </tr>
                  <tr>
-                   <td class="label">District  :</td>
-                   <td class="label"><select name="district"  id="district_selected" onchange="farmer.updatetaluka('tab3C')"  >
-                       <option>Select</option>
-                        
-                     </select>
                     
-                     <span class="error">* </span></td>
                    <td class="label">Street  :</td>
                    <td class="label"><input name="street" type="text" id="street" placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
-                   <td class="label">Taluk   :</td>
-                   <td class="label"><select name="taluk"  type="text"  id="taluka_selected" onchange="farmer.updatehobli('tab3C')"    >
-                       <option>Select</option>
-                        
-                     </select>
-                      
-                     <span class="error">* </span></td>
+                   
                    <td class="label">Location   :</td>
                    <td class="label"><input name="location" type="text"   placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
-                   <td class="label">Hobli   :</td>
-                   <td class="label"><select name="hobli"  type="text"  id="hobli_selected" onchange="farmer.updatevillage('tab3C')"   >
-                       <option>Select</option>
-                     
-                     </select>
-                
-                     <span class="error">* </span></td>
+                  
                    <td class="label">Land Mark   :</td>
                    <td class="label"><input name="landmark" type="text" id="landmark" placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
-                   <td class="label">Village  :</td>
-                   <td class="label"><select name="village"  type="text"  id="village_selected" onchange="farmer.updatepanchaitay('tab3C')"   >
-                       <option>Select</option>
-                      
-                     </select>
-                      
-                     <span class="error">* </span></td>
+                    
                    <td class="label">Pin Code   :</td>
-                   <td class="label"><input name="pincode" type="text" id="pincode" placeholder="Pincode"    />
-                       <span class="error">* </span></td>
+                   <td class="label"><input name="pincode" type="text" id="pincode" placeholder="Pincode"    /></td>
                  </tr>
                   
                  <tr>
-                   <td class="label">Panchayat  :</td>
-                   <td class="label"><select name="panchayat"  type="text"  id="panchaitay_selected"  >
-                       <option>Select</option>
-                       
-                     </select>
-                     
-                     <span class="error">* </span></td>
+                  
                    <td class="label">Landline Phone No  :</td>
                    <td class="label"><input name="landlineno" type="text" id="landlineno" placeholder="Enter Landline Phone No"  /></td>
                  </tr>
                  <tr>
-                   <td class="label">Constituency  :</td>
-                   <td class="label"  ><select name="constituency"  type="text"  id="textfield1"  >
-                       <option value="-1">Select</option>
-                       
-                     </select>
-                     </td>
+                 
                    <td class="label">Mobile No  :</td>
                    <td class="label"><input name="mobileno" type="text" id="mobileno" placeholder="Enter Mobile No" maxlength="10"  />
-                       <span class="error">* </span></td>
+                       </td>
                  </tr>
                </table>
            </div>
            <div class="container" id="tab4C">
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
-                   <td class="label">State  :</td>
+                   <td class="label">Select village  :</td>
                    <td class="label"><select name="landstate"     id="state_selected" onchange="farmer.updatedistrict('tab4C')"  >
                        <option>Select</option>
                     <?php 
@@ -251,51 +200,9 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 ?>
                      </select>
                    
-                   <td class="label">District  :</td>
-                   <td class="label"><select name="landdistrict"  type="text"  id="district_selected" onchange="farmer.updatetaluka('tab4C')"  >
-                       <option value="-1">Select</option>
-                     </select>
-                      </td>
-                 </tr>
-                 <tr>
-                   <td class="label">Taluk  :</td>
-                   <td class="label"><select name="landtaluk"     id="taluka_selected" onchange="farmer.updatehobli('tab4C')"  >
-                       <option>Select</option>
-                       
-                     </select>
-                    </td>
-                   <td class="label">Hobli  :</td>
-                   <td class="label">
-				   <select name="landhobli"    id="hobli_selected" onchange="farmer.updatevillage('tab4C')"  >
-                       <option>Select</option>
-                      
-                     </select>
-                    </td>
-                 </tr>
-                 <tr>
-                   <td class="label">Village   :</td>
-                   <td class="label">
-				   <select name="landvillage"  id="village_selected" onchange="farmer.updatepanchaitay('tab4C')"  >
-                       <option>Select</option>
-                   
-                     </select>
-                      </td>
-                   <td class="label">Panchayat   :</td>
-                   <td class="label"><select name="landpanchayat" id="panchaitay_selected"    >
-                       <option>Select</option>
                     
-                     </select>
-                       </td>
                  </tr>
-                 <tr>
-                   
-                   <td class="label" >Constituency  :</td>
-                   <td class="label"  ><select name="landconstituency"  type=  id="landconstituency"  >
-                       <option value="-1">Select</option>
-                      
-                     </select>
-                      
-                 </tr>
+                 
                </table>
            </div>
            <div class="container" id="tab5C">

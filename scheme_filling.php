@@ -9,12 +9,11 @@
 </head>
 
 <body>
-  <?php
-session_start();
-require "server/app_connector.php";
-$conn = $database;
- 
-?>
+ <?php 
+  require "interceptor.php";
+ require "server/app_connector.php";
+$conn=$database;
+ ?>
  <div class="title"><span>Schema filling</span></div>
 <div class="viewport">
 

@@ -97,15 +97,27 @@ CREATE TABLE hobli (
 	PRIMARY KEY (id),
 	unique key(stateid,districtid,talukaid,hobliid)
 ) ;
+CREATE TABLE constituency (
+	id bigint(19) NOT NULL auto_increment,
+	stateid int(10) NOT NULL,
+	districtid int(10) NOT NULL,
+	talukaid int(10) NOT NULL,
+	hobliid int(10) NOT NULL,
+	constituencyid int(10) NOT NULL,
+	PRIMARY KEY (id),
+	unique key(stateid,districtid,talukaid,hobliid,constituencyid)
+) ;
 CREATE TABLE village (
 	id bigint(19) NOT NULL auto_increment,
 	stateid int(10) NOT NULL,
 	districtid int(10) NOT NULL,
 	talukaid int(10) NOT NULL,
 	hobliid int(10) NOT NULL,
+	constituencyid int(10) not null,
+	panchayatiid int(10) NOT NULL,
 	villageid int(10) NOT NULL,
 	PRIMARY KEY (id),
-	unique key(stateid,districtid,talukaid,hobliid,villageid)
+	unique key(stateid,districtid,talukaid,hobliid,constituencyid,panchayatiid,villageid)
 ) ;
 
 CREATE TABLE panchayati (
@@ -114,10 +126,10 @@ CREATE TABLE panchayati (
 	districtid int(10) NOT NULL,
 	talukaid int(10) NOT NULL,
 	hobliid int(10) NOT NULL,
-	villageid int(10) NOT NULL,
+	constituencyid int(10) NOT NULL,
 	panchayatiid int(10) NOT NULL,
 	PRIMARY KEY (id),
-	unique key(stateid,districtid,talukaid,hobliid,villageid,panchayatiid)
+	unique key(stateid,districtid,talukaid,hobliid,constituencyid,panchayatiid)
 ) ;
 
 CREATE TABLE items (

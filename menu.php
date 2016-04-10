@@ -69,7 +69,6 @@ foreach($link as $links){
 </ul>
   </div>
  </div>
- <br />
  </div>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -81,11 +80,7 @@ $(rid).remove();
 
 });
 $("table[id='access_roles']").remove();
-
-$('div[class="holder"]').each(function(){
-var val=$(this).parent().parent().find("li").length;
-$(this).html(val);
-});
-$("li[link_id]").append("<div class='sublink'></div>");
+ 
+ 
 });
 </script>
