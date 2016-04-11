@@ -9,6 +9,13 @@
 $conn=$database;
 
  ?>
+ <style type="text/css">
+ .dash a,.dash_c a{
+ text-decoration:none;
+ width:100px;
+ 
+ }
+ </style>
  <script type="text/javascript">
  $(document).ready(function(){
  $("tr td[class='dash']").each(function(){
@@ -45,10 +52,10 @@ $conn=$database;
 <div class="title">Home</div>
 <div class="viewport">
 <br/><br/>
-  <table width="100%" border="0" cellspacing="0" cellpadding="0" id="hometargets">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" id="hometargets" class="grid excel">
  
     <tr>
-      <td align="center" valign="top"><table width="100%" border="1" cellspacing="0" cellpadding="0" style="border:1px solid #666">
+      <td align="center" valign="top"><table width="100%"  cellspacing="0" cellpadding="0" style="border:1px solid #666">
         <tr>
           <td rowspan="3" class="dash">Scheme</td>
           <td colspan="8" class="dash" align="center">Annual Target</td>
@@ -136,7 +143,7 @@ $conn=$database;
 	    } 
 		?>
         <tr class="total">
-          <td class="dash">Total</td>
+          <td class="dash"><a href="#">Total</a></td>
           <td class="dash"><a href="#" style="color:#FFF">100</a></td>
           <td class="dash"><a href="#" style="color:#FFF">100</a></td>
           <td class="dash"><a href="#" style="color:#FFF">100</a></td>
