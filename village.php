@@ -21,9 +21,9 @@ $conn=$database;
       <li><a id="tab1">State</a></li>
 	   <li><a id="tab2">District</a></li>
       <li><a id="tab3">Taluka</a></li>
-	   <li><a id="tab4">Hobli</a></li>
-	   <li><a id="tab5">Constituency</a></li>
-	    <li><a id="tab6">Panchayat</a></li>
+	  <li><a id="tab4">Constituency</a></li>
+	   <li><a id="tab5">Hobli</a></li>
+	  	    <li><a id="tab6">Panchayat</a></li>
 		<li><a id="tab7">Village</a></li>
 	     
        
@@ -129,7 +129,9 @@ foreach($result as $row)
 echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
 ?>
 </select></td></tr>
-<tr><td class="label">Select District</td><td>:</td>
+<tr>
+  <td class="label">Select district</td>
+  <td>:</td>
 <td>
 <select name="district_selected" id="district_selected">
 <option value="-1">Select</option>
@@ -166,14 +168,14 @@ $rowid++;
 
 </div>
 <div class="container" id="tab4C">
-<form name="hobli">
-<input type="hidden" name="saveType" value="hobli"/>
+<form name="constituency">
+<input type="hidden" name="saveType" value="constituency"/>
 <input type="hidden" name="item_type" value="3"/>
 
 
 <table class="margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
-<select name="state_selected" id="state_selected" onChange="states.updateview('hobli','state_selected','district','district_selected')">
+<select name="state_selected" id="state_selected" onChange="states.updateview('constituency','state_selected','district','district_selected')">
 <option value="-1">Select</option>
 
 <?php 
@@ -182,9 +184,11 @@ foreach($result as $row)
 echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
 ?>
 </select></td></tr>
-<tr><td class="label">Select District</td><td>:</td>
+<tr>
+  <td class="label">Select district</td>
+  <td>:</td>
 <td>
-<select name="district_selected" id="district_selected" onChange="states.updateview('hobli','district_selected','taluka','taluka_selected');">
+<select name="district_selected" id="district_selected" onChange="states.updateview('constituency','district_selected','taluka','taluka_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
@@ -195,13 +199,17 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
  
 </select></td></tr>
 
-<tr><td class="label">Enter hobli</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter hobli" /><input type="text" name="state_name_ka" placeholder="Enter hobli" alt="ka" id="s4" /></td></tr>
-<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('hobli')" /></td></tr>
+<tr>
+  <td class="label">Enter constituency </td>
+  <td>:</td><td><input type="text" name="state_name" placeholder="Enter constituency" /><input type="text" name="state_name_ka" placeholder="Enter constituency" alt="ka" id="s4" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('constituency')" /></td></tr>
 <tr><td colspan="3">
 
 <table class="grid">
 <thead>
-<tr><th colspan="4">Hobli</th></tr>
+<tr>
+  <th colspan="4"><span class="label">Constituency</span></th>
+</tr>
  
 </thead>
 <tbody>
@@ -231,14 +239,14 @@ $rowid++;
 
 
 <div class="container" id="tab5C">
-<form name="constituency">
-<input type="hidden" name="saveType" value="constituency"/>
+<form name="hobli">
+<input type="hidden" name="saveType" value="hobli"/>
 <input type="hidden" name="item_type" value="4"/>
 
 
 <table class="margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
-<select name="state_selected" id="state_selected" onChange="states.updateview('constituency','state_selected','district','district_selected')">
+<select name="state_selected" id="state_selected" onChange="states.updateview('hobli','state_selected','district','district_selected')">
 <option value="-1">Select</option>
 
 <?php 
@@ -247,33 +255,40 @@ foreach($result as $row)
 echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
 ?>
 </select></td></tr>
-<tr><td class="label">Select District</td><td>:</td>
+<tr>
+  <td class="label">Select district</td>
+  <td>:</td>
 <td>
-<select name="district_selected" id="district_selected" onChange="states.updateview('constituency','district_selected','taluka','taluka_selected');">
-<option value="-1">Select</option>
- 
-</select></td></tr>
-<tr><td class="label">Select Taluka</td><td>:</td>
-<td>
-<select name="taluka_selected" id="taluka_selected" onChange="states.updateview('constituency','taluka_selected','hobli','hobli_selected');">
-<option value="-1">Select</option>
- 
-</select></td></tr>
-<tr><td class="label">Select hobli</td><td>:</td>
-<td>
-<select name="hobli_selected" id="hobli_selected">
+<select name="district_selected" id="district_selected" onChange="states.updateview('hobli','district_selected','taluka','taluka_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
 <tr>
-  <td class="label">Enter constituency </td>
-  <td>:</td><td><input type="text" name="state_name" placeholder="Enter constituency" /><input type="text" name="state_name_ka" placeholder="Enter constituency" alt="ka" id="s5" /></td></tr>
-<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('constituency')" /></td></tr>
+  <td class="label">Select taluka</td>
+  <td>:</td>
+<td>
+<select name="taluka_selected" id="taluka_selected" onChange="states.updateview('hobli','taluka_selected','constituency','constituency_selected');">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr><td class="label">Select constituency</td>
+<td>:</td>
+<td>
+<select name="constituency_selected" id="constituency_selected">
+<option value="-1">Select</option>
+ 
+</select></td></tr>
+<tr>
+  <td class="label">Enter hobli </td>
+  <td>:</td><td><input type="text" name="state_name" placeholder="Enter hobli" /><input type="text" name="state_name_ka" placeholder="Enter hobli" alt="ka" id="s5" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('hobli')" /></td></tr>
 <tr><td colspan="3">
 
 <table class="grid">
 <thead>
-<tr><th colspan="4">Constituency</th></tr>
+<tr>
+  <th colspan="4">Hobli</th>
+</tr>
  
 
 </thead>
@@ -326,21 +341,22 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 <tr><td class="label">Select Taluka</td><td>:</td>
 <td>
-<select name="taluka_selected" id="taluka_selected" onChange="states.updateview('panchaitay','taluka_selected','hobli','hobli_selected');">
+<select name="taluka_selected" id="taluka_selected" onChange="states.updateview('panchaitay','taluka_selected','constituency','constituency_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
-<tr><td class="label">Select hobli</td><td>:</td>
+<tr><td class="label">Select constituency</td>
+<td>:</td>
 <td>
-<select name="hobli_selected" id="hobli_selected" onChange="states.updateview('panchaitay','hobli_selected','constituency','constituency_selected');">
+<select name="constituency_selected" id="constituency_selected" onChange="states.updateview('panchaitay','constituency_selected','hobli','hobli_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
 <tr>
-  <td class="label">Select constituency </td>
+  <td class="label">Select hobli </td>
   <td>:</td>
 <td>
-<select name="constituency_selected" id="constituency_selected" >
+<select name="hobli_selected" id="hobli_selected" >
 <option value="-1">Select</option>
  
 </select></td></tr>
@@ -394,29 +410,34 @@ foreach($result as $row)
 echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
 ?>
 </select></td></tr>
-<tr><td class="label">Select District</td><td>:</td>
+<tr>
+  <td class="label">Select district</td>
+  <td>:</td>
 <td>
 <select name="district_selected" id="district_selected" onChange="states.updateview('village','district_selected','taluka','taluka_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
-<tr><td class="label">Select Taluka</td><td>:</td>
+<tr>
+  <td class="label">Select taluka</td>
+  <td>:</td>
 <td>
-<select name="taluka_selected" id="taluka_selected" onChange="states.updateview('village','taluka_selected','hobli','hobli_selected');">
+<select name="taluka_selected" id="taluka_selected" onChange="states.updateview('village','taluka_selected','constituency','constituency_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
-<tr><td class="label">Select hobli</td><td>:</td>
+<tr><td class="label">Select constituency</td>
+<td>:</td>
 <td>
-<select name="hobli_selected" id="hobli_selected" onChange="states.updateview('village','hobli_selected','constituency','constituency_selected');">
+<select name="constituency_selected" id="constituency_selected" onChange="states.updateview('village','constituency_selected','hobli','hobli_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>
 <tr>
-  <td class="label">Select constituency </td>
+  <td class="label">Select hobli </td>
   <td>:</td>
 <td>
-<select name="constituency_selected" id="constituency_selected" onChange="states.updateview('village','constituency_selected','panchaitay','panchaitay_selected');">
+<select name="hobli_selected" id="hobli_selected" onChange="states.updateview('village','hobli_selected','panchaitay','panchaitay_selected');">
 <option value="-1">Select</option>
  
 </select></td></tr>

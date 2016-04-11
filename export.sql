@@ -82,18 +82,18 @@ CREATE TABLE hobli (
 	districtid int(10) NOT NULL,
 	talukaid int(10) NOT NULL,
 	hobliid int(10) NOT NULL,
+	constituencyid int(10) NOT NULL,
 	PRIMARY KEY (id),
-	unique key(stateid,districtid,talukaid,hobliid)
+	unique key(stateid,districtid,talukaid,constituencyid,hobliid)
 ) ;
 CREATE TABLE constituency (
 	id bigint(19) NOT NULL auto_increment,
 	stateid int(10) NOT NULL,
 	districtid int(10) NOT NULL,
 	talukaid int(10) NOT NULL,
-	hobliid int(10) NOT NULL,
 	constituencyid int(10) NOT NULL,
 	PRIMARY KEY (id),
-	unique key(stateid,districtid,talukaid,hobliid,constituencyid)
+	unique key(stateid,districtid,talukaid,constituencyid)
 ) ;
 CREATE TABLE village (
 	id bigint(19) NOT NULL auto_increment,
@@ -283,7 +283,7 @@ INSERT INTO role_mstr(role_id, role_name) VALUES (1, 'ADMIN_ROLE');
 
 INSERT INTO signup(fname, lname, desigination, department, email, mobileno) VALUES ('anil', 'kumar', 'developer', 'dev', 'anil2k12@gmail.com', '8106231231');
 
-INSERT INTO user_roles(login_id, role_id, is_active) VALUES ('1', 1, 'Y');
+ 
 
 INSERT INTO user_roles(login_id, role_id, is_active) VALUES ('ADMIN', 1, 'Y');
 

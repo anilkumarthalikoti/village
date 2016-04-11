@@ -33,11 +33,11 @@ $id=$conn->insert("states",array("state_name"=>$state_name,"state_name_k"=>$stat
  case "taluka":
  $conn->insert("taluka",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$id));
  break;
- case "hobli":
- $conn->insert("hobli",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$id));
- break;
  case "constituency":
-$conn->insert("constituency",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"constituencyid"=>$id));
+ $conn->insert("constituency",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"constituencyid"=>$id));
+ break;
+ case "hobli":
+$conn->insert("hobli",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"constituencyid"=>$constituency_selected,"hobliid"=>$id));
  break;
   case "panchaitay":
 $conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"constituencyid"=>$constituency_selected,"panchayatiid"=>$id));
@@ -87,20 +87,23 @@ $query="";
  } 
  break;
  
- case "hobli":
+ case "constituency":
   
- $query="select s.* from hobli d,states s where d.hobliid= s.id and  d.talukaid=".$taluka_selected."";
+ $query="select s.* from constituency d,states s where d.constituencyid= s.id and  d.talukaid=".$taluka_selected."";
   if($restrict=="1"){
-  $query="select s.* from hobli d,states s,".$aval." where res.hobliid=s.id and d.hobliid= s.id and  d.talukaid=".$taluka_selected."";
+  $query="select s.* from constituency d,states s,".$aval." where res.constituencyid=s.id and d.constituencyid= s.id and  d.talukaid=".$taluka_selected."";
  }
  break;
- case "constituency":
-  $query="select s.* from constituency d,states s where d.constituencyid= s.id and  d.hobliid=".$hobli_selected."";
+ case "hobli":
+  $query="select s.* from hobli d,states s where d.hobliid= s.id and  d.constituencyid=".$constituency_selected."";
+    if($restrict=="1"){
+  $query="select s.* from hobli d,states s,".$aval." where res.hobliid=s.id and d.hobliid= s.id and  d.hobliid=".$constituency_selected."";
+ }
  break;
  
   case "panchaitay":
  
- $query="select s.* from panchayati d,states s where d.panchayatiid= s.id and  d.constituencyid=".$constituency_selected."";
+ $query="select s.* from panchayati d,states s where d.panchayatiid= s.id and  d.hobliid=".$hobli_selected."";
  break;
  case "village":
  $query="select s.* from village d,states s where d.villageid= s.id and  d.panchaitay=".$panchaitay_selected."";
