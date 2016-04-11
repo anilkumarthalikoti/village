@@ -1,20 +1,22 @@
  var schemefilling=new function(){
- 	this.updatesubscheme=function(id,scheme){
-		
-			var params={};
-		var schemeselected="#"+scheme+" option:selected";
-		params["scheme_select"]=$(schemeselected).val();
-		
-		
-				$.ajax({
+	 
+	 
+	 this.updateview=function(elementid){
+		var params={};
+		 
+		params["getschemes"]=true;
+		params["parent_id"]= $(elementid).val();
+			$.ajax({
 			url:"server/scheme.php",
 			method:"get",
 		 	data:params
 			
 							}).done(function(data){
-									 var key="#"+id+" option";
-								 	$(key).remove();
-				 					key="#"+id;
+								var setelement=$(elementid).parent().closest('tr').next().find("select");
+								  
+								$(setelement).find('option') .remove();
+									 var key="";
+				 					key=setelement;
 									 $(key).append($('<option>', {
   									  value: -1,
     									text: "Select"
@@ -22,125 +24,24 @@
 		 									data=data+"";
 										 var list=$.parseJSON(data);
 				  									$.each(list,function(key1,val){
-									   
+									  
+									  var id="";
+									  var name="";
+									  $.each(val,function(keyx,valx){
+										  console.log(keyx+":"+valx);
+										  id=keyx;
+										  name=valx;
+										  });
 									   								$(key).append($('<option>', {
-   																				 value: val["item_id"],
-   																				 text: val["item_name"]
+   																				 value: id,
+   																				 text: name
 																					}));
 									   
 									   											});
 						 
 													});
-			
-			
-			
-			
 		}
-		
-		
-		
-		this.updatecomponent=function(){
-			
-			
-			
-			var params={};
-		 
-		params["scheme_select"]=$("#scheme_select option:selected").val();
-		params["subscheme_select"]=$("#subscheme_select option:selected").val();
-				$.ajax({
-			url:"server/scheme.php",
-			method:"get",
-		 	data:params
-			
-							}).done(function(data){
-									 var key="#component_select option";
-								 	$(key).remove();
-				 				 
-									 $("#component_select").append($('<option>', {
-  									  value: -1,
-    									text: "Select"
-										}));
-		 									data=data+"";
-										 var list=$.parseJSON(data);
-				  									$.each(list,function(key1,val){
-									   
-									   								$("#component_select").append($('<option>', {
-   																				 value: val["item_id"],
-   																				 text: val["item_name"]
-																					}));
-									   
-									   											});
-						 
-													});
-			
-			
-			
-			
-			
-			
-			}
-		
-		
-		
-		this.updatecrops=function(){
-			
-			var params={};
-		 
-		params["scheme_select"]=$("#scheme_select option:selected").val();
-		params["subscheme_select"]=$("#subscheme_select option:selected").val();
-		params["component_select"]=$("#component_select option:selected").val();	
-		
-		
-		
-		$.ajax({
-			url:"server/scheme.php",
-			method:"get",
-		 	data:params
-			
-							}).done(function(data){
-									 
-								 	$("select[crop='crop'] option").remove();
-				 				 
-									 $("select[crop='crop']").append($('<option>', {
-  									  value: -1,
-    									text: "Select"
-										}));
-		 									data=data+"";
-										 var list=$.parseJSON(data);
-				  									$.each(list,function(key1,val){
-									   //4,5,6,7
-									   var item_type=val["item_type"];
-									   var key="";
-									   if(item_type==3){
-										   	key="select[name='component_1']";
-									   
-										   }
-										    if(item_type==4){
-										   	key="select[name='component_2']";
-									   
-										   }
-										    if(item_type==5){
-										   	key="select[name='component_3']";
-									   
-										   }
-										    if(item_type==6){
-										   	key="select[name='component_4']";
-									   
-										   }
-									   					$(key).append($('<option>', {
-   																				 value: val["item_id"],
-   																				 text: val["item_name"]
-																					}));
-														
-														
-														
-									   											});
-						 
-													});
-		
-		
-			}
-		
+ 	 
 		
 		this.searchRegistration=function(){
 			var params={};

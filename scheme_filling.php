@@ -1,19 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<<link href="css/style.css" type="text/css" rel="stylesheet" />
-<link href="css/menu.css" type="text/css" rel="stylesheet" />
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/default.js" type="text/javascript"></script>
- <script src="js/scheme_filling.js" type="text/javascript"></script>
-</head>
-
-<body>
  <?php 
   require "interceptor.php";
  require "server/app_connector.php";
 $conn=$database;
  ?>
+ <script src="js/scheme_filling.js" type="text/javascript"></script>
+</head>
+
+<body>
+
  <div class="title"><span>Schema filling</span></div>
 <div class="viewport">
 
@@ -36,96 +33,41 @@ $conn=$database;
 		  
         <td calss="label">Father/Husband Name  </td><td>:</td><td ><input   type="text"  id="fathername_text" placeholder="Father/Husband name"  /></td>
         </tr>
-		<tr><td colspan="6">
-		
-		<table width="100%" border="0" class="headerSchemeFiling">
-	<thead><tr><th class="medium"></th><th></th><th class="medium">Residential Address</th><th>Land details</th><th>Scheme Details</th></tr></thead>
-		<tbody>
-		<tr><td class="label">House no/Survay no</td><td>:</td><td><input id="houseno_text" type="text" placeholder="House no"></input></td><td><input type="text" id="survayno_text" placeholder="Survay no"/></td><td rowspan="6" valign="top">
-		
-		
-		
-		
-<table>
- 
- 
-      <tr>
-        <td class="label">Scheme :</td>
-        <td ><select name="scheme_select"    id="scheme_select" onchange="schemefilling.updatesubscheme('subscheme_select','scheme_select')"   >
+		<tr><td>House No</td><td>:</td><td><input id="houseno_text" type="text" placeholder="House no"></input></td><td>Village</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td></tr>
+		<tr><td>Survay no</td><td>:</td><td><input type="text" id="survayno_text" placeholder="Survay no"/></td><td>Village</td><td>:</td><td><input type="text" placeholder="Village/City name" id="village_text_l"/></td></tr>
+	 <tr><td>Scheme</td><td>:</td><td><select name="scheme_select"    id="scheme_select" onchange="schemefilling.updateview(this)"   >
           <option>Select</option>
           <?php
-		  $datas=$conn->query("select * from items where item_type=0");
+		  $datas=$conn->query("select * from schemes where parent_id=0");
 		  foreach($datas as $data){
 		 
-		  echo "<option value='".$data["item_id"]."'>".$data["item_name"]."</option>";
+		  echo "<option value='".$data["id"]."'>".$data["name"]."</option>";
 		   
 		  }
 		  ?>
           
-          </select>
-          </td>
-         
-        </tr>
-      <tr>
-        <td class="label">Sub-schema :</td>
-        <td  align="left"><select name="subscheme_select" id='subscheme_select' onchange="schemefilling.updatecomponent();"><option>Select</option>
+          </select></td><td>Sub scheme</td><td>:</td><td><select name="subscheme_select" id='subscheme_select' onchange="schemefilling.updateview(this);"><option>Select</option>
          
           
-          </select>
-          </td>
-        </tr>
-      <tr>
-        <td class="label">Component
-          </td>
-        <td  align="left"><select name="component_select" id="component_select" onchange="schemefilling.updatecrops();"><option>Select</option>
+          </select></td></tr>
+	  <tr><td>Component</td><td>:</td><td><select name="component_select" id="component_select" onchange="schemefilling.updateview(this);"><option>Select</option>
           
           
-          </select></td>
-        </tr>
-      <tr>
-        <td class="label">Sub Component-1/Item/Crop   :</td>
-        <td   align="left"><select name="component_1" crop="crop"><option>Select</option>
+          </select></td><td>Sub-component-1</td><td>:</td><td><select name="component_1"  id="component_1" onchange="schemefilling.updateview(this);"><option>Select</option>
           
-          </select></td>
-        </tr>
-      <tr>
-        <td class="label">Sub Component-2/Item/Crop  :</td>
-        <td  align="left"><select name="component_2" crop="crop"><option>Select</option>
+          </select></td></tr>
+	   <tr><td>Sub-component-2</td><td>:</td><td><select name="component_2" id="component_2" onchange="schemefilling.updateview(this);"><option>Select</option>
           
           
-          </select>
-          </td>
-        </tr>
-      <tr>
-        <td class="label">Sub Component-3/Item/Crop  :</td>
-        <td   align="left"><select name="component_3" crop="crop"><option>Select</option>
+          </select></td><td>Sub-component-3</td><td>:</td><td><select name="component_3"  id="component_3" onchange="schemefilling.updateview(this);"><option>Select</option>
           
           
-          </select></td>
-        </tr>
-      <tr>
-        <td class="label">Sub Component-4/Item/Crop  :</td>
-        <td   align="left"><select name="component_4" crop="crop"><option>Select</option>
+          </select></td></tr>
+	    <tr><td>Sub-component-4</td><td>:</td><td><select name="component_4"  id="component_4" onchange="schemefilling.updateview(this);"><option>Select</option>
           
           
-          </select></td>
-        </tr>
-     
-      </table>
-		
-		
-		
-		</td></tr>
-		<tr><td class="label">District</td><td>:</td><td><input type="text" id="district_text" placeholder="District"/></td><td><input type="text" placeholder="District" id="district_text_l"/></td></tr>
-		<tr><td class="label">Taluka</td><td>:</td><td><input type="text" id="taluk_text" placeholder="Taluka"/></td><td><input type="text" placeholder="Taluka"  id="taluk_text_l"/></td></tr>
-		
-		<tr><td class="label">Hobli</td><td>:</td><td><input type="text" id="hobli_text" placeholder="Hobli"/></td><td><input type="text" placeholder="Hobli" id="hobli_text_l"/></td></tr>
-		<tr><td class="label">Village/City name</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td><td><input type="text" placeholder="Village/City name" id="village_text_l"/></td></tr>
-		<tr><td class="label" colspan="4"></td></tr>
-		</tbody>
-		</table>
- 
-  </tr>
+          </select></td><td></td><td>:</td><td></td></tr>
+		 
   <tr>
     <td  colspan="6" align="right"> 
         <input type="button" class="button" id="button2" value="Save" onclick="schemefilling.saveData();">
