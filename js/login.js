@@ -17,7 +17,12 @@
 	 }
 	 
 	 
+	 this.checklogin=function(e){
+		 if(e.which==13){
 	 
+			 login.validate();
+			 }
+		 }
 	 
 	 
 	 }
