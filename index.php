@@ -30,7 +30,7 @@
 
   <tr><td><input name="username" type="text" id="username" placeholder="USER ID" class="large align_right"/></td></tr>
   
-  <tr><td ><input name="password" type="password" id="password" placeholder="PASSWORD" class="large align_right"  /></td></tr>
+  <tr><td ><input name="password" type="password" id="password" placeholder="PASSWORD" class="large align_right"  onkeypress="login.checklogin(event)" /></td></tr>
   <tr><td>
   		<table width="100%;" cellspacing="0" cellpadding="0">
  	
