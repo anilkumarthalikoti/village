@@ -12,7 +12,14 @@
 		 	data:params
 			
 							}).done(function(data){
-								var setelement=$(elementid).parent().closest('tr').next().find("select");
+								var next=$(elementid).attr("tab");
+								next=Number(next)+1;
+								 
+								var key="select[tab='"+next+"']";
+								if(next>6){
+									return;
+									}
+								var setelement=$(key);
 								  
 								$(setelement).find('option') .remove();
 									 var key="";
