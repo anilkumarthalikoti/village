@@ -145,8 +145,8 @@ $conn=$database;
            <div class="container" id="tab3C">
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			   <tr>
-			   <td width="9%" >Select village</td>
-			   <td width="91%"  ><select name="village" class="xlarge">
+			   <td  class="label">Select village</td><td>:</td>
+			   <td  colspan="3"  ><select name="village" class="excel">
 			   <option value="-1">Select</option>
 			   
 			   <?php 
@@ -170,39 +170,36 @@ $conn=$database;
 			   </tr>
                  <tr>
                    
-                   <td class="label">House No :</td>
+                   <td class="label">House No</td><td>:</td>
                    <td class="label"><input name="houseno" type="text" id="houseno" placeholder="Enter House No." /></td>
-                 </tr>
-                 <tr>
-                    
-                   <td class="label">Street  :</td>
+				    <td class="label">Street</td><td>:</td>
                    <td class="label"><input name="street" type="text" id="street" placeholder="Enter Street"  /></td>
                  </tr>
                  <tr>
-                   
-                   <td class="label">Location   :</td>
-                   <td class="label"><input name="location" type="text"   placeholder="Enter Street"  /></td>
+                    
+                  
                  </tr>
                  <tr>
-                  
-                   <td class="label">Land Mark   :</td>
+                   
+                   <td class="label">Location </td><td>:</td>
+                   <td class="label"><input name="location" type="text"   placeholder="Enter Street"  /></td>
+				      <td class="label">Land Mark</td><td>:</td>
                    <td class="label"><input name="landmark" type="text" id="landmark" placeholder="Enter Street"  /></td>
                  </tr>
+                 
                  <tr>
                     
-                   <td class="label">Pin Code   :</td>
+                   <td class="label">Pin Code</td><td>:</td>
                    <td class="label"><input name="pincode" type="text" id="pincode" placeholder="Pincode"    /></td>
-                 </tr>
-                  
-                 <tr>
-                  
-                   <td class="label">Landline Phone No  :</td>
+				    <td class="label">Landline Phone No</td><td>:</td>
                    <td class="label"><input name="landlineno" type="text" id="landlineno" placeholder="Enter Landline Phone No"  /></td>
                  </tr>
+                  
+               
                  <tr>
                  
-                   <td class="label">Mobile No  :</td>
-                   <td class="label"><input name="mobileno" type="text" id="mobileno" placeholder="Enter Mobile No" maxlength="10"  />
+                   <td class="label">Mobile No</td><td>:</td>
+                   <td class="label" colspan="3"><input name="mobileno" type="text" id="mobileno" placeholder="Enter Mobile No" maxlength="10"  />
                        </td>
                  </tr>
                </table>
@@ -211,14 +208,25 @@ $conn=$database;
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
                    <td class="label">Select village  :</td>
-                   <td class="label"><select name="landstate"     id="state_selected" onchange="farmer.updatedistrict('tab4C')"  >
+                   <td class="label"><select name="landstate"    >
                        <option>Select</option>
-                    <?php 
-$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>0));
-foreach($result as $row)
-echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
-?>
-                     </select>
+    <?php 
+			   $user=$_SESSION["logged_in"];
+			   $query="select s.id, concat(s.state_name,'/',s.state_name_k,'      (',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.stateid)";
+			  
+			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.districtid)";
+			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.talukaid)";
+			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.constituencyid)";
+			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.panchayatiid)";
+			    $query.=" ,'') vname from village v ,states s where s.id= v.villageid and v.hobliid in (select am.hobliid from actionmapping am where am.hobliid=v.hobliid and am.regid=".$user["id"].")";
+			   $result=$conn->query($query);
+			   echo $query;
+			   foreach($result as $row){
+			   echo "<option value='".$row["id"]."'>".$row["vname"]."</option>";
+			   }
+			   ?>
+			   
+			                  </select>
                    
                     
                  </tr>

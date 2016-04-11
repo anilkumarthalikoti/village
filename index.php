@@ -11,38 +11,43 @@
 
 </head>
 
-<body>
+<body bgcolor="#EEEEEE">
  
-
-<div class="content">
+<div class="loginbg"><table width="100%"><tr><td align="center"><img src="/images/loginbg.png" style="margin-left:270px;"/></td></tr></table></div>
+<div class="content1">
+<table style="width:100%">
+<tr><td style="height:120px;">&nbsp;</td></tr>
+<tr align="center"><td >
 <form id="form_id" method="post" name="login_form">
 <input type="hidden" name="methodcall" value="validate_login"/>
-<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" >
+<table  class="login_dialog"   border="0" cellspacing="0" cellpadding="0" >
   <tr>
    
-    <td class="login_dialog" align="center" valign="middle" height="100%">
-<div class="transbox login_dialog margin_small" >
-<div class="dialogTitle">Login</div>
-    <table width="100%" border="0" cellspacing="5" style="line-height:35px;" cellpadding="0"  >
+    <td class="login_dialog" align="center" valign="top" >
+ 
+<div class="dialogTitle">LOGIN FORM</div>
+    <table width="100%" border="0"   style="line-height:15px;   border:0px; padding:0; margin:0; background-color:#FFFFFF" cellpadding="0"  >
 
-  <tr><td><input name="username" type="text" id="username" placeholder="Email Address" class="large align_right"/></td></tr>
+  <tr><td><input name="username" type="text" id="username" placeholder="USER ID" class="large align_right"/></td></tr>
   
-  <tr><td ><input name="password" type="password" id="password" placeholder="Password" class="large align_right"  /></td></tr>
+  <tr><td ><input name="password" type="password" id="password" placeholder="PASSWORD" class="large align_right"  /></td></tr>
   <tr><td>
   		<table width="100%;" cellspacing="0" cellpadding="0">
- 	<tr><td colspan="2" id="errorMsg"></td></tr>
+ 	
 				 <tr>
     					<td  >
-								<input name="remember_me" type="checkbox" value="" />Remember Me</td><td align="right" width="150px">		<input type="button" class="button_login" value=" Login " id="submit" onClick="login.validate()"  />   
+								 </td><td align="right" width="150px">		<input type="button" class="button_login" value=" Login " id="submit" onClick="login.validate()"  />   
               			</td>
     </tr>
+	 
     </table></td></tr>
 </table>
-<div class="dialogBottom"></div>
-</div></td>
+<div class="dialogBottom"><span id="errorMsg"></span></div>
+ </td>
   </tr>
 </table>
 </form>
+</td></tr>
 </div>
  
  
