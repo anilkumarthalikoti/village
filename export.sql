@@ -36,7 +36,6 @@ CREATE TABLE farmerdetails (
   income varchar(15) DEFAULT NULL,
   mailid varchar(150) DEFAULT NULL,
   village int(10) DEFAULT -1,
-  landvillage int(10) DEFAULT -1,
   houseno varchar(25) DEFAULT '',
   street varchar(150) DEFAULT '',
   location varchar(150) DEFAULT '',
@@ -203,7 +202,16 @@ rejected_by int,
 rejected_at VARCHAR(1),
 PRIMARY KEY (schemefillingid));
 
-
+CREATE TABLE  landdetails
+(id INT NOT NULL auto_increment,
+regid int not null,
+villageid int not null,
+landsono varchar(150),
+address text,
+pincode varchar(10),
+totalland VARCHAR(25),
+units VARCHAR(25),
+PRIMARY KEY (id));
 
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
 
@@ -237,11 +245,12 @@ INSERT INTO page_links(linkid, linkname) VALUES (14, 'RECORD1');
 
 INSERT INTO page_links(linkid, linkname) VALUES (15, 'RECORD2');
 
-INSERT INTO page_links(linkid, linkname) VALUES (16, 'LINK-1');
+INSERT INTO page_links(linkid, linkname) VALUES (16, 'ACTION MAPPING');
 
 INSERT INTO page_links(linkid, linkname) VALUES (17, 'ROLE CREATION');
 
 INSERT INTO page_links(linkid, linkname) VALUES (18, 'ROLE MAPPING');
+INSERT INTO page_links(linkid, linkname) VALUES (19, 'LAND DETAILS');
 
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 1);
 

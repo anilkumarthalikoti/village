@@ -24,7 +24,7 @@ $conn=$database;
    <table>
    <tr><td><select name="hobli[]" id="hobli_select" multiple="multiple" style="height:200px;">
    <?php
- $result=  $conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>3));
+ $result=  $conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>4));
    foreach($result as $row){
    echo "<option value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
    }

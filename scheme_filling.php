@@ -31,7 +31,7 @@ $conn=$database;
       <tr>
         <td  class="label" > Name </td><td>:</td><td ><input   type="text"  id="firstname_text" placeholder="First Name"/><input type="hidden" id="regid" name="regid"/></td>
 		  
-        <td calss="label">Father/Husband Name  </td><td>:</td><td ><input   type="text"  id="fathername_text" placeholder="Father/Husband name"  /></td>
+        <td class="label">Father/Husband Name  </td><td>:</td><td ><input   type="text"  id="fathername_text" placeholder="Father/Husband name"  /></td>
         </tr>
 		<tr><td>House No</td><td>:</td><td><input id="houseno_text" type="text" placeholder="House no"></input></td><td>Village</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td></tr>
 		<tr><td>Survay no</td><td>:</td><td><input type="text" id="survayno_text" placeholder="Survay no"/></td><td>Village</td><td>:</td><td><input type="text" placeholder="Village/City name" id="village_text_l"/></td></tr>

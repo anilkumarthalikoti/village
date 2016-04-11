@@ -35,6 +35,7 @@ foreach($link as $links){
  <li><a class="ajxsub" href="#"><b>Farmer </b></a>
   <ul>
    <li link_id="4"><a href="farmer_reg.php"><b>Registration</b></a></li>
+   <li link_id="19"><a href="landdetails.php"><b>Land details</b></a></li>
             <li link_id="5"><a href="scheme_filling.php"><b>Scheme Filing</b></a></li>
       <li link_id="6"><a href="#"><b>Existing</b></a></li>
 

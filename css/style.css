@@ -149,7 +149,7 @@
  
 	}
 	.xlarge{
-	width:500px;
+	width:800px;
 	}
 	.margin_small{
 	
@@ -393,7 +393,7 @@ a {cursor:pointer;}
 	margin-top: 50px;
 	}
 	.label{
-	font-weight:lighter;
+	font-weight:bold;
 	color:#000000;
 	padding-left:20px;
 	 
@@ -458,6 +458,24 @@ color:#000000;}
 
 /* end proposal */
 
+.form{
 
-
+border:1px solid #666666;
+background-color:#999999;
+margin-left:25px;
+margin-top:25px;
+padding:5px;
+-webkit-border-radius: 10px 10px 10px 10px;
+		-moz-border-radius:  10px 10px 10px 10px;
+		border-radius:  10px 10px 10px 10px; 
+		
+}
+.form tr:nth-child(odd) td{
+background-color:#CCCCCC;
+border-bottom:1px  solid #666666;
+}
+.form tr:nth-child(even) td{
+background-color:#FFFFFF;
+border-bottom:1px  solid #666666;
+}
 

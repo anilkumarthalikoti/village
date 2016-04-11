@@ -47,38 +47,38 @@ $conn=$database;
              <li><a id="tab1"><u>F</u>armer/Beneficiary Details</a></li>
            <li><a id="tab2"><u>A</u>ccount Details</a></li>
            <li><a id="tab3">A<u>d</u>dress Details</a></li>
-           <li><a id="tab4"><u>L</u>and Details</a></li>
+          
            <li><a id="tab5"><u>B</u>ank Details</a></li>
            <li><a id="tab6">D<u>o</u>cuments to upload</a></li>
          </ul>
              <div class="container" id="tab1C">
-               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+               <table class="form xlarge" border="0" cellspacing="0" cellpadding="0">
                  <tr>
-                   <td class="label">First Name  :</td>
+                   <td class="label">First Name </td><td>:</td>
                    <td class="label"><input name="firstname" type="text" id="firstname" placeholder="Enter First Name"  />
                        <input name="firstname_k" alt="ka" type="text" id="firstname_k" placeholder="Enter First Name Unicode"  />
                      <span class="error">*</span> </td>
                  </tr>
                  <tr>
-                   <td class="label">Father/Husbend Name  :</td>
+                   <td class="label">Father/Husbend Name  </td><td>:</td>
                    <td class="label"><input name="fathername" type="text" id="fathername" placeholder="Enter Father/Husbend Name Name" onblur="fhnameVal(fhname);" required/>
                        <input name="fathername_k" type="text" id="fathername_k" placeholder="Enter Father/Husbend Name Unicode" alt="ka" />
                      <span class="error">*</span> </td>
                  </tr>
                  <tr>
-                   <td class="label">Last Name  :</td>
+                   <td class="label">Last Name </td><td> :</td>
                    <td class="label"><input name="lastname" type="text" id="lastname" placeholder="Enter last Name Name"  />
                        <input name="lastname_k" type="text" id="lastname_k" placeholder="Enter last Name Unicode" alt="ka" />
                      <span class="error">*</span> </td>
                  </tr>
                  <tr>
-                   <td class="label">Gender :</td>
+                   <td class="label">Gender </td><td>:</td>
                    <td class="label"><input type="radio" name="gender" value="M" />Male/ಗಂಡು<input type="radio" name="gender" value="F" />Female/ಹೆಣ್ಣು
 
                      <span class="error">* </span> </td>
                  </tr>
                  <tr>
-                   <td class="label">Cast :</td>
+                   <td class="label">Cast </td><td>:</td>
                    <td class="label"><select name="usercast"  type="text"  id="usercast"   >
                        <option>Select</option>
                        <option value="1">Others</option>
@@ -91,16 +91,16 @@ $conn=$database;
                      <span class="error">* </span></td>
                  </tr>
                  <tr>
-                   <td class="label">Date of birth :</td>
+                   <td class="label">Date of birth </td><td>:</td>
                    <td class="label"><input name="dob" type="text" id="dob" placeholder="DD/MM/YYYY"  /></td>
                  </tr>
                  <tr>
-                   <td class="label">Qualification :</td>
+                   <td class="label">Qualification </td><td>:</td>
                    <td class="label"><input name="qualification" type="text" id="qualification" placeholder="Enter Qualification" />
                        <input name="qualification_k" type="text" id="qualification_k" placeholder="Enter last Name Unicode" alt="ka" /></td>
                  </tr>
                  <tr>
-                   <td class="label">Physically Challanged :</td>
+                   <td class="label">Physically Challanged </td><td>:</td>
                    <td class="label"><input type="radio" value="N" name="physicallychallanged" checked="checked" />
                      No
                        <input type="radio" value="Y" name="physicallychallanged" />
@@ -109,41 +109,41 @@ $conn=$database;
                </table>
              </div>
            <div class="container" id="tab2C">
-               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+               <table  class="form xlarge" border="0" cellspacing="0" cellpadding="0">
                  <tr>
-                   <td class="label">Aadhar No.:</td>
+                   <td class="label">Aadhar No</td><td>:</td>
                    <td class="label"><input name="aadhar" type="text" id="aadhar" placeholder="0000 0000 0000" maxlength="14"  />
                        <span class="error">* </span></td>
-                   <td class="label">EPIC No.: </td>
+                   <td class="label">EPIC No</td><td>: </td>
                    <td class="label"><input name="voter" type="text" id="voter" placeholder="Enter Voter Id Card No."  />
                        <span class="error">* </span> </td>
                  </tr>
                  <tr>
-                   <td class="label">Ration Card No.: </td>
+                   <td class="label">Ration Card No </td><td>: </td>
                    <td class="label"><input name="rationcard" type="text" id="rationcard" placeholder="Enter Ration Card No."  /></td>
-                   <td class="label">PAN Card No.:</td>
+                   <td class="label">PAN Card No</td><td>:</td>
                    <td class="label"><input name="pancard" type="text" id="pancard" placeholder="Enter PAN Card No." maxlength="10"    />
                        <span class="error">* </span></td>
                  </tr>
                  <tr>
-                   <td class="label">Ration Card Type.: </td>
+                   <td class="label">Ration Card Type</td><td>: </td>
                    <td class="label"><select name="rationcardtype"  type="text"  id="rationcardtype"   >
                        <option>APL</option>
                        <option>BPL</option>
                    </select></td>
-                   <td class="label">KISAN Card No.:</td>
+                   <td class="label">KISAN Card No</td><td>:</td>
                    <td class="label"><input name="kishancard" type="text" id="kishancard" placeholder="Enter KISAN Card No."  /></td>
                  </tr>
                  <tr>
-                   <td class="label">Income Per Annum :</td>
+                   <td class="label">Income Per Annum </td><td>:</td>
                    <td class="label"><input name="income" type="text" id="income" placeholder="Enter Income."  /></td>
-                   <td class="label">Email ID : </td>
+                   <td class="label">Email ID </td><td>: </td>
                    <td class="label"><input name="mailid" type="text" id="mailid" placeholder="Enter Email ID"  /></td>
                  </tr>
                </table>
            </div>
            <div class="container" id="tab3C">
-               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+               <table class="xlarge form" border="0" cellspacing="0" cellpadding="0">
 			   <tr>
 			   <td  class="label">Select village</td><td>:</td>
 			   <td  colspan="3"  ><select name="village" class="excel">
@@ -166,7 +166,7 @@ $conn=$database;
 			   ?>
 			   
 			   
-			   </select>			   </td>
+			   </select>			   </td><td></td>
 			   </tr>
                  <tr>
                    
@@ -175,10 +175,7 @@ $conn=$database;
 				    <td class="label">Street</td><td>:</td>
                    <td class="label"><input name="street" type="text" id="street" placeholder="Enter Street"  /></td>
                  </tr>
-                 <tr>
-                    
-                  
-                 </tr>
+                 
                  <tr>
                    
                    <td class="label">Location </td><td>:</td>
@@ -199,69 +196,43 @@ $conn=$database;
                  <tr>
                  
                    <td class="label">Mobile No</td><td>:</td>
-                   <td class="label" colspan="3"><input name="mobileno" type="text" id="mobileno" placeholder="Enter Mobile No" maxlength="10"  />
+                   <td class="label" colspan="4"><input name="mobileno" type="text" id="mobileno" placeholder="Enter Mobile No" maxlength="10"  />
                        </td>
                  </tr>
                </table>
            </div>
-           <div class="container" id="tab4C">
-               <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                 <tr>
-                   <td class="label">Select village  :</td>
-                   <td class="label"><select name="landvillage"    >
-                       <option>Select</option>
-    <?php 
-			   $user=$_SESSION["logged_in"];
-			   $query="select s.id, concat(s.state_name,'/',s.state_name_k,'      (',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.stateid)";
-			  
-			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.districtid)";
-			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.talukaid)";
-			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.constituencyid)";
-			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.panchayatiid)";
-			    $query.=" ,'') vname from village v ,states s where s.id= v.villageid and v.hobliid in (select am.hobliid from actionmapping am where am.hobliid=v.hobliid and am.regid=".$user["id"].")";
-			   $result=$conn->query($query);
-			   echo $query;
-			   foreach($result as $row){
-			   echo "<option value='".$row["id"]."'>".$row["vname"]."</option>";
-			   }
-			   ?>
-			   
-			                  </select>
-                   
-                    
-                 </tr>
-                 
-               </table>
-           </div>
+          
            <div class="container" id="tab5C">
-               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+               <table class="form xlarge" border="0" cellspacing="0" cellpadding="0">
                  <tr>
-                   <td class="label">Name of Bank  :</td>
-                   <td width="35%" class="label"><select name="bank"     id="bank"   >
+                   <td class="label">Name of Bank  </td><td>:</td>
+                   <td   class="label"><select name="bank"     id="bank"   >
                        <option>Select</option>
                        <option value="1">Axis Bank</option>
                        <option value="2">Bank of India</option>
                        <option value="3">Bank of Baroda</option>
                        <option value="4">ICICI</option>
                      </select>
-                       <input   type="text" id="bank_k" placeholder="Unicode" />
-                     <span class="error">* </span></td>
-                   <td width="17%" class="label">Branch IFSC Code   :</td>
+					 </td>
+                      <td> <input   type="text" id="bank_k" placeholder="Unicode" />
+                     </td>
+                   <td  class="label">Branch IFSC Code   </td><td>:</td>
                    <td class="label"><input name="ifsc" type="text" id="ifcs" placeholder="Enter IFSC code "  />
-                       <span class="error">* </span></td>
+                        </td>
                  </tr>
                  <tr>
-                   <td class="label">Branch Name   :</td>
-                   <td width="35%" class="label"><select name="branch"  type="text"  id="branch"   onblur="validate_Branch();">
+                   <td class="label">Branch Name   </td><td>:</td>
+                   <td   class="label"><select name="branch"  type="text"  id="branch"   onblur="validate_Branch();">
                        <option>Select</option>
                       <option value="1">Iteam 1</option>
                        <option value="2">Iteam 2</option>
                        <option value="3">Iteam 3</option>
                        <option value="4">Iteam 4</option>
-                     </select>
+                     </select></td>
+					 <td>
                        <input   type="text" id="branch_k" placeholder="Unicode"  />
                      <span class="error">*</span></td>
-                   <td width="17%" class="label">Account No :</td>
+                   <td   class="label">Account No </td><td>:</td>
                    <td><input name="accountno" type="text" id="accountno" placeholder="Enter Account No."   />
                        <span class="error">* </span></td>
                  </tr>

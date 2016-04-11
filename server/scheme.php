@@ -31,7 +31,7 @@ $searchfor=array();
 $query.="concat(a.fathername,'/',a.fathername_k) fathername_text,a.houseno houseno_text ";
 $query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.village) village_text";
 
-$query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.landvillage) village_text_l";
+$query.=",'-' village_text_l";
 $query.="   from farmerdetails a";
  
 $query.= " where  ".$_GET['searchin']."='".$_GET['searchregistration']."' limit 1";
