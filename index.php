@@ -13,17 +13,20 @@
 
 <body bgcolor="#EEEEEE">
  
-<div class="loginbg"><table width="100%"><tr><td align="center"><img src="/images/loginbg.png" style="margin-left:270px;"/></td></tr></table></div>
+<div class="loginbg"
+><table width="100%"><tr><td align="center">&nbsp;</td>
+</tr></table></div>
 <div class="content1">
-<table style="width:100%">
-<tr><td style="height:120px;">&nbsp;</td></tr>
-<tr align="center"><td >
 <form id="form_id" method="post" name="login_form">
 <input type="hidden" name="methodcall" value="validate_login"/>
-<table  class="login_dialog"   border="0" cellspacing="0" cellpadding="0" >
+<table style="width:100% ">
+<tr><td style="height:120px;">&nbsp;</td></tr>
+<tr align="center"><td>
+ 
+<table  class="login_dialog"   border="0" cellspacing="0" cellpadding="0"  >
   <tr>
    
-    <td class="login_dialog" align="center" valign="top" >
+    <td class="login_dialog" align="center" valign="top" style="background-image:url(/images/lg.png);">
  
 <div class="dialogTitle">LOGIN FORM</div>
     <table width="100%" border="0"   style="line-height:15px;   border:0px; padding:0; margin:0; background-color:#FFFFFF" cellpadding="0"  >
@@ -40,14 +43,17 @@
               			</td>
     </tr>
 	 
-    </table></td></tr>
+    </table>
+	</td></tr>
 </table>
+
 <div class="dialogBottom"><span id="errorMsg"></span></div>
  </td>
   </tr>
+  </table> 
 </table>
 </form>
-</td></tr>
+ 
 </div>
  
  

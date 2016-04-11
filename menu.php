@@ -65,7 +65,7 @@ foreach($link as $links){
    </ul>
  </li>
  
-
+ <li><a class="ajxsub" href="logout.php"><b>Logout</b></a></li>
 </ul>
   </div>
  </div>

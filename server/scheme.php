@@ -28,20 +28,14 @@ $searchfor=array();
  $searchfor[$_GET['searchin']]=$_GET['searchregistration'];
  $query="";
  $query.="select a.id regid, concat(a.firstname,' ',a.lastname,'/',a.firstname_k,' ',a.lastname_k) firstname_text,";
-$query.="concat(a.fathername,'/',a.fathername_k) fathername_text,a.houseno houseno_text,(select concat(s.state_name ,'/', s.state_name_k)"; 
-$query.="from states s where id= a.district) district_text";
-$query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.taluk) taluk_text";
-$query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.hobli) hobli_text";
+$query.="concat(a.fathername,'/',a.fathername_k) fathername_text,a.houseno houseno_text ";
 $query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.village) village_text";
-$query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.panchayat) panchayat_text";
-$query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.landdistrict) district_text_l";
-$query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.landtaluk) taluk_text_l";
-$query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.landhobli) hobli_text_l";
+
 $query.=",(select concat(s.state_name ,'/', s.state_name_k) from states s where id= a.landvillage) village_text_l";
 $query.="   from farmerdetails a";
  
 $query.= " where  ".$_GET['searchin']."='".$_GET['searchregistration']."' limit 1";
-
+ 
 $result=$conn->query($query);
 $jsontext= "[";
 foreach($result as $row){

@@ -208,7 +208,7 @@ $conn=$database;
                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
                    <td class="label">Select village  :</td>
-                   <td class="label"><select name="landstate"    >
+                   <td class="label"><select name="landvillage"    >
                        <option>Select</option>
     <?php 
 			   $user=$_SESSION["logged_in"];
