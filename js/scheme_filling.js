@@ -45,6 +45,10 @@
 																					}));
 									   
 									   											});
+													
+													
+													
+													
 						 
 													});
 		}
@@ -71,6 +75,19 @@
 																		 $(key).val(value[keys[0]]);
 																		 
 																		 });
+													var reg_id=$("input#regid").val();
+													var pr={};
+													pr["regid"]=reg_id;
+													$.ajax({
+			url:"server/landdetails.php",
+			method:"get",
+		 	data:pr
+			
+							}).done(function(data){
+								$("table#landdetails tbody tr").remove();
+								$("table#landdetails tbody").html(data);
+								
+								});
 								
 								});
 			}

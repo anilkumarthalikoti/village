@@ -67,7 +67,14 @@ $conn=$database;
           
           
           </select></td><td></td><td>:</td><td></td></tr>
-		 
+	<tr><td colspan="6" valign="top">
+	<div style="height:300px; overflow:auto">
+	<table id="landdetails" class="grid">
+	<thead><tr></tr><th>Survay no</th><th>Total land</th></thead>
+	<tbody></tbody>
+	</table>
+	</div>
+	</td></tr>
   <tr>
     <td  colspan="6" align="right"> 
         <input type="button" class="button" id="button2" value="Save" onclick="schemefilling.saveData();">
