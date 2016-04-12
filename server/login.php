@@ -29,6 +29,18 @@ $id=$_POST["userregid"];
 $database->delete("actionmapping",array("regid"=>$id));
  foreach($hoblis as $hobli){
   $database->insert("actionmapping",array("regid"=>$id,"hobliid"=>$hobli));
- }
+ }}
+ if($_POST["methodcall"]=="save_role_mapping"){
+$roleid=$_POST["roleid"];
+$id=$_POST["userregid"];
+$result=$database->select("app_login",array("login_id"),array("id"=>$id));
+foreach($result as $row){
+$id=$row["login_id"];
 }
+$database->delete("user_roles",array("regid"=>$id));
+ foreach($roleid as $role){
+ $active="Y";
+  $database->insert("user_roles",array("login_id"=>$id,"role_id"=>$role,"is_active"=>$active));
+ }
+ }
 ?>

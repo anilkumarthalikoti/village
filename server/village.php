@@ -51,9 +51,17 @@ $conn->insert("village",array("stateid"=>$state_selected,"districtid"=>$district
  }
  
  
+ $result=$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>$item_type));
  
+  $jsontext="[";
+  //$conn->debug();
  
- 
+  foreach($result as $row){
+$jsontext .= '{"id":"'.$row["id"].'", "state_name":"'. $row["state_name"] . '", "state_name_k":"'.$row["state_name_k"].'"},';
+  } 
+$jsontext = substr_replace($jsontext, '', -1); // to get rid of extra comma
+$jsontext .= "]";
+ print $jsontext;
  
  
  }else{
