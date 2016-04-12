@@ -213,6 +213,18 @@ totalland VARCHAR(25),
 units VARCHAR(25),
 PRIMARY KEY (id));
 
+CREATE TABLE  casts
+(id INT NOT NULL auto_increment,
+castname varchar(255),
+castname_k blob,
+PRIMARY KEY (id));
+
+create table actionforwards(
+subschemeid id not null,
+preinspection varchar(1),
+
+primary key(id)
+);
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
 
 INSERT INTO page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');
@@ -251,49 +263,27 @@ INSERT INTO page_links(linkid, linkname) VALUES (17, 'ROLE CREATION');
 
 INSERT INTO page_links(linkid, linkname) VALUES (18, 'ROLE MAPPING');
 INSERT INTO page_links(linkid, linkname) VALUES (19, 'LAND DETAILS');
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 1);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 2);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 3);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 4);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 5);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 6);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 7);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 8);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 9);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 10);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 11);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 12);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 13);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 14);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 15);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 16);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 17);
-
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 18);
-
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 19);
+INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 20);
 INSERT INTO role_mstr(role_id, role_name) VALUES (1, 'ADMIN_ROLE');
-
-INSERT INTO signup(fname, lname, desigination, department, email, mobileno) VALUES ('anil', 'kumar', 'developer', 'dev', 'anil2k12@gmail.com', '8106231231');
-
- 
-
 INSERT INTO user_roles(login_id, role_id, is_active) VALUES ('ADMIN', 1, 'Y');
 
  
