@@ -70,7 +70,7 @@ $conn=$database;
 	<tr><td colspan="6" valign="top">
 	<div style="height:150px; overflow:auto" class="excel">
 	<table id="landdetails" class="grid excel">
-	<thead><tr></tr><th>Survay no</th><th>Total land</th></thead>
+	<thead><tr></tr><th>Survay no</th><th>Total land</th><th></th></thead>
 	<tbody></tbody>
 	</table>
 	</div>
