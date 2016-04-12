@@ -22,6 +22,7 @@ foreach($link as $links){
   <ul>
    <li link_id="1"><a href="village.php"><b>Add Village</b></a></li>
    <li link_id="2"><a href="scheme.php"><b>Scheme</b></a></li>
+    <li link_id="20"><a href="cast.php"><b>Cast</b></a></li>
       <li link_id="3"><a href="password.php"><b>Reset Password</b></a></li>
 	  <li link_id="16"><a href="actionmapping.php"><b>Action Mapping </b></a></li>
 	   <li link_id="17"><a href="rolecreation.php"><b>Role Creation </b></a></li>
