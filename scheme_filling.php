@@ -18,7 +18,7 @@ $conn=$database;
 <form method="POST"  name="form1" onsubmit="return false;">
  
 
-<table width="100%" border="0"  cellspacing="0" cellpadding="0">
+<table class="form xlarge margin">
       <tr><td><input  type="text" id="search" class="search" placeholder="Search"  />
              <select name="select" id="searchin">
                <option value="id">Reg.No</option>
@@ -27,7 +27,7 @@ $conn=$database;
 			    <option value="voter">Voter</option>
              </select><input type="button" value="Search" onclick="schemefilling.searchRegistration()"/></td></tr>
        <tr><td>
-	   <table>
+	   <table  >
       <tr>
         <td  class="label" > Name </td><td>:</td><td ><input   type="text"  id="firstname_text" placeholder="First Name"/><input type="hidden" id="regid" name="regid"/></td>
 		  
@@ -68,8 +68,8 @@ $conn=$database;
           
           </select></td><td></td><td>:</td><td></td></tr>
 	<tr><td colspan="6" valign="top">
-	<div style="height:300px; overflow:auto">
-	<table id="landdetails" class="grid">
+	<div style="height:150px; overflow:auto" class="excel">
+	<table id="landdetails" class="grid excel">
 	<thead><tr></tr><th>Survay no</th><th>Total land</th></thead>
 	<tbody></tbody>
 	</table>

@@ -15,7 +15,7 @@ $conn=$database;
 <div class="title">Land Details</div>
 <div class="viewport">
 
-<table >
+<table class="form xlarge margin">
  <tr><td><input  type="text" id="search" class="search" placeholder="Search"  />
              <select name="select" id="searchin">
                <option value="id">Reg.No</option>
