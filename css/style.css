@@ -165,9 +165,9 @@
 		.button_login,input[type='button']{
 		text-align:center;
 	font-size: 14px;
-	background-color:#3986D2;
+	background-color:#d5d8dc ;
 	border: 1px solid #ccc;
-	color: #ffffff;
+	color: #000000;
 	font-weight: bold;
 	cursor: pointer;
  
@@ -176,10 +176,11 @@
 	width:auto;
 	min-width:80px;
 	margin:10px;
+	float:right;
   
 	}
 	.button_login:hover,input[type='button']:hover{
-	background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
+	background: linear-gradient(#d5d8dc 5%, #e5e7e9  100%);
 	}
 	 
 
@@ -226,10 +227,10 @@ background-color:#CFCFCF;
 color:#666666;
 }
 table.grid tbody tr:nth-child(even){
-background-color:#FFFFFF;
+background-color:#FFFFFF ;
 }
 table.grid tbody tr:nth-child(odd){
-background-color:#E8E8E8;
+background-color: #f2f3f4  ;
 }
 table.grid{
  
@@ -252,16 +253,16 @@ border-spacing: 0px;
 	}
 	table.grid tbody tr:hover {
 	
-	background-color:#006633;
-	font-weight:bold;
-	color:#ffffff;
+	background-color:#e5e7e9;
+	cursor:hand;
+	cursor:pointer;
+	 
 	}
-	table.grid tbody tr.active
+	table.grid tbody tr.active td:nth-child(1)
 	{
 	
-	background-color:#006633;
-	font-weight:bold;
-	color:#ffffff;
+	background-color:#FF0000;
+ 
 	}
 	table.grid tbody td,table.grid thead th{
 	border-right:1px solid #000000;
@@ -461,7 +462,7 @@ color:#000000;}
 .form{
 
 border:1px solid #666666;
-background-color:#999999;
+background-color:  #eaecee ;
 margin-left:25px;
 margin-top:25px;
 padding:5px;
@@ -471,7 +472,7 @@ padding:5px;
 		
 }
 .form tr:nth-child(odd) td{
-background-color:#CCCCCC;
+background-color: #f2f3f4 ;
 border-bottom:1px  solid #666666;
 }
 .form tr:nth-child(even) td{
@@ -479,3 +480,7 @@ background-color:#FFFFFF;
 border-bottom:1px  solid #666666;
 }
 
+
+.margin{
+margin:20px;
+}
