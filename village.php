@@ -34,12 +34,13 @@ $conn=$database;
 <form name="addState">
 <input type="hidden" name="saveType" value="state"/>
 <input type="hidden" name="item_type" value="0"/>
-<table class="margin-left margin-top">
+<table class="form margin-left margin-top">
 <tr><td class="label">State</td>
 <td>:</td><td><input type="text" name="state_name" placeholder="Enter state" /> <input type="text" alt="ka" name="state_name_ka" id="s1"/><input type="button" value="Save" onClick="states.saveData('addState');"/></td>
 </tr>
-<tr><td colspan="3">
-<table class="grid small">
+ 
+</table>
+<table class="grid xlarge margin">
 <thead><th colspan="3">State</th></thead>
 <tbody>
 <?php 
@@ -53,11 +54,6 @@ $rowid++;
 ?>
 </tbody>
 </table>
-
-
-</td></tr>
-</table>
-
 </form>
 
 
@@ -70,7 +66,7 @@ $rowid++;
 <form name="district">
 <input type="hidden" name="saveType" value="district"/>
 <input type="hidden" name="item_type" value="1"/>
-<table class="margin-left margin-top">
+<table class=" form margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
 <select name="state_selected">
 <option value="-1">Select</option>
@@ -83,9 +79,9 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 <tr><td class="label">Enter district</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter district" /><input type="text" name="state_name_ka" placeholder="Enter district" alt="ka" id="s2" /></td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('district')" /></td></tr>
-<tr><td colspan="3">
-
-<table class="grid">
+ 
+</table>
+<table class="grid xlarge margin">
 <thead>
 <tr><th colspan="3">Districts</th></tr>
 
@@ -104,10 +100,6 @@ $rowid++;
 
 </tbody>
 </table>
-
-</td></tr>
-</table>
-
 </form>
 
 
@@ -119,7 +111,7 @@ $rowid++;
 <input type="hidden" name="item_type" value="2"/>
 
 
-<table class="margin-left margin-top">
+<table class=" form margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
 <select name="state_selected" id="state_selected" onChange="states.updateview('taluka','state_selected','district','district_selected')">
 <option value="-1">Select</option>
@@ -140,9 +132,9 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </select></td></tr>
 <tr><td class="label">Enter taluka</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter taluka" /><input id="s3" type="text" name="state_name_ka" placeholder="Enter taluka" alt="ka" /></td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('taluka')" /></td></tr>
-<tr><td colspan="3">
-
-<table class="grid">
+ 
+</table>
+<table class="grid margin xlarge">
 <thead>
 <tr><th colspan="4">Taluka</th></tr>
  
@@ -161,10 +153,6 @@ $rowid++;
 </tbody>
 </table>
 
-</td></tr>
-</table>
-
-
 </form>
 
 </div>
@@ -174,7 +162,7 @@ $rowid++;
 <input type="hidden" name="item_type" value="3"/>
 
 
-<table class="margin-left margin-top">
+<table class=" form margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
 <select name="state_selected" id="state_selected" onChange="states.updateview('constituency','state_selected','district','district_selected')">
 <option value="-1">Select</option>
@@ -204,9 +192,10 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
   <td class="label">Enter constituency </td>
   <td>:</td><td><input type="text" name="state_name" placeholder="Enter constituency" /><input type="text" name="state_name_ka" placeholder="Enter constituency" alt="ka" id="s4" /></td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('constituency')" /></td></tr>
-<tr><td colspan="3">
+ 
+</table>
 
-<table class="grid">
+<table class="grid margin xlarge">
 <thead>
 <tr>
   <th colspan="4"><span class="label">Constituency</span></th>
@@ -226,11 +215,6 @@ $rowid++;
 ?>
 </tbody>
 </table>
-
-</td></tr>
-</table>
-
-
 </form>
 
 </div>
@@ -245,7 +229,7 @@ $rowid++;
 <input type="hidden" name="item_type" value="4"/>
 
 
-<table class="margin-left margin-top">
+<table class="form margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
 <select name="state_selected" id="state_selected" onChange="states.updateview('hobli','state_selected','district','district_selected')">
 <option value="-1">Select</option>
@@ -283,9 +267,9 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
   <td class="label">Enter hobli </td>
   <td>:</td><td><input type="text" name="state_name" placeholder="Enter hobli" /><input type="text" name="state_name_ka" placeholder="Enter hobli" alt="ka" id="s5" /></td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('hobli')" /></td></tr>
-<tr><td colspan="3">
-
-<table class="grid">
+ 
+</table>
+<table class="grid margin xlarge">
 <thead>
 <tr>
   <th colspan="4">Hobli</th>
@@ -307,10 +291,6 @@ $rowid++;
 </tbody>
 </table>
 
-</td></tr>
-</table>
-
-
 </form>
 
 </div>
@@ -323,7 +303,7 @@ $rowid++;
 <input type="hidden" name="item_type" value="5"/>
 
 
-<table class="margin-left margin-top">
+<table class=" form margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
 <select name="state_selected" id="state_selected" onChange="states.updateview('panchaitay','state_selected','district','district_selected');">
 <option value="-1">Select</option>
@@ -365,7 +345,12 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('panchaitay')" /></td></tr>
 <tr><td colspan="3">
 
-<table class="grid">
+
+
+</td></tr>
+</table>
+
+<table class="grid margin xlarge">
 <thead>
 <tr><th colspan="3">Panchayat</th></tr>
  
@@ -383,11 +368,6 @@ $rowid++;
 ?>
 </tbody>
 </table>
-
-</td></tr>
-</table>
-
-
 </form>
 
 </div>
@@ -400,7 +380,7 @@ $rowid++;
 <input type="hidden" name="item_type" value="6"/>
 
 
-<table class="margin-left margin-top">
+<table class="form margin-left margin-top">
 <tr><td class="label">Select state</td><td>:</td><td>
 <select name="state_selected" id="state_selected" onChange="states.updateview('village','state_selected','district','district_selected');">
 <option value="-1">Select</option>
@@ -456,7 +436,12 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('village')" /></td></tr>
 <tr><td colspan="3">
 
-<table class="grid">
+
+
+</td></tr>
+</table>
+
+<table class="grid margin xlarge">
 <thead>
 <tr><th colspan="3">Village</th></tr>
  
@@ -474,11 +459,6 @@ $rowid++;
 ?>
 </tbody>
 </table>
-
-</td></tr>
-</table>
-
-
 </form>
 
 </div>

@@ -18,7 +18,7 @@ $conn=$database;
 <form name="actionmapping" onsubmit="return false;">
 <input type="hidden" name="methodcall" value="validate_user"/>
 <input type="hidden" name="userregid" />
-   <table>
+   <table class="form margin-left margin-top">
    <tr><td>Enter user id</td><td>:</td><td><input type="text" name="userid" id="userid" onkeypress="mapping.validateuser(event)"/></td></tr>
    <tr id="hobli" class="hide"><td valign="top">Select hobli</td><td valign="top">:</td><td>
    <table>
@@ -36,6 +36,7 @@ $conn=$database;
    </table>
    </td></tr>
    </table>
+   </form>
 </div>
 </body>
 </html>

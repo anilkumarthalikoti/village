@@ -33,12 +33,13 @@ $conn=$database;
 <form name="addScheme">
 <input type="hidden" name="saveType" value="scheme"/>
 <input type="hidden" name="parent_id" value="0"/>
-<table class="margin-left margin-top">
+<table class="form margin-left margin-top">
 <tr><td class="label">Schema name</td>
 <td>:</td><td><input type="text" name="item_name" placeholder="Enter schema" /> <input type="button" value="Save" onclick="scheme.saveData('addScheme');"/></td>
 </tr>
-<tr><td colspan="3">
-<table class="grid small">
+ 
+</table>
+<table class="grid xlarge margin">
 <thead><th colspan="2">Schemes</th></thead>
 <tbody>
 <?php 
@@ -52,11 +53,6 @@ $rowid++;
 ?>
 </tbody>
 </table>
-
-
-</td></tr>
-</table>
-
 </form>
 
 
@@ -69,7 +65,7 @@ $rowid++;
 <form name="subScheme">
 <input type="hidden" name="saveType" value="sub_scheme"/>
  
-<table class="margin-left margin-top">
+<table class="form margin-left margin-top">
 <tr><td class="label">Select scheme</td><td>:</td><td>
 <select name="parent_id">
 <option value="-1">Select</option>
@@ -81,10 +77,10 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 ?>
 </select></td></tr>
 <tr><td class="label">Enter sub scheme</td><td>:</td><td><input type="text" name="item_name" placeholder="Enter sub-schema" /></td></tr>
+<tr><td class="label">Select Action flow</td><td>:</td><td><input type="checkbox" name="actions[]" value="A"/>Action<input type="checkbox" name="actions[]" value="P"/>Pre-inspection<input type="checkbox" name="actions[]" value="I"/>Post-inspection<input type="checkbox" name="actions[]" value="W"/>Work-order<input type="checkbox" name="actions[]" value="D"/>DC</td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onclick="scheme.saveData('subScheme')" /></td></tr>
-<tr><td colspan="3">
-
-<table class="grid">
+ </table>
+<table class="grid xlarge margin">
 <thead>
 <tr><th colspan="3">Sub schema</th></tr>
 <tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th></tr>
@@ -95,10 +91,6 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 
 </tbody>
 </table>
-
-</td></tr>
-</table>
-
 </form>
 
 
@@ -109,7 +101,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <input type="hidden" name="saveType" value="component"/>
  
 
-<table class="margin-left margin-top">
+<table class="form margin-left margin-top">
 <tr><td class="label">Select scheme</td><td>:</td><td>
 <select name="scheme_select" id="scheme_selected" onchange="scheme.updateview(this)">
 <option value="-1">Select</option>
@@ -127,9 +119,9 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 </select></td></tr>
 <tr><td class="label">Enter component</td><td>:</td><td><input type="text" name="item_name" placeholder="Enter Component" /></td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onclick="scheme.saveData('component')" /></td></tr>
-<tr><td colspan="3">
-
-<table class="grid">
+ 
+</table>
+<table class="grid xlarge margin">
 <thead>
 <tr><th colspan="4">Components</th></tr>
 <tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th></tr>
@@ -141,17 +133,13 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 </tbody>
 </table>
 
-</td></tr>
-</table>
-
-
 </form>
 
 </div>
 <div class="container" id="tab4C">
 <form name="subcomponent_1">
 <input type="hidden" name="saveType" value="subcomponent"/>
- <table class="margin-left margin-top">
+ <table class="form margin-left margin-top">
 <tr><td class="label">Select scheme</td><td>:</td><td>
 <select name="scheme_select" id="scheme_select2" onchange="scheme.updateview(this)">
 <option value="-1">Select</option>
@@ -175,7 +163,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 
 <tr><td colspan="3">
 
-<table class="grid">
+<table class="grid xlarge margin">
 <thead>
 <tr>
   <th colspan="4">Sub Components-2</th>
@@ -200,7 +188,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <div class="container" id="tab5C">
 <form name="subcomponent_2">
 <input type="hidden" name="saveType" value="subcomponent"/>
- <table class="margin-left margin-top">
+ <table class="form margin-left margin-top">
 <tr><td class="label">Select scheme</td><td>:</td><td>
 <select name="scheme_select" id="scheme_select2" onchange="scheme.updateview(this)">
 <option value="-1">Select</option>
@@ -223,9 +211,8 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
   <td class="label">Enter sub component-2</td>
   <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /> <input type="button" value="Save" onclick="scheme.saveData('subcomponent_2')" /></td></tr>
 
-<tr><td colspan="3">
-
-<table class="grid">
+ </table>
+<table class="grid xlarge margin">
 <thead>
 <tr>
   <th colspan="4">Sub Components-1</th>
@@ -239,17 +226,13 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 </tbody>
 </table>
 
-</td></tr>
-</table>
-
-
 </form>
  
 </div>
  <div class="container" id="tab6C">
 <form name="subcomponent_3">
 <input type="hidden" name="saveType" value="subcomponent"/>
- <table class="margin-left margin-top">
+ <table class="form margin-left margin-top">
 <tr><td class="label">Select scheme</td><td>:</td><td>
 <select name="scheme_select" id="scheme_select2" onchange="scheme.updateview(this)">
 <option value="-1">Select</option>
@@ -272,9 +255,9 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
   <td class="label">Enter sub component-3</td>
   <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /> <input type="button" value="Save" onclick="scheme.saveData('subcomponent_3')" /></td></tr>
 
-<tr><td colspan="3">
-
-<table class="grid">
+ 
+</table>
+<table class="grid xlarge margin">
 <thead>
 <tr>
   <th colspan="4">Sub Components-3</th>
@@ -288,17 +271,13 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 </tbody>
 </table>
 
-</td></tr>
-</table>
-
-
 </form>
  
 </div>
  <div class="container" id="tab7C">
 <form name="subcomponent_4">
 <input type="hidden" name="saveType" value="subcomponent"/>
- <table class="margin-left margin-top">
+ <table class="form margin-left margin-top">
 <tr><td class="label">Select scheme</td><td>:</td><td>
 <select name="scheme_select" id="scheme_select2" onchange="scheme.updateview(this)">
 <option value="-1">Select</option>
@@ -334,9 +313,9 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
   <td class="label">Enter sub component-4</td>
   <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /><input type="button" value="Save" onclick="scheme.saveData('subcomponent_4')" /></td></tr>
 
-<tr><td colspan="3">
-
-<table class="grid">
+ 
+</table>
+<table class="grid xlarge margin">
 <thead>
 <tr>
   <th colspan="4">Sub Components-4</th>
@@ -349,10 +328,6 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 
 </tbody>
 </table>
-
-</td></tr>
-</table>
-
 
 </form>
  

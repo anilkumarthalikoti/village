@@ -217,13 +217,14 @@ CREATE TABLE  casts
 (id INT NOT NULL auto_increment,
 castname varchar(255),
 castname_k blob,
-PRIMARY KEY (id));
+PRIMARY KEY (id),
+unique key(castname)
+);
 
 create table actionforwards(
-subschemeid id not null,
-preinspection varchar(1),
-
-primary key(id)
+subschemeid int not null,
+action varchar(1),
+primary key(subschemeid)
 );
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
 

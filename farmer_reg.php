@@ -80,14 +80,15 @@ $conn=$database;
                  <tr>
                    <td class="label">Cast </td><td>:</td>
                    <td class="label"><select name="usercast"  type="text"  id="usercast"   >
-                       <option>Select</option>
-                       <option value="1">Others</option>
-                       <option value="2">General</option>
-                       <option value="3">OBC</option>
-                       <option value="4">Minority</option>
-                       <option value="5">SC</option>
+                       <option value="-1">Select</option>
+                       <?php 
+					   $result=$conn->select("casts",array("id","castname","castname_k"));
+					   foreach($result as $row){
+					   echo "<option value='".$row["id"]."'>".$row["castname"]."/".$row["castname_k"]."</option>";
+					   }
+					   ?>
                      </select>
-                       <input name="usercast_k" type="text" id="usercast_k" placeholder="Unicode" alt="ka"  />
+                      
                      <span class="error">* </span></td>
                  </tr>
                  <tr>
