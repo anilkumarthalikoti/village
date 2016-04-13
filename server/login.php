@@ -4,7 +4,7 @@ require "app_connector.php";
 
 if($_POST["methodcall"]=="validate_login"){
 
-$datas=$database->query("select * from app_login")->fetchAll();
+$datas=$database->query("select * from app_login where login_id='".$_POST["username"]."' limit 1")->fetchAll();
 $result="";
  $data=$datas[0];
 if($data["login_password"]==$_POST["password"]){
