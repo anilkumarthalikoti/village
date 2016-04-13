@@ -36,10 +36,13 @@ var rolecreate=new function(){
 				alert("Select link");
 				return;
 				}
+				var formKey="form[name='role_dtl']";
 		$.ajax({
 				   method:"POST",
-				   data:$("form[name='role_dtl']").serilize(),
-				   url:"rolecreation.php"
+				   
+				   url:"rolecreation.php",
+				   data:$(formKey).serialize()
+				   
 				   
 				   
 				   }).done(function(data){
@@ -49,9 +52,9 @@ var rolecreate=new function(){
 	this.checkAll=function(){
 		
 		if($("#checkAll").is(":checked")){
-			$("input[name='linkid']").prop("checked",true);
+			$("input[name='linkid[]']").prop("checked",true);
 			}else{
-				$("input[name='linkid']").prop("checked",false);
+				$("input[name='linkid[]']").prop("checked",false);
 				}
 		}
 		
