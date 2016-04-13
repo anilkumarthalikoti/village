@@ -51,7 +51,13 @@ CREATE TABLE states (
 	PRIMARY KEY (id),
 	unique key (state_name,item_type)
 );
-
+CREATE TABLE cropitems (
+	id bigint(19) NOT NULL auto_increment,
+	cropname varchar(150) NOT NULL,
+	cropname_k blob,
+	PRIMARY KEY (id),
+	unique key (cropname)
+);
 CREATE TABLE district (
 	id bigint(19) NOT NULL auto_increment,
 	stateid int(10) NOT NULL,
@@ -242,7 +248,7 @@ INSERT INTO page_links(linkid, linkname) VALUES (10, 'LAND DETAILS');
 
 INSERT INTO page_links(linkid, linkname) VALUES (11, 'SCHEME FILLING');
 
-INSERT INTO page_links(linkid, linkname) VALUES (12, 'EXISTING');
+INSERT INTO page_links(linkid, linkname) VALUES (12, 'ADD CROP');
 
 INSERT INTO page_links(linkid, linkname) VALUES (13, 'SEARCH');
 

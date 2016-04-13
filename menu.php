@@ -24,6 +24,7 @@ foreach($link as $links){
    <li link_id="2"><a href="scheme.php"><b>Scheme</b></a></li>
     <li link_id="3"><a href="cast.php"><b>Cast</b></a></li>
 	<li link_id="4"><a href="adduser.php"><b>Add user</b></a></li>
+	  <li link_id="12"><a href="addcrop.php"><b>Add Crop</b></a></li>
       <li link_id="5"><a href="password.php"><b>Reset Password</b></a></li>
 	  <li link_id="6"><a href="actionmapping.php"><b>Village privilage </b></a></li>
 	   <li link_id="7"><a href="rolecreation.php"><b>Role Creation </b></a></li>
