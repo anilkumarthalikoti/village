@@ -3,15 +3,7 @@ CREATE TABLE app_login (id bigint(10) NOT NULL auto_increment,login_id varchar(2
 	PRIMARY KEY (id),
 	unique key(login_id)
 ) ;
-
-CREATE TABLE component (
-	id bigint(19) NOT NULL AUTO_INCREMENT,
-	schemeid int(10),
-	subschemeid int(10),
-	component int(10),
-	PRIMARY KEY (id),
-	UNIQUE KEY(schemeid,subschemeid,component)
-);
+ 
 CREATE TABLE farmerdetails (
   id bigint  NOT NULL   AUTO_INCREMENT,
   firstname varchar(150) NOT NULL DEFAULT 'A' ,

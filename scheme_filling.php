@@ -7,6 +7,16 @@
 $conn=$database;
  ?>
  <script src="js/scheme_filling.js" type="text/javascript"></script>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <script type="text/javascript">
+ <script type="text/javascript" src="js/landdetails.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+ 
+ schemefilling.searchRegistration()
+ });
+ </script>
+ 
 </head>
 
 <body>
@@ -19,9 +29,9 @@ $conn=$database;
  
 
 <table class="form xlarge margin">
-      <tr><td><input  type="text" id="search" class="search" placeholder="Search"  />
+      <tr class="hide"><td><input  type="text" id="search" class="search" placeholder="Search" onkeypress="schemefilling.search(event)" value="<?php echo $_REQUEST["regid"]; ?>"  />
              <select name="select" id="searchin">
-               <option value="id">Reg.No</option>
+               <option value="id" selected="selected">Reg.No</option>
                <option value="rationcard">Ration card no</option>
                <option value="aadhar">Adhar</option>
 			    <option value="voter">Voter</option>
@@ -50,20 +60,20 @@ $conn=$database;
          
           
           </select></td></tr>
-	  <tr><td class="label">Component</td><td>:</td><td><select name="component_select" tab='2' id="component_select" onchange="schemefilling.updateview(this);"><option>Select</option>
+	  <tr><td class="label">Component</td><td>:</td><td><select name="component_select" tab='2' id="component_select" onchange="schemefilling.updateview(this);"><option value="-1">Select</option>
           
           
-          </select></td><td>Sub-component-1</td><td>:</td><td><select name="component_1"  tab='3' id="component_1" onchange="schemefilling.updateview(this);"><option>Select</option>
-          
-          </select></td></tr>
-	   <tr><td>Sub-component-2</td><td>:</td><td><select name="component_2" tab='4' id="component_2" onchange="schemefilling.updateview(this);"><option>Select</option>
-          
-          
-          </select></td><td>Sub-component-3</td><td>:</td><td><select name="component_3" tab='5'  id="component_3" onchange="schemefilling.updateview(this);"><option>Select</option>
-          
+          </select></td><td>Sub-component-1</td><td>:</td><td><select name="component_1"  tab='3' id="component_1" onchange="schemefilling.updateview(this);"><option value="-1">Select</option>
           
           </select></td></tr>
-	    <tr><td>Sub-component-4</td><td>:</td><td><select name="component_4"  id="component_4" tab='6' onchange="schemefilling.updateview(this);"><option>Select</option>
+	   <tr><td>Sub-component-2</td><td>:</td><td><select name="component_2" tab='4' id="component_2" onchange="schemefilling.updateview(this);"><option value="-1">Select</option>
+          
+          
+          </select></td><td>Sub-component-3</td><td>:</td><td><select name="component_3" tab='5'  id="component_3" onchange="schemefilling.updateview(this);"><option value="-1">Select</option>
+          
+          
+          </select></td></tr>
+	    <tr><td>Sub-component-4</td><td>:</td><td><select name="component_4"  id="component_4" tab='6' onchange="schemefilling.updateview(this);"><option value="-1">Select</option>
           
           
           </select></td><td></td><td>:</td><td></td></tr>

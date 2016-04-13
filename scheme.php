@@ -175,6 +175,9 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
  
 </select></td></tr>
 <tr><td class="label">Select component</td><td>:</td><td><select name="parent_id" ><OPTION value="-1">Select</OPTION></select></td></tr>
+<tr><td class="label">Project mode</td><td>:</td><td><select name="project_mode" ><OPTION value="-1">Non-project based</OPTION>
+<OPTION value="1">Project based</OPTION>
+</select></td></tr>
 <tr>
   <td class="label">Enter sub component-1</td>
   <td>:</td><td><input type="text" name="item_name" placeholder="Enter sub component-1" /><input type="button" value="Save" onclick="scheme.saveData('subcomponent_1')" /></td></tr>

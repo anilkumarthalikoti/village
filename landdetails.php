@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Land Details</title>
 <?php 
   require "interceptor.php";
@@ -9,16 +9,22 @@
 $conn=$database;
  ?>
  <script type="text/javascript" src="js/landdetails.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+ 
+ landdetailsjs.searchRegistration();
+ });
+ </script>
 </head>
 
 <body>
 <div class="title">Land Details</div>
 <div class="viewport">
 
-<table class="form xlarge margin">
- <tr><td><input  type="text" id="search" class="search" placeholder="Search"  />
+<table class="form xlarge margin hide">
+ <tr><td><input  type="text" id="search" class="search" placeholder="Search" value="<?php echo $_REQUEST["regid"]; ?>"  />
              <select name="select" id="searchin">
-               <option value="id">Reg.No</option>
+               <option value="id" selected="selected">Reg.No</option>
                <option value="rationcard">Ration card no</option>
                <option value="aadhar">Adhar</option>
 			    <option value="voter">Voter</option>

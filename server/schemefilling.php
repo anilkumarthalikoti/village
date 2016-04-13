@@ -14,6 +14,7 @@ $params["item3"]=$_POST["component_3"];
 $params["item4"]=$_POST["component_4"];
 $params["regby"]=$_SESSION["logged_in"];
 $params["regdate"]=date("Y-m-d h:i:sa");
+$params["landsurvayno"]=$_POST["landsurvayno"];
 $conn->insert("schemefilling",$params);
 
 }
