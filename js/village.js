@@ -26,6 +26,8 @@
 																	i++;
 									   
 									   											});
+													$(formKey).find("input[name='state_name']").val('');
+													$(formKey).find("input[name='state_name_k']").val('');
 				 
 					 
 				});
