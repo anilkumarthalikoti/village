@@ -40,7 +40,7 @@ $conn=$database;
 </tr>
  
 </table>
-<table class="grid xlarge margin">
+<table class="grid xlarge margin" grid='addState'>
 <thead><th colspan="3">State</th></thead>
 <tbody>
 <?php 
@@ -81,7 +81,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('district')" /></td></tr>
  
 </table>
-<table class="grid xlarge margin">
+<table class="grid xlarge margin" grid='district'>
 <thead>
 <tr><th colspan="3">Districts</th></tr>
 
@@ -134,7 +134,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('taluka')" /></td></tr>
  
 </table>
-<table class="grid margin xlarge">
+<table class="grid margin xlarge" grid='taluka'>
 <thead>
 <tr><th colspan="4">Taluka</th></tr>
  
@@ -195,7 +195,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
  
 </table>
 
-<table class="grid margin xlarge">
+<table class="grid margin xlarge" grid="constituency">
 <thead>
 <tr>
   <th colspan="4"><span class="label">Constituency</span></th>
@@ -269,7 +269,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('hobli')" /></td></tr>
  
 </table>
-<table class="grid margin xlarge">
+<table class="grid margin xlarge" grid="hobli">
 <thead>
 <tr>
   <th colspan="4">Hobli</th>
@@ -350,7 +350,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </td></tr>
 </table>
 
-<table class="grid margin xlarge">
+<table class="grid margin xlarge" grid="panchaitay">
 <thead>
 <tr><th colspan="3">Panchayat</th></tr>
  
@@ -441,7 +441,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </td></tr>
 </table>
 
-<table class="grid margin xlarge">
+<table class="grid margin xlarge" grid="village">
 <thead>
 <tr><th colspan="3">Village</th></tr>
  
