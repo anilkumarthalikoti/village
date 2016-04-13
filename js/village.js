@@ -13,13 +13,16 @@
 					window.location="village.php";
 					}
 				 data=data+"";
-				 var table="form[name='"+form_name+"'] table[class='grid'] tbody";
+				 var table="table[grid='"+form_name+"'] tbody";
+				  
 				 $(table).find("tr").remove();
 										 var list=$.parseJSON(data);
 										 var i=1;
 				  									$.each(list,function(key1,val){
-									   					var  tr="<tr><td width='50'>"+i+"</td><td>"+val['state_name']+"</td><td>"+val['state_name_k']+"</td></tr>";
+																		 
+									   var  tr="<tr><td width='50'>"+i+"</td><td>"+val['state_name']+"</td><td>"+val['state_name_k']+"</td></tr>";
 									   								$(table).append(tr);
+																 
 																	i++;
 									   
 									   											});
