@@ -19,7 +19,7 @@ $query="select d.id landid, d.landsono landno, concat(s.state_name,'/',s.state_n
 $result=$conn->query($query);
 $result_print="";
 foreach($result as $row){
-$result_print.="<tr><td>".$row["landno"]."</td><td>".$row["state_name"]."</td><td>".$row["totalland"]."</td><td><input type='radio' name='landdetailsid' value='"$row["landid"]."'/></td></tr>";
+$result_print.="<tr><td>".$row["landno"]."</td><td>".$row["state_name"]."</td><td>".$row["totalland"]."</td><td><input type='radio' name='landsurvayno' value='".$row["landid"]."'/></td></tr>";
 
 }
 echo  $result_print;
