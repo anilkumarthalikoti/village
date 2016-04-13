@@ -33,9 +33,9 @@ $conn=$database;
 		  
         <td class="label">Father/Husband Name  </td><td>:</td><td ><input   type="text"  id="fathername_text" placeholder="Father/Husband name"  /></td>
         </tr>
-		<tr><td>House No</td><td>:</td><td><input id="houseno_text" type="text" placeholder="House no"></input></td><td>Village</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td></tr>
-		<tr><td>Survay no</td><td>:</td><td><input type="text" id="survayno_text" placeholder="Survay no"/></td><td>Village</td><td>:</td><td><input type="text" placeholder="Village/City name" id="village_text_l"/></td></tr>
-	 <tr><td>Scheme</td><td>:</td><td><select name="scheme_select"  tab='0'   id="scheme_select" onchange="schemefilling.updateview(this)"   >
+		<tr><td class="label">House No</td><td>:</td><td><input id="houseno_text" type="text" placeholder="House no"></input></td><td class="label">Village</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td></tr>
+		 
+	 <tr><td class="label">Scheme</td><td>:</td><td><select name="scheme_select"  tab='0'   id="scheme_select" onchange="schemefilling.updateview(this)"   >
           <option>Select</option>
           <?php
 		  $datas=$conn->query("select * from schemes where parent_id=0");
@@ -46,11 +46,11 @@ $conn=$database;
 		  }
 		  ?>
           
-          </select></td><td>Sub scheme</td><td>:</td><td><select name="subscheme_select" tab='1' id='subscheme_select' next='component' onchange="schemefilling.updateview(this);"><option>Select</option>
+          </select></td><td class="label">Sub scheme</td><td>:</td><td><select name="subscheme_select" tab='1' id='subscheme_select' next='component' onchange="schemefilling.updateview(this);"><option>Select</option>
          
           
           </select></td></tr>
-	  <tr><td>Component</td><td>:</td><td><select name="component_select" tab='2' id="component_select" onchange="schemefilling.updateview(this);"><option>Select</option>
+	  <tr><td class="label">Component</td><td>:</td><td><select name="component_select" tab='2' id="component_select" onchange="schemefilling.updateview(this);"><option>Select</option>
           
           
           </select></td><td>Sub-component-1</td><td>:</td><td><select name="component_1"  tab='3' id="component_1" onchange="schemefilling.updateview(this);"><option>Select</option>

@@ -232,38 +232,38 @@ INSERT INTO page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');
 
 INSERT INTO page_links(linkid, linkname) VALUES (2, 'ADD SCHEMA');
 
-INSERT INTO page_links(linkid, linkname) VALUES (3, 'RESET PASSWORD');
+INSERT INTO page_links(linkid, linkname) VALUES (3, 'CAST');
 
-INSERT INTO page_links(linkid, linkname) VALUES (4, 'FARMER REGISTRATION');
+INSERT INTO page_links(linkid, linkname) VALUES (4, 'ADD USER');
 
-INSERT INTO page_links(linkid, linkname) VALUES (5, 'SCHEMA FILLING');
+INSERT INTO page_links(linkid, linkname) VALUES (5, 'Res');
 
-INSERT INTO page_links(linkid, linkname) VALUES (6, 'EXISTING');
+INSERT INTO page_links(linkid, linkname) VALUES (6, 'VILLAGE PREVILAGE');
 
-INSERT INTO page_links(linkid, linkname) VALUES (7, 'FARMER SEARCH');
+INSERT INTO page_links(linkid, linkname) VALUES (7, 'ROLE CREATION');
 
-INSERT INTO page_links(linkid, linkname) VALUES (8, 'MIS/PMKSY');
+INSERT INTO page_links(linkid, linkname) VALUES (8, 'ROLE MAPPING');
 
-INSERT INTO page_links(linkid, linkname) VALUES (9, 'CHD');
+INSERT INTO page_links(linkid, linkname) VALUES (9, 'FARMER REGISTRATION');
 
-INSERT INTO page_links(linkid, linkname) VALUES (10, 'NHM/MIDH');
+INSERT INTO page_links(linkid, linkname) VALUES (10, 'LAND DETAILS');
 
-INSERT INTO page_links(linkid, linkname) VALUES (11, 'RKVY');
+INSERT INTO page_links(linkid, linkname) VALUES (11, 'SCHEME FILLING');
 
-INSERT INTO page_links(linkid, linkname) VALUES (12, 'TRACK RECORDS');
+INSERT INTO page_links(linkid, linkname) VALUES (12, 'EXISTING');
 
-INSERT INTO page_links(linkid, linkname) VALUES (13, 'BENEFICIARY');
+INSERT INTO page_links(linkid, linkname) VALUES (13, 'SEARCH');
 
-INSERT INTO page_links(linkid, linkname) VALUES (14, 'RECORD1');
+INSERT INTO page_links(linkid, linkname) VALUES (14, 'PROPOSAL');
 
-INSERT INTO page_links(linkid, linkname) VALUES (15, 'RECORD2');
+INSERT INTO page_links(linkid, linkname) VALUES (15, 'TRACK RECORD');
 
-INSERT INTO page_links(linkid, linkname) VALUES (16, 'ACTION MAPPING');
+INSERT INTO page_links(linkid, linkname) VALUES (16, 'BENEFICIARY');
 
-INSERT INTO page_links(linkid, linkname) VALUES (17, 'ROLE CREATION');
+INSERT INTO page_links(linkid, linkname) VALUES (17, 'PROPOSALE REPORT');
 
-INSERT INTO page_links(linkid, linkname) VALUES (18, 'ROLE MAPPING');
-INSERT INTO page_links(linkid, linkname) VALUES (19, 'LAND DETAILS');
+INSERT INTO page_links(linkid, linkname) VALUES (18, 'REPORT TRACK RECORD');
+ 
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 1);
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 2);
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 3);

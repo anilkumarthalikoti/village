@@ -22,11 +22,12 @@ foreach($link as $links){
   <ul>
    <li link_id="1"><a href="village.php"><b>Add Village</b></a></li>
    <li link_id="2"><a href="scheme.php"><b>Scheme</b></a></li>
-    <li link_id="20"><a href="cast.php"><b>Cast</b></a></li>
-      <li link_id="3"><a href="password.php"><b>Reset Password</b></a></li>
-	  <li link_id="16"><a href="actionmapping.php"><b>Action Mapping </b></a></li>
-	   <li link_id="17"><a href="rolecreation.php"><b>Role Creation </b></a></li>
-       <li link_id="18"><a href="rolemapping.php"><b>Role Mapping </b></a></li>
+    <li link_id="3"><a href="cast.php"><b>Cast</b></a></li>
+	<li link_id="4"><a href="adduser.php"><b>Add user</b></a></li>
+      <li link_id="5"><a href="password.php"><b>Reset Password</b></a></li>
+	  <li link_id="6"><a href="actionmapping.php"><b>Village privilage </b></a></li>
+	   <li link_id="7"><a href="rolecreation.php"><b>Role Creation </b></a></li>
+       <li link_id="8"><a href="rolemapping.php"><b>Role Mapping </b></a></li>
 
   </ul>
  </li>
@@ -35,24 +36,24 @@ foreach($link as $links){
  
  <li><a class="ajxsub" href="#"><b>Farmer </b></a>
   <ul>
-   <li link_id="4"><a href="farmer_reg.php"><b>Registration</b></a></li>
-   <li link_id="19"><a href="landdetails.php"><b>Land details</b></a></li>
-            <li link_id="5"><a href="scheme_filling.php"><b>Scheme Filing</b></a></li>
-      <li link_id="6"><a href="#"><b>Existing</b></a></li>
+   <li link_id="9"><a href="farmer_reg.php"><b>Registration</b></a></li>
+   <li link_id="10"><a href="landdetails.php"><b>Land details</b></a></li>
+            <li link_id="11"><a href="scheme_filling.php"><b>Scheme Filing</b></a></li>
+      <li link_id="12"><a href="#"><b>Existing</b></a></li>
 
-            <li link_id="7"><a href="#"><b>Search</b></a></li>
+            <li link_id="13"><a href="#"><b>Search</b></a></li>
   </ul>
  </li>
  
  
  <li><a class="ajxsub" href="#"><b>Officer</b></a>
   <ul>
-   <li link_id='8'><a href="approval.php"><b>Proposal</b></a>
+   <li link_id='14'><a href="approval.php"><b>Proposal</b></a>
     
    </li>
    
-      <li link_id="12"><a href="#"><b>Track Records</b></a></li>
-         <li link_id="13"><a href="#"><b>Beneficiary</b></a></li>
+      <li link_id="15"><a href="#"><b>Track Records</b></a></li>
+         <li link_id="16"><a href="#"><b>Beneficiary</b></a></li>
   </ul>
  </li>
 
@@ -62,8 +63,8 @@ foreach($link as $links){
   
  <li><a class="ajxsub" href="#"><b>Reports</b></a>
   <ul>
-   <li link_id="14"><a href="#"><b>Proposal</b></a></li>
-      <li link_id="15"><a href="#"><b>Track Records</b></a></li>
+   <li link_id="17"><a href="#"><b>Proposal</b></a></li>
+      <li link_id="18"><a href="#"><b>Track Records</b></a></li>
    </ul>
  </li>
  

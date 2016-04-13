@@ -13,7 +13,7 @@ $conn=$database;
 </head>
 
 <body>
- 
+ <input type="hidden" id="selectTab" value="<?php echo $_REQUEST["viewtab"]?>"/>
 <div class="title">Scheme Details</div>
 <div class="viewport">
   <ul id="tabs">
@@ -87,7 +87,16 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 
 </thead>
 <tbody>
+ <?php 
+ $query="select s1.name scheme, s2.name  subscheme from   schemes s1, schemes s2  where s1.id = s2.parent_id   and s1.parent_id=0";
+ $result=$conn->query($query);
+ $i=1;
+ foreach($result as $row){
+ echo "<tr><td>".$i."</td><td>".$row["scheme"]."</td><td>".$row["subscheme"]."</td></tr>";
+ $i++;
+ }
  
+ ?>
 
 </tbody>
 </table>
@@ -128,7 +137,16 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 
 </thead>
 <tbody>
+ <?php 
+ $query="select s1.name scheme, s2.name  subscheme, s3.name component from   schemes s1, schemes s2, schemes s3  where s1.id = s2.parent_id  and s3.parent_id=s2.id  and s1.parent_id=0";
+ $result=$conn->query($query);
+ $i=1;
+ foreach($result as $row){
+ echo "<tr><td>".$i."</td><td>".$row["scheme"]."</td><td>".$row["subscheme"]."</td><td>".$row["component"]."</td></tr>";
+ $i++;
+ }
  
+ ?>
 
 </tbody>
 </table>
@@ -166,13 +184,22 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <table class="grid xlarge margin">
 <thead>
 <tr>
-  <th colspan="4">Sub Components-2</th>
+  <th colspan="5">Sub Components-1</th>
 </tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th></tr>
+<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th><th>Sub Component-1</th></tr>
 
 </thead>
 <tbody>
+  <?php 
+ $query="select s1.name scheme, s2.name  subscheme, s3.name component,s4.name suc1 from   schemes s1, schemes s2, schemes s3, schemes s4  where s1.id = s2.parent_id  and s3.parent_id=s2.id and s4.parent_id= s3.id  and s1.parent_id=0";
+ $result=$conn->query($query);
+ $i=1;
+ foreach($result as $row){
+ echo "<tr><td>".$i."</td><td>".$row["scheme"]."</td><td>".$row["subscheme"]."</td><td>".$row["component"]."</td><td>".$row["suc1"]."</td></tr>";
+ $i++;
+ }
  
+ ?>
 
 </tbody>
 </table>
@@ -215,13 +242,22 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <table class="grid xlarge margin">
 <thead>
 <tr>
-  <th colspan="4">Sub Components-1</th>
+  <th colspan="6">Sub Components-2</th>
 </tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th></tr>
+<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th><th>Sc-1</th><th>Sc-2</th></tr>
 
 </thead>
 <tbody>
+ <?php 
+ $query="select s1.name scheme, s2.name  subscheme, s3.name component,s4.name suc1,s5.name suc2 from   schemes s1, schemes s2, schemes s3, schemes s4,schemes s5  where s1.id = s2.parent_id  and s3.parent_id=s2.id and s4.parent_id= s3.id and s5.parent_id= s4.id  and s1.parent_id=0";
+ $result=$conn->query($query);
+ $i=1;
+ foreach($result as $row){
+ echo "<tr><td>".$i."</td><td>".$row["scheme"]."</td><td>".$row["subscheme"]."</td><td>".$row["component"]."</td><td>".$row["suc1"]."</td><td>".$row["suc2"]."</td></tr>";
+ $i++;
+ }
  
+ ?>
 
 </tbody>
 </table>
@@ -260,13 +296,22 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <table class="grid xlarge margin">
 <thead>
 <tr>
-  <th colspan="4">Sub Components-3</th>
+  <th colspan="7">Sub Components-3</th>
 </tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th></tr>
+<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th><th>Sc-1</th><th>Sc-2</th><th>Sc-3</th></tr>
 
 </thead>
 <tbody>
+ <?php 
+ $query="select s1.name scheme, s2.name  subscheme, s3.name component,s4.name suc1,s5.name suc2 , s6.name suc3 from   schemes s1, schemes s2, schemes s3, schemes s4,schemes s5,schemes s6  where s1.id = s2.parent_id  and s3.parent_id=s2.id and s4.parent_id= s3.id and s5.parent_id= s4.id and s6.parent_id=s5.id and s1.parent_id=0";
+ $result=$conn->query($query);
+ $i=1;
+ foreach($result as $row){
+ echo "<tr><td>".$i."</td><td>".$row["scheme"]."</td><td>".$row["subscheme"]."</td><td>".$row["component"]."</td><td>".$row["suc1"]."</td><td>".$row["suc2"]."</td><td>".$row["suc3"]."</td></tr>";
+ $i++;
+ }
  
+ ?>
 
 </tbody>
 </table>
@@ -318,13 +363,22 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <table class="grid xlarge margin">
 <thead>
 <tr>
-  <th colspan="4">Sub Components-4</th>
+  <th colspan="8">Sub Components-4</th>
 </tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th></tr>
+<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th><th>Sc-1</th><th>Sc-2</th><th>Sc-3</th><th>Sc-4</th></tr>
 
 </thead>
 <tbody>
+ <?php 
+ $query="select s1.name scheme, s2.name  subscheme, s3.name component,s4.name suc1,s5.name suc2 , s6.name suc3, s7.name suc4 from   schemes s1, schemes s2, schemes s3, schemes s4,schemes s5,schemes s6,schemes s7  where s1.id = s2.parent_id  and s3.parent_id=s2.id and s4.parent_id= s3.id and s5.parent_id= s4.id and s6.parent_id=s5.id and s7.parent_id= s6.id and s1.parent_id=0";
+ $result=$conn->query($query);
+ $i=1;
+ foreach($result as $row){
+ echo "<tr><td>".$i."</td><td>".$row["scheme"]."</td><td>".$row["subscheme"]."</td><td>".$row["component"]."</td><td>".$row["suc1"]."</td><td>".$row["suc2"]."</td><td>".$row["suc3"]."</td><td>".$row["suc4"]."</td></tr>";
+ $i++;
+ }
  
+ ?>
 
 </tbody>
 </table>

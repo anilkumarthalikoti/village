@@ -26,7 +26,7 @@ $conn=$database;
 </table>
 <form method="POST"  name="form1" onsubmit="return false;">
 <table class="form xlarge">
-<tr><td class="label"> First name</td><td>:</td><td><input   type="text"  id="firstname_text" placeholder="First Name"/><input type="hidden" id="regid" name="regid"/></td><td class="large" rowspan="10" style="border:1px solid #666666; background-color:#FFFFFF;" valign="top">
+<tr><td class="label medium"> First name</td><td>:</td><td><input   type="text"  id="firstname_text" placeholder="First Name"/><input type="hidden" id="regid" name="regid"/></td><td class="large" rowspan="10" style="border:1px solid #666666; background-color:#FFFFFF;" valign="top">
 							  
 							  <table class="grid large" id="existing">
 							  <thead>
