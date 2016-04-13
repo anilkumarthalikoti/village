@@ -105,8 +105,9 @@ $conn=$database;
                    <td class="label"><input type="radio" value="N" name="physicallychallanged" checked="checked" />
                      No
                        <input type="radio" value="Y" name="physicallychallanged" />
-                     Yes </td>
+                     Yes <input type="button" value="NEXT>>" onclick="$('#tab2').click()"/></td>
                  </tr>
+				 
                </table>
              </div>
            <div class="container" id="tab2C">
@@ -141,6 +142,7 @@ $conn=$database;
                    <td class="label">Email ID </td><td>: </td>
                    <td class="label"><input name="mailid" type="text" id="mailid" placeholder="Enter Email ID"  /></td>
                  </tr>
+				 <tr><td colspan="6"><input type="button" value="NEXT>>" onclick="$('#tab3').click()"/><input type="button" value="<< Previous" onclick="$('#tab1').click()"/></td></tr>
                </table>
            </div>
            <div class="container" id="tab3C">
@@ -198,7 +200,7 @@ $conn=$database;
                  
                    <td class="label">Mobile No</td><td>:</td>
                    <td class="label" colspan="4"><input name="mobileno" type="text" id="mobileno" placeholder="Enter Mobile No" maxlength="10"  />
-                       </td>
+                     <input type="button" value="NEXT>>" onclick="$('#tab5').click()"/><input type="button" value="<< Previous" onclick="$('#tab2').click()"/>  </td>
                  </tr>
                </table>
            </div>
@@ -237,10 +239,12 @@ $conn=$database;
                    <td><input name="accountno" type="text" id="accountno" placeholder="Enter Account No."   />
                        <span class="error">* </span></td>
                  </tr>
+				 <tr><td colspan="8"> 
+                     <input type="button" value="NEXT>>" onclick="$('#tab6').click()"/><input type="button" value="<< Previous" onclick="$('#tab3').click()"/> </td></tr>
                </table>
            </div>
            <div class="container" id="tab6C">
-               <table cellspacing="5" id="fileupload">
+               <table cellspacing="5" id="fileupload" class="form excel margin">
                  <tr>
                    <td><input name="button" type="button" value="Applicant photo"/> <input type="file" class="hide" name="applicationphoto" id="applicationphoto"/>
                    </td>
@@ -275,11 +279,12 @@ $conn=$database;
                    <td  id="8" ></td>
                    <td id="9">&nbsp;</td>
                  </tr>
+				 <tr height="20"><td colspan="11"> <input name="button" type="button" class="button_login" value="Save" onclick="farmer.saveData()"/>
+				 <input type="button" value="<< Previous" onclick="$('#tab5').click()"/>
+				 </td></tr>
                </table>
            </div>
-           <div style="float:right;"><span style="margin-right:20px;">
-             <input name="button" type="button" class="button_login" value="Save" onclick="farmer.saveData()"/>
-           </span></div></td>
+            </td>
        </tr>
      </table>
 	
