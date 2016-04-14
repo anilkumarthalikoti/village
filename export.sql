@@ -122,6 +122,7 @@ CREATE TABLE schemes (
 	id bigint(19) NOT NULL auto_increment,
 	name varchar(150) NOT NULL,
 	parent_id int(10) NOT NULL,
+	fillingtype varchar(1),
 	PRIMARY KEY (id),
 	unique key (name,parent_id)
 ) ;
@@ -224,6 +225,16 @@ subschemeid int not null,
 action varchar(1),
 primary key(subschemeid)
 );
+
+CREATE TABLE  dealers_company
+(id INT NOT NULL auto_increment,
+name varchar(255),
+name_k blob,
+parent_id int,
+PRIMARY KEY (id),
+unique key(name,parent_id)
+);
+
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
 
 INSERT INTO page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');
@@ -250,7 +261,7 @@ INSERT INTO page_links(linkid, linkname) VALUES (11, 'SCHEME FILLING');
 
 INSERT INTO page_links(linkid, linkname) VALUES (12, 'ADD CROP');
 
-INSERT INTO page_links(linkid, linkname) VALUES (13, 'SEARCH');
+INSERT INTO page_links(linkid, linkname) VALUES (13, 'ADD DEALER');
 
 INSERT INTO page_links(linkid, linkname) VALUES (14, 'PROPOSAL');
 

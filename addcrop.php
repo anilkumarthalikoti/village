@@ -23,13 +23,14 @@ die();
 <form name"crop" onsubmit="addcrop.php" method="post">
  <table class="form margin xlarge">
  <tr><td>Crop name</td><td>:</td><td><input type="text" name="cropname" id="cropname" placeholder="Crop name"/> <input type="text" alt="ka" name="cropname_k" id="cropname_k"/></td></tr>
- <tr><td colspan="3"><input type="submit" value="Save"/></td></tr>
+ <tr><td colspan="3"><input type="submit" class="button" value="Save"/></td></tr>
  
  </table>
  <table class="grid margin xlarge">
- <thead><tr><th></th><th>Crop name</th><th> Crop name(K)</th></tr>
+ <thead><tr><th></th><th>Crop name</th><th> Crop name(K)</th></tr></thead>
  <tbody>
  <?php 
+ 
  $result=$conn->select("cropitems",array("cropname","cropname_k"));
  $i=1;
  foreach($result as $row){

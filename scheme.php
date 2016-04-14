@@ -13,7 +13,7 @@ $conn=$database;
 </head>
 
 <body>
- <input type="hidden" id="selectTab" value="<?php echo $_REQUEST["viewtab"]?>"/>
+ <input type="hidden" id="selectTab" value="<?php if(!empty($_REQUEST["viewtab"])){echo $_REQUEST["viewtab"];} ?>"/>
 <div class="title">Scheme Details</div>
 <div class="viewport">
   <ul id="tabs">
@@ -67,7 +67,7 @@ $rowid++;
  
 <table class="form margin-left margin-top">
 <tr><td class="label">Select scheme</td><td>:</td><td>
-<select name="parent_id">
+<select name="parent_id" >
 <option value="-1">Select</option>
 
 <?php 
@@ -76,7 +76,10 @@ foreach($result as $row)
 echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 ?>
 </select></td></tr>
-<tr><td class="label">Enter sub scheme</td><td>:</td><td><input type="text" name="item_name" placeholder="Enter sub-schema" /></td></tr>
+<tr><td class="label">Enter sub scheme</td><td>:</td><td><input type="text" name="item_name" placeholder="Enter sub-schema" /> <select name='schemetype'>
+<option value="C">Crop based</option>
+<option value="N">Component based</option>
+</select></td></tr>
 <tr><td class="label">Select Action flow</td><td>:</td><td><input type="checkbox" name="actions[]" value="A"/>Action<input type="checkbox" name="actions[]" value="P"/>Pre-inspection<input type="checkbox" name="actions[]" value="I"/>Post-inspection<input type="checkbox" name="actions[]" value="W"/>Work-order<input type="checkbox" name="actions[]" value="D"/>DC</td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onclick="scheme.saveData('subScheme')" /></td></tr>
  </table>

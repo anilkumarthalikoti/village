@@ -16,7 +16,7 @@ $conn=$database;
  
 <div class="title">Location Details</div>
 <div class="viewport">
-<span></span>
+ 
   <ul id="tabs">
 
       <li><a id="tab1">State</a></li>

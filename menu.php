@@ -20,15 +20,21 @@ foreach($link as $links){
  <li><a href="home.php"><b>&nbsp;&nbsp;Home&nbsp;</b></a></li>
  <li><a class="ajxsub" href="#"><b>Admin</b></a>
   <ul>
-   <li link_id="1"><a href="village.php"><b>Add Village</b></a></li>
-   <li link_id="2"><a href="scheme.php"><b>Scheme</b></a></li>
-    <li link_id="3"><a href="cast.php"><b>Cast</b></a></li>
-	<li link_id="4"><a href="adduser.php"><b>Add user</b></a></li>
-	  <li link_id="12"><a href="addcrop.php"><b>Add Crop</b></a></li>
-      <li link_id="5"><a href="password.php"><b>Reset Password</b></a></li>
-	  <li link_id="6"><a href="actionmapping.php"><b>Village privilage </b></a></li>
+  	<li link_id="4"><a href="adduser.php"><b>Add user</b></a></li>
 	   <li link_id="7"><a href="rolecreation.php"><b>Role Creation </b></a></li>
        <li link_id="8"><a href="rolemapping.php"><b>Role Mapping </b></a></li>
+   <li link_id="1"><a href="village.php"><b>Add Village</b></a></li>
+    <li link_id="6"><a href="actionmapping.php"><b>Village privilage </b></a></li>
+   	  <li link_id="12"><a href="addcrop.php"><b>Add Crop(s)</b></a></li>
+	   <li link_id="18"><a href="cropitemsprice.php"><b>Add Crop Items</b></a></li>
+	   <li link_id="17"><a href="adddealer.php"><b>Add Company/Dealer</b></a></li>
+   <li link_id="2"><a href="scheme.php"><b>Add Scheme</b></a></li>
+    <li link_id="3"><a href="cast.php"><b>Add Cast</b></a></li>
+
+
+      <li link_id="5"><a href="password.php"><b>Reset Password</b></a></li>
+	 
+	
 
   </ul>
  </li>
@@ -65,8 +71,10 @@ foreach($link as $links){
   
  <li><a class="ajxsub" href="#"><b>Reports</b></a>
   <ul>
+  <!--
    <li link_id="17"><a href="#"><b>Proposal</b></a></li>
       <li link_id="18"><a href="#"><b>Track Records</b></a></li>
+	  -->
    </ul>
  </li>
  

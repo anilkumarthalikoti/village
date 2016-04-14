@@ -27,7 +27,7 @@ $conn=$database;
  
 <form method="POST"  name="form1" onsubmit="return false;">
  
-
+<table><tr><td> 
 <table class="form xlarge margin">
       <tr class="hide"><td><input  type="text" id="search" class="search" placeholder="Search" onkeypress="schemefilling.search(event)" value="<?php echo $_REQUEST["regid"]; ?>"  />
              <select name="select" id="searchin">
@@ -36,8 +36,9 @@ $conn=$database;
                <option value="aadhar">Adhar</option>
 			    <option value="voter">Voter</option>
              </select><input type="button" value="Search" onclick="schemefilling.searchRegistration()"/></td></tr>
+			 
        <tr><td>
-	   <table  >
+	   <table>
       <tr>
         <td  class="label" > Name </td><td>:</td><td ><input   type="text"  id="firstname_text" placeholder="First Name"/><input type="hidden" id="regid" name="regid"/></td>
 		  
@@ -56,10 +57,12 @@ $conn=$database;
 		  }
 		  ?>
           
-          </select></td><td class="label">Sub scheme</td><td>:</td><td><select name="subscheme_select" tab='1' id='subscheme_select' next='component' onchange="schemefilling.updateview(this);"><option>Select</option>
+          </select></td><td class="label">Sub scheme</td><td>:</td><td><select name="subscheme_select" tab='1' id='subscheme_select' next='component' onchange="schemefilling.updateview(this); schemefilling.viewEntries();"><option>Select</option>
          
           
           </select></td></tr>
+		  <tr><td colspan="6" class="hide" id="componentbased">
+		  <table>
 	  <tr><td class="label">Component</td><td>:</td><td><select name="component_select" tab='2' id="component_select" onchange="schemefilling.updateview(this);"><option value="-1">Select</option>
           
           
@@ -77,14 +80,41 @@ $conn=$database;
           
           
           </select></td><td></td><td>:</td><td></td></tr>
-	<tr><td colspan="6" valign="top">
-	<div style="height:150px; overflow:auto" class="excel">
-	<table id="landdetails" class="grid excel">
-	<thead><tr></tr><th>Survay no</th><th>Total land</th> <th></th><th></th></thead>
-	<tbody></tbody>
-	</table>
-	</div>
-	</td></tr>
+		  </table></td></tr>
+		  
+		  
+		  <tr><td colspan="6" class="hide" id="cropbase">
+		  <table>
+	  <tr>
+	    <td class="label">Crop-1</td>
+	    <td>:</td>
+	    <td><select name="component_select" >
+	      <option value="-1">Select</option>
+		   <?php 
+		  $result=$conn->select("cropitems",array("id","cropname","cropname_k"));
+		  foreach($result as $row){
+		  echo "<option value='".$row["id"]."'>".$row["cropname"]."/".$row["cropname_k"]."</option>";
+		  }
+		  ?>
+        </select>	    </td>
+	    <td>Crop-2</td><td>:</td><td><select name="component_1"    id="component_1" >
+		<option value="-1">Select</option>
+         <?php 
+		  foreach($result as $row){
+		  echo "<option value='".$row["id"]."'>".$row["cropname"]."/".$row["cropname_k"]."</option>";
+		  }
+		 ?>
+          </select></td> <td>Crop-3</td><td>:</td><td><select name="component_2"   id="component_2"  ><option value="-1">Select</option>
+          
+            <?php 
+		  foreach($result as $row){
+		  echo "<option value='".$row["id"]."'>".$row["cropname"]."/".$row["cropname_k"]."</option>";
+		  }
+		 ?>
+          </select></td> </tr>
+	    
+		  </table></td></tr>
+ 
   <tr>
     <td  colspan="6" align="right"> 
         <input type="button" class="button" id="button2" value="Save" onclick="schemefilling.saveData();">
@@ -96,11 +126,23 @@ $conn=$database;
    
 </table>
  
+</td> </tr></table>
 
+
+
+<td valign="top">
+<div style="height:150px; overflow:auto" >
+	<table id="landdetails" class="grid excel">
+	<thead><tr></tr><th>Survay no</th><th>Total land</th> <th></th><th></th></thead>
+	<tbody></tbody>
+	</table>
+	</div>
+	<td></tr></table>
 
 
 
  </form>
+ 
 </div>
 
  

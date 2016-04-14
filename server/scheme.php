@@ -5,7 +5,11 @@ $conn=$database;
 if(!empty($_POST)){
  $item_name=trim(strtoupper($_POST["item_name"]));
  $parent_id=$_POST["parent_id"];
- $conn->insert("schemes",array("name"=>$item_name,"parent_id"=>$parent_id));
+ $fillingtype="-";
+ if(!empty($_POST["schemetype"])){
+ $fillingtype=$_POST["schemetype"];
+ }
+ $conn->insert("schemes",array("name"=>$item_name,"parent_id"=>$parent_id,"fillingtype"=>$fillingtype));
  if(!empty($_POST["actions"])){
  $id="";
  $result=$conn->select("schemes",array("id"),array("AND"=>array("name"=>$item_name,"parent_id"=>$parent_id)));
@@ -18,11 +22,19 @@ if(!empty($_POST)){
  }
  }}
 if(!empty($_GET['getschemes'])){
-
-$result=$conn->select("schemes" ,array("id","name"),array("parent_id"=>$_GET["parent_id"]));
+$result="";
+if(!empty($_GET['skip'])){
+$result=$conn->select("schemes" ,array("id","name","fillingtype"),array("AND"=>array("parent_id"=>$_GET["parent_id"])));
+}else{
+$result=$conn->select("schemes" ,array("id","name","fillingtype"),array("AND"=>array("parent_id"=>$_GET["parent_id"],"fillingtype[!]"=>'C')));
+}
 $jsontext= "[";
 foreach($result as $row){
+if(!empty($_GET['skip'])){
+$jsontext .= '{"'.$row["id"].'#'.$row["fillingtype"].'":"'.$row["name"].'"},';
+}else{
 $jsontext .= '{"'.$row["id"].'":"'.$row["name"].'"},';
+}
 }
 
 $jsontext = substr_replace($jsontext, '', -1);
