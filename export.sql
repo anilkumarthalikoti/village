@@ -51,21 +51,7 @@ CREATE TABLE states (
 	PRIMARY KEY (id),
 	unique key (state_name,item_type)
 );
-CREATE TABLE cropitems (
-	id bigint(19) NOT NULL auto_increment,
-	cropname varchar(150) NOT NULL,
-	cropname_k blob,
-	PRIMARY KEY (id),
-	unique key (cropname)
-);
-CREATE TABLE cropitemsprice (
-	id bigint(19) NOT NULL auto_increment,
-	itemname varchar(150) NOT NULL,
-	itemprice float,
-	units varchar(15),
-	PRIMARY KEY (id),
-	unique key (itemname)
-);
+
 
 CREATE TABLE district (
 	id bigint(19) NOT NULL auto_increment,
@@ -244,6 +230,21 @@ PRIMARY KEY (id),
 unique key(name,parent_id)
 );
 
+CREATE TABLE cropitems (
+	id bigint(19) NOT NULL auto_increment,
+	cropname varchar(150) NOT NULL,
+	cropname_k blob,
+	PRIMARY KEY (id),
+	unique key (cropname)
+);
+CREATE TABLE cropitemsprice (
+	id bigint(19) NOT NULL auto_increment,
+	itemname varchar(150) NOT NULL,
+	itemprice float,
+	units varchar(15),
+	PRIMARY KEY (id),
+	unique key (itemname)
+);
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
 
 INSERT INTO page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');

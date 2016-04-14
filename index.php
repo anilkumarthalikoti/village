@@ -20,7 +20,7 @@
 <form id="form_id" method="post" name="login_form">
 <input type="hidden" name="methodcall" value="validate_login"/>
 <table style="width:100% ">
-<tr><td style="height:120px;">&nbsp;</td></tr>
+<tr><td style="height:120px;" align="center"><img src="images/Seal_of_Karnataka.png" height="150"/></td></tr>
 <tr align="center"><td>
  
 <table  class="login_dialog"   border="0" cellspacing="0" cellpadding="0"  >

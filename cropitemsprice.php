@@ -7,46 +7,36 @@
  require "interceptor.php";
  require "server/app_connector.php";
 $conn=$database;
+
 if(!empty($_POST)){
-if($_POST["id"]!="-1")
+ 
+if($_POST["itemid"]=="-1")
 {
-$conn->update("cropitemsprice",array("item_price"=>$_POST["itemprice"]),array("id"=>$_POST["id"]));
-}else{
 $conn->insert("cropitemsprice",array("itemname"=>trim(strtoupper($_POST["itemname"])), "itemprice"=>$_POST["itemprice"],"units"=>$_POST["units"]));
+
+}else{
+$conn->update("cropitemsprice",array("item_price"=>$_POST["itemprice"]),array("id"=>$_POST["itemid"]));
 }
-header('Location: '."cropitemsprice.php");
-die();
+ 
 }
  ?>
- <script type="text/javascript">
- $(document).ready(function(){
- $("#existing tbody tr").click(function(){
- $("#itemname").attr("disabled","disabled");
- $("#units").attr("disabled","disabled");
- $("#id").val($(this).attr("id"));
- $("#itemname").val($(this).find("td:eq(1)").html());
- $("#itemprice").val($(this).find("td:eq(3)").html());
- $("#units").val($(this).find("td:eq(2)").html());
- });
- });
- 
- </script>
+ <script type="text/javascript" src="js/itemdetails.js"></script>
 </head>
 
 <body>
 <div class="title">Item details</div>
 <div class="viewport">
-<form name"crop" onsubmit="cropitemsprice.php" method="post">
-<input type="hidden" name="id" value="-1"/>
+<form name"formcrop"  >
+
  <table class="form margin xlarge">
- <tr><td>Item name</td><td>:</td><td><input type="text" name="itemname" id="itemname" placeholder="Item name"/></td></tr>
+ <tr><td>Item name</td><td>:</td><td><input type="text" name="itemname" id="itemname" placeholder="Item name"/><input type="hidden" name="id" value="-1"/></td></tr>
  <tr><td>Item Price</td><td>:</td><td> <input type="text"   name="itemprice" id="itemprice"/></td></tr>
  <tr><td>Units</td><td>:</td><td> <select name="units" id="units">
  <option value="-1">Select</option>
  <option value="No's">No's</option>
  <option value="Meters">Meters</option>
  </select></td></tr>
- <tr><td colspan="3"><input type="button" class="button" value="Clear" onclick="location.reload(); "/><input type="submit" class="button" value="Save"/></td></tr>
+ <tr><td colspan="3"><input type="button" class="button" value="Clear" onclick="location.reload(); "/><input type="button" class="button" value="Save"  onclick="itemtrn.saveupdate();" /></td></tr>
  
  </table>
  <table class="grid margin xlarge" id="existing">
