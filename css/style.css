@@ -162,7 +162,7 @@
 	text-align:center;
 	}
 	
-		.button_login,input[type='button']{
+		.button_login,input[type='button'],input[type='submit']{
 		text-align:center;
 	font-size: 14px;
 	background-color:#d5d8dc ;
@@ -179,7 +179,7 @@
 	float:right;
   
 	}
-	.button_login:hover,input[type='button']:hover{
+	.button_login:hover,input[type='button']:hover,input[type='submit']:hover{
 	background: linear-gradient(#d5d8dc 5%, #e5e7e9  100%);
 	}
 	 
