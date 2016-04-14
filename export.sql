@@ -58,6 +58,15 @@ CREATE TABLE cropitems (
 	PRIMARY KEY (id),
 	unique key (cropname)
 );
+CREATE TABLE cropitemsprice (
+	id bigint(19) NOT NULL auto_increment,
+	itemname varchar(150) NOT NULL,
+	itemprice float,
+	units varchar(15),
+	PRIMARY KEY (id),
+	unique key (itemname)
+);
+
 CREATE TABLE district (
 	id bigint(19) NOT NULL auto_increment,
 	stateid int(10) NOT NULL,
