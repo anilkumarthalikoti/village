@@ -38,6 +38,12 @@ $('#tabs li a').click(function(){
 			 pramukhIME.enable($(this).attr("id"));
 						   });
 			 
+$("select[search='search']").selectToAutocomplete();			 
+			 
+			 
+			 
+			 
+			 
 						   });
 
  document.onmousedown=disableclick;

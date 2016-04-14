@@ -1,11 +1,21 @@
  var schemefilling=new function(){
-	 
+	 this.viewEntries=function(){
+		  $("td#cropbase").hide();
+		   $("td#componentbased").hide();
+		 if($("#subscheme_select option:selected").attr("ftype")=="C"){
+			 $("td#cropbase").show();
+			 }else{
+				  $("td#componentbased").show();
+				 }
+		 
+		 }
 	 
 	 this.updateview=function(elementid){
 		var params={};
 		 
 		params["getschemes"]=true;
 		params["parent_id"]= $(elementid).val();
+		params["skip"]=true;
 			$.ajax({
 			url:"server/scheme.php",
 			method:"get",
@@ -34,14 +44,18 @@
 									  
 									  var id="";
 									  var name="";
+									  var fillingtype="";
 									  $.each(val,function(keyx,valx){
-										  console.log(keyx+":"+valx);
-										  id=keyx;
+										   
+										  id=keyx.split("#")[0];
+										  fillingtype=keyx.split("#")[1];
 										  name=valx;
 										  });
-									   								$(key).append($('<option>', {
+								 
+									   								$(key).append($("<option>", {
    																				 value: id,
-   																				 text: name
+   																				 text: name,
+																				 ftype:fillingtype
 																					}));
 									   
 									   											});
