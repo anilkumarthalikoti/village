@@ -151,18 +151,27 @@ CREATE TABLE schemefilling (
 	schemeid int(10) NOT NULL,
 	subschemeid int(10),
 	component int(10),
-	item1 int(10),
+	component1 int(10),
+	component2 int(10),
+	component3 int(10),
+	component4 int(10),
+ 	item1 int(10),
 	item2 int(10),
 	item3 int(10),
-	item4 int(10),
 	regdate date,
 	regby int(10),
 	status VARCHAR(1) DEFAULT 'P',
-	landsurvayno VARCHAR(255),
+ 	area1 FLOAT,
+	area2 FLOAT,
+	area3 FLOAT,
+	finacyear varchar(30),
 	PRIMARY KEY (id)
 	
 ) ;
-
+create table schemefilling_land(
+fillingid int,
+landdetailsid int
+);
 CREATE TABLE signup (
 	fname varchar(255) NOT NULL,
 	lname varchar(255) NOT NULL,

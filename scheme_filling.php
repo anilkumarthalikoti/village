@@ -98,7 +98,7 @@ $finyear=$row["finyear"];
 		 
 	    <td class="label">Crop </td>
 	    <td>:</td>
-	    <td><select name="crop_select_1" onchange="schemefilling.enableArea(this,'1')" >
+	    <td><select name="item1" onchange="schemefilling.enableArea(this,'1')" >
 	      <option value="-1">Select</option>
 		   <?php 
 		  $result=$conn->select("cropitems",array("id","cropname","cropname_k"));
@@ -107,14 +107,14 @@ $finyear=$row["finyear"];
 		  }
 		  ?>
         </select>	    </td>
-	      <td><select name="crop_select_2"    id="component_1" onchange="schemefilling.enableArea(this,'2')" >
+	      <td><select name="item2"    id="component_1" onchange="schemefilling.enableArea(this,'2')" >
 		<option value="-1">Select</option>
          <?php 
 		  foreach($result as $row){
 		  echo "<option value='".$row["id"]."'>".$row["cropname"]."/".$row["cropname_k"]."</option>";
 		  }
 		 ?>
-          </select></td>  <td><select name="crop_select_3"   id="component_2" onchange="schemefilling.enableArea(this,'3')" ><option value="-1">Select</option>
+          </select></td>  <td><select name="item3"   id="component_2" onchange="schemefilling.enableArea(this,'3')" ><option value="-1">Select</option>
           
             <?php 
 		  foreach($result as $row){
