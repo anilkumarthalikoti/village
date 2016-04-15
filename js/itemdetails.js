@@ -8,7 +8,7 @@ var itemtrn=new function(){
 	 params["itemname"]=$("#itemname").val();
 	 params["itemprice"]=$("#itemprice").val();
 	 params["units"]=$("#units option:selected").val();
-	 params["itemid"]=$("#id").val();
+	 params["itemid"]=$("#mat_id").val();
 	 
 			$.ajax({
 				    url:"cropitemsprice.php",
@@ -33,7 +33,7 @@ var itemtrn=new function(){
  $("#itemname").attr("disabled","disabled");
  $("#units").attr("disabled","disabled");
   
- $("#id").val($(this).attr("id"));
+ $("#mat_id").val($(this).attr("id"));
  $("#itemname").val($(this).find("td:eq(1)").html());
  $("#itemprice").val($(this).find("td:eq(3)").html());
  $("#units").val($(this).find("td:eq(2)").html());
