@@ -5,15 +5,21 @@
   require "interceptor.php";
  require "server/app_connector.php";
 $conn=$database;
+$finyear="";
+$query="select finyear from financialyear where current_date between startfrom and endson";
+$result=$conn->query($query); 
+foreach($result as $row){
+$finyear=$row["finyear"];
+}
  ?>
  <script src="js/scheme_filling.js" type="text/javascript"></script>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <script type="text/javascript">
+ 
  <script type="text/javascript" src="js/landdetails.js"></script>
  <script type="text/javascript">
  $(document).ready(function(){
  
- schemefilling.searchRegistration()
+ schemefilling.searchRegistration();
  });
  </script>
  
@@ -28,7 +34,7 @@ $conn=$database;
 <form method="POST"  name="form1" onsubmit="return false;">
  
 <table><tr><td> 
-<table class="form xlarge margin">
+<table class="form excel margin">
       <tr class="hide"><td><input  type="text" id="search" class="search" placeholder="Search" onkeypress="schemefilling.search(event)" value="<?php echo $_REQUEST["regid"]; ?>"  />
              <select name="select" id="searchin">
                <option value="id" selected="selected">Reg.No</option>
@@ -45,7 +51,11 @@ $conn=$database;
         <td class="label">Father/Husband Name  </td><td>:</td><td ><input   type="text"  id="fathername_text" placeholder="Father/Husband name"  /></td>
         </tr>
 		<tr><td class="label">House No</td><td>:</td><td><input id="houseno_text" type="text" placeholder="House no"></input></td><td class="label">Village</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td></tr>
-		 
+		
+		  <tr><td class="label">Financal Year</td><td>:</td><td><input type="text" disabled="disabled" name="finyear" value="<?php echo $finyear; ?>"/></td>
+		  <td class="label">Date</td><td>:</td>
+		  <td><input type="text" value="<?php echo date("d-m-Y" );?>"/></td></tr>
+	  <tr>
 	 <tr><td class="label">Scheme</td><td>:</td><td><select name="scheme_select"  tab='0'   id="scheme_select" onchange="schemefilling.updateview(this)"   >
           <option>Select</option>
           <?php
@@ -85,10 +95,10 @@ $conn=$database;
 		  
 		  <tr><td colspan="6" class="hide" id="cropbase">
 		  <table>
-	  <tr>
-	    <td class="label">Crop-1</td>
+		 
+	    <td class="label">Crop </td>
 	    <td>:</td>
-	    <td><select name="component_select" >
+	    <td><select name="crop_select_1" onchange="schemefilling.enableArea(this,'1')" >
 	      <option value="-1">Select</option>
 		   <?php 
 		  $result=$conn->select("cropitems",array("id","cropname","cropname_k"));
@@ -97,14 +107,14 @@ $conn=$database;
 		  }
 		  ?>
         </select>	    </td>
-	    <td>Crop-2</td><td>:</td><td><select name="component_1"    id="component_1" >
+	      <td><select name="crop_select_2"    id="component_1" onchange="schemefilling.enableArea(this,'2')" >
 		<option value="-1">Select</option>
          <?php 
 		  foreach($result as $row){
 		  echo "<option value='".$row["id"]."'>".$row["cropname"]."/".$row["cropname_k"]."</option>";
 		  }
 		 ?>
-          </select></td> <td>Crop-3</td><td>:</td><td><select name="component_2"   id="component_2"  ><option value="-1">Select</option>
+          </select></td>  <td><select name="crop_select_3"   id="component_2" onchange="schemefilling.enableArea(this,'3')" ><option value="-1">Select</option>
           
             <?php 
 		  foreach($result as $row){
@@ -112,17 +122,35 @@ $conn=$database;
 		  }
 		 ?>
           </select></td> </tr>
-	    
-		  </table></td></tr>
- 
-  <tr>
-    <td  colspan="6" align="right"> 
-        <input type="button" class="button" id="button2" value="Save" onclick="schemefilling.saveData();">
+		  
+		  <tr><td colspan="5" align="center">
+		  
+		  <div style="height:150px; overflow-x: hidden;
+overflow-y: auto; width:100%"   >
+	<table id="landdetails" class="grid xlarge" >
+	<thead><tr></tr><th class="small">Survay no</th><th class="medium">Village</th> <th class="small">Total land(hect)</th><th class="tiny"></th></thead>
+	<tbody></tbody>
+	</table>
+	</div>
+		  </td></tr>
+		   <tr>
+		     <td>Total area </td>
+		     <td>:</td><td><input type="text" name="totalarea" disabled="disabled" id="totalarea" value="0"/></td>
+		     <td align="right">Pre allocated:</td>
+		     <td><input type="text" id="preallocated" disabled="disabled"/></td>
+		   </tr>
+		  <tr><td>Area in hector</td><td>:</td><td><input type="text" name="area1"/></td><td><input type="text" name="area2"/></td><td><input type="text" name="area3"/></td></tr>
+	    <tr>
+    <td  colspan="5" align="right"> 
+        <input type="button" class="button" id="button2" value="Save" onclick="schemefilling.saveCrop();">
        
         <input type="button" class="button" name="Reset" id="Reset" value="Reset">
        
      </td>
   </tr>
+		  </table></td></tr>
+ 
+  
    
 </table>
  
@@ -130,14 +158,7 @@ $conn=$database;
 
 
 
-<td valign="top">
-<div style="height:150px; overflow:auto" >
-	<table id="landdetails" class="grid xlarge">
-	<thead><tr></tr><th width="150">Survay no</th><th>Village</th> <th>Total land(hect)</th><th></th></thead>
-	<tbody></tbody>
-	</table>
-	</div>
-	<td></tr></table>
+ </tr></table>
 
 
 

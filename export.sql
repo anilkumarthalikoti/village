@@ -3,7 +3,11 @@ CREATE TABLE app_login (id bigint(10) NOT NULL auto_increment,login_id varchar(2
 	PRIMARY KEY (id),
 	unique key(login_id)
 ) ;
- 
+ CREATE TABLE  financialyear
+(finyear varchar(8),
+startfrom DATE,
+endson DATE,
+active VARCHAR(1))
 CREATE TABLE farmerdetails (
   id bigint  NOT NULL   AUTO_INCREMENT,
   firstname varchar(150) NOT NULL DEFAULT 'A' ,
@@ -304,7 +308,16 @@ INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 18);
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 19);
 INSERT INTO role_dtl(role_id, page_link_id) VALUES (1, 20);
 INSERT INTO role_mstr(role_id, role_name) VALUES (1, 'ADMIN_ROLE');
+
 INSERT INTO user_roles(login_id, role_id, is_active) VALUES ('ADMIN', 1, 'Y');
+insert into financialyear values('2011-12','2016-04-01','2017-03-31','N');
+insert into financialyear values('2012-13','2016-04-01','2017-03-31','N');
+insert into financialyear values('2013-14','2016-04-01','2017-03-31','N');
+insert into financialyear values('2014-15','2016-04-01','2017-03-31','N');
+insert into financialyear values('2015-16','2016-04-01','2017-03-31','N');
+insert into financialyear values('2016-17','2016-04-01','2017-03-31','Y');
+insert into financialyear values('2017-18','2016-04-01','2017-03-31','N');
+insert into financialyear values('2018-19','2016-04-01','2017-03-31','N');
 
  
 
