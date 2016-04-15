@@ -154,7 +154,7 @@
 			method:"post",
 			data:$("form[name='form1']").serialize()
 			}).done(function(data){
-				 
+				 location.reload();
 				 
 					 
 				});
