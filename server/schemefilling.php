@@ -26,8 +26,13 @@ foreach($result as $row){
 $finyear=$row["finyear"];
 }
 $params["finacyear"]=$finyear;
-$conn->insert("schemefilling",$params);
+$result=$conn->insert("schemefilling",$params);
 
+echo $result;
+$landselected=$_POST["landsurvayno"];
+foreach($landselected as $land){
+$conn->insert("schemefilling_land",array("fillingid"=>$result,"landdetailsid"=>$land));
+}
 }
 
 ?>
