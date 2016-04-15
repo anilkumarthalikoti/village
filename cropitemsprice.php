@@ -15,7 +15,9 @@ if($_POST["itemid"]=="-1")
 $conn->insert("cropitemsprice",array("itemname"=>trim(strtoupper($_POST["itemname"])), "itemprice"=>$_POST["itemprice"],"units"=>$_POST["units"]));
 
 }else{
-$conn->update("cropitemsprice",array("item_price"=>$_POST["itemprice"]),array("id"=>$_POST["itemid"]));
+echo $_POST["itemid"];
+ 
+$conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id"=>$_POST["itemid"]));
 }
  
 }
@@ -24,12 +26,12 @@ $conn->update("cropitemsprice",array("item_price"=>$_POST["itemprice"]),array("i
 </head>
 
 <body>
-<div class="title">Item details</div>
+<div class="title">IDrip material </div>
 <div class="viewport">
 <form name"formcrop"  >
 
  <table class="form margin xlarge">
- <tr><td>Item name</td><td>:</td><td><input type="text" name="itemname" id="itemname" placeholder="Item name"/><input type="hidden" name="id" value="-1"/></td></tr>
+ <tr><td>Item name</td><td>:</td><td><input type="text" name="itemname" id="itemname" placeholder="Item name"/><input type="hidden" name="mat_id" id="mat_id" value="-1"/></td></tr>
  <tr><td>Item Price</td><td>:</td><td> <input type="text"   name="itemprice" id="itemprice"/></td></tr>
  <tr><td>Units</td><td>:</td><td> <select name="units" id="units">
  <option value="-1">Select</option>
