@@ -132,8 +132,8 @@ $conn=$database;
 
 <td valign="top">
 <div style="height:150px; overflow:auto" >
-	<table id="landdetails" class="grid excel">
-	<thead><tr></tr><th>Survay no</th><th>Total land</th> <th></th><th></th></thead>
+	<table id="landdetails" class="grid xlarge">
+	<thead><tr></tr><th width="150">Survay no</th><th>Village</th> <th>Total land(hect)</th><th></th></thead>
 	<tbody></tbody>
 	</table>
 	</div>
