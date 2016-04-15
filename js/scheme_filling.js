@@ -1,9 +1,48 @@
  var schemefilling=new function(){
+	 
+	 this.enableArea=function(ele,area){
+		 /*
+		 var key="input[name='area"+area+"']";
+		 if($(ele).val()=="-1"){
+			 
+			 $(key).val(0);
+			 $(key).attr("disabled",true);
+			 }else{
+				  $(key).attr("disabled",false);
+				 }*/
+		 
+		 }
+	 this.enableArea=function(){
+		 
+		 if($("input[name='landsurvayno[]']:checked").length>0){
+			 
+																					    $("input[name='area1']").attr("disabled",false);
+																						   $("input[name='area2']").attr("disabled",false);
+																						   $("input[name='area3']").attr("disabled",false);
+																					   }else{
+																						   $("input[name='area1']").attr("disabled",true);
+																						   $("input[name='area2']").attr("disabled",true);
+																						   $("input[name='area3']").attr("disabled",true);
+																						   $("input[name='area1']").val(0);
+																						   $("input[name='area2']").val(0);
+																						   $("input[name='area3']").val(0);
+																						   }
+																						   var totalarea="0";
+																						   $("input[name='landsurvayno[]']:checked").each(function(){
+																							if(!isNaN($(this).attr("landvalue"))){
+																								totalarea=Number(totalarea)+Number($(this).attr("landvalue"));
+																								}
+																																				   });
+																						   $("#totalarea").val(totalarea);
+		 }
+	 
 	 this.viewEntries=function(){
 		  $("td#cropbase").hide();
 		   $("td#componentbased").hide();
 		 if($("#subscheme_select option:selected").attr("ftype")=="C"){
+			  this.updateLandDetails();
 			 $("td#cropbase").show();
+			
 			 }else{
 				  $("td#componentbased").show();
 				 }
@@ -89,7 +128,12 @@
 																		 $(key).val(value[keys[0]]);
 																		 
 																		 });
-													var reg_id=$("input#regid").val();
+													
+								
+								});
+			}
+		this.updateLandDetails=function(){
+			var reg_id=$("input#regid").val();
 													var pr={};
 													pr["regid"]=reg_id;
 													$.ajax({
@@ -102,10 +146,7 @@
 								$("table#landdetails tbody").html(data);
 								
 								});
-								
-								});
 			}
-		
 		this.saveData=function(){
 			
 			$.ajax({
@@ -130,4 +171,6 @@
 							 $("input[type='text']").attr("disabled","disabled");
 							   $("input[type='text']").addClass("medium");
 							   	 $("input[id='search']").attr("disabled",false);
+								 
 							   });
+	
