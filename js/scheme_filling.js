@@ -159,6 +159,19 @@
 					 
 				});
 			}
+			
+			
+			
+		this.saveCrop=function(){
+			this.saveData();			
+			
+			
+			}	
+			
+			
+			
+			
+			
 	
 	}
 	
