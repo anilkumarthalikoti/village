@@ -22,7 +22,9 @@
 		var params={};
 		 
 		params["getschemes"]=true;
+		 params["skip"]=true;
 		params["parent_id"]= $(elementid).val();
+		
 			$.ajax({
 			url:"server/scheme.php",
 			method:"get",
