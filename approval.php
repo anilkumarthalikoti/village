@@ -29,20 +29,20 @@ $conn=$database;
 
 <table class="excel">
 <tr>
-<td>Scheme</td><td>:</td><td><select name="scheme_select" id="scheme_select" onchange="approvaljs.updatesubscheme('subscheme_select','scheme_select'); approvaljs.updateschemadetails('SCHEME')">
+<td>Scheme</td><td>:</td><td><select name="scheme_select" id="scheme_select" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails()">
 <option value="-1">Select</option>
 <?php 
-$result =$conn->select("items",array("item_id","item_name"),array("item_type"=>0));
+$result =$conn->select("schemes",array("id","name"),array("parent_id"=>0));
 foreach($result as $row)
-echo "<option value='".$row["item_id"]."'>".$row["item_name"]."</option>";
+echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 ?>
 </select></td>
-<td>Sub Scheme</td><td>:</td><td><select name="subscheme_select" id="subscheme_select" onchange="approvaljs.updatecomponent(); approvaljs.updateschemadetails('SUBSCHEME')"><option value="-1">Select</option></select></td>
-<td>Component</td><td>:</td><td><select name="component_select" id="component_select" onchange="approvaljs.updatecrops(); approvaljs.updateschemadetails('COMPNENT')"><option value="-1">Select</option></select></td>
+<td>Sub Scheme</td><td>:</td><td><select name="subscheme_select" id="subscheme_select" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails('SUBSCHEME')"><option value="-1">Select</option></select></td>
+<td>Component</td><td>:</td><td><select name="component_select" id="component_select" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails('COMPNENT')"><option value="-1">Select</option></select></td>
 <td colspan="3"><input type="button" value="Show all" onclick="approvaljs.updateschemadetails('ALL');" /></td>
 </tr>
 <tr>
-<td>Crop-1</td><td>:</td><td><select name="component_1" id="component_1"><option value="-1">Select</option></select></td>
+<td>Crop-1</td><td>:</td><td><select name="component_1" id="component_1"  ><option value="-1">Select</option></select></td>
 <td>Crop-2</td><td>:</td><td><select name="component_2" id="component_2"><option value="-1">Select</option></select></td>
 <td>Crop-3</td><td>:</td><td><select name="component_3" id="component_3"><option value="-1">Select</option></select></td>
 <td>Crop-4</td><td>:</td><td><select name="component_4" id="component_4"><option value="-1">Select</option></select></td>
