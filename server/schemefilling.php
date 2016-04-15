@@ -25,7 +25,7 @@ $result=$conn->query($query);
 foreach($result as $row){
 $finyear=$row["finyear"];
 }
-$params["finyear"]=$finyear;
+$params["finacyear"]=$finyear;
 $conn->insert("schemefilling",$params);
 
 }
