@@ -148,6 +148,22 @@
 	width:280px;
  
 	}
+	.large500{
+	
+	width:500px;
+	}
+		.large400{
+	
+	width:400px;
+	}
+	.large600{
+	
+	width:600px;
+	}
+	.large700{
+	
+	width:700px;
+	}
 	.xlarge{
 	width:800px;
 	}
@@ -157,6 +173,10 @@
 	}
 	.align_right{
 	float:right
+	}
+	.tiny{
+	
+	width:50px;
 	}
 	.align_center{
 	text-align:center;
@@ -231,6 +251,10 @@ background-color:#FFFFFF ;
 }
 table.grid tbody tr:nth-child(odd){
 background-color: #f2f3f4  ;
+}
+table.grid tfoot tr{
+background-color:#999999;
+font-weight:bold;
 }
 table.grid{
  
@@ -509,3 +533,9 @@ margin:20px;
       background-color: #D5E5F4;
       color: #161A1C;
     }
+	  tr.gray td{
+ 
+	color:#000000;
+	font-weight:bold;
+	
+	}
