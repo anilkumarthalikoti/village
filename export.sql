@@ -160,7 +160,7 @@ CREATE TABLE schemefilling (
 	item3 int(10),
 	regdate date,
 	regby int(10),
-	status VARCHAR(1) DEFAULT 'P',
+	status VARCHAR(1) DEFAULT '1',
  	area1 FLOAT,
 	area2 FLOAT,
 	area3 FLOAT,
