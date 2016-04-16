@@ -1,1 +1,0 @@
-<div>@2016 All rights reserved</div>
