@@ -23,6 +23,7 @@
 		var params={};
 		 
 		params["getschemes"]=true;
+		params["skip"]=true;
 		params["parent_id"]= $(elementid).val();
 			$.ajax({
 			url:"server/scheme.php",
@@ -30,7 +31,10 @@
 		 	data:params
 			
 							}).done(function(data){
-								var setelement=$(elementid).parent().closest('tr').next().find("select");
+								var tabid=$(elementid).attr("tabid");
+								tabid=Number(tabid)+1;
+								var keys="select[tabid='"+tabid+"']";
+								var setelement=$(keys);
 								  
 								$(setelement).find('option') .remove();
 									 var key="";
@@ -74,7 +78,7 @@
 			
 			
 			$.ajax({
-			url:"server/actionmapping.php",
+			url:"server/approval.php",
 			method:"post",
 		 	data:params
 			
@@ -95,11 +99,16 @@
 																			 $("#scheme_filling_val").html(valx);
 																			  
 																			 }
-										if(keyx=="P"){
+										if(keyx=="1"){
 											pending=total-valx;
+											$("#pendding").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=1");
 											$("#pendding").html(valx);
 											}									 
-																			 
+											if(keyx=="2"){
+											pending=total-valx;
+											$("#yettoapproval").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=2");
+											$("#yettoapproval").html(valx);
+											}								 
 																			 
 										  });
 																		
@@ -135,7 +144,26 @@
 								});
 			}	
 			
-			 
+			 this.savenewapplication=function(savetype){
+				 
+				 $("input[name='statusto']").val(savetype);
+				 $.ajax({
+						url:"server/approvel.php"
+						method:"post",
+						data:$("form[name='acpplication']").serialize()
+						
+						});
+				  
+				 }
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
 	
 	}
 	
