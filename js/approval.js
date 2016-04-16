@@ -148,7 +148,7 @@
 				 
 				 $("input[name='statusto']").val(savetype);
 				 $.ajax({
-						url:"server/approvel.php"
+						url:"server/approval.php",
 						method:"post",
 						data:$("form[name='acpplication']").serialize()
 						
