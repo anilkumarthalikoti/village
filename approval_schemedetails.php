@@ -67,9 +67,8 @@ $count="";
         <td class="pro_1"><a href="#">0</a></td>
       </tr>
       <tr>
-        <td class="pro_0" align="left">Yet to Forward for<br />
-Pre-Inspection</td>
-        <td class="pro_1"><a href="#"><span id="pendding">0</span></a></td>
+        <td class="pro_0" align="left">Pending application's </td>
+        <td class="pro_1"><a href="#"  ><span id="pendding">0</span></a></td>
         <td class="pro_0" align="left">Pending</td>
         <td class="pro_1"><a href="#"><span id="preinspection_pending">0</span></a></td>
         <td class="pro_0" align="left">Pending</td>
@@ -86,9 +85,8 @@ Pre-Inspection</td>
         <td class="pro_1"><a href="#">0</a></td>
       </tr>
       <tr>
-        <td class="pro_0" align="left">Forwarded to RSK <br />
-for Pre-Inspection</td>
-        <td class="pro_1"><a href="#"><span id="rsk">0</span></a></td>
+        <td class="pro_0" align="left">Yet to forward for pre-inspection </td>
+        <td class="pro_1"><a href="#"><span id="yettoapproval">0</span></a></td>
         <td class="pro_0" align="left">Inspection Done</td>
         <td class="pro_1"><a href="#"><span id="preinspection_completed">0</span></a></td>
         <td class="pro_0" align="left">Issued</td>
@@ -105,8 +103,9 @@ for Pre-Inspection</td>
         <td class="pro_1"><a href="#"></a></td>
       </tr>
       <tr>
-        <td class="pro_0" align="left"></td>
-        <td class="pro_1"><a href="#"></a></td>
+        <td class="pro_0" align="left">Forwarded to RSK 
+for Pre-Inspection</td>
+        <td class="pro_1"><a href="#"><span id="preinspection_rsk_received">0</span></a></td>
         <td class="pro_0" align="left">Received from RSK</td>
         <td class="pro_1"><a href="#"><span id="preinspection_rsk_received">0</span></a></td>
         <td class="pro_0" align="left">Received from DDH Office</td>
