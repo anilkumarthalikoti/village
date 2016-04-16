@@ -1,5 +1,5 @@
 CREATE TABLE app_login (id bigint(10) NOT NULL auto_increment,login_id varchar(25) not null,login_password varchar(225) not null,
-	isactive varchar(1),isadmin varchar(1),
+	isactive varchar(1),isadmin varchar(1),designation varchar(50) DEFAULT 'NA' NOT NULL,
 	PRIMARY KEY (id),
 	unique key(login_id)
 ) ;
@@ -258,7 +258,7 @@ CREATE TABLE cropitemsprice (
 	PRIMARY KEY (id),
 	unique key (itemname)
 );
-INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y');
+INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y','ALL');
 
 INSERT INTO page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');
 
