@@ -258,7 +258,7 @@ CREATE TABLE cropitemsprice (
 	PRIMARY KEY (id),
 	unique key (itemname)
 );
-INSERT INTO app_login(id, login_id, login_password, isactive, isadmin) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y','ALL');
+INSERT INTO app_login(id, login_id, login_password, isactive, isadmin,designation) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y','ALL');
 
 INSERT INTO page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');
 
