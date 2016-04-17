@@ -29,7 +29,7 @@ $conn=$database;
 
 <table class="excel">
 <tr>
-<td>Scheme</td><td>:</td><td><select name="scheme_select" id="scheme_select" tabid="1" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails()">
+<td>Scheme</td><td>:</td><td><select name="scheme_select" id="scheme_select" tabid="1" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails();">
 <option value="-1">Select</option>
 <?php 
 $result =$conn->select("schemes",array("id","name"),array("parent_id"=>0));

@@ -49,9 +49,11 @@
 									  
 									  var id="";
 									  var name="";
+									  var type="";
 									  $.each(val,function(keyx,valx){
-										  console.log(keyx+":"+valx);
-										  id=keyx;
+										  var pk=keyx.split("#");
+										  id=pk[0];
+										  type=pk[1];
 										  name=valx;
 										  });
 									   								$(key).append($('<option>', {
@@ -69,8 +71,8 @@
 		// Approval details update
 		
 		this.updateschemadetails=function(){
-			// $("#details_schema").load("approval_schemedetails.php");
-			 $("#details_schema").load("approval_schemedetails.php");
+		 
+			 
 			var params={}
 			params["schemeid"]=$("#scheme_select option:selected").val();
 			params["get"]="schemes";
@@ -80,14 +82,15 @@
 			$.ajax({
 			url:"server/approval.php",
 			method:"post",
-		 	data:params
+		 	data:params,
+			datatype:'json'
 			
 							}).done(function(data){
 								
-								
-								 data=data+"";
+								alert(data);
+								 
 								 var total=0,pending=0;
-										 var list=$.parseJSON(data);
+										 var list=data;
 				  									$.each(list,function(key,val){
 										 
 									  $.each(val,function(keyx,valx){
