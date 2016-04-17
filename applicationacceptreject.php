@@ -10,8 +10,8 @@
  $conn=$database;
  
  if(!($user["designation"]=="ALL" || $user["designation"]=="TA")){
-  header('Location: '."accessdenied.php");
-		 die();
+ // header('Location: '."accessdenied.php");
+//		 die();
  }
  
  
@@ -20,7 +20,18 @@
 </head>
 
 <body>
+<?php  if($_GET["status"]==1){
+    ?>
 <div class="title">Application accept/reject</div>
+<?php
+}
+    ?>
+    <?php  if($_GET["status"]==2){
+    ?>
+<div class="title">Cover letter generation</div>
+<?php
+}
+    ?>
 <div class="viewport">
 <form name="application">
 <input type="hidden" name="application" value="application"/>
@@ -44,14 +55,21 @@
 <th>Total land area</th>
 <th>Filled by</th>
 <th>Filled Date</th>
+<?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
+    ?>
 <th><input type="checkbox" onclick="" /></th>
- 
+ <?php } ?>
 </tr>
 
 </thead>
 <tbody>
 <?php 
-$query="select sf.id schemefillingid,f.id,f.firstname,f.fathername,s.state_name,(select s1.state_name from states s1 where s1.id=v.hobliid) hobli,c.castname, group_concat(distinct l.landsono separator ', ') survayno,(select sum(totalland) from landdetails ld where ld.regid= l.regid ) ftype,(select ss.name from schemes ss where ss.id= sf.subschemeid ) sector,(select ci.cropname from cropitems ci where ci.id=sf.item1)area_1,(select ci.cropname from cropitems ci where ci.id=sf.item2)area_2,(select ci.cropname from cropitems ci where ci.id=sf.item3)area_3 from schemefilling_land sfl,farmerdetails f, schemefilling sf  ,landdetails l, village v,casts c ,states s,actionmapping am where   sfl.landdetailsid= l.id and l.villageid = s.id and sf.id= sfl.fillingid and v.villageid= l.villageid and v.hobliid= am.hobliid and f.id= sf.regid  and  c.id=f.usercast and am.regid=".$user["id"]." and sf.schemeid=".$_GET["schemeid"]." and sf.status=".$_GET["status"]."";
+$query="select sf.id, sf.regid, f.firstname,f.fathername,'-' village,'-' hobli,c.castname,
+(select group_concat(l.landsono separator ', ') from schemefilling_land sfl,landdetails l where fillingid=sf.id and l.id= sfl.landdetailsid) survayno,
+  (select sum(l.totalland) from landdetails l where l.regid=sf.regid  ) ftype,(select s.name from schemes s where s.id= sf.subschemeid) sector,(select cropname from cropitems where id= sf.item1 ) crop1
+,(select cropname from cropitems where id= sf.item2 ) crop2
+,(select cropname from cropitems where id= sf.item3 ) crop3,(coalesce(sf.area1,0)+coalesce(sf.area2,0)+coalesce(sf.area3,0)) totalappland,(select login_id from app_login where id= sf.regby ) regby,regdate
+from farmerdetails f, schemefilling sf,casts c where sf.regid= f.id and f.usercast= c.id and sf.status=".$_GET["status"]." and sf.schemeid=".$_GET["schemeid"]."";
 if(!empty($_GET["subschemeid"])){
 $query.="  and sf.subschemeid=".$_POST["subschemeid"]."";
 }
@@ -64,7 +82,7 @@ foreach($result as $row){
 <td><?php print $row["id"];?></td>
 <td><?php print $row["firstname"];?></td>
 <td><?php print $row["fathername"];?></td>
-<td><?php print $row["state_name"];?></td>
+<td><?php print $row["village"];?></td>
 <td><?php print $row["hobli"];?></td>
 <td><?php print $row["castname"];?></td>
 <td><?php print $row["survayno"];?></td>
@@ -74,14 +92,16 @@ print "BIG FRAMER";
 }?></td>
 
 <td><?php print $row["sector"]?></td>
-<td><?php print $row["area_1"]?></td>
-<td><?php print $row["area_2"]?></td>
-<td><?php print $row["area_3"]?></td>
-<td><?php print $row["sector"]?></td>
-<td><?php print $row["sector"]?></td>
-<td><?php print $row["sector"]?></td>
+<td><?php print $row["crop1"]?></td>
+<td><?php print $row["crop2"]?></td>
+<td><?php print $row["crop3"]?></td>
+<td><?php print $row["totalappland"]?></td>
+<td><?php print $row["regby"]?></td>
+<td><?php print $row["regdate"]?></td>
+<?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
+    ?>
 <td><input type="checkbox" name="schemefillingid[]" value='<?php print $row["schemefillingid"];?>' /></td>
- 
+  <?php } ?>
 </tr>
 
 <?php
