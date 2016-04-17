@@ -16,14 +16,14 @@
  
  
 ?>
-
+<script type="text/javascript" src="js/approval.js"></script>
 </head>
 
 <body>
 <div class="title">Application accept/reject</div>
 <div class="viewport">
 <form name="application">
-<input type="hidden" name="application" value=""/>
+<input type="hidden" name="application" value="application"/>
 <div style="position:absolute; bottom:50px; top:0;" class="excel">
 <table class="grid excel" id="applications">
 <thead>
@@ -92,7 +92,7 @@ print "BIG FRAMER";
 
 </table>
 </div>
-<input type="hidden" name='statusto'/>
+<input type="hidden" name='statusto' value=""/>
 </form>
 <?php 
 if($_GET["status"]==1){
