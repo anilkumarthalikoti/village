@@ -82,15 +82,15 @@
 			$.ajax({
 			url:"server/approval.php",
 			method:"post",
-		 	data:params,
-			datatype:'json'
+		 	data:params
+		 
 			
 							}).done(function(data){
 								
-								alert(data);
-								 
+							 
+								 data=data+"";
 								 var total=0,pending=0;
-										 var list=data;
+										 var list=$.parseJSON(data);
 				  									$.each(list,function(key,val){
 										 
 									  $.each(val,function(keyx,valx){
@@ -153,7 +153,7 @@
 				 $.ajax({
 						url:"server/approval.php",
 						method:"post",
-						data:$("form[name='acpplication']").serialize()
+						data:$("form[name='application']").serialize()
 						
 						});
 				  
@@ -176,10 +176,6 @@
 							   $("#details_schema").load("approval_schemedetails.php");
 							   $("#actions").load("approval_actions.php");
 							   
-							   
-							   
-							   
 							   });
-	
-	
-	
+							   
+							 

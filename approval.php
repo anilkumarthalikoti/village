@@ -3,11 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Office_App</title>
- <?php 
-  require "interceptor.php";
- require "server/app_connector.php";
-$conn=$database;
- ?>
+ <?php
+require "interceptor.php";
+require "server/app_connector.php";
+$conn = $database;
+?>
 
 <script src="js/approval.js" type="text/javascript"></script>
  
@@ -31,10 +31,10 @@ $conn=$database;
 <tr>
 <td>Scheme</td><td>:</td><td><select name="scheme_select" id="scheme_select" tabid="1" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails();">
 <option value="-1">Select</option>
-<?php 
-$result =$conn->select("schemes",array("id","name"),array("parent_id"=>0));
-foreach($result as $row)
-echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
+<?php
+$result = $conn->select("schemes", array("id", "name"), array("parent_id" => 0));
+foreach ($result as $row)
+    echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
 ?>
 </select></td>
 <td>Sub Scheme</td><td>:</td><td><select name="subscheme_select" tabid="2" id="subscheme_select" onchange="approvaljs.updateview(this); "><option value="-1">Select</option></select></td>
@@ -69,10 +69,14 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <tr class="hide">
 <td>State</td><td>:</td><td><select name="state_selected" id="state_selected" onchange="approvaljs.updatedistrict('actions')">
 <option value="-1">Select</option>
-<?php 
-$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>0));
-foreach($result as $row)
-echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+<?php
+$result = $conn->select("states", array(
+    "id",
+    "state_name",
+    "state_name_k"), array("item_type" => 0));
+foreach ($result as $row)
+    echo "<option   value='" . $row["id"] . "'>" . $row["state_name"] . "/" . $row["state_name_k"] .
+        "</option>";
 ?>
 </select></td>
 <td>District</td><td>:</td><td><select name="district_selected" id="district_selected" onchange="approvaljs.updatetaluka('actions')">
