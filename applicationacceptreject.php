@@ -33,7 +33,7 @@
 }
     ?>
 <div class="viewport">
-<form name="application">
+<form name="application" method="post">
 <input type="hidden" name="application" value="application"/>
 <div style="position:absolute; bottom:50px; top:0;" class="excel">
 <table class="grid excel" id="applications">
@@ -64,7 +64,7 @@
 </thead>
 <tbody>
 <?php 
-$query="select sf.id, sf.regid, f.firstname,f.fathername,'-' village,'-' hobli,c.castname,
+$query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,'-' village,'-' hobli,c.castname,
 (select group_concat(l.landsono separator ', ') from schemefilling_land sfl,landdetails l where fillingid=sf.id and l.id= sfl.landdetailsid) survayno,
   (select sum(l.totalland) from landdetails l where l.regid=sf.regid  ) ftype,(select s.name from schemes s where s.id= sf.subschemeid) sector,(select cropname from cropitems where id= sf.item1 ) crop1
 ,(select cropname from cropitems where id= sf.item2 ) crop2
@@ -122,7 +122,7 @@ if($_GET["status"]==1){
 
 if($_GET["status"]==2){
 ?>
-<div  style="height:50px;  position:absolute; bottom:0;" class="excel"><input type="button" value="Generate cover letter"/></div>
+<div  style="height:50px;  position:absolute; bottom:0;" class="excel"><input type="button" value="Generate cover letter" onclick="approvaljs.generatecoverletter();"/></div>
 <?php
  }
 
