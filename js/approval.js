@@ -155,13 +155,21 @@
 						method:"post",
 						data:$("form[name='application']").serialize()
 						
-						});
+						}).done(function(data){
+							
+							
+							});
 				  
 				 }
 				 
 				 
 				 
+				 this.generatecoverletter=function(savetype){
 				 
+				 $("form[name='application']").attr("action","coverletter.php");
+				 $("form[name='application']").submit();
+				  
+				 } 
 				 
 				 
 				 
