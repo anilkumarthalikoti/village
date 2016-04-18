@@ -79,7 +79,7 @@ $result=$conn->query($query);
 foreach($result as $row){
 ?>
 <tr>
-<td><?php print $row["id"];?></td>
+<td><?php print $row["schemefillingid"];?></td>
 <td><?php print $row["firstname"];?></td>
 <td><?php print $row["fathername"];?></td>
 <td><?php print $row["village"];?></td>
