@@ -111,8 +111,15 @@
 											pending=total-valx;
 											$("#yettoapproval").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=2");
 											$("#yettoapproval").html(valx);
+											$("#forwardtorsk").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=4")
+											$("#forwardtorsk").html(valx);
 											}								 
-																			 
+												
+											if(keyx=="4"){
+												$("#forwardedtorsk").html(valx);
+												}	
+												
+												
 										  });
 																		
 																		 
