@@ -103,9 +103,9 @@ $count="";
         <td class="pro_1"><a href="#"></a></td>
       </tr>
       <tr>
-        <td class="pro_0" align="left">Forwarded to RSK 
+        <td class="pro_0" align="left">Forward application to RSK 
 for Pre-Inspection</td>
-        <td class="pro_1"><a href="#"><span id="preinspection_rsk_received">0</span></a></td>
+        <td class="pro_1"><a href="#"><span id="forwardtorsk">0</span></a></td>
         <td class="pro_0" align="left">Received from RSK</td>
         <td class="pro_1"><a href="#"><span id="preinspection_rsk_received">0</span></a></td>
         <td class="pro_0" align="left">Received from DDH Office</td>
@@ -122,8 +122,8 @@ for Pre-Inspection</td>
         <td class="pro_1"><a href="#"></a></td>
       </tr>
       <tr>
-        <td class="pro_0" align="left"></td>
-        <td class="pro_1"><a href="#"></a></td>
+        <td class="pro_0" align="left">Forwarded to RSK for pre-inspection</td>
+        <td class="pro_1"><a href="#"><span id="forwardedtorsk">0</span></a></td>
         <td class="pro_0" align="left">Yet to forward to DDH<br /> Office for Work Order</td>
         <td class="pro_1"><a href="#"><span id="preinspection_ddh">0</span></a></td>
         <td class="pro_0" align="left">Yet to forward to RSK <br />for Post-Inspection</td>

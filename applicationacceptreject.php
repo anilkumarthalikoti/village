@@ -32,6 +32,12 @@
 <?php
 }
     ?>
+	 <?php  if($_GET["status"]==4){
+    ?>
+<div class="title">Forward to RSK</div>
+<?php
+}
+    ?>
 <div class="viewport">
 <form name="application" method="post">
 <input type="hidden" name="application" value="application"/>
@@ -64,12 +70,16 @@
 </thead>
 <tbody>
 <?php 
+$status=$_GET["status"];
+if($status=="4"){
+$status=2;
+}
 $query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,'-' village,'-' hobli,c.castname,
 (select group_concat(l.landsono separator ', ') from schemefilling_land sfl,landdetails l where fillingid=sf.id and l.id= sfl.landdetailsid) survayno,
   (select sum(l.totalland) from landdetails l where l.regid=sf.regid  ) ftype,(select s.name from schemes s where s.id= sf.subschemeid) sector,(select cropname from cropitems where id= sf.item1 ) crop1
 ,(select cropname from cropitems where id= sf.item2 ) crop2
 ,(select cropname from cropitems where id= sf.item3 ) crop3,(coalesce(sf.area1,0)+coalesce(sf.area2,0)+coalesce(sf.area3,0)) totalappland,(select login_id from app_login where id= sf.regby ) regby,regdate
-from farmerdetails f, schemefilling sf,casts c where sf.regid= f.id and f.usercast= c.id and sf.status=".$_GET["status"]." and sf.schemeid=".$_GET["schemeid"]."";
+from farmerdetails f, schemefilling sf,casts c where sf.regid= f.id and f.usercast= c.id and sf.status=".$status." and sf.schemeid=".$_GET["schemeid"]."";
 if(!empty($_GET["subschemeid"])){
 $query.="  and sf.subschemeid=".$_POST["subschemeid"]."";
 }
@@ -125,8 +135,12 @@ if($_GET["status"]==2){
 <div  style="height:50px;  position:absolute; bottom:0;" class="excel"><input type="button" value="Generate cover letter" onclick="approvaljs.generatecoverletter();"/></div>
 <?php
  }
-
+if($_GET["status"]==4){
 ?>
-</div>
+<div  style="height:50px;  position:absolute; bottom:0;" class="excel"><input type="button" value="Forward to rsk" onclick="approvaljs.savenewapplication('4');"/></div>
+<?php
+ }
+
+?></div>
 </body>
 </html>
