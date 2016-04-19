@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Add items</title>
+<title>Drip matrial</title>
 <?php 
  require "interceptor.php";
  require "server/app_connector.php";
@@ -26,7 +26,7 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
 </head>
 
 <body>
-<div class="title">IDrip material </div>
+<div class="title">Drip material </div>
 <div class="viewport">
 <form name"formcrop"  >
 
@@ -50,6 +50,7 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
  $i=1;
  foreach($result as $row){
  echo "<tr id='".$row["id"]."'><td>".$i."</td><td>".$row["itemname"]."</td><td>".$row["units"]."</td><td>".$row["itemprice"]."</td></tr>";
+$i++;
  }
  ?>
  </tbody>

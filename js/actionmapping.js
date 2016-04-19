@@ -34,7 +34,8 @@
 			method:"post",
 			data:$("form[name='actionmapping']").serialize()
 			}).done(function(data){
-				//window.location='actionmapping.php';
+				 
+				     location.reload(); 
 				});
 		 }
 	 

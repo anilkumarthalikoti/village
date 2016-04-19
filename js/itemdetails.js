@@ -18,7 +18,7 @@ var itemtrn=new function(){
 				   
 				   
 				   }).done(function(data){
-					//   location.reload();
+				   location.reload();
 					   });
 		}
 	

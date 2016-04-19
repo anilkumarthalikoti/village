@@ -35,6 +35,7 @@ die();
  $i=1;
  foreach($result as $row){
  echo "<tr><td>".$i."</td><td>".$row["cropname"]."</td><td>".$row["cropname_k"]."</td></tr>";
+ $i++;
  }
  ?>
  </tbody>

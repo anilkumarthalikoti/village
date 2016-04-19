@@ -34,7 +34,7 @@
 			method:"post",
 			data:$("form[name='rolemapping']").serialize()
 			}).done(function(data){
-				//window.location='actionmapping.php';
+				 location.reload();
 				});
 		 }
 	 
