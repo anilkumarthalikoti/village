@@ -258,6 +258,24 @@ CREATE TABLE cropitemsprice (
 	PRIMARY KEY (id),
 	unique key (itemname)
 );
+
+CREATE TABLE spacing
+(id INT NOT NULL AUTO_INCREMENT,
+spacing VARCHAR(50) NOT NULL,
+PRIMARY KEY (id),
+UNIQUE (spacing));
+
+CREATE TABLE  spacing_installdetails
+(spacingid INT NOT NULL,
+spacing_area VARCHAR(25) NOT NULL,
+amount float(25),
+PRIMARY KEY (spacingid, spacing_area));
+CREATE TABLE  spacing_subcd
+(spacingid INT NOT NULL,
+spacing_area VARCHAR(25) NOT NULL,
+amount float(25),
+percentage float,
+PRIMARY KEY (spacingid, spacing_area,percentage));
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin,designation) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y','ALL');
 
 INSERT INTO page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');
@@ -268,7 +286,7 @@ INSERT INTO page_links(linkid, linkname) VALUES (3, 'CAST');
 
 INSERT INTO page_links(linkid, linkname) VALUES (4, 'ADD USER');
 
-INSERT INTO page_links(linkid, linkname) VALUES (5, 'Res');
+INSERT INTO page_links(linkid, linkname) VALUES (5, 'ADD SPACING');
 
 INSERT INTO page_links(linkid, linkname) VALUES (6, 'VILLAGE PREVILAGE');
 
