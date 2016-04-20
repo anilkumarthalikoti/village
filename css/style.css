@@ -178,6 +178,10 @@
 	
 	width:50px;
 	}
+	.tiny1{
+	
+	width:100px;
+	}
 	.align_center{
 	text-align:center;
 	}
@@ -229,7 +233,7 @@ float:right;
 position:absolute;
 top:80px;
 right:0px;
-z-index:100000000;
+z-index:1000;
 text-align:center;
 
  -webkit-border-radius: 20px 0px 0px 10px;
@@ -304,6 +308,7 @@ border-spacing: 0px;
 
 padding-right:32px;
 background:url(/images/search.png) no-repeat right center;
+background-color:#FFFFFF;
 }
 
 <!-- Css for tabls-->
@@ -539,3 +544,4 @@ margin:20px;
 	font-weight:bold;
 	
 	}
+	 .ui-dialog { z-index: 10000000 !important ;}
