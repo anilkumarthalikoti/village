@@ -17,6 +17,36 @@
  
 ?>
 <script type="text/javascript" src="js/approval.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+ $( "#preinspection" ).dialog({
+      autoOpen: false,
+	  width:'70%',
+	  position: { my: "center", at: "top" },
+	  maxWidth:'600px',
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "blind",
+        duration: 1000
+      }
+    });
+	<?php
+	if($_GET["status"]=="1"){
+	?>
+	$("table#applications tbody tr").click(function(){
+	
+	 
+	$( "#preinspection" ).dialog( "open" );
+	});
+	<?php
+	 }
+	?>
+});
+ 
+</script>
 </head>
 
 <body>
@@ -44,6 +74,7 @@
 <div style="position:absolute; bottom:50px; top:0;" class="excel">
 <table class="grid excel" id="applications">
 <thead>
+<tr><th colspan="17" align="right"><input type="text" name="search" placeholder="Search " class="search"/></th></tr>
 <tr>
 <th>Reg.No</th>
 <th>Name</th>
@@ -88,7 +119,7 @@ $query.=" order by sf.regdate ";
 $result=$conn->query($query);
 foreach($result as $row){
 ?>
-<tr>
+<tr  >
 <td><?php print $row["schemefillingid"];?></td>
 <td><?php print $row["firstname"];?></td>
 <td><?php print $row["fathername"];?></td>
@@ -142,5 +173,69 @@ if($_GET["status"]==4){
  }
 
 ?></div>
+<div id="preinspection" title="Pre inspection details" class="xlarge">
+<table class="form   margin">
+<tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr>
+<td>Select crop 1</td><td>:</td><td><select name="crop1" class="tiny1">
+<?php 
+$result=$conn->select("cropitems",array("id","cropname"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
+}
+?>
+
+</select></td>
+<td>Area in hector 1</td><td>:</td><td><input type="text" name="croparea1" class="tiny"/></td>
+<td>Area of spacing 1</td><td>:</td><td><select name="area of spacing" class="tiny1">
+<?php 
+$result=$conn->select("spacing",array("id","spacing"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["spacing"]."</option>";
+}
+?>
+</select></td>
+</tr>
+<tr>
+<td>Select crop 2</td><td>:</td><td><select name="crop1" class="tiny1">
+<?php 
+$result=$conn->select("cropitems",array("id","cropname"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
+}
+?>
+</select></td>
+<td>Area in hector 2</td><td>:</td><td><input type="text" name="croparea2" class="tiny"/></td>
+<td>Area of spacing 2</td><td>:</td><td><select name="area of spacing" class="tiny1">
+<?php 
+$result=$conn->select("spacing",array("id","spacing"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["spacing"]."</option>";
+}
+?>
+</select></td>
+</tr>
+<tr>
+<td>Select crop 3</td><td>:</td><td><select name="crop1" class="tiny1">
+<?php 
+$result=$conn->select("cropitems",array("id","cropname"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
+}
+?>
+</select></td>
+<td>Area in hector 3</td><td>:</td><td><input type="text" name="croparea3" class="tiny"/></td>
+<td>Area of spacing 3</td><td>:</td><td><select name="area of spacing" class="tiny1">
+<?php 
+$result=$conn->select("spacing",array("id","spacing"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["spacing"]."</option>";
+}
+?>
+</select></td>
+</tr>
+</table>
+
+</div>
 </body>
 </html>

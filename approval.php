@@ -7,6 +7,7 @@
 require "interceptor.php";
 require "server/app_connector.php";
 $conn = $database;
+$user=$_SESSION["logged_in"];
 ?>
 
 <script src="js/approval.js" type="text/javascript"></script>
@@ -60,8 +61,13 @@ foreach ($result as $row)
   <div class="container" id="tab2C">
   <table class="excel"><tr><td>Select</td><td>:</td><td>
   <select name="action" id="actionselect" onchange="approvaljs.search_application()" >
-<option value="P">New Application</option>
-<option value="I">Pre-inspection</option>
+  <?php
+  if($user["designation"]=="TA" || $user["designation"]=="ALL"){
+   ?>
+<option value="1">Accept/Reject</option>
+<option value="2">Pre-inspection</option>
+<option value="4">Pre-inspection</option>
+<?php } ?>
 <option value="W">Work order</option>
 <option value="R">Rejected</option>
 </select></td><td></td></tr></table>
