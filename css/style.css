@@ -4,6 +4,7 @@
 		
 	margin:0;
 	padding:0;
+	font-size:80%;
 	}
 	.header{
 	position:absolute;
@@ -13,6 +14,14 @@
 	height:70px;
 	 
 	background:#FFFFFF;
+	}
+	.labelh{
+	
+	 
+	
+	font-weight:bold;
+	text-align:center;
+ 
 	}
 	.loginbg{
 	
@@ -134,7 +143,12 @@
 	margin:10px;
 	 
 	}
+	.datepicker{
 	
+	width:65px;
+	padding-right:32px;
+background:url(/images/calendar.png) no-repeat right center;
+	}
 	.small{
 	width:150px;
 	}
@@ -279,28 +293,28 @@ border-spacing: 0px;
 	border-right:1px solid #E8E8E8;
 	
 	}
-	table.grid tbody tr:hover {
+	table.grid tbody tr:hover ,.form  table.grid tbody tr:hover{
 	
 	background-color:#e5e7e9;
 	cursor:hand;
 	cursor:pointer;
 	 
 	}
-	table.grid tbody tr.active td:nth-child(1)
+	table.grid tbody tr.active td:nth-child(1),.form table.grid tbody tr.active td:nth-child(1)
 	{
 	
 	background-color:#FF0000;
  
 	}
-	table.grid tbody td,table.grid thead th{
+	table.grid tbody td,table.grid thead th,.form table.grid tbody td,.form table.grid thead th{
 	border-right:1px solid #000000;
 	border-bottom:1px solid #000000;
 	}
-	table.grid tbody tr td:last-child,table.grid thead tr th:last-child{
+	table.grid tbody tr td:last-child,table.grid thead tr th:last-child, .form table.grid tbody tr td:last-child,.form table.grid thead tr th:last-child{
 	border-right:0px;
 	 
 	}
-	 table.grid tbody tr:last-child td{
+	 table.grid tbody tr:last-child td,.form table.grid tbody tr:last-child td{
 	border-bottom:0px;
 	 
 	}
@@ -416,6 +430,7 @@ a {cursor:pointer;}
 	  min-width:200px;
 	 
 	}
+	
 	.margin-left{
 	margin-left:150px;
 	}
@@ -449,11 +464,14 @@ a {cursor:pointer;}
 {font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:5px; text-align:center; background-color:#099; color:#FFF; font-weight:bold;}
 
 .pro_0
-{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:left; background-color:#efefef; color:#000; font-weight:normal;}
+{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:left; background-color:#efefef; color:#000; font-weight:bold;}
 .pro_1
-{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:center; background-color:#efefef; color:#000; font-weight:normal;}
+{font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:center; background-color:#efefef; color:#000; font-weight:bold;}
 .excel{
 width:100%;
+}
+.excel90{
+width:90%;
 }
 .info{
 
@@ -485,7 +503,11 @@ color:#000000;}
 {font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:left; background-color:#efefef; color:#000; font-weight:normal;}
 .pro_1
 {font-family:Arial, Helvetica, sans-serif; font-size:12px; padding:2px; text-align:center; background-color:#efefef; color:#000; font-weight:normal;}
+.pro_1 a, .pro_1 a span{
 
+font-weight:bold;
+color:#0066FF;
+}
 /* end proposal */
 
 .form{
@@ -545,3 +567,9 @@ margin:20px;
 	
 	}
 	 .ui-dialog { z-index: 10000000 !important ;}
+	 
+	 	select.ui-datepicker-month,select.ui-datepicker-year {
+	
+	width:50px;
+	max-width:50px;
+	}

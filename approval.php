@@ -28,7 +28,7 @@ $user=$_SESSION["logged_in"];
              <div class="container" id="tab1C">
 			  
 
-<table class="excel">
+<table class="excel90 form"  >
 <tr>
 <td>Scheme</td><td>:</td><td><select name="scheme_select" id="scheme_select" tabid="1" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails();">
 <option value="-1">Select</option>
@@ -42,7 +42,7 @@ foreach ($result as $row)
 <td>Component</td><td>:</td><td><select name="component_select" tabid="3" id="component_select" onchange="approvaljs.updateview(this); "><option value="-1">Select</option></select></td>
 <td colspan="3"><input type="button" value="Show all"    /></td>
 </tr>
-<tr>
+<tr class="hide">
 <td>Crop-1</td><td>:</td><td><select name="component_1" tabid="4" id="component_1"  ><option value="-1">Select</option></select></td>
 <td>Crop-2</td><td>:</td><td><select name="component_2" tabid="5" id="component_2"><option value="-1">Select</option></select></td>
 <td>Crop-3</td><td>:</td><td><select name="component_3" tabid="6" id="component_3"><option value="-1">Select</option></select></td>
@@ -59,19 +59,40 @@ foreach ($result as $row)
  
  
   <div class="container" id="tab2C">
-  <table class="excel"><tr><td>Select</td><td>:</td><td>
-  <select name="action" id="actionselect" onchange="approvaljs.search_application()" >
-  <?php
-  if($user["designation"]=="TA" || $user["designation"]=="ALL"){
-   ?>
-<option value="1">Accept/Reject</option>
-<option value="2">Pre-inspection</option>
-<option value="4">Pre-inspection</option>
-<?php } ?>
-<option value="W">Work order</option>
-<option value="R">Rejected</option>
-</select></td><td></td></tr></table>
-<table class="excel">
+  <table class="excel90 form"  >
+  <tr>
+<td>Scheme</td><td>:</td><td><select name="scheme_select1" id="scheme_select1" tabid="1" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails();">
+<option value="-1">Select</option>
+<?php
+$result = $conn->select("schemes", array("id", "name"), array("parent_id" => 0));
+foreach ($result as $row)
+    echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
+?>
+</select></td>
+<td>Sub Scheme</td><td>:</td><td><select name="subscheme_select1" tabid="2" id="subscheme_select1" onchange="approvaljs.updateview(this); "><option value="-1">Select</option></select></td>
+<td>Component</td><td>:</td><td><select name="component_select1" tabid="3" id="component_select1" onchange="approvaljs.updateview(this); "><option value="-1">Select</option></select></td>
+<td colspan="3"><input type="button" value="Show all"    /></td>
+</tr>
+<tr class="hide">
+<td>Crop-1</td><td>:</td><td><select name="component_11" tabid="4" id="component_11"  ><option value="-1">Select</option></select></td>
+<td>Crop-2</td><td>:</td><td><select name="component_21" tabid="5" id="component_21"><option value="-1">Select</option></select></td>
+<td>Crop-3</td><td>:</td><td><select name="component_31" tabid="6" id="component_31"><option value="-1">Select</option></select></td>
+<td>Crop-4</td><td>:</td><td><select name="component_41" tabid="7" id="component_41"><option value="-1">Select</option></select></td>
+</tr>
+  <tr><td colspan="10">
+  <input type="radio" name="_application" value="1" onclick="approvaljs.search_action()" />Accept/reject
+  <input type="radio" name="_application" value="4" onclick="approvaljs.search_action()"  />Pre-inspection
+  <input type="radio" name="_application" value="5" onclick="approvaljs.search_action()" />Work order
+  <input type="radio" name="_application" value="6" onclick="approvaljs.search_action()" />Post inspection
+  <input type="radio" name="_application" value="7" onclick="approvaljs.search_action()" />Taluka approval
+  <input type="radio" name="_application" value="8" onclick="approvaljs.search_action()" />District approval
+  <input type="radio" name="_application" value="9" onclick="approvaljs.search_action()" />Dc Bill
+  <input type="radio" name="_application" value="10" onclick="approvaljs.search_action()" />Payments
+  </td>
+  <td></td>
+  <td>
+  From:<input type="text" name="startdate" class="datepicker" id="date1"  /> To: <input type="text" id="date2" class="datepicker" name="enddate"  />
+  </td></tr> 
 <tr class="hide">
 <td>State</td><td>:</td><td><select name="state_selected" id="state_selected" onchange="approvaljs.updatedistrict('actions')">
 <option value="-1">Select</option>
@@ -106,7 +127,7 @@ foreach ($result as $row)
  
 </tr>
 
-<tr><td colspan="9">
+<tr><td colspan="12">
 <div id="actions" >
  
 </div>

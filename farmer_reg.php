@@ -93,7 +93,7 @@ $conn=$database;
                  </tr>
                  <tr>
                    <td class="label">Date of birth </td><td>:</td>
-                   <td class="label"><input name="dob" type="text" id="dob" placeholder="DD/MM/YYYY"  /></td>
+                   <td class="label"><input name="dob" type="text" id="dob" class="datepicker" placeholder="DD/MM/YYYY"  /></td>
                  </tr>
                  <tr>
                    <td class="label">Qualification </td><td>:</td>
