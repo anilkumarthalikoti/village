@@ -27,8 +27,12 @@ $('#tabs li a').click(function(){
     $('#'+ t + 'C').fadeIn('slow');
  }
 });			 
-			 
-	 
+		 
+	 $("input[class='datepicker']").datepicker({changeMonth: true,
+      changeYear: true,
+	  
+	  showWeek: true
+	  });
 			 pramukhIME.addLanguage(PramukhIndic,"kannada"); 
        
         

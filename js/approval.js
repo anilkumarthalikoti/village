@@ -179,9 +179,26 @@
 				 } 
 				 
 				 
+		this.search_action=function(){
+			var url="applicationacceptreject.php?schemeid="+$("#scheme_select1 option:selected").val()+"&status="+$("input[name='_application']:checked").val();
+			 
+			 window.open(url);
+			}		 
 				 
-				 
-				 
+		this.saveandprint=function(){
+			alert('1212');
+			
+			$.ajax({
+						url:"server/approval.php",
+						method:"post",
+						data:$("form[name='preinspection_form']").serialize()
+						
+						}).done(function(data){
+							
+							
+							});
+			
+			}		 
 	
 	}
 	
@@ -189,7 +206,7 @@
 							   
 							   
 							   $("#details_schema").load("approval_schemedetails.php");
-							   $("#actions").load("approval_actions.php");
+							    
 							   
 							   });
 							   
