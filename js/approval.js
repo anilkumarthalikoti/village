@@ -106,9 +106,13 @@
 											pending=total-valx;
 											$("#pendding").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=1");
 											$("#pendding").html(valx);
-											}									 
+											}		
+											if(keyx=="-1"){
+												$("#scheme_reject").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=-1");
+												$("#scheme_reject").html(valx);
+												}
 											if(keyx=="2"){
-											pending=total-valx;
+											 
 											$("#yettoapproval").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=2");
 											$("#yettoapproval").html(valx);
 											$("#forwardtorsk").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=4")
@@ -117,7 +121,21 @@
 												
 											if(keyx=="4"){
 												$("#forwardedtorsk").html(valx);
+												
 												}	
+												
+												if(keyx=="5"){
+												$("#preinspection").html(valx);
+												
+												}	
+												if(keyx=="5P"){
+												$("#preinspection_pending").html(valx);
+												
+												}
+												if(keyx=="5R"){
+												$("#preinspection_rejected").html(valx);
+												
+												}
 												
 												
 										  });
