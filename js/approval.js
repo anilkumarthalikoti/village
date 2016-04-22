@@ -138,6 +138,13 @@
 												
 												}
 												
+												if(keyx=="5C"){
+												$("#preinspection_completed").html(valx);
+												$("#recivedfrom_rsk").html(valx);
+												
+												
+												}
+												
 												
 										  });
 																		
