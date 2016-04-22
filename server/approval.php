@@ -28,7 +28,7 @@ $params[$key]=$value;
  
       
         $conn->insert("preinspection",$params ); 
-    
+    $conn->update("schemefilling",array("status"=>5),array("id"=>$_POST["filling_id"]));
 
 }
 
@@ -43,6 +43,7 @@ $params[$key]=$value;
 $statusQuery.=" union select count(*),'4' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=4 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// Forward to rsk
 $statusQuery.=" union select count(*),'5' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=4 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// total forward application
 $statusQuery.=" union select count(*),'5P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=4 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'5C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=5 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'5R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-4  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
       
 	    $result = $conn->query($statusQuery);
