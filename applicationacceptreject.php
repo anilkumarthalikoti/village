@@ -34,7 +34,7 @@ $(document).ready(function(){
       }
     });
 	<?php
-	if($_GET["status"]=="1"){
+	if($_GET["status"]=="5"){
 	?>
 	$("table#applications tbody tr").click(function(){
 	
@@ -98,6 +98,13 @@ $(document).ready(function(){
 <?php
 }
     ?>
+		 <?php  if($_GET["status"]==5){
+		 
+    ?>
+<div class="title">Pending pre-inspection</div>
+<?php
+}
+    ?>
 <div class="viewport">
  <table class="form excel" style="width:96%">
  <tr>
@@ -139,6 +146,10 @@ $status=$_GET["status"];
 if($status=="4"){
 $status=2;
 }
+if($status=="5"){
+$status=4;
+}
+
 $query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,( select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid) and villageid= s.id) village,(select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid) and hobliid= s.id) hobli,c.castname,
 (select group_concat(l.landsono separator ', ') from schemefilling_land sfl,landdetails l where fillingid=sf.id and l.id= sfl.landdetailsid) survayno,
   (select sum(l.totalland) from landdetails l where l.regid=sf.regid  ) ftype,(select s.name from schemes s where s.id= sf.subschemeid) sector,(select cropname from cropitems where id= sf.item1 ) crop1
@@ -147,6 +158,9 @@ $query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,( selec
 from farmerdetails f, schemefilling sf,casts c  where sf.regid= f.id and f.usercast= c.id and sf.status=".$status." and sf.schemeid=".$_GET["schemeid"]."";
 if(!empty($_GET["subschemeid"])){
 $query.="  and sf.subschemeid=".$_POST["subschemeid"]."";
+}
+if($_GET["status"]==5){
+
 }
 $query.=" order by sf.regdate ";
  
@@ -227,6 +241,7 @@ if($_GET["status"]==4){
 <input name="inspectedby" value="<?php print $user["id"];?>" type="hidden"/>
 <table class="form" style="margin:0px;">
 <tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td><td></td>  </tr>
+<tr  ><td>Pre-inspection date</td><td>:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspectiondate" class="datepicker" id="inspectiondate"/></td><td></td>  </tr>
 <tr class="hide"><td colspan="4"></td></tr>
 <tr class="labelh"><td></td><td>Crop-1</td><td>Crop-2</td><td>Crop-3</td></tr>
 <tr>

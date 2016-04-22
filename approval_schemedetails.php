@@ -13,7 +13,7 @@ $count="";
 <table    class="grid excel">
  <thead> <tr>
 	  <th></th>
-        <th>Fillings</th>
+        <th>TA</th>
         <th>Pre-Inspection</th>
         <th>Work Order</th>
         <th>Post-Inspection</th>
@@ -99,7 +99,7 @@ $count="";
         <td class="pro_1"><a href="#"></a></td>
       </tr>
       <tr>
-         <td class="pro_1"> Forward</td>
+         <td class="pro_1"> Forward to </td>
          <td class="pro_1">(RSK)<a href="#"><span id="forwardtorsk">0</span></a> </td>
      
          <td class="pro_1"><a href="#"><span id="preinspection_rsk_received">0</span></a> </td>
@@ -117,7 +117,7 @@ $count="";
         <td class="pro_1"><a href="#"></a></td>
       </tr>
       <tr>
-          <td class="pro_1"> Received </td>
+          <td class="pro_1">Pending files at </td>
           <td class="pro_1">(RSK)<a href="#"><span id="forwardedtorsk">0</span></a> </td>
   
         <td class="pro_1"><a href="#"><span id="preinspection_ddh">0</span></a></td>
@@ -135,24 +135,7 @@ $count="";
         <td class="pro_1"><a href="#"></a></td>
       </tr>
     
-      <tr>
-           <td class="pro_0" align="left">Cumulative Total</td>
-        <td class="pro_1"><a href="#"><span id="application_total">0</span></a></td>
-      
-        <td class="pro_1"><a href="#"> <span id="preinspection_total">0</span></a></td>
-        
-        <td class="pro_1"><a href="#"></a>0</td>
-      
-        <td class="pro_1"><a href="#"></a>0</td>
-        
-        <td class="pro_1"><a href="#"></a>0</td>
- 
-        <td class="pro_1"><a href="#"></a>0</td>
- 
-        <td class="pro_1"><a href="#"></a>0</td>
- 
-        <td class="pro_1"><a href="#"></a>0</td>
-      </tr>
+       
 	  </tbody>
     </table>
  

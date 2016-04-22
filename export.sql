@@ -160,7 +160,7 @@ CREATE TABLE schemefilling (
 	item3 int(10),
 	regdate date,
 	regby int(10),
-	status VARCHAR(1) DEFAULT '1',
+	status int '1',
  	area1 FLOAT,
 	area2 FLOAT,
 	area3 FLOAT,
@@ -280,19 +280,19 @@ percentage float,
 PRIMARY KEY (spacingid, spacing_area,percentage));
 
 CREATE TABLE  preinspection
-(fillingid INT NOT NULL,
-area1 float,
-area2 float,
-area3 float,
+(filling_id INT NOT NULL,
+croparea1 float,
+croparea2 float,
+croparea3 float,
 spacing1 float,
 spacing2 float,
 spacing3 float,
-inspected_date date,
+inspectiondate date,
 enter_date TIMESTAMP DEFAULT current_timestamp,
 inspectedby int,
-dealerid int,
-quatation_amt float,
-PRIMARY KEY (fillingid));
+dealer int,
+quatationamt float,
+PRIMARY KEY (filling_id));
 
 
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin,designation) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y','ALL');
