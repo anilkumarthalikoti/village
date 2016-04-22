@@ -205,7 +205,7 @@
 			}		 
 				 
 		this.saveandprint=function(){
-			alert('1212');
+		 
 			
 			$.ajax({
 						url:"server/approval.php",
@@ -213,8 +213,10 @@
 						data:$("form[name='preinspection_form']").serialize()
 						
 						}).done(function(data){
+							var filling =$("input[name='filling_id']").val();
 							
-							
+								$( "#preinspection" ).dialog( "close" );
+							window.open("form3.php?fillingid="+filling);
 							});
 			
 			}		 
