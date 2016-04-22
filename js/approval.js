@@ -130,7 +130,8 @@
 												}	
 												if(keyx=="5P"){
 												$("#preinspection_pending").html(valx);
-												
+												$("#preinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=5");
+										
 												}
 												if(keyx=="5R"){
 												$("#preinspection_rejected").html(valx);
