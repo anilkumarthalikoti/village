@@ -84,7 +84,7 @@ $count="";
           <td class="pro_1"> Yet to forward </td>
           <td class="pro_1">(RSK)<a href="#"><span id="yettoapproval">0</span></a></td>
         
-        <td class="pro_1"><a href="#"><span id="preinspection_completed">0</span></a></td>
+        <td class="pro_1"><a href="#"><span  >0</span></a></td>
         
         <td class="pro_1"><a href="#">0</a></td>
       
@@ -102,7 +102,7 @@ $count="";
          <td class="pro_1"> Forward to </td>
          <td class="pro_1">(RSK)<a href="#"><span id="forwardtorsk">0</span></a> </td>
      
-         <td class="pro_1"><a href="#"><span id="preinspection_rsk_received">0</span></a> </td>
+         <td class="pro_1">(TA)<a href="#"><span id="preinspection_completed">0</span></a> </td>
          
         <td class="pro_1"><a href="#">0</a> </td>
         
@@ -119,6 +119,26 @@ $count="";
       <tr>
           <td class="pro_1">Pending files at </td>
           <td class="pro_1">(RSK)<a href="#"><span id="forwardedtorsk">0</span></a> </td>
+  
+        <td class="pro_1"><a href="#"><span id="preinspection_ddh">0</span></a></td>
+ 
+        <td class="pro_1"><a href="#">0</a></td>
+    
+        <td class="pro_1"><a href="#"></a></td>
+ 
+        <td class="pro_1"><a href="#">0</a></td>
+    
+        <td class="pro_1"><a href="#">0</a></td>
+        
+        <td class="pro_1"><a href="#"></a></td>
+  
+        <td class="pro_1"><a href="#"></a></td>
+      </tr>
+	  
+	  
+	  <tr>
+          <td class="pro_1">Receivec from  </td>
+          <td class="pro_1">(RSK)<a href="#"><span id="recivedfrom_rsk">0</span></a> </td>
   
         <td class="pro_1"><a href="#"><span id="preinspection_ddh">0</span></a></td>
  
