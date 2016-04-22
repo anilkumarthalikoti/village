@@ -17,6 +17,7 @@
  $name="";
  $crop="";
  $totalarea="";
+  $relation="";
  
  $query1="select (select s.state_name_k from states s where s.id=v.districtid) di,";
  $query1.=" (select s.state_name_k from states s where s.id=v.talukaid) ta,";

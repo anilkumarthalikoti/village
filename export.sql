@@ -292,6 +292,7 @@ enter_date TIMESTAMP DEFAULT current_timestamp,
 inspectedby int,
 dealer int,
 quatationamt float,
+irrigation int,
 PRIMARY KEY (filling_id));
 
 

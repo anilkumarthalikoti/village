@@ -288,6 +288,10 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
  <td><input type="text" name="spacing2" class="tiny"/></td>
  <td> <input type="text" name="spacing3" class="tiny"/></td>
 </tr>
+<tr><td>Source of irrigation</td><td>:</td><td><select name="irrigation">
+<option value="1">Well</option>
+<option value="2">Kolva</option>
+</select></td><td></td></tr>
 <tr><td colspan="4" align="center" style="font-weight:bold">Dealer</td></tr>
 <tr>
 <td>Company/Organization :</td>
