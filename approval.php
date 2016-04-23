@@ -79,18 +79,22 @@ foreach ($result as $row)
 <td>Crop-3</td><td>:</td><td><select name="component_31" tabid="6" id="component_31"><option value="-1">Select</option></select></td>
 <td>Crop-4</td><td>:</td><td><select name="component_41" tabid="7" id="component_41"><option value="-1">Select</option></select></td>
 </tr>
-  <tr><td colspan="10">
-  <input type="radio" name="_application" value="1" onclick="approvaljs.search_action()" />Accept/reject
-  <input type="radio" name="_application" value="4" onclick="approvaljs.search_action()"  />Pre-inspection
-  <input type="radio" name="_application" value="5" onclick="approvaljs.search_action()" />Work order
-  <input type="radio" name="_application" value="6" onclick="approvaljs.search_action()" />Post inspection
-  <input type="radio" name="_application" value="7" onclick="approvaljs.search_action()" />Taluka approval
-  <input type="radio" name="_application" value="8" onclick="approvaljs.search_action()" />District approval
-  <input type="radio" name="_application" value="9" onclick="approvaljs.search_action()" />Dc Bill
-  <input type="radio" name="_application" value="10" onclick="approvaljs.search_action()" />Payments
-  </td>
-  <td></td>
-  <td>
+  <tr><td >Status</td><td>:</td>
+  <td colspan="10">
+  <select name="_application" onchange="approvaljs.search_action()">
+   <option >--Select--</option>
+  <option value="1">New applictions</option>
+  <option value="-1">TA  reject</option>
+  <option value="2">Yet to forward RSK</option>
+  <option value="4">Forwarded to RSK</option>
+  <option value="5">Pending Preinpection</option>
+  <option value="6">Forwarded to TA </option>
+ 
+  
+  </select>
+  
+   
+  
   From:<input type="text" name="startdate" class="datepicker" id="date1"  /> To: <input type="text" id="date2" class="datepicker" name="enddate"  />
   </td></tr> 
 <tr class="hide">

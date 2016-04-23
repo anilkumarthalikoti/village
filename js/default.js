@@ -43,8 +43,10 @@ $('#tabs li a').click(function(){
 						   });
 			 
 $("select[search='search']").selectToAutocomplete();			 
-			 
-			 
+			  $("select").addClass("selectcls");
+$("select[class='ui-datepicker-month']").removeClass("selectcls");
+$("select[class='ui-datepicker-year']").removeClass("selectcls");
+
 			 
 			 
 			 

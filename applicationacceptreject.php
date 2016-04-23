@@ -8,12 +8,15 @@
  require "server/app_connector.php";
  $user=$_SESSION["logged_in"];
  $conn=$database;
- 
+ $page=0;
+ $pagesc=0;
  if(!($user["designation"]=="ALL" || $user["designation"]=="TA")){
  // header('Location: '."accessdenied.php");
 //		 die();
  }
- 
+ if(!empty($_GET["page"])){
+ $page=$_GET["page"];
+ }
  
 ?>
 <script type="text/javascript" src="js/approval.js"></script>
@@ -159,12 +162,15 @@ from farmerdetails f, schemefilling sf,casts c  where sf.regid= f.id and f.userc
 if(!empty($_GET["subschemeid"])){
 $query.="  and sf.subschemeid=".$_POST["subschemeid"]."";
 }
+
 if($_GET["status"]==5){
 
 }
 $query.=" order by sf.regdate ";
- 
+ $offset=(($page+1)*10);
+$query.=" limit 10 OFFSET   ".$offset;
 $result=$conn->query($query);
+$pagesc=count($result)/10;
 foreach($result as $row){
 $crop1= $row["crop1"];
 $crop2= $row["crop2"];
@@ -209,6 +215,13 @@ print "BIG FRAMER";
  </td></tr>
  
  </tr>
+ <tr><td>
+ <?php 
+ for($i=0; $i< $pagesc; $i++){
+ echo "<a href='applicationacceptreject.php?schemeid=".$_GET["schemeid"]."&status=".$_GET["status"]."&page=".$i.">".($i+1)."</a>";
+ }
+ ?>
+ </td></tr>
  <tr><td>
  
 <?php 

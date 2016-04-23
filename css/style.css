@@ -420,7 +420,7 @@ a {cursor:pointer;}
 	height:140px;
 	}
 	
-	select{
+	.selectcls{
 	 
 	border:1px solid #ddd; 
 	margin-left:10px;
@@ -577,4 +577,10 @@ margin:20px;
 	.reportmargin{
 	
 	margin:25px;
+	}
+	
+	
+	.ui-datepicker-week-col{
+	font-weight:lighter;
+	
 	}

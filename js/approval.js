@@ -189,8 +189,7 @@
 						data:$("form[name='application']").serialize()
 						
 						}).done(function(data){
-							
-							
+							location.reload(); 
 							});
 				  
 				 }
@@ -206,9 +205,9 @@
 				 
 				 
 		this.search_action=function(){
-			var url="applicationacceptreject.php?schemeid="+$("#scheme_select1 option:selected").val()+"&status="+$("input[name='_application']:checked").val();
+			var url="applicationacceptreject.php?schemeid="+$("#scheme_select1 option:selected").val()+"&status="+$("select[name='_application'] option:selected").val();
 			 
-			 window.open(url);
+			 window.location.href=url;
 			}		 
 				 
 		this.saveandprint=function(){
@@ -223,7 +222,9 @@
 							var filling =$("input[name='filling_id']").val();
 							
 								$( "#preinspection" ).dialog( "close" );
+								 
 							window.open("form3.php?fillingid="+filling);
+							location.reload();
 							});
 			
 			}		 
