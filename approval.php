@@ -48,7 +48,7 @@ foreach ($result as $row)
 <td>Crop-3</td><td>:</td><td><select name="component_3" tabid="6" id="component_3"><option value="-1">Select</option></select></td>
 <td>Crop-4</td><td>:</td><td><select name="component_4" tabid="7" id="component_4"><option value="-1">Select</option></select></td>
 </tr>
-<tr><td colspan="12">
+<tr><td colspan="12" style="border:0px;">
 <div id="details_schema" >
  
 </div>
@@ -131,7 +131,7 @@ foreach ($result as $row)
  
 </tr>
 
-<tr><td colspan="12">
+<tr><td colspan="12" style="border:0px;">
 <div id="actions" >
  
 </div>
