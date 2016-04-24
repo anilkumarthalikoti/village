@@ -21,21 +21,16 @@
 ?>
 <script type="text/javascript" src="js/approval.js"></script>
 <script type="text/javascript">
+function openReject(rejecttype,fid){
+$("#fid").val(fid);
+$("#rejectAt").val(rejecttype);
+
+$( "#reject" ).dialog( "open" );
+}
 $(document).ready(function(){
- $( "#preinspection" ).dialog({
-      autoOpen: false,
-	  width:'auto',
-	  position: { my: "center", at: "top" },
-	  maxWidth:'600px',
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "blind",
-        duration: 1000
-      }
-    });
+ createDialog("reject") ;
+ createDialog("preinspection");
+ createDialog("workorder");
 	<?php
 	if($_GET["status"]=="5"){
 	?>
@@ -50,7 +45,7 @@ $(document).ready(function(){
 			  $("input[name='spacing1']").val(0);
 			 $("input[name='spacing1']").attr("disabled",true);
 			 }
-			 alert
+		 
 			 if($("select[name='crop2'] option:selected").val()=="-1"){
 			 $("input[name='croparea2']").val(0);
 			 $("input[name='croparea2']").attr("disabled",true);
@@ -70,6 +65,19 @@ $(document).ready(function(){
 	<?php
 	 }
 	?>
+	
+	
+	<?php
+	if($_GET["status"]=="7"){
+	?>
+	$("table#applications tbody tr").click(function(){
+	 $("input[id='w_fid']").val($(this).attr("filling_id"));
+	$( "#workorder" ).dialog( "open" );
+	});
+	<?php
+	 }
+	?>
+	
 });
  function updatedealers(){
  $("select[name='dealer'] option").addClass("hide");
@@ -78,6 +86,24 @@ $(document).ready(function(){
  var view="select[name='dealer']  [parent_id='"+selected+"']";
  $("select[name='dealer']  [parent_id='-1']").removeClass("hide");
  $(view).removeClass("hide");
+ }
+ 
+ function createDialog(id){
+ var key="#"+id;
+$(key).dialog({
+      autoOpen: false,
+	  width:'auto',
+	  position: { my: "center", at: "top" },
+	  maxWidth:'600px',
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "blind",
+        duration: 1000
+      }
+    });
  }
 </script>
 </head>
@@ -108,6 +134,21 @@ $(document).ready(function(){
 <?php
 }
     ?>
+			 <?php  if($_GET["status"]==6){
+		 
+    ?>
+<div class="title">Pending for work-order</div>
+<?php
+}
+    ?>
+	
+ <?php  if($_GET["status"]==7){
+		 
+    ?>
+<div class="title">Work-orders</div>
+<?php
+}
+    ?>	
 <div class="viewport">
  <table class="form excel" style="width:96%">
  <tr>
@@ -118,13 +159,13 @@ $(document).ready(function(){
 <div   class="excel" style="max-height:420px; min-height:420px;">
 <table class="grid excel" id="applications">
 <thead>
-<tr><th colspan="17" align="right"><input type="text" name="search" placeholder="Search " class="search"/></th></tr>
+<tr><th colspan="18" align="right"><input type="text" name="search" placeholder="Search " class="search"/></th></tr>
 <tr>
 <th>Reg.No</th>
 <th>Name</th>
-<th>Relation name</th>
-<th>Village name</th>
-<th>Hobli name</th>
+<th>Relation</th>
+<th>Village</th>
+<th>Hobli</th>
 <th>Cast</th>
 <th>Survay no.</th>
 <th>Land area</th>
@@ -138,6 +179,7 @@ $(document).ready(function(){
 <th>Filled Date</th>
 <?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
     ?>
+<th></th>	
 <th><input type="checkbox" onclick="" /></th>
  <?php } ?>
 </tr>
@@ -152,12 +194,15 @@ $status=2;
 if($status=="5"){
 $status=4;
 }
+if($status=="6"){
+$status=5;
+}
   $village="select id from landdetails where villageid in (select villageid from village v,actionmapping am where  v.hobliid =am.hobliid and am.regid=".$user["id"].")";
 $query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,( select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid) and villageid= s.id) village,(select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid) and hobliid= s.id) hobli,c.castname,
 (select group_concat(l.landsono separator ', ') from schemefilling_land sfl,landdetails l where fillingid=sf.id and l.id= sfl.landdetailsid) survayno,
   (select sum(l.totalland) from landdetails l where l.regid=sf.regid  ) ftype,(select s.name from schemes s where s.id= sf.subschemeid) sector,(select cropname from cropitems where id= sf.item1 ) crop1
 ,(select cropname from cropitems where id= sf.item2 ) crop2
-,(select cropname from cropitems where id= sf.item3 ) crop3,(coalesce(sf.area1,0)+coalesce(sf.area2,0)+coalesce(sf.area3,0)) totalappland,(select login_id from app_login where id= sf.regby ) regby,regdate,sf.item1,sf.item2,sf.item3
+,(select cropname from cropitems where id= sf.item3 ) crop3,TRUNCATE((coalesce(sf.area1,0)+coalesce(sf.area2,0)+coalesce(sf.area3,0)),2) totalappland,(select login_id from app_login where id= sf.regby ) regby,regdate,sf.item1,sf.item2,sf.item3
 from farmerdetails f, schemefilling sf,casts c  where sf.regid= f.id and f.usercast= c.id and sf.status=".$status." and sf.schemeid=".$_GET["schemeid"]."";
 if(!empty($_GET["subschemeid"])){
 $query.="  and sf.subschemeid=".$_POST["subschemeid"]."";
@@ -167,8 +212,9 @@ if($_GET["status"]==5){
 
 }
 $query.=" order by sf.regdate ";
- $offset=(($page+1)*10);
+ $offset=(($page)*10);
 $query.=" limit 10 OFFSET   ".$offset;
+ 
 $result=$conn->query($query);
 $pagesc=count($result)/10;
 foreach($result as $row){
@@ -198,6 +244,7 @@ print "BIG FRAMER";
 <td><?php print $row["regdate"]?></td>
 <?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
     ?>
+	<td><?php if($_GET["status"]==1){?><input type="BUTTON" value="REJECT" onclick="openReject('-1','<?php print $row["schemefillingid"];?>')"/><?php }?></td>
 <td><input type="checkbox" name="schemefillingid[]" value='<?php print $row["schemefillingid"];?>' /></td>
   <?php } ?>
 </tr>
@@ -214,20 +261,14 @@ print "BIG FRAMER";
 </form>
  </td></tr>
  
- </tr>
- <tr><td>
- <?php 
- for($i=0; $i< $pagesc; $i++){
- echo "<a href='applicationacceptreject.php?schemeid=".$_GET["schemeid"]."&status=".$_GET["status"]."&page=".$i.">".($i+1)."</a>";
- }
- ?>
- </td></tr>
+ 
  <tr><td>
  
 <?php 
-if($_GET["status"]==1){
+if($_GET["status"]=="1"){
 ?>
-<div  style="height:50px; " class="excel"><input type="button" value="Accept" onclick="approvaljs.savenewapplication('2');"/><input type="button" value="Reject" onclick="approvaljs.savenewapplication('-1');"/></div>
+<div  style="height:50px; " class="excel"><input type="button" value="Accept" onclick="approvaljs.savenewapplication('2');"/>
+</div>
 <?php }
 
 if($_GET["status"]==2){
@@ -237,12 +278,25 @@ if($_GET["status"]==2){
  }
 if($_GET["status"]==4){
 ?>
-<div  style="height:50px;   " class="excel"><input type="button" value="Forward to rsk" onclick="approvaljs.savenewapplication('4');"/></div>
+<div  style="height:50px;   " class="excel"><input type="button" value="Forward to RSK" onclick="approvaljs.savenewapplication('4');"/></div>
+<?php
+ }
+if($_GET["status"]==6){
+?>
+<div  style="height:50px;   " class="excel"><input type="button" value="Forward to DDH" onclick="approvaljs.savenewapplication('7');"/></div>
 <?php
  }
 
 ?>
- 
+ </td></tr>
+  
+ <tr><td>
+ <?php 
+ for($i=0; $i< $pagesc; $i++){
+ $link='<a href="applicationacceptreject.php?schemeid='.$_GET["schemeid"].'&status='.$_GET["status"].'&page='.$i.'"><div class="vtiny">'.($i+1).'</div></a>';
+ echo $link;
+ }
+ ?>
  </td></tr>
  </table>
 
@@ -331,6 +385,38 @@ echo "<option class='hide'  parent_id='".$row["parent_id"]."' value='".$row["id"
 <tr><td>Quatation amt</td><td>:</td><td><input type="text" name="quatationamt" class="tiny"/></td><td></td></tr>
 <tr><td colspan="4"><input type="button" value="Preview"/><input type="button" value="Save & print" onclick="approvaljs.saveandprint();"/></td></tr>
 </table>
+</form>
+
+
+
+</div>
+<div id="reject" class="xlarge" title="Reson for rejecttion">
+<form name="rejectApplication">
+<table cellpadding="form xlarge margin">
+
+<tr><td>Remarks</td><td>:</td><td><input type="text" name="reject_remarks" />
+<input type="hidden" name="statusto" id="rejectAt" value=""/>
+<input type="hidden" name="schemefillingid[]" id="fid" value=""/>
+</td></tr>
+<tr><td colspan="3"><input type="button" onclick="approvaljs.rejectApplication();" value="Reject"/></td></tr>
+</table>
+
+</form>
+</div>
+<div id="workorder" class="xlarge" title="Work order details">
+<form name="workorderApplication">
+<table cellpadding="form xlarge margin">
+
+<tr><td>Work order no</td><td>:</td><td><input type="text" name="workorder_no" />
+<input type="hidden" name="statusto" id="w_st" value="8"/>
+<input type="hidden" name="schemefillingid[]" id="w_fid" value=""/>
+</td></tr>
+
+<tr><td>Work order issue date</td><td>:</td><td><input type="text" name="issue_date" class="datepicker" id="wissuedate" />
+</td></tr>
+<tr><td colspan="3"><input type="button" onclick="approvaljs.workorder();" value="Save"/></td></tr>
+</table>
+
 </form>
 </div>
 </body>

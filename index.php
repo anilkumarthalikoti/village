@@ -38,7 +38,7 @@
   		<table width="100%;" cellspacing="0" cellpadding="0">
  	
 				 <tr>
-    					<td  >
+    					<td  > <a href="signup.php"><input type="button" value="Sign up"/></a>
 								 </td><td align="right" width="150px">		<input type="button" class="button_login" value=" Login " id="submit" onClick="login.validate()"  />   
               			</td>
     </tr>

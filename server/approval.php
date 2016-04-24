@@ -10,10 +10,30 @@ if (!empty($_POST["application"])) {
       
         $conn->update("schemefilling", array("status" => $_POST["statusto"]), array("id" =>
                 $fileid));
+				
+				if( $_POST["statusto"]==7){
+				$fdate=date("Y-m-d");
+				$conn->insert("workorder",array("filling_id"=>$fileid,"forward_by"=>$user["id"],"forwarddate"=>$fdate));
+				}
+				if( $_POST["statusto"]==8){
+				$fdate=date("Y-m-d",$_POST["issue_date"]);
+				$conn->insert("workorder_approval",array("filling_id"=>$fileid,"approved_by"=>$user["id"],"approved_date"=>$fdate,"workorderno"=>$_POST["workorder_no"]));
+				}
+				
     }
 
 }
+if (!empty($_POST["reject_remarks"])) {
+    $schemefillingid = $_POST["schemefillingid"];
+	
+    foreach ($schemefillingid as $fileid) {
+      
+        $conn->update("schemefilling", array("status" => $_POST["statusto"]), array("id" =>
+                $fileid));
+		$conn->insert("schemerejection",array("remarks"=>$_POST["reject_remarks"],"schemefillingid"=>$fileid,"rejected_by"=>$user["id"],"rejectiondate"=>date("Y-m-d"),"rejected_at"=>$_POST["statusto"]));		
+    }
 
+}
 if (!empty($_POST["pre-inspection"])) {
  $params=array();
  
@@ -45,6 +65,10 @@ $statusQuery.=" union select count(*),'5' from schemefilling sf,schemefilling_la
 $statusQuery.=" union select count(*),'5P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=4 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'5C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=5 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'5R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-4  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'7' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=7 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// total forward application
+$statusQuery.=" union select count(*),'7P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=7 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'7C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=8 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'7R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-7  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
       
 	    $result = $conn->query($statusQuery);
         $jsontext = "[";

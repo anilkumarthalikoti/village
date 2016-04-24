@@ -141,9 +141,34 @@
 												if(keyx=="5C"){
 												$("#preinspection_completed").html(valx);
 												$("#recivedfrom_rsk").html(valx);
-												
+												$("#recivedfrom_rsk").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6");
 												
 												}
+												
+												
+												
+												
+												if(keyx=="7"){
+												$("#workorder").html(valx);
+												
+												}	
+												if(keyx=="7P"){
+												$("#workorder_pending").html(valx);
+												$("#workorder_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=7");
+										
+												}
+												if(keyx=="7R"){
+												$("#workorder_rejected").html(valx);
+												
+												}
+												
+												if(keyx=="7C"){
+												$("#preinspection_completed").html(valx);
+												$("#recivedfrom_ddh").html(valx);
+												$("#recivedfrom_ddh").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=8");
+												
+												}
+												
 												
 												
 										  });
@@ -194,6 +219,20 @@
 				  
 				 }
 				 
+		 this.rejectApplication=function(){
+				 
+				 
+				 $.ajax({
+						url:"server/approval.php",
+						method:"post",
+						data:$("form[name='rejectApplication']").serialize()
+						
+						}).done(function(data){
+							location.reload(); 
+							});
+				  
+				 }		 
+				 
 				 
 				 
 				 this.generatecoverletter=function(savetype){
@@ -227,7 +266,28 @@
 							location.reload();
 							});
 			
-			}		 
+			}	
+			
+			
+<!-- Work order-->			
+			
+			this.workorder=function(){
+		 
+			
+			$.ajax({
+						url:"server/approval.php",
+						method:"post",
+						data:$("form[name='workorderApplication']").serialize()
+						
+						}).done(function(data){
+							 
+							
+								( "#workorder" ).dialog( "close" );
+					 
+							location.reload();
+							});
+			
+			}	
 	
 	}
 	

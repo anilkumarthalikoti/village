@@ -174,8 +174,11 @@ landdetailsid int
 );
 CREATE TABLE signup (
 	fname varchar(255) NOT NULL,
+	fname_k blob,
 	lname varchar(255) NOT NULL,
+	lname_k blob,
 	desigination varchar(255) NOT NULL,
+	desigination_k blob,
 	department varchar(255) NOT NULL,
 	email varchar(255) NOT NULL,
 	mobileno varchar(255) NOT NULL
@@ -206,7 +209,7 @@ CREATE TABLE  schemerejection
 remarks text,
 rejectiondate date,
 rejected_by int,
-rejected_at VARCHAR(1),
+rejected_at int,
 PRIMARY KEY (schemefillingid));
 
 CREATE TABLE  landdetails
@@ -294,7 +297,19 @@ dealer int,
 quatationamt float,
 irrigation int,
 PRIMARY KEY (filling_id));
+CREATE TABLE  workorder
+(filling_id INT NOT NULL,
+ forward_by int,
+ forwarddate date,
+PRIMARY KEY (filling_id));
 
+CREATE TABLE  workorder_approval
+(filling_id INT NOT NULL,
+ approved_by int,
+ approved_date date,
+ workorderno varchar(25), 
+PRIMARY KEY (filling_id),
+unique key(workorderno));
 
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin,designation) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y','ALL');
 

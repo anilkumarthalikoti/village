@@ -47,9 +47,11 @@ $("select[search='search']").selectToAutocomplete();
 $("select[class='ui-datepicker-month']").removeClass("selectcls");
 $("select[class='ui-datepicker-year']").removeClass("selectcls");
 
-			 
-			 
-			 
+	if($("div[class='viewport1']").is(":visible")){		 
+	$("div[class='viewport1']").before("<div class='header'></div>");	
+$("div[class='header']").load("header.html");
+$("div[class='viewport1']").after("<div class='fotter'><div>@2016 All rights reserved</div></div>");			 
+	}
 						   });
 
  document.onmousedown=disableclick;
