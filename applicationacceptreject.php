@@ -31,6 +31,7 @@ $(document).ready(function(){
  createDialog("reject") ;
  createDialog("preinspection");
  createDialog("workorder");
+  createDialog("postinspection");
 	<?php
 	if($_GET["status"]=="5"){
 	?>
@@ -400,6 +401,100 @@ echo "<option class='hide'  parent_id='".$row["parent_id"]."' value='".$row["id"
 </table>
 
 </form>
+</div>
+
+
+
+
+
+<div id="postinspection" title="Post inspection details" class="xlarge">
+<form name="postinspection_form">
+<input name="filling_id" type="hidden"/>
+<input name="post-inspection" type="hidden" value="postinsepection"/>
+<input name="inspectedby" value="<?php print $user["id"];?>" type="hidden"/>
+<table class="form" style="margin:0px;">
+<tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td><td></td>  </tr>
+<tr  ><td>Post-inspection date</td><td>:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspectiondate" class="datepicker" id="inspectiondate"/></td><td></td>  </tr>
+<tr class="hide"><td colspan="4"></td></tr>
+<tr class="labelh"><td></td><td>Crop-1</td><td>Crop-2</td><td>Crop-3</td></tr>
+<tr>
+<td>Crop </td>
+<td><select name="crop1" class="tiny1" disabled="disabled">
+<option value="-1">Select</option>
+<?php 
+$result=$conn->select("cropitems",array("id","cropname"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
+}
+?>
+
+</select></td>
+ 
+ <td><select name="crop2" class="tiny1" disabled="disabled">
+ <option value="-1">Select</option>
+<?php 
+$result=$conn->select("cropitems",array("id","cropname"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
+}
+?>
+</select></td>
+ <td><select name="crop3" class="tiny1" disabled="disabled">
+ <option value="-1">Select</option>
+<?php 
+$result=$conn->select("cropitems",array("id","cropname"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
+}
+?>
+</select></td>
+</tr>
+<tr>
+<td>Area in hector </td>
+<td><input type="text" name="croparea1" class="tiny"/></td>
+ <td><input type="text" name="croparea2" class="tiny"/></td>
+ <td><input type="text" name="croparea3" class="tiny"/> </td>
+</tr>
+<tr>
+<td>Spacing </td>
+<td><input type="text" name="spacing1" class="tiny"/></td>
+ <td><input type="text" name="spacing2" class="tiny"/></td>
+ <td> <input type="text" name="spacing3" class="tiny"/></td>
+</tr>
+<tr><td>Source of irrigation</td><td>:</td><td><select name="irrigation">
+<option value="1">Well</option>
+<option value="2">Kolva</option>
+</select></td><td></td></tr>
+<tr><td colspan="4" align="center" style="font-weight:bold">Dealer</td></tr>
+<tr>
+<td>Company/Organization :</td>
+<td><select name="organization" onchange="updatedealers()">
+<option value="-1">--Select--</option>
+<?php 
+$result=$conn->select("dealers_company",array("id","name"),array("parent_id"=>0));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
+}
+?>
+</select> </td>
+ <td >Dealer:</td>
+ <td> <select name="dealer">
+ <option parent_id='-1' value="-1">--Select--</option>
+<?php 
+$result=$conn->select("dealers_company",array("id","name","parent_id"),array("parent_id[!]"=>0));
+foreach($result as $row){
+echo "<option class='hide'  parent_id='".$row["parent_id"]."' value='".$row["id"]."'>".$row["name"]."</option>";
+}
+?>
+ </select></td>
+</tr>
+<tr><td>Quatation amt</td><td>:</td><td><input type="text" name="quatationamt" class="tiny"/></td><td></td></tr>
+<tr><td colspan="4"><input type="button" value="Preview"/><input type="button" value="Save & print" onclick="approvaljs.saveandprint();"/></td></tr>
+</table>
+</form>
+
+
+
 </div>
 </body>
 </html>
