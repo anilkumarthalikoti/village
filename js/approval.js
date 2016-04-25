@@ -171,6 +171,33 @@
 												
 												
 												
+												if(keyx=="9"){
+												$("#postinspection").html(valx);
+												
+												}	
+												if(keyx=="9P"){
+												$("#postinspection_pending").html(valx);
+												$("#postinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9");
+										
+												}
+												if(keyx=="9R"){
+												$("#postinspection_rejected").html(valx);
+												
+												}
+												
+												if(keyx=="9C"){
+												$("#postinspection_completed").html(valx);
+												 
+												 
+												
+												}
+												
+												
+												
+												
+												
+												
+												
 										  });
 																		
 																		 

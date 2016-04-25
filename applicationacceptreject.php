@@ -118,7 +118,7 @@ $titles["5"]="Pending pre-inspection";
 $titles["6"]="Pending for work-order";
 $titles["7"]="Work-orders";
 $titles["8"]="Pending post-inspection";
- 
+ $titles["9"]="Post-inspection";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
