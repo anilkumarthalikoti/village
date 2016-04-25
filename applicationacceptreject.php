@@ -34,11 +34,11 @@ $(document).ready(function(){
 	<?php
 	if($_GET["status"]=="5"){
 	?>
-	$("table#applications tbody tr").click(function(){
+	$("table#applications tbody tr td:not(.skip)").click(function(){
 	
-	 $("select[name='crop1']").val($(this).attr("crop1"));
-	 	 $("select[name='crop2']").val($(this).attr("crop2"));
-		 	 $("select[name='crop3']").val($(this).attr("crop3"));
+	 $("select[name='crop1']").val($(this).parent().attr("crop1"));
+	 	 $("select[name='crop2']").val($(this).parent().attr("crop2"));
+		 	 $("select[name='crop3']").val($(this).parent().attr("crop3"));
 			  if($("select[name='crop1'] option:selected").val()=="-1"){
 			 $("input[name='croparea1']").val(0);
 			 $("input[name='croparea1']").attr("disabled",true);
@@ -59,7 +59,7 @@ $(document).ready(function(){
 			  $("input[name='spacing3']").val(0);
 			 $("input[name='spacing3']").attr("disabled",true);
 			 }
-			 $("input[name='filling_id']").val($(this).attr("filling_id"));
+			 $("input[name='filling_id']").val($(this).parent().attr("filling_id"));
 	$( "#preinspection" ).dialog( "open" );
 	});
 	<?php
@@ -109,46 +109,19 @@ $(key).dialog({
 </head>
 
 <body>
-<?php  if($_GET["status"]==1){
+<?php  
+$titles=array();
+$titles["1"]="Application accept/reject";
+$titles["2"]="Cover letter generation";
+$titles["4"]="Forward to RSK";
+$titles["5"]="Pending pre-inspection";
+$titles["6"]="Pending for work-order";
+$titles["7"]="Work-orders";
+$titles["8"]="Pending post-inspection";
+ 
     ?>
-<div class="title">Application accept/reject</div>
-<?php
-}
-    ?>
-    <?php  if($_GET["status"]==2){
-    ?>
-<div class="title">Cover letter generation</div>
-<?php
-}
-    ?>
-	 <?php  if($_GET["status"]==4){
-    ?>
-<div class="title">Forward to RSK</div>
-<?php
-}
-    ?>
-		 <?php  if($_GET["status"]==5){
-		 
-    ?>
-<div class="title">Pending pre-inspection</div>
-<?php
-}
-    ?>
-			 <?php  if($_GET["status"]==6){
-		 
-    ?>
-<div class="title">Pending for work-order</div>
-<?php
-}
-    ?>
-	
- <?php  if($_GET["status"]==7){
-		 
-    ?>
-<div class="title">Work-orders</div>
-<?php
-}
-    ?>	
+<div class="title"><?php print $titles[$_GET["status"]]?></div>
+ 
 <div class="viewport">
  <table class="form excel" style="width:96%">
  <tr>
@@ -244,7 +217,11 @@ print "BIG FRAMER";
 <td><?php print $row["regdate"]?></td>
 <?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
     ?>
-	<td><?php if($_GET["status"]==1){?><input type="BUTTON" value="REJECT" onclick="openReject('-1','<?php print $row["schemefillingid"];?>')"/><?php }?></td>
+	<td class="skip">
+	<?php if($_GET["status"]==1){?><input type="BUTTON" value="REJECT" onclick="openReject('-1','<?php print $row["schemefillingid"];?>')"/><?php }?>
+	<?php if($_GET["status"]==5){?><input type="BUTTON" value="REJECT" onclick="openReject('-4','<?php print $row["schemefillingid"];?>')"/><?php }?>
+	<?php if($_GET["status"]==8){?><input type="BUTTON" value="REJECT" onclick="openReject('-7','<?php print $row["schemefillingid"];?>')"/><?php }?>
+	</td>
 <td><input type="checkbox" name="schemefillingid[]" value='<?php print $row["schemefillingid"];?>' /></td>
   <?php } ?>
 </tr>
@@ -286,8 +263,12 @@ if($_GET["status"]==6){
 <div  style="height:50px;   " class="excel"><input type="button" value="Forward to DDH" onclick="approvaljs.savenewapplication('7');"/></div>
 <?php
  }
-
+if($_GET["status"]==8){
 ?>
+<div  style="height:50px;   " class="excel"><input type="button" value="Forward to Post-inspection" onclick="approvaljs.savenewapplication('9');"/></div>
+<?php
+ }
+ ?>
  </td></tr>
   
  <tr><td>
@@ -409,6 +390,7 @@ echo "<option class='hide'  parent_id='".$row["parent_id"]."' value='".$row["id"
 
 <tr><td>Work order no</td><td>:</td><td><input type="text" name="workorder_no" />
 <input type="hidden" name="statusto" id="w_st" value="8"/>
+<input type="hidden" name="application" value="application"/>
 <input type="hidden" name="schemefillingid[]" id="w_fid" value=""/>
 </td></tr>
 

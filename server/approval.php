@@ -12,7 +12,7 @@ if (!empty($_POST["application"])) {
                 $fileid));
 				
 				if( $_POST["statusto"]==7){
-				$fdate=date("Y-m-d");
+				$fdate=date();
 				$conn->insert("workorder",array("filling_id"=>$fileid,"forward_by"=>$user["id"],"forwarddate"=>$fdate));
 				}
 				if( $_POST["statusto"]==8){
@@ -20,9 +20,15 @@ if (!empty($_POST["application"])) {
 				$conn->insert("workorder_approval",array("filling_id"=>$fileid,"approved_by"=>$user["id"],"approved_date"=>$fdate,"workorderno"=>$_POST["workorder_no"]));
 				}
 				
+				if( $_POST["statusto"]==9){
+				$fdate=date();
+				$conn->insert("postinspection",array("filling_id"=>$fileid,"forward_by"=>$user["id"],"forwarddate"=>$fdate));
+				}
+				
     }
 
 }
+
 if (!empty($_POST["reject_remarks"])) {
     $schemefillingid = $_POST["schemefillingid"];
 	
@@ -84,16 +90,26 @@ $statusQuery.=" union select count(*),'7R' from schemefilling sf,schemefilling_l
 	
 	
     if ((!empty($_POST["get"])&& $_POST["get"] == "subschemes")) {
-        $statusQuery = "select count(*) app, 'A' status from schemefilling_land sfl,farmerdetails f, schemefilling sf  ,landdetails l, village v, states s,actionmapping am where   sfl.landdetailsid= l.id and l.villageid = s.id and sf.id= sfl.fillingid and v.villageid= l.villageid and v.hobliid= am.hobliid and f.id= sf.regid and am.regid=" .
-            $user["id"] . " and sf.schemeid=" . $_POST["schemeid"] . " and sf.subschemeid=" .
-            $_POST["subschemeid"] .
-            " group by sf.status union select count(*), sf.status from schemefilling_land sfl,farmerdetails f, schemefilling sf  ,landdetails l, village v, states s,actionmapping am where   sfl.landdetailsid= l.id and l.villageid = s.id and sf.id= sfl.fillingid and v.villageid= l.villageid and v.hobliid= am.hobliid and f.id= sf.regid and am.regid=" .
-            $user["id"] . " and sf.schemeid=" . $_POST["schemeid"] . " and sf.subschemeid=" .
-            $_POST["subschemeid"] . "  group by sf.status ";
-        $result = $conn->query($statusQuery);
+       $village="select id from landdetails where villageid in (select villageid from village v,actionmapping am where  v.hobliid =am.hobliid and am.regid=".$user["id"].")";
+ 
+ $statusQuery="select count(*) app,'A'  status from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// All files
+ $statusQuery.=" union select count(*),'1' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=1 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// pending at ta
+  $statusQuery.=" union select count(*),'-1' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-1 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// rejected at ta
+  $statusQuery.=" union select count(*),'2' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=2 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// yet to forward/covering letter
+$statusQuery.=" union select count(*),'4' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=4 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// Forward to rsk
+$statusQuery.=" union select count(*),'5' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=4 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// total forward application
+$statusQuery.=" union select count(*),'5P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=4 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'5C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=5 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'5R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-4  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'7' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=7 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// total forward application
+$statusQuery.=" union select count(*),'7P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=7 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'7C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=8 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'7R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-7  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+      
+	    $result = $conn->query($statusQuery);
         $jsontext = "[";
         foreach ($result as $row) {
-            $jsontext .= '{' . $row["status"] . ':"' . $row["app"] . '"},';
+            $jsontext .= '{"' . $row["status"] . '":"' . $row["app"] . '"},';
         }
         $jsontext = substr_replace($jsontext, '', -1); // to get rid of extra comma
         $jsontext .= "]";

@@ -163,7 +163,7 @@
 												}
 												
 												if(keyx=="7C"){
-												$("#preinspection_completed").html(valx);
+												$("#workorder_completed").html(valx);
 												$("#recivedfrom_ddh").html(valx);
 												$("#recivedfrom_ddh").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=8");
 												
