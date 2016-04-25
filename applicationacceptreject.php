@@ -117,6 +117,9 @@ $titles["2"]="Cover letter generation";
 $titles["4"]="Forward to RSK";
 $titles["5"]="Pending pre-inspection";
 $titles["6"]="Pending for work-order";
+$titles["6A"]="Received from RSK";
+$titles["6B"]="Yet to forward to DDH";
+$titles["6C"]="Forward to DDH";
 $titles["7"]="Work-orders";
 $titles["8"]="Pending post-inspection";
  $titles["9"]="Post-inspection";
@@ -170,6 +173,9 @@ $status=4;
 }
 if($status=="6"){
 $status=5;
+}
+if($status=="6A" || $status=="6B" || $status=="6C"){
+$status=6;
 }
   $village="select id from landdetails where villageid in (select villageid from village v,actionmapping am where  v.hobliid =am.hobliid and am.regid=".$user["id"].")";
 $query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,( select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid) and villageid= s.id) village,(select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid) and hobliid= s.id) hobli,c.castname,
@@ -259,7 +265,16 @@ if($_GET["status"]==4){
 <div  style="height:50px;   " class="excel"><input type="button" value="Forward to RSK" onclick="approvaljs.savenewapplication('4');"/></div>
 <?php
  }
-if($_GET["status"]==6){
+if($_GET["status"]=="6"){
+?>
+<div  style="height:50px;   " class="excel"><input type="button" value="Forward to TA" onclick="approvaljs.savenewapplication('6');"/></div>
+<?php
+ }
+ if($_GET["status"]=="6B"){
+?>
+<div  style="height:50px;   " class="excel"><input type="button" value="Generate covering letter" onclick="approvaljs.generatecoverletter();"/></div>
+<?php
+ }if($_GET["status"]=="6C"){
 ?>
 <div  style="height:50px;   " class="excel"><input type="button" value="Forward to DDH" onclick="approvaljs.savenewapplication('7');"/></div>
 <?php

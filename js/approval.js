@@ -140,12 +140,19 @@
 												
 												if(keyx=="5C"){
 												$("#preinspection_completed").html(valx);
-												$("#recivedfrom_rsk").html(valx);
-												$("#recivedfrom_rsk").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6");
+												$("#forward_preinspection").html(valx);
+												$("#forward_preinspection").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6");
 												
 												}
 												
-												
+												if(keyx=="6"){
+												$("#recivedfrom_rsk").html(valx);
+												 $("#yettoforward_ddh").html(valx);
+												  $("#forwardto_ddh").html(valx);
+												$("#recivedfrom_rsk").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6A");
+												$("#yettoforward_ddh").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6B");
+												$("#forwardto_ddh").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6C");
+												}
 												
 												
 												if(keyx=="7"){
