@@ -46,11 +46,11 @@ Pre-Inspection</td><td class="pro_1" > <a href="#"><span id="preinspection">0</s
 		 <td class="pro_0">&nbsp;</td><td class="pro_1" > <a href="#">0</a></td>
       </tr>
       <tr>
-             <td class="pro_0">Rejected by TA </td>
-             <td class="pro_1" > <a href="#"><span id="scheme_reject">0</span></a></td>
+             <td class="pro_0">Pending </td>
+             <td class="pro_1" > <a href="#"><span id="pendding">0</span></a></td>
       
-        <td class="pro_0">Rejected by RSK </td>
-        <td class="pro_1" > <a href="#"><span id="preinspection_rejected">0</span></a></td>
+        <td class="pro_0">Pending</td>
+        <td class="pro_1" > <a href="#"><span id="preinspection_pending">0</span></a></td>
         
         <td class="pro_0">Rejected by DDH</td><td class="pro_1" > <a href="#"><span id="workorder_rejected">0</span></a></td>
         
@@ -67,11 +67,11 @@ Pre-Inspection</td><td class="pro_1" > <a href="#"><span id="preinspection">0</s
 		 <td class="pro_0">&nbsp;</td><td class="pro_1" > <a href="#">0</a></td>
       </tr>
       <tr>
-          <td class="pro_0">Pending applications </td>
-          <td class="pro_1" > <a href="#"><span id="pendding">0</span></a></td>
+          <td class="pro_0">Rejected</td>
+          <td class="pro_1" > <a href="#"><span id="scheme_reject">0</span></a></td>
        
-        <td class="pro_0">Pending applications </td>
-        <td class="pro_1" > <a href="#"><span id="preinspection_pending">0</span></a></td>
+        <td class="pro_0">Rejected</td>
+        <td class="pro_1" > <a href="#"><span id="preinspection_rejected">0</span></a></td>
    
         <td class="pro_0">Pending Applications at DDH</td><td class="pro_1" > <a href="#"><span id="workorder_pending">0</span></a></td>
         
@@ -88,10 +88,10 @@ Pre-Inspection</td><td class="pro_1" > <a href="#"><span id="preinspection">0</s
 		 <td class="pro_0">&nbsp;</td><td class="pro_1" > <a href="#">0</a></td>
       </tr>
       <tr>
-          <td class="pro_0">Yet to forward RSK </td>
+          <td class="pro_0">Yet to forward for pre-inspection</td>
           <td class="pro_1"><a href="#"><span id="yettoapproval">0</span></a></td>
         
-        <td class="pro_0">Submitted to TA for work-order approval </td>
+        <td class="pro_0">Pre-inspection done </td>
         <td class="pro_1" ><a href="#"><span id="preinspection_completed">0</span></a></td>
         
         <td class="pro_0">Submitted to TA for post-inspection </td>
@@ -113,8 +113,8 @@ Pre-Inspection</td><td class="pro_1" > <a href="#"><span id="preinspection">0</s
         <td class="pro_0">Forward to RSK for pre-inspection </td>  
         <td class="pro_1"> <a href="#"><span id="forwardtorsk">0</span></a> </td>
      
-        <td class="pro_0">&nbsp;</td> 
-        <td class="pro_1">  </td>
+        <td class="pro_0">Received from RSK</td> 
+        <td class="pro_1"> <a href="#"><span id="recivedfrom_rsk">0</span></a> </td>
          
         <td class="pro_0">&nbsp;</td><td class="pro_1" >  </td>
         
@@ -151,8 +151,8 @@ Pre-Inspection</td><td class="pro_1" > <a href="#"><span id="preinspection">0</s
 	  
 	  
 	  <tr>
-         <td class="pro_0">Received from RSK for Work-order </td> 
-         <td class="pro_1"> <a href="#"><span id="recivedfrom_rsk">0</span></a> </td>
+         <td class="pro_0">&nbsp;</td> 
+         <td class="pro_1"> <a href="#"></a> </td>
   
         <td class="pro_0">&nbsp;</td><td class="pro_1" >  </td>
  
