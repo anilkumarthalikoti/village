@@ -282,9 +282,10 @@
 			 
 			 window.location.href=url;
 			}		 
-				 
+<!--pre inspection-->				 
 		this.saveandprint=function(){
 		 
+								$("#preinspection").dialog( "close" );
 			
 			$.ajax({
 						url:"server/approval.php",
@@ -294,7 +295,6 @@
 						}).done(function(data){
 							var filling =$("input[name='filling_id']").val();
 							
-								$( "#preinspection" ).dialog( "close" );
 								 
 							window.open("form3.php?fillingid="+filling);
 							location.reload();
@@ -316,9 +316,9 @@
 						}).done(function(data){
 							 
 							
-								( "#workorder" ).dialog( "close" );
+								 $( "#workorder" ).dialog( "close" );
 					 
-							location.reload();
+							 location.reload();
 							});
 			
 			}	

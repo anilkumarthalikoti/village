@@ -12,11 +12,13 @@ if (!empty($_POST["application"])) {
                 $fileid));
 				
 				if( $_POST["statusto"]==7){
-				$fdate=date();
+				$fdate=date("Y-m-d",time());
+				 
 				$conn->insert("workorder",array("filling_id"=>$fileid,"forward_by"=>$user["id"],"forwarddate"=>$fdate));
 				}
 				if( $_POST["statusto"]==8){
-				$fdate=date("Y-m-d",$_POST["issue_date"]);
+				$fdate=date("Y-m-d",strtotime($_POST["issue_date"]));
+				 
 				$conn->insert("workorder_approval",array("filling_id"=>$fileid,"approved_by"=>$user["id"],"approved_date"=>$fdate,"workorderno"=>$_POST["workorder_no"]));
 				}
 				
@@ -45,11 +47,13 @@ if (!empty($_POST["pre-inspection"])) {
  
 foreach ($_POST as $key => $value){
 if($key!="pre-inspection" && $key!="organization"){
+if($key=="inspectiondate"){
+   $value=date("Y-m-d", strtotime($value) );
+   echo $value;
+   }
 $params[$key]=$value;
 }
- if($key=="inspectiondate"){
-   $value=date("Y-m-d", strtotime($value) );
-   }
+ 
 }
  
       
