@@ -717,23 +717,76 @@ font-weight:bold;
 
 	
 	}
-	#status_board{
+ 
+	#status_board ul{
+	list-style:none outside none;
 	margin:0;
 	padding:0;
+	vertical-align:top;
+	float:left;
+ 
 	}
-	#status_board ul{
-	list-style:none;
+	#status_board ul h1{
+	padding-top:10px;
+	height:25px;
+	width:150px;
+	font-size:12px;
+	text-align:center;
+	background-color:#099;
+	color:#FFFFFF;
+	vertical-align:middle;
+	min-width:150px;
 	margin:0;
 	padding:0;
 	}
 	#status_board ul li{
-	width:130px;
-	 
+	width:150px;
+	min-width:150px;
+	 height: 2.2em;
+    line-height: 1.1;
+    overflow: auto;
 	margin:0;
 	padding:0;
+	border-bottom:1px solid #000000;
+	border-right:1px solid #000000;
+	font-size:12px;
+	
 	}
-	#status_board ul li div a{
+	#status_board ul li:nth-child(even) div,#status_board ul li:nth-child(even),#status_board ul li:nth-child(even) div a{
+	background-color:#CCCCCC;
+	}
+	
+	#status_board ul li:nth-child(odd) div,#status_board ul li:nth-child(odd),#status_board ul li:nth-child(odd) div a{
+	background-color:#FFFFFF;
+	
+	}
+	#status_board ul li div span{
+	border-left:1px solid #000000;
+	min-width:20px;
+	height:35px;
+	 height: 2.2em;
+    line-height: 1.1;
 	float:right;
-	width:15px;
+	padding-top:8px;
 	}
+		#status_board ul li div a {
+		font-weight:bold;
+		vertical-align:middle;
+		text-align:center;
+		 
+		 
+	width:25px;
+	min-height:35px;
+	
+ 
+	 
+		}
+	 
+	 
+		#status_board ul li div div{
+		
+		float:left;
+		width:125px;
+		min-height:35px;
+		}
 	 
