@@ -25,21 +25,21 @@ $count="";
  </li><li> <div> Forward to TA <a href="#"><span id="forward_preinspection">0</span></a> </div>
  </li><li> <div> Received from RSK <a href="#"><span id="recivedfrom_rsk">0</span></a></div>
  </li><li> <div>Yet to forward to DDH Office for Work Order<a href="#"><span id="yettoforward_ddh">0</span></a></div>
- </li><li> <div>Forward to DDH Office for Work Order</div>
+ </li><li> <div>Forward to DDH Office for Work Order <a href="#"><span id="forwardto_ddh">0</span></a></div>
  </li></ul></td>
- <td><ul><li> <div>Application for work-order</div>
- </li><li> <div>Pending </div>
- </li><li> <div>Rejected </div>
- </li><li> <div>Issued</div>
- </li><li> <div>Forward to TA</div>
- </li><li> <div>Received from DDH </div>
- </li><li> <div>Yet to forward to RSK  for Post-Inspection </div>
- </li><li> <div>Forwarded to RSK for Post-Inspection</div>
+ <td><ul><li> <div>Application for work-order<a href="#"><span id="workorder">0</span></a></div>
+ </li><li> <div>Pending<a href="#"><span id="workorder_pending">0</span></a> </div>
+ </li><li> <div>Rejected <a href="#"> <span id="workorder_rejected">0</span></a></div>
+ </li><li> <div>Issued <a href="#"><span id="workorder_completed">0</span></a></div>
+ </li><li> <div>Forward to TA<a href="#"><span id="workorder_forward">0</span></a></div>
+ </li><li> <div>Received from DDH <a href="#"><span id="recivedfrom_ddh">0</span></a></div>
+ </li><li> <div>Yet to forward to RSK  for Post-Inspection  <a href="#"><span id="yettoforward_rsk_wo">0</span></a></div>
+ </li><li> <div>Forwarded to RSK for Post-Inspection <a href="#"><span id="forwardto_rsk_wo">0</span></a></div>
  </li></ul></td>
- <td><ul><li> <div>Application for work-order</div>
- </li><li> <div>Pending</div>
- </li><li> <div>Rejected</div>
- </li><li> <div>Inspection Done </div>
+ <td><ul><li> <div>Application for work-order <a href="#"><span id="postinspection">0</span></a></div>
+ </li><li> <div>Pending <a href="#"><span id="postinspection_pending">0</span></a></div>
+ </li><li> <div>Rejected<a href="#"><span id="postinsepection_rejected">0</span></a></div>
+ </li><li> <div>Inspection Done <a href="#"><span id="postinspection_completed">0</span></a></div>
  </li><li> <div>Forward to TA for taluka approval </div>
  </li><li> <div>Received from RSK</div>
  </li><li> <div></div></li><li> <div></div></li></ul></td>
