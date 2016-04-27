@@ -16,21 +16,15 @@ $conn=$database;
 <div class="title">Farmer details</div>
 <div class="viewport">
 <form name"farmer" onsubmit="return false">
-<table class="form" style="padding:10px; width:90%;">
-<tr><td> <a href="farmer_reg.php"><img src="images/addnew.png"/></a></td><td></td><td style="width:550px;"><input type="text" placeholder="Search" id="search" class="search"/> <select name="select" id="searchin">
-               <option value="id">Benficary id</option>
-			   <option value="firstname">Benficary name</option>
-               <option value="rationcard">Ration card no</option>
-               <option value="aadhar">Adhar</option>
-			    <option value="voter">Voter</option>
-             </select><input type="button" value="Search" onclick="farmerpage.searchRegistration()"/></td></tr>
+<table class="excel90" >
+<tr><td> <a href="farmer_reg.php"><img src="images/addnew.png"/></a></td><td></td><td style="width:550px;"> </td></tr>
 			 <tr>
 			 <td colspan="4" valign="top">
 			 <div style="height:400px; overflow:auto">
  <div style="height:360px; overflow:auto">
  
-<table class="grid" style="width:100%;" >
-<thead><th>Benficary Id</th><th>Name</th><th>Relation name</th><th>Village name</th><th>Total land</th><th></th><th></th></thead>
+<table class="excel90 margin"  filter='Y'  cellpadding="0" cellspacing="0">
+<thead><th>Benficary Id</th><th>Name</th><th>Relation name</th><th>Village name</th><th>Total land</th><th>Land Register</th><th>Scheme Register</th></thead>
 <tbody>
 <?php 
  

@@ -73,7 +73,7 @@ $(document).ready(function(){
 	?>
 	$("table#applications tbody tr").click(function(){
 	 $("input[id='w_fid']").val($(this).attr("filling_id"));
-	$( "#workorder" ).dialog( "open" );
+	//$( "#workorder" ).dialog( "open" );
 	});
 	<?php
 	 }
@@ -121,23 +121,39 @@ $titles["6A"]="Received from RSK";
 $titles["6B"]="Yet to forward to DDH";
 $titles["6C"]="Forward to DDH";
 $titles["7"]="Work-orders";
-$titles["8"]="Pending post-inspection";
- $titles["9"]="Post-inspection";
+$titles["8"]="Forward to RSK for post-inspection";
+ $titles["9"]="Received from RSK for post-inspection";
+  $titles["9A"]="Cover Letter for Post-inspection ";
+   $titles["9B"]="Forward to RSK for post-inspection ";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
 <div class="viewport">
- <table class="form excel" style="width:96%">
+ <table class="excel" style="width:96%">
  <tr>
  <tr><td>
  
  <form name="application" method="post">
 <input type="hidden" name="application" value="application"/>
-<div   class="excel" style="max-height:420px; min-height:420px;">
-<table class="grid excel" id="applications">
+<div    style="max-height:420px; min-height:420px;">
+<table class="excel90 margin" id="applications" filter='Y'>
 <thead>
-<tr><th colspan="18" align="right"><input type="text" name="search" placeholder="Search " class="search"/></th></tr>
-<tr>
+ <tr>
+ <?php 
+  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
+ ?>
+ <th   ><input type="checkbox" onclick="" /></th>
+ <?php } ?>
+ <?php 
+ if($_GET["status"]==7 || $_GET["status"]==8){
+ ?>
+ <th>Work order Issued</th>
+ <?php  if($_GET["status"]==8) {?>
+  <th>Approved by</th>
+ <?php }?>
+ <?php
+ }
+ ?>
 <th>Reg.No</th>
 <th>Name</th>
 <th>Relation</th>
@@ -157,7 +173,7 @@ $titles["8"]="Pending post-inspection";
 <?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
     ?>
 <th></th>	
-<th><input type="checkbox" onclick="" /></th>
+ 
  <?php } ?>
 </tr>
 
@@ -177,13 +193,20 @@ $status=5;
 if($status=="6A" || $status=="6B" || $status=="6C"){
 $status=6;
 }
+if($status=="9A" || $status=="9B"  ){
+$status=9;
+}
   $village="select id from landdetails where villageid in (select villageid from village v,actionmapping am where  v.hobliid =am.hobliid and am.regid=".$user["id"].")";
-$query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,( select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid) and villageid= s.id) village,(select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid) and hobliid= s.id) hobli,c.castname,
-(select group_concat(l.landsono separator ', ') from schemefilling_land sfl,landdetails l where fillingid=sf.id and l.id= sfl.landdetailsid) survayno,
-  (select sum(l.totalland) from landdetails l where l.regid=sf.regid  ) ftype,(select s.name from schemes s where s.id= sf.subschemeid) sector,(select cropname from cropitems where id= sf.item1 ) crop1
-,(select cropname from cropitems where id= sf.item2 ) crop2
-,(select cropname from cropitems where id= sf.item3 ) crop3,TRUNCATE((coalesce(sf.area1,0)+coalesce(sf.area2,0)+coalesce(sf.area3,0)),2) totalappland,(select login_id from app_login where id= sf.regby ) regby,regdate,sf.item1,sf.item2,sf.item3
-from farmerdetails f, schemefilling sf,casts c  where sf.regid= f.id and f.usercast= c.id and sf.status=".$status." and sf.schemeid=".$_GET["schemeid"]."";
+$query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,";
+$query.=" ( select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid)";
+ $query.=" and villageid= s.id) village,(select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid ";$query.=" and ld.id= landdetailsid) and hobliid= s.id) hobli,c.castname, ";
+$query.=" (select group_concat(l.landsono separator ', ') from schemefilling_land sfl,landdetails l where fillingid=sf.id and l.id= sfl.landdetailsid) survayno, ";
+$query.="  (select sum(l.totalland) from landdetails l where l.regid=sf.regid  ) ftype,(select s.name from schemes s where s.id= sf.subschemeid) sector, ";
+$query.="(select cropname from cropitems where id= sf.item1 ) crop1 ,(select cropname from cropitems where id= sf.item2 ) crop2 ,(select cropname from cropitems where id= sf.item3 ) crop3, ";
+$query.="TRUNCATE((coalesce(sf.area1,0)+coalesce(sf.area2,0)+coalesce(sf.area3,0)),2) totalappland, ";
+$query.="(select login_id from app_login where id= sf.regby ) regby,regdate,sf.item1,sf.item2,sf.item3,  ";
+$query.=" (select  concat(approved_date,'#',(select login_id from app_login where id= approved_by) )   from workorder_approval wap  where wap.filling_id=sf.id)  wkapp ";
+$query.="  from farmerdetails f, schemefilling sf,casts c where sf.regid= f.id and f.usercast= c.id and sf.status=".$status." and sf.schemeid=".$_GET["schemeid"]."";
 if(!empty($_GET["subschemeid"])){
 $query.="  and sf.subschemeid=".$_POST["subschemeid"]."";
 }
@@ -192,17 +215,46 @@ if($_GET["status"]==5){
 
 }
 $query.=" order by sf.regdate ";
- $offset=(($page)*10);
-$query.=" limit 10 OFFSET   ".$offset;
+ 
+ 
  
 $result=$conn->query($query);
-$pagesc=count($result)/10;
+ 
 foreach($result as $row){
 $crop1= $row["crop1"];
 $crop2= $row["crop2"];
 $crop3= $row["crop3"];
+$wkapp=explode("#",$row["wkapp"]);
 ?>
-<tr filling_id="<?php print $row["schemefillingid"];?>" crop1="<?php print $row["item1"];?>" crop2="<?php print $row["item2"];?>" crop3="<?php print $row["item3"];?>" cn1="<?php print  crop1 ;?>" cn2="<?php print  crop2 ;?>" cn3="<?php print  crop3 ;?>" >
+<tr 
+filling_id="<?php print $row["schemefillingid"];?>" 
+crop1="<?php print $row["item1"];?>" 
+crop2="<?php print $row["item2"];?>" 
+crop3="<?php print $row["item3"];?>"
+ cn1="<?php print  $crop1 ;?>" 
+ cn2="<?php print  $crop2 ;?>"
+  cn3="<?php print  $crop3 ;?>" >
+<?php  
+if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
+    ?>
+	<td align="center"  ><input type="checkbox" name="schemefillingid[]" value='<?php print $row["schemefillingid"];?>' /></td>
+  <?php } ?>
+   <?php 
+ if($_GET["status"]==7){
+ ?>
+ <td><input type="text" class="datepicker" name="wi_<?php print  $row["schemefillingid"]; ?>"/></td>
+ <?php
+ }
+ ?>
+  <?php 
+ if($_GET["status"]==8){
+ ?>
+ <td> <?php print $wkapp[0]; ?> </td>
+  <td> <?php print $wkapp[1]; ?> </td>
+ <?php
+ }
+ ?>
+
 <td><?php print $row["schemefillingid"];?></td>
 <td><?php print $row["firstname"];?></td>
 <td><?php print $row["fathername"];?></td>
@@ -225,11 +277,11 @@ print "BIG FRAMER";
 <?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
     ?>
 	<td class="skip">
-	<?php if($_GET["status"]==1){?><input type="BUTTON" value="REJECT" onclick="openReject('-1','<?php print $row["schemefillingid"];?>')"/><?php }?>
-	<?php if($_GET["status"]==5){?><input type="BUTTON" value="REJECT" onclick="openReject('-4','<?php print $row["schemefillingid"];?>')"/><?php }?>
-	<?php if($_GET["status"]==8){?><input type="BUTTON" value="REJECT" onclick="openReject('-7','<?php print $row["schemefillingid"];?>')"/><?php }?>
+	<?php if($_GET["status"]==1){?><input type="BUTTON" value="REJECT" class="button1" onclick="openReject('-1','<?php print $row["schemefillingid"];?>')"/><?php }?>
+	<?php if($_GET["status"]==5){?><input type="BUTTON" value="REJECT" class="button1" onclick="openReject('-4','<?php print $row["schemefillingid"];?>')"/><?php }?>
+	<?php if($_GET["status"]==8){?><input type="BUTTON" value="REJECT"  class="button1" onclick="openReject('-7','<?php print $row["schemefillingid"];?>')"/><?php }?>
 	</td>
-<td><input type="checkbox" name="schemefillingid[]" value='<?php print $row["schemefillingid"];?>' /></td>
+ 
   <?php } ?>
 </tr>
 
@@ -267,7 +319,7 @@ if($_GET["status"]==4){
  }
 if($_GET["status"]=="6"){
 ?>
-<div  style="height:50px;   " class="excel"><input type="button" value="Forward to TA" onclick="approvaljs.savenewapplication('6');"/></div>
+<div  style="height:50px;   " class="excel"><input type="button" value="Generate covering letter" onclick="approvaljs.generatecoverletter();"/><input type="button" value="Forward to TA" onclick="approvaljs.savenewapplication('6');"/></div>
 <?php
  }
  if($_GET["status"]=="6B"){
@@ -281,20 +333,31 @@ if($_GET["status"]=="6"){
  }
 if($_GET["status"]==8){
 ?>
-<div  style="height:50px;   " class="excel"><input type="button" value="Forward to Post-inspection" onclick="approvaljs.savenewapplication('9');"/></div>
+
+<div  style="height:50px;   " class="excel"><input type="button" value="Generate covering letter" onclick="approvaljs.generatecoverletter();"/><input type="button" value="Forward to TA" onclick="approvaljs.savenewapplication('9');"/></div>
+<?php
+ }
+ if($_GET["status"]==7){
+?>
+<div  style="height:50px;   " class="excel"><input type="button" value="Save" onclick="approvaljs.savenewapplication('8');"/></div>
+<?php
+ }
+  
+ if($_GET["status"]=="9A"){
+?>
+<div  style="height:50px;   " class="excel"><input type="button" value="Cover Letter" onclick="approvaljs.generatecoverletter();"/></div>
+<?php
+ } 
+  
+ if($_GET["status"]=="9B"){
+?>
+<div  style="height:50px;   " class="excel"><input type="button" value="Forward to RSk for post-inspection" onclick="approvaljs.savenewapplication('10');"/></div>
 <?php
  }
  ?>
  </td></tr>
   
- <tr><td>
- <?php 
- for($i=0; $i< $pagesc; $i++){
- $link='<a href="applicationacceptreject.php?schemeid='.$_GET["schemeid"].'&status='.$_GET["status"].'&page='.$i.'"><div class="vtiny">'.($i+1).'</div></a>';
- echo $link;
- }
- ?>
- </td></tr>
+  
  </table>
 
 </div>

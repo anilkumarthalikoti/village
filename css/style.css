@@ -143,6 +143,15 @@
 	margin:10px;
 	 
 	}
+	input[type='search']{
+	 
+	height: 30px;
+	border: 2px solid #ccc;
+	color: #4f4f4f;
+	border-radius: 5px;
+	margin:10px;
+	 
+	}
 	input[type='text1']{
 	float:left;
 	}
@@ -236,7 +245,7 @@ background:url(/images/calendar.png) no-repeat right center;
 	height:25px;
 	width:auto;
 	min-width:80px;
-	margin:10px;
+	margin:1px;
 	float:right;
   
 	}
@@ -244,7 +253,9 @@ background:url(/images/calendar.png) no-repeat right center;
 	background: linear-gradient(#d5d8dc 5%, #e5e7e9  100%);
 	}
 	 
-
+.button1{
+margin:1px;
+}
  
 .align-right {
   float: right;
@@ -630,3 +641,99 @@ border-spacing: 0px;
 	.userinfo{
 	
 	}
+	
+ .form_grid{
+
+border:1px solid #666666;
+background-color:  #eaecee ;
+margin-left:25px;
+margin-top:25px;
+padding:5px;
+-webkit-border-radius: 10px 10px 10px 10px;
+		-moz-border-radius:  10px 10px 10px 10px;
+		border-radius:  10px 10px 10px 10px;
+		line-height:25px;
+		 
+
+		
+}
+	.form_grid thead{
+background-color:#CFCFCF;
+color:#666666;
+}
+.form_grid tbody tr:nth-child(even){
+background-color:#FFFFFF ;
+max-height:25px;
+}
+.form_grid  tbody tr:nth-child(odd){
+background-color: #f2f3f4  ;
+max-height:25px;
+}
+.form_grid  tfoot tr{
+background-color:#999999;
+font-weight:bold;
+}
+  .form_grid tbody tr:hover  {
+	
+	background-color:#e5e7e9;
+	cursor:hand;
+	cursor:pointer;
+	padding:0;
+	margin:0;
+	 
+	}
+	.form_grid tbody tr.active td:nth-child(1) 
+	{
+	
+	background-color:#FF0000;
+ 
+	}
+	.form_grid tbody td,table.grid thead th {
+	border-right:1px solid #000000;
+	border-bottom:1px solid #000000;
+	}
+	.form_grid tbody tr td:last-child,.form_grid thead tr th:last-child {
+	border-right:0px;
+	 
+	}
+	 .form_grid tbody tr:last-child td {
+	border-bottom:0px;
+	 
+	}
+	tr[role="row"] td{
+	max-height:25px;
+	}
+	.form_grid tr{
+	max-height:25px;
+	margin:0;
+	padding:0;
+	}
+	.form_grid td{
+	min-width:100px;
+	max-width:150px;
+	max-height:25px;
+	margin:0;
+	padding:0;
+
+	
+	}
+	#status_board{
+	margin:0;
+	padding:0;
+	}
+	#status_board ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+	}
+	#status_board ul li{
+	width:130px;
+	 
+	margin:0;
+	padding:0;
+	}
+	#status_board ul li div a{
+	float:right;
+	width:15px;
+	}
+	 

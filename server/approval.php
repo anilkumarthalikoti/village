@@ -17,7 +17,8 @@ if (!empty($_POST["application"])) {
 				$conn->insert("workorder",array("filling_id"=>$fileid,"forward_by"=>$user["id"],"forwarddate"=>$fdate));
 				}
 				if( $_POST["statusto"]==8){
-				$fdate=date("Y-m-d",strtotime($_POST["issue_date"]));
+				$fkey="wi_".$fileid;
+				$fdate=date("Y-m-d",strtotime($_POST[$fkey]));
 				 
 				$conn->insert("workorder_approval",array("filling_id"=>$fileid,"approved_by"=>$user["id"],"approved_date"=>$fdate,"workorderno"=>$_POST["workorder_no"]));
 				}
@@ -86,6 +87,10 @@ $statusQuery.=" union select count(*),'9' from schemefilling sf,schemefilling_la
 $statusQuery.=" union select count(*),'9P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=9 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'9C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=10 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'9R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-9  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'10' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=10 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// total forward application
+$statusQuery.=" union select count(*),'10P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=10 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'10C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=11 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
+$statusQuery.=" union select count(*),'10R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-10  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
       
 	    $result = $conn->query($statusQuery);
         $jsontext = "[";

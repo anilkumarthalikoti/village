@@ -27,12 +27,29 @@ function endsWith($haystack, $needle) {
 <link href="css/style.css" type="text/css" rel="stylesheet" />
 <link href="css/menu.css" type="text/css" rel="stylesheet" />
 <link href="css/jquery-ui.css" type="text/css" rel="stylesheet" />
-<link href="css/ui.jqgrid.css" type="text/css" rel="stylesheet" />
+<link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet"/>
+
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/jquery-ui.js" type="text/javascript"></script>
-<script src="js/pramukhindic.js" type="text/javascript"></script>
+<script src="js/datatable/jquery.dataTables.js" type="text/javascript"></script>
+ <script src="js/pramukhindic.js" type="text/javascript"></script>
 <script src="js/pramukhime.js" type="text/javascript"></script>
-<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+ 
 <script src="js/autocomplete.js" type="text/javascript"></script>
 <script src="js/default.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+$(document).ready(function(){
+
+ 
+ $("table[filter='Y']").addClass("form_grid");
+$("table[filter='Y']").DataTable({
+    "sDom": 'Rfrtlip'  
+ 
+ });
+ 
+ 
+$("input[type='search']").addClass("search");
+ 
+});
+</script>

@@ -171,33 +171,43 @@
 												
 												if(keyx=="7C"){
 												$("#workorder_completed").html(valx);
-												$("#recivedfrom_ddh").html(valx);
-												$("#recivedfrom_ddh").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=8");
+												$("#workorder_forward").html(valx);
+												$("#workorder_forward").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=8");
 												
 												}
 												
 												
 												
 												if(keyx=="9"){
-												$("#postinspection").html(valx);
+												$("#recivedfrom_ddh").html(valx);
+												$("#yettoforward_rsk_wo").html(valx);
+												$("#yettoforward_rsk_wo").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9A");
+												$("#forwardto_rsk_wo").html(valx);
+												$("#forwardto_rsk_wo").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9B");
+												
 												
 												}	
-												if(keyx=="9P"){
-												$("#postinspection_pending").html(valx);
-												$("#postinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9");
-										
-												}
-												if(keyx=="9R"){
-												$("#postinspection_rejected").html(valx);
-												
-												}
-												
 												if(keyx=="9C"){
 												$("#postinspection_completed").html(valx);
 												 
 												 
 												
 												}
+												
+												if(keyx=="10"){
+												$("#postinspection ").html(valx);
+												 
+												}
+												if(keyx=="10P"){
+												$("#postinspection_pending").html(valx);
+												$("#postinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=10");
+										
+												}
+												if(keyx=="10R"){
+												$("#postinspection_rejected").html(valx);
+												
+												}
+												
 												
 												
 												
