@@ -187,7 +187,7 @@
 												
 												
 												}	
-												if(keyx=="9C"){
+												if(keyx=="10C"){
 												$("#postinspection_completed").html(valx);
 												 
 												 

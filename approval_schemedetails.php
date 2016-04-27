@@ -1,8 +1,10 @@
- <?php 
+ <?php
+ 
   require "interceptor.php";
  require "server/app_connector.php";
  
 $conn=$database;
+$user=$_SESSION["logged_in"];
 $query="";
 $count="";
  
@@ -16,7 +18,7 @@ $count="";
    <li> <div><div> Total application </div><a href="#"> <span id="scheme_filling_val">0</span></a></div>  </li>
    <li> <div><div>Pending </div><a href="#"><span id="pendding">0</span></a></div></li>
    <li> <div><div>Rejected </div><a href="#"><span id="scheme_reject">0</span></a></div> </li>
-   <li> <div><div>Yet to forward for pre-inspection </div><a href="#"><span id="yettoapproval">0</span></a></div></li>
+   <li role="TA-SADH"> <div><div>Yet to forward for pre-inspection </div><a href="#"><span id="yettoapproval">0</span></a></div></li>
    <li> <div><div>Forward to RSK for pre-inspection </div><a href="#"><span id="forwardtorsk">0</span></a></div> </li>
    <li> <div><div></div><a href="#"><span></span></a></div> </li>
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
@@ -127,4 +129,18 @@ $count="";
  </ul>
  
 </div>
+ <script type="text/javascript">
+ $(document).ready(function(){
+ var desig="<?php print $user["designation"]?>";
+ $("li").addClass("remove");
+  
+ var key="li[role='"+desig+"']";
  
+ $(key).removeClass();
+ $("li[class='remove'] a").click(function(){
+ 
+ return false;
+ });
+ });
+ 
+ </script>
