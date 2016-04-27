@@ -66,7 +66,7 @@ $count="";
  
  </ul> 
  <ul>
- <h1></h1>
+ <h1>Taluka Approval</h1>
    <li> <div><div></div><a href="#"><span></span></a></div> </li>
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
@@ -78,7 +78,7 @@ $count="";
 	 
  </ul>
  <ul>
- <h1></h1>
+ <h1>Sanction Order</h1>
    <li> <div><div></div><a href="#"><span></span></a></div> </li>
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
@@ -90,7 +90,7 @@ $count="";
 	 
  </ul>
  <ul>
- <h1></h1>
+ <h1>District Approval</h1>
    <li> <div><div></div><a href="#"><span></span></a></div> </li>
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
@@ -102,7 +102,7 @@ $count="";
 	 
  </ul>
  <ul>
- <h1></h1>
+ <h1>Dc Bills</h1>
    <li> <div><div></div><a href="#"><span></span></a></div> </li>
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
@@ -113,7 +113,18 @@ $count="";
 	<li> <div><div></div><a href="#"><span></span></a></div> </li>
 	 
  </ul>
-  
+  <ul>
+ <h1>Payments</h1>
+   <li> <div><div></div><a href="#"><span></span></a></div> </li>
+	<li> <div><div></div><a href="#"><span></span></a></div> </li>
+	<li> <div><div></div><a href="#"><span></span></a></div> </li>
+	  <li> <div><div></div><a href="#"><span></span></a></div> </li>
+	<li> <div><div></div><a href="#"><span></span></a></div> </li>
+	<li> <div><div></div><a href="#"><span></span></a></div> </li>
+	  <li> <div><div></div><a href="#"><span></span></a></div> </li>
+	<li> <div><div></div><a href="#"><span></span></a></div> </li>
+	 
+ </ul>
  
 </div>
  

@@ -28,7 +28,7 @@ $user=$_SESSION["logged_in"];
              <div class="container" id="tab1C">
 			  
 
-<table class="excel90 form"  >
+<table class="form"  >
 <tr>
 <td>Scheme</td><td>:</td><td><select name="scheme_select" id="scheme_select" tabid="1" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails();">
 <option value="-1">Select</option>
