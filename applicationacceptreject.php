@@ -68,6 +68,51 @@ $(document).ready(function(){
 	?>
 	
 	
+	
+	<!-- POST INSPECTION-->
+	
+	<?php
+	if($_GET["status"]=="10"){
+	?>
+	$("table#applications tbody tr td:not(.skip)").click(function(){
+	
+	 $("select[name='crop1']").val($(this).parent().attr("crop1"));
+	 	 $("select[name='crop2']").val($(this).parent().attr("crop2"));
+		 	 $("select[name='crop3']").val($(this).parent().attr("crop3"));
+			  if($("select[name='crop1'] option:selected").val()=="-1"){
+			 $("input[name='croparea1']").val(0);
+			 $("input[name='croparea1']").attr("disabled",true);
+			  $("input[name='spacing1']").val(0);
+			 $("input[name='spacing1']").attr("disabled",true);
+			 }
+		 
+			 if($("select[name='crop2'] option:selected").val()=="-1"){
+			 $("input[name='croparea2']").val(0);
+			 $("input[name='croparea2']").attr("disabled",true);
+			  $("input[name='spacing2']").val(0);
+			 $("input[name='spacing2']").attr("disabled",true);
+			 }
+			 
+			  if($("select[name='crop3'] option:selected").val()=="-1"){
+			 $("input[name='croparea3']").val(0);
+			 $("input[name='croparea3']").attr("disabled",true);
+			  $("input[name='spacing3']").val(0);
+			 $("input[name='spacing3']").attr("disabled",true);
+			 }
+			 $("input[name='filling_id']").val($(this).parent().attr("filling_id"));
+	$( "#postinspection" ).dialog( "open" );
+	});
+	<?php
+	 }
+	?>
+	
+	
+	
+	
+	
+	
+	
+	
 	<?php
 	if($_GET["status"]=="7"){
 	?>
@@ -125,6 +170,7 @@ $titles["8"]="Forward to RSK for post-inspection";
  $titles["9"]="Received from RSK for post-inspection";
   $titles["9A"]="Cover Letter for Post-inspection ";
    $titles["9B"]="Forward to RSK for post-inspection ";
+   $titles["10"]="Post-Inspection";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
@@ -483,7 +529,7 @@ echo "<option class='hide'  parent_id='".$row["parent_id"]."' value='".$row["id"
 
 
 
-
+<!-- postinspection-->
 
 <div id="postinspection" title="Post inspection details" class="xlarge">
 <form name="postinspection_form">
@@ -567,12 +613,24 @@ echo "<option class='hide'  parent_id='".$row["parent_id"]."' value='".$row["id"
  </select></td>
 </tr>
 <tr><td>Quatation amt</td><td>:</td><td><input type="text" name="quatationamt" class="tiny"/></td><td></td></tr>
+<tr><td colspan="4">Drip Materials</td></tr>
+<tr><td>Drip Material</td><td>:</td><td><select></select></td><td> </td></tr>
+<tr><td>GGRC Amount</td><td>:</td><td><input type="text" disabled="disabled" name="GGRCRate"/></td><td>GGRC Qty:<input type="text" /></td></tr>
+<tr><td>Delar Amount</td><td>:</td><td><input type="text"  name="delarRate"/></td><td>Delar Qty:<input type="text" /></td></tr>
+<tr><td colspan="4"> <input type="button" value="Add"  /></td></tr>
+<tr><td colspan="4"> <table class="xlarge grid"><thead><tr><th>S.no</th><th>Material name</th><th>Delar price</th><th>Delar Qty</th><th>GGRC price</th><th>GGRC Qty</th></tr></thead></table></td></tr>
 <tr><td colspan="4"><input type="button" value="Preview"/><input type="button" value="Save & print" onclick="approvaljs.saveandprint();"/></td></tr>
+
 </table>
 </form>
 
 
 
 </div>
+
+ 
+
+</div>
+
 </body>
 </html>

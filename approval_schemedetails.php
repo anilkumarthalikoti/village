@@ -132,15 +132,17 @@ $count="";
  <script type="text/javascript">
  $(document).ready(function(){
  var desig="<?php print $user["designation"]?>";
+ if(desig!="ALL"){
  $("li").addClass("remove");
   
  var key="li[role='"+desig+"']";
  
- $(key).removeClass();
+ $(key).removeClass("remove");
  $("li[class='remove'] a").click(function(){
  
  return false;
  });
+ }
  });
  
  </script>
