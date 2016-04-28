@@ -28,6 +28,11 @@ if (!empty($_POST["application"])) {
 				$conn->insert("postinspection",array("filling_id"=>$fileid,"forward_by"=>$user["id"],"forwarddate"=>$fdate));
 				}
 				
+				if( $_POST["statusto"]==11){
+				$fdate=date();
+				//$conn->insert("postinspection",array("filling_id"=>$fileid,"forward_by"=>$user["id"],"forwarddate"=>$fdate));
+				}
+				
     }
 
 }

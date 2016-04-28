@@ -12,13 +12,11 @@ $conn=$database;
  ?>
   
  
- 
- 
 </head>
 
 <body>
 <div class="title">Cover Letter's</div>
-<div class="viewport">
+<div class="viewport2">
  
 <span   name="report" id="report"  >
 <?php 
@@ -33,10 +31,13 @@ $reportDate=date("d-m-Y",time());
 <hr />
 </td>
 <tr><td align="center"><div style="float:left">ಕ್ರ.ಸಂ.: ಹಿಸತೋನಿ (ಜಿ.ಪಂ.)/ವಿ/ತಾಸ/	</div>	/2016-17 			<div style="float:right">ದಿನಾಂಕ: <span  style="border-bottom:1px dotted #333333;"><?php  print $reportDate; ?></span></div></td></tr>
+ 
 <tr><td align="left">
-ಗೆ,
-ಸಹಾಯಕ ತೋಟಗಾರಿಕೆ ಅಧಿಕಾರಿ,
-ರೈ.ಸಂ. ಕೇಂದ್ರ ತಿಕೋಟಾ
+ಗೆ,<br/>
+ಹಿರಿಯ ಸಹಾಯಕ ತೋಟಗಾರಿಕೆ ನಿರ್ದೇಶಕರು,<br/>
+(ಜಿ. ಪಂ.) ವಿಜಯಪುರ <br/><br/>
+ಮಾನ್ಯರೆ,
+
 </td></tr>
 <tr><td >
 <p style="margin-left:40px;">
@@ -86,18 +87,13 @@ foreach($result as $letter){
 
 <br/>
 
-ಹಿರಿಯ ಸಹಾಯಕ ತೋಟಗಾರಿಕೆ ನಿರ್ದೇಶಕರು<br/>
-        (ಜಿಲ್ಲಾ ಪಂಚಾಯತ್) ವಿಜಯಪುರ
+ಎಸ್ .ಎಸ್ . ಪಾಟೀಲ <br/>
+ಸಹಾಯಕ ತೋಟಗಾರಿಕೆ ಅಧಿಕಾರಿ,<br/>
+    ರೈ.ಸಂ. ಕೇಂದ್ರ ತಿಕೋಟಾ.  <br/>
+
 
 </td></tr>
-
-<tr><td align="left">
-
-
-ಇಂದ,<br/>
-ಸಹಾಯಕ ತೋಟಗಾರಿಕೆ ಅಧಿಕಾರಿ,<br/>
-ರೈ.ಸಂ. ಕೇಂದ್ರ ತಿಕೋಟಾ.  
-</td></tr> </table>
+  </table>
 </span>
  
  

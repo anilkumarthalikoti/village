@@ -280,8 +280,8 @@
 				 
 				 
 				 this.generatecoverletter=function(savetype){
-				 
-				 $("form[name='application']").attr("action","coverletter.php");
+				 var url="coverletter_"+savetype+".php"
+				 $("form[name='application']").attr("action",url);
 				 $("form[name='application']").submit();
 				  
 				 } 
