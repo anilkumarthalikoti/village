@@ -317,6 +317,17 @@ CREATE TABLE  postinspection
  forwarddate date,
 PRIMARY KEY (filling_id));
 
+CREATE TABLE  postinspection_mstr
+(filling_id INT NOT NULL,
+ inspected_by int,
+ inspected_date date,
+ crop1 int,crop2 int, crop3 int,
+ area1 float,area2 float,area3 float,spacing1 float,spacing2 float, spacing3 float,dealerid int,orgid int,vatat float,
+PRIMARY KEY (filling_id));
+CREATE TABLE  postinspection_dtl(
+filling_id int,item_id int, dealeramt float,dealerqty float, ggrcamt float,ggrcqty float
+);
+
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin,designation) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y','ALL');
 
 INSERT INTO page_links(linkid, linkname) VALUES (1, 'ADD VILLAGE');

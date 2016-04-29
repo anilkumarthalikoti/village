@@ -47,6 +47,13 @@ $name=$row["firstname_k"]." ".$row["lastname_k"];
 $crop=$row["crop1"].",".$row["crop1"].",".$row["crop3"];
 $totalarea=$row["totalland"];
 }
+
+$postinspectiondate="";
+$result=$conn->select("postinspection_mstr",array("inspected_date"),array("filling_id"=>$_GET["fillingid"]));
+foreach($result as $row){
+$postinspectiondate=date('d-m-Y',strtotime($row["inspected_date"]));
+}
+
 ?>
 <script type="text/javascript" src="js/jspdf.js"></script>
 <script type="text/javascript">
@@ -77,14 +84,16 @@ min-width:150px;
 </head>
 
 <body>
-<input type="button" id="cmd" value="print" onclick="createDoc();"/>
-<div id="editor"></div>
+ 
 
 <div id="content">
-<p>೨೦೧೫-೧೬ನೇ ಸಾಲಿನ ಸೂಕ್ಫ್ಮ ನೀರಾವರಿ ಮಾರ್ಗಸೂಚಿ ಅನುಬಂಧ - ೧೪ ನಮೂನೆ-೧೦<br />
-
-ಸ್ಥಳ ಪರಿಶೀಲನಾ ವರದಿ (ಕಾರ್ಯದೇಶ ನಂತರ)<br />
-<strong><?php print $district; ?></strong> ಜಿಲ್ಲೆ,  <strong><?php print $taluka; ?> </strong>ತಾಲ್ಲೂಕು <strong><u><span class="bl"><?php print $hobli; ?></span></u></strong> ಹೋಬಳಿ <strong><u><span class="bl"><?php print $village; ?></span></u> </strong>ಗ್ರಾಮದ <strong><u><?php print $survayno; ?></u></strong> ಸರ್ವೇ ನಂಬರಿನಲ್ಲಿ   ಶ್ರೀ / ಶ್ರೀಮತಿ <strong><u><?php print $name; ?></u></strong> ಬಿನ್/ಕೋ _______________ ರವರು<strong><u><?php print $crop; ?></u></strong>ಬೆಳೆಗೆ <strong> <u><?php print $totalarea; ?> hactor</u> </strong> ವಿಸ್ತೀರ್ಣದಲ್ಲಿ ಸೂಕ್ಷ್ಮ ನೀರಾವರಿ ಅಳವಡಿಸಿದ್ದು, ಸದರಿ ತಾರಿಕಿಗೆ ದಿನಾಂಕ : _________ರಂದು ಬೇಟಿ ನೀಡಿ ಸ್ಥಳ ಪರಿಶೀಲನೆ  ನಡೆಸಲಾಗಿದೆ.<br /><br />
+<table align="center" class="reportmargin"><tr><td align="center">
+<strong> <u>
+ ೨೦೧೫-೧೬ನೇ ಸಾಲಿನ ಸೂಕ್ಫ್ಮ ನೀರಾವರಿ ಮಾರ್ಗಸೂಚಿ ಅನುಬಂಧ - ೧೪ ನಮೂನೆ-೧೦ </u><br/>
+ 
+ಸ್ಥಳ ಪರಿಶೀಲನಾ ವರದಿ (ಕಾರ್ಯದೇಶ ನಂತರ)</strong></td></tr>
+<tr><td>
+<strong><?php print $district; ?></strong> ಜಿಲ್ಲೆ,  <strong><?php print $taluka; ?> </strong>ತಾಲ್ಲೂಕು <strong><u><span class="bl"><?php print $hobli; ?></span></u></strong> ಹೋಬಳಿ <strong><u><span class="bl"><?php print $village; ?></span></u> </strong>ಗ್ರಾಮದ <strong><u><?php print $survayno; ?></u></strong> ಸರ್ವೇ ನಂಬರಿನಲ್ಲಿ   ಶ್ರೀ / ಶ್ರೀಮತಿ <strong><u><?php print $name; ?></u></strong> ಬಿನ್/ಕೋ _______________ ರವರು<strong><u><?php print $crop; ?></u></strong>ಬೆಳೆಗೆ <strong> <u><?php print $totalarea; ?> hactor</u> </strong> ವಿಸ್ತೀರ್ಣದಲ್ಲಿ ಸೂಕ್ಷ್ಮ ನೀರಾವರಿ ಅಳವಡಿಸಿದ್ದು, ಸದರಿ ತಾರಿಕಿಗೆ ದಿನಾಂಕ :<strong><u><?php print $postinspectiondate; ?></u></strong>ರಂದು ಬೇಟಿ ನೀಡಿ ಸ್ಥಳ ಪರಿಶೀಲನೆ  ನಡೆಸಲಾಗಿದೆ.<br /><br />
 ಸ್ಥಳ ಪರಿಶೀಲನೆ ವಿವರ ಈ ಮುಂದಿನ ತಿದ್ದು, ಈ ಮುಂದಿನ ಎಲ್ಲಾ ವಿವರಗಳನ್ನು ಈ ಮೂಲಕ ದೃಡೀಕರಿಸಿದೆ. <br />
 ೧. ಬೆಳೆ __________________________ ೨. ಅಂತರ __________ ೩. ಗಿಡಗಳ ಸ್ಂಖ್ಯೆ ________________ <br />
 ೪. ಸೂಕ್ಷ್ಮ ನೀರಾವರಿ ಘಟಕ ಅಳವಡಿಸಿದ ವಿಸ್ತೀರ್ಣ ____________ ಹೆಕ್ಟೇರ <br />
@@ -121,7 +130,7 @@ ____________ಹೋಬಳಿಯ ರೈತ ಸಂರ್ಕಕೇಂದ್ರ,<br /
 ತೋಟಗಾರಿಕೆ ಉಪ ನಿರ್ದೇಶಕರು /<br />
 (ಜಿ.ಪಂ.) ವಿಜಯಪುರ ಜಿಲ್ಲೆ <br />
 
-</p>
+</p></td></tr></table>
 </div>
 
 

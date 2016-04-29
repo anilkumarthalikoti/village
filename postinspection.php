@@ -19,10 +19,14 @@ $preallocated="0";
 <div class="title">Post-inspection</div>
 <div class="viewport">
 <table> <tr><td>
+<form name="post_inspection" >
+<input type="hidden" name="filling_id" value="<?php print $_POST["filling_id"]?>"/>
+<input type="hidden" name="inspected_by" value="<?php print $user["id"]?>"/>
+<input type="hidden" name="material_save"/>
   <table class="form large">
    
 <tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td>  
- <td class="label small">Post-inspection date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspectiondate" class="datepicker" id="inspectiondate"/>  </td> </tr>
+ <td class="label small">Post-inspection date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> </tr>
 <tr class="labelh"><td></td><td>Crop-1</td><td>Crop-2</td><td>Crop-3</td><td></td><td></td></tr>
 <tr>
 <td>Crop </td>
@@ -58,9 +62,9 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
 </tr>
 <tr>
 <td>Area in hector </td>
-<td><input type="text" name="croparea1" class="tiny"/></td>
- <td><input type="text" name="croparea2" class="tiny"/></td>
- <td><input type="text" name="croparea3" class="tiny"/> </td><td></td><td></td>
+<td><input type="text" name="area1" class="tiny"/></td>
+ <td><input type="text" name="area2" class="tiny"/></td>
+ <td><input type="text" name="area3" class="tiny"/> </td><td></td><td></td>
 </tr>
 <tr>
 <td>Spacing </td>
@@ -68,7 +72,7 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
  <td><input type="text" name="spacing2" class="tiny"/></td>
  <td> <input type="text" name="spacing3" class="tiny"/></td><td></td><td></td>
 </tr> 
- <tr><td>Pre-allocated</td><td>:</td><td><input type="text" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td></tr>
+ <tr><td>Pre-allocated</td><td>:</td><td><input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td></tr>
  <tr><td>Material</td><td>:</td><td colspan="4"><select name="material" onchange="postinspection.updatePrice();">
  <?php 
  $result =$conn->select("cropitemsprice",array("id","itemname","itemprice","units"));
@@ -80,9 +84,9 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
  </select></td> </tr>
   <tr><td>Dealer Price/Qty</td><td>:</td><td><input name='dAmount' type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='dQty' type='text' class='tiny1'/></td></tr>
   <tr><td>GGRC Price/Qty</td><td>:</td><td><input name='gAmount' disabled="disabled" type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='gQty' type='text' class='tiny1'/></td></tr>
-  <tr><td colspan="6"> <input type='button' value='Add' onclick='postinspection.addMaterial();' /></td></tr>
+  <tr><td colspan="6"> <input type='button' value='Add' onclick='postinspection.addMaterial();' /><input type='button' value='Save' onclick='postinspection.savePostInspection();' /></td></tr>
  
-  </table>
+  </table></form>
   </td><td valign="top">
  <table class="form_grid xlarge margin" id="material_list">
  <thead>

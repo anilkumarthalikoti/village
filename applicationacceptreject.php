@@ -133,6 +133,10 @@ $(key).dialog({
 
 <body>
 <?php  
+$canreject="N";
+if($_GET["status"]==1 ||$_GET["status"]==5||$_GET["status"]==8){
+$canreject="Y";
+}
 $titles=array();
 $titles["1"]="Application accept/reject";
 $titles["2"]="Cover letter generation";
@@ -162,8 +166,9 @@ $titles["8"]="Forward to RSK for post-inspection";
 <table class="excel90 margin" id="applications" filter='Y'>
 <thead>
  <tr>
- <?php 
-  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
+ <?php
+ $select="Y" ;
+  if($select=="Y"){
  ?>
  <th   ><input type="checkbox" onclick="" /></th>
  <?php } ?>
@@ -193,7 +198,7 @@ $titles["8"]="Forward to RSK for post-inspection";
 <th>Total land area</th>
 <th>Filled by</th>
 <th>Filled Date</th>
-<?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
+<?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA") && $canreject=="Y" ){
     ?>
 <th></th>	
  
@@ -258,7 +263,7 @@ crop3="<?php print $row["item3"];?>"
  cn2="<?php print  $crop2 ;?>"
   cn3="<?php print  $crop3 ;?>" >
 <?php  
-if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
+  if($select=="Y"){
     ?>
 	<td align="center"  ><input type="checkbox" name="schemefillingid[]" value='<?php print $row["schemefillingid"];?>' /></td>
   <?php } ?>
@@ -297,12 +302,12 @@ print "BIG FRAMER";
 <td><?php print $row["totalappland"]?></td>
 <td><?php print $row["regby"]?></td>
 <td><?php print $row["regdate"]?></td>
-<?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")){
+<?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA")  && $canreject=="Y"){
     ?>
-	<td class="skip">
-	<?php if($_GET["status"]==1){?><input type="BUTTON" value="REJECT" class="button1" onclick="openReject('-1','<?php print $row["schemefillingid"];?>')"/><?php }?>
-	<?php if($_GET["status"]==5){?><input type="BUTTON" value="REJECT" class="button1" onclick="openReject('-4','<?php print $row["schemefillingid"];?>')"/><?php }?>
-	<?php if($_GET["status"]==8){?><input type="BUTTON" value="REJECT"  class="button1" onclick="openReject('-7','<?php print $row["schemefillingid"];?>')"/><?php }?>
+	<td class="skip" style="width:18px">
+	<?php if($_GET["status"]==1){?><span class="close"  onclick="openReject('-1','<?php print $row["schemefillingid"];?>')"></span> <?php }?>
+	<?php if($_GET["status"]==5){?><span class="close" onclick="openReject('-4','<?php print $row["schemefillingid"];?>')"></span> <?php }?>
+	<?php if($_GET["status"]==8){?><span class="close" onclick="openReject('-7','<?php print $row["schemefillingid"];?>')"></span> <?php }?>
 	</td>
  
   <?php } ?>

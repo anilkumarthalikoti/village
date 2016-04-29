@@ -730,7 +730,7 @@ font-weight:bold;
 	padding:0;
 	}
 	.form_grid td{
-	min-width:100px;
+	min-width:18px;
 	max-width:150px;
 	max-height:25px;
 	margin:0;
@@ -828,3 +828,13 @@ width:1370px;
 	width:auto;
 	}  
 	 
+	span.close{
+	width:16px;
+	height:16px;
+	display:table-cell;
+	background-image:url(../images/reject.png);
+ 
+	} 
+	.button{
+	
+	}
