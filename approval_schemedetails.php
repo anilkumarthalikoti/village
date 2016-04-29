@@ -61,8 +61,8 @@ $count="";
  </li><li> <div>Pending  <a href="#"><span id="postinspection_pending">0</span></a></div>
  </li><li> <div>Rejected <a href="#"><span id="postinsepection_rejected">0</span></a></div>
  </li><li> <div>Inspection Done  <a href="#"><span id="postinspection_completed">0</span></a></div>
- </li><li> <div>Forward to TA for taluka approval </div>
- </li><li> <div>Received from RSK</div>
+ </li><li> <div>Forward to TA for taluka approval<a href="#"><span id="postinspection_forward">0</span></a> </div>
+ </li><li> <div>Received from RSK<a href="#"><span id="postinspection_received">0</span></a></div>
    <li> <div> <a href="#"><span></span></a></div> </li>
 	<li> <div> <a href="#"><span></span></a></div> </li>
  

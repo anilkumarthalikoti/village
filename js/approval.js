@@ -186,18 +186,19 @@
 												$("#forwardto_rsk_wo").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9B");
 												
 												
-												}	
+												}
+													if(keyx=="10"){
+															$("#postinspection ").html(valx);
+																									 
+										         				}	
 												if(keyx=="10C"){
 												$("#postinspection_completed").html(valx);
-												 
-												 
+												 $("#postinspection_forward").html(valx);
+												 $("#postinspection_forward").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=12");
 												
 												}
 												
-												if(keyx=="10"){
-												$("#postinspection ").html(valx);
-												 
-												}
+											
 												if(keyx=="10P"){
 												$("#postinspection_pending").html(valx);
 												$("#postinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=11");
@@ -209,7 +210,14 @@
 												}
 												
 												
-												
+													if(keyx=="13"){
+																								$("#postinspection_received").html(valx);
+																								 $("#postinspection_forward_cv").html(valx);
+																								 $("#postinspection_forward_so").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=13A");
+																								$("#postinspection_forward_s0").html(valx);
+																																																 $("#postinspection_forward_cv").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=13A");
+																																																
+																								}
 												
 												
 												

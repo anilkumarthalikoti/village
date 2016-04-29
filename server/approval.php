@@ -96,7 +96,8 @@ $statusQuery.=" union select count(*),'10' from schemefilling sf,schemefilling_l
 $statusQuery.=" union select count(*),'10P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=11 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'10C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=12 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'10R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-11  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
-      
+$statusQuery.=" union select count(*),'13' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=13 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// total forward application
+        
 	    $result = $conn->query($statusQuery);
         $jsontext = "[";
         foreach ($result as $row) {

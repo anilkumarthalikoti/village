@@ -28,6 +28,7 @@ $material_list=explode(",",$value);
 }
 
 $conn->insert("postinspection_mstr",$params);
+$conn->update("schemefilling",array("status"=>12),array("id"=>$_POST["filling_id"]));
 $dtlkey=array("filling_id","item_id","dealeramt","dealerqty","ggrcamt","ggrcqty");
 for($i=0;$i<sizeof($material_list);$i=$i+5){
 $dtl=array();

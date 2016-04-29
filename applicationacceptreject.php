@@ -362,6 +362,9 @@ break;
 case "9B":
 $inputs="<input type='button' value='Forward to RSk for post-inspection' onclick=\"approvaljs.savenewapplication('11');\"/>";
 break;
+case "12":
+$inputs="<input type='button' value='Forward to RSk for taluka approval' onclick=\"approvaljs.savenewapplication('13');\"/>";
+break;
 }
  
  ?>
