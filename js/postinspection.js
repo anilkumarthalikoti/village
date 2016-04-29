@@ -47,7 +47,8 @@ var tbl = $('table#material_list tbody tr').get().map(function(row) {
  						data:$("form[name='post_inspection']").serialize()
  						
  						}).done(function(data){
- 							 
+						var filling_id=$("input[name='filling_id']").val();
+ 							 window.location="form10.php?fillingid="+filling_id;
  							 
  							});
 }
