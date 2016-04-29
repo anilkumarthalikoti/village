@@ -324,6 +324,10 @@ CREATE TABLE  postinspection_mstr
  crop1 int,crop2 int, crop3 int,
  area1 float,area2 float,area3 float,spacing1 float,spacing2 float, spacing3 float,dealerid int,orgid int,vatat float,
 PRIMARY KEY (filling_id));
+
+
+
+
 CREATE TABLE  postinspection_dtl(
 filling_id int,item_id int, dealeramt float,dealerqty float, ggrcamt float,ggrcqty float
 );
