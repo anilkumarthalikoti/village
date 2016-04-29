@@ -200,7 +200,7 @@
 												}
 												if(keyx=="10P"){
 												$("#postinspection_pending").html(valx);
-												$("#postinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=10");
+												$("#postinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=11");
 										
 												}
 												if(keyx=="10R"){

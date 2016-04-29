@@ -72,7 +72,7 @@ $(document).ready(function(){
 	<!-- POST INSPECTION-->
 	
 	<?php
-	if($_GET["status"]=="10"){
+	if($_GET["status"]=="11"){
 	?>
 	$("table#applications tbody tr td:not(.skip)").click(function(){ 
 	//Post-inspection
@@ -217,7 +217,7 @@ if($status=="6A" || $status=="6B" || $status=="6C"){
 $status=6;
 }
 if($status=="9A" || $status=="9B"  ){
-$status=9;
+$status=10;
 }
  $village="select id from landdetails where villageid in (select villageid from village v,actionmapping am where  v.hobliid =am.hobliid and am.regid=".$user["id"].")";
 $query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,";
@@ -355,7 +355,7 @@ case "9A":
 $inputs="<input type='button' value='Cover Letter' onclick=\"approvaljs.generatecoverletter('6');\"/>";
 break;
 case "9B":
-$inputs="<input type='button' value='Forward to RSk for post-inspection' onclick=\"approvaljs.savenewapplication('10');\"/>";
+$inputs="<input type='button' value='Forward to RSk for post-inspection' onclick=\"approvaljs.savenewapplication('11');\"/>";
 break;
 }
  

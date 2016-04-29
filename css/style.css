@@ -149,8 +149,10 @@
 	border: 2px solid #ccc;
 	color: #4f4f4f;
 	border-radius: 5px;
-	margin:10px;
-	 
+	margin-left:10px;
+	 margin-right:10px;
+	 margin-top:1px;
+	 margin-bottom:1px;
 	}
 	input[type='search']{
 	 
@@ -382,6 +384,7 @@ a {cursor:pointer;}
        min-height:300px;
   border-top: solid 1px #CCC;
     text-align:left;
+    
  
 
 }
@@ -735,14 +738,20 @@ font-weight:bold;
 
 	
 	}
+ #status_board{
+width:1370px;
  
+ overflow-x: auto;
+ }
 	#status_board ul{
 	list-style:none outside none;
 	margin:0;
 	padding:0;
 	vertical-align:top;
 	float:left;
- 
+		clear:right;
+		width:152px;
+	 
 	}
 	#status_board ul h1{
 	padding-top:10px;
@@ -768,6 +777,9 @@ font-weight:bold;
 	border-bottom:1px solid #000000;
 	border-right:1px solid #000000;
 	font-size:12px;
+	position:relative;
+ 
+ clear:left;
 	
 	}
 	#status_board ul li:nth-child(even) div,#status_board ul li:nth-child(even),#status_board ul li:nth-child(even) div a{
@@ -778,33 +790,41 @@ font-weight:bold;
 	background-color:#FFFFFF;
 	
 	}
-	#status_board ul li div span{
-	border-left:1px solid #000000;
-	min-width:20px;
-	height:35px;
-	 height: 2.2em;
-    line-height: 1.1;
-	float:right;
-	padding-top:8px;
-	}
-		#status_board ul li div a {
-		font-weight:bold;
-		vertical-align:middle;
-		text-align:center;
-		 
-		 
-	width:25px;
-	min-height:35px;
-	
  
+	#status_board ul li a {
+	border-left:1px solid #000000;
+	max-width:10px;
+	min-width:10px;
 	 
+	position: absolute;
+	height:100%;
+	right:0;
+	top:0;
+	text-align:center;
+ 
+ 
+	}
+	#status_board ul li a span{
+	margin-top:5px;
+	width:100%;
+	height:100%;
+	vertical-align:"middle";
+	}
+		#status_board ul li div{
+		 
+		 
+			 height: 2.2em;
+		    line-height: 1.1em;
+		     overflow: hidden;
+		        position: absolute;
+			 
+			left:0;
+			right:10px;
 		}
 	 
 	 
-		#status_board ul li div div{
-		
-		float:left;
-		width:125px;
-		min-height:35px;
-		}
+	.expand{
+	
+	width:auto;
+	}  
 	 
