@@ -69,7 +69,8 @@ $count="";
  </ul> 
  <ul>
  <h1>Taluka Approval</h1>
-   <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
+   <li> <div>Application for taluka approval <a href="#"><span id="p">0</span></a></div> 
+   </li>
 	<li> <div>Pending <a href="#"><span id="p">0</span></a></div> 
 	</li>
 	<li><div>Rejected <a href="#"><span id="p">0</span></a></div></li>
@@ -90,7 +91,7 @@ $count="";
 	  <li><div>Approved <a href="#"><span id="p">0</span></a></div></li>
 	  <li> <div>Yet to forward to DDH  <a href="#"><span id="p">0</span></a></div>
 	  </li>
-	<li>Forward to DDH <a href="#"><span id="p">0</span></a></li>
+	<li><div>Forward to DDH <a href="#"><span id="p">0</span></a></div></li>
 	  <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	<li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	 
@@ -104,7 +105,7 @@ $count="";
 	  <li><div>Approved <a href="#"><span id="p">0</span></a></div></li>
 	  <li> <div>Yet to forward to DDH  <a href="#"><span id="p">0</span></a></div>
 	  </li>
-	<li>Forward to DDH <a href="#"><span id="p">0</span></a></li>
+	<li><div>Forward to DDH <a href="#"><span id="p">0</span></a></div></li>
 	  <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	<li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	 

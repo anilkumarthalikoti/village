@@ -265,6 +265,8 @@ CREATE TABLE cropitemsprice (
 CREATE TABLE spacing
 (id INT NOT NULL AUTO_INCREMENT,
 spacing VARCHAR(50) NOT NULL,
+startfrom float  not null,
+endsat	float not null,
 PRIMARY KEY (id),
 UNIQUE (spacing));
 

@@ -9,15 +9,24 @@
 $conn=$database;
 if(!empty($_POST)){
 
-$conn->insert("spacing",array("spacing"=>$_POST["spacing"]));
+$conn->insert("spacing",array("spacing"=>$_POST["spacing"],"startfrom"=>$_POST["startfrom"],"endsat"=>$_POST["endsat"]));
 header('Location: '."addspacing.php");
 die();
 }
+
 ?>
 <script type="text/javascript" src="js/addspacing.js"></script>
+<script type="text/javascript" src="js/pivot.js"></script>
 </head>
 
 <body>
+<?php 
+$tab=1;
+if(!empty($_REQUEST["tab"])){
+$tab=$_REQUEST["tab"];
+}
+?>
+<input type="hidden" id="tabSelect" value="<?php print $tab;?>"/>
 <div class="title">Spacing & installation</div>
 <div class="viewport">
 <ul id="tabs">
@@ -37,19 +46,21 @@ die();
 <form name="spacing" method="post" action="addspacing.php">
 <table class="form margin xlarge">
 <tr><td class="label">Enter spacing name</td><td>:</td><td><input type="text" name="spacing" placeholder="Spacing name"/></td></tr>
+<tr><td class="label">Range Between</td><td>:</td><td><input type="text" name="startfrom" placeholder="From"/>-<input type="text" name="endsat" placeholder="To"/></td></tr>
+ 
 <tr><td colspan="3"><input type="submit" value="Save"/></td></tr>
 </table>
 <table class="grid margin large">
 <thead>
 <tr>
-<th>Spacing name</th>
+<th>Spacing name</th><th>Range</th>
 </tr>
 </thead>
 <tbody>
 <?php 
-$result=$conn->select("spacing",array("spacing"));
+$result=$conn->select("spacing",array("spacing","startfrom","endsat"));
 foreach($result as $row){
-echo "<tr><td>".$row["spacing"]."</td></tr>";
+echo "<tr><td>".$row["spacing"]."</td><td>".$row["startfrom"]."-".$row["endsat"]."</td></tr>";
 }
 ?>
 
@@ -80,7 +91,8 @@ echo "<option value='".$row["id"]."'>".$row["spacing"]."</option>";
  
 <tr><td colspan="3"><input type="button" value="Save" onclick="install.installdetails();"/></td></tr>
 </table>
-<table class="grid margin xlarge">
+<div id="p_table_install"></div>
+<table class="grid margin xlarge hide" id="installation_tbl">
 <thead><tr><th>Area spacing</th><th>Spacing area</th><th>Amount</th></tr></thead>
 <tbody>
 <?php 

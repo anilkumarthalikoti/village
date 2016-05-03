@@ -196,11 +196,12 @@ $titles["8"]="Forward to RSK for post-inspection";
 <th>Crop-2</th>
 <th>Crop-3</th>
 <th>Total land area</th>
-<th>Filled by</th>
-<th>Filled Date</th>
-<?php  if(($user["designation"]=="ALL" || $user["designation"]=="TA") && $canreject=="Y" ){
+<th>Forwarded by</th>
+<th>Forwarded Date</th>
+<?php  
+if(($user["designation"]=="ALL" || $user["designation"]=="TA") && $canreject=="Y" ){
     ?>
-<th></th>	
+<th>&nbsp;</th>	
  
  <?php } ?>
 </tr>
