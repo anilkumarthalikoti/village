@@ -44,30 +44,16 @@ var install=new function(){
 							   tab="a#tab"+tab+"";
 							    
 							   $(tab).click();
-							  
+							   var data=[];
+							   
+							   $("#installation_tbl tbody tr").each(function(){
+																			 var std_spacing_val=$(this).find("td:eq(0)").text();
+																			 var area_val=$(this).find("td:eq(1)").text();
+																			 var amount=$(this).find("td:eq(2)").text();
+																			data.push({SPACING:std_spacing_val, AREA:area_val,value:amount});
+																			 
+																			 });
+							  $("#p_table_install").pivot(data,{rows:["AREA"],cols:["SPACING"]});
 							   });
 	
-	function TransposeTable(tableId)
-{        
-    var tbl = $('#' + tableId);
-    var tbody = tbl.find('tbody');
-    var oldWidth = tbody.find('tr:first td').length;
-    var oldHeight = tbody.find('tr').length;
-    var newWidth = oldHeight;
-    var newHeight = oldWidth;
-
-    var jqOldCells = tbody.find('td');        
-
-    var newTbody = $("<tbody></tbody>");
-    for(var y=0; y<newHeight; y++)
-    {
-        var newRow = $("<tr></tr>");
-        for(var x=0; x<newWidth; x++)
-        {
-            newRow.append(jqOldCells.eq((oldWidth*x)+y));
-        }
-        newTbody.append(newRow);
-    }
-
-    tbody.replaceWith(newTbody);        
-}
+	 

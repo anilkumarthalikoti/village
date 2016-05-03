@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Spacing & installation details</title>
+<link href="css/pivot.css" type="text/css" rel="stylesheet"/>
 <?php 
  require "interceptor.php";
  require "server/app_connector.php";
