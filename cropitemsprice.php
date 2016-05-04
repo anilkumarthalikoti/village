@@ -37,7 +37,7 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
  <tr><td>Units</td><td>:</td><td> <select name="units" id="units">
  <option value="-1">Select</option>
  <option value="No's">No's</option>
- <option value="Meters">Meters</option>
+ <option value="Meter">Meter</option>
  </select></td></tr>
  <tr><td colspan="3"><input type="button" class="button" value="Clear" onclick="location.reload(); "/><input type="button" class="button" value="Save"  onclick="itemtrn.saveupdate();" /></td></tr>
  
