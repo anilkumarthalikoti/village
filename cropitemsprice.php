@@ -12,7 +12,7 @@ if(!empty($_POST)){
  
 if($_POST["itemid"]=="-1")
 {
-$conn->insert("cropitemsprice",array("itemname"=>trim(strtoupper($_POST["itemname"])), "itemprice"=>$_POST["itemprice"],"units"=>$_POST["units"]));
+$conn->insert("cropitemsprice",array("itemname"=>trim(strtoupper($_POST["itemname"])),"standard_measure"=>trim(strtoupper($_POST["standard_measure"])),"itemprice"=>$_POST["itemprice"],"units"=>$_POST["units"]));
 
 }else{
 echo $_POST["itemid"];
@@ -33,6 +33,7 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
  <table class="form margin xlarge">
  <tr><td>Item name</td><td>:</td><td><input type="text" name="itemname" id="itemname" placeholder="Item name"/><input type="hidden" name="mat_id" id="mat_id" value="-1"/></td></tr>
  <tr><td>Item Price</td><td>:</td><td> <input type="text"   name="itemprice" id="itemprice"/></td></tr>
+ <tr><td>Standard measure</td><td>:</td><td> <input type="text"   name="standard_measure" id="standard_measure"/></td></tr>
  <tr><td>Units</td><td>:</td><td> <select name="units" id="units">
  <option value="-1">Select</option>
  <option value="No's">No's</option>
@@ -42,14 +43,14 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
  
  </table>
  <table class="grid margin xlarge" id="existing">
- <thead><tr><th></th><th>Item name</th><th> Units</th><th>Price</th></tr></thead>
+ <thead><tr><th></th><th>Item name</th><th>Standard Measure</th><th> Units</th><th>Price</th></tr></thead>
  <tbody>
  <?php 
  
- $result=$conn->select("cropitemsprice",array("id","itemname","units","itemprice"));
+ $result=$conn->select("cropitemsprice",array("id","itemname","standard_measure","units","itemprice"));
  $i=1;
  foreach($result as $row){
- echo "<tr id='".$row["id"]."'><td>".$i."</td><td>".$row["itemname"]."</td><td>".$row["units"]."</td><td>".$row["itemprice"]."</td></tr>";
+ echo "<tr id='".$row["id"]."'><td>".$i."</td><td>".$row["itemname"]."</td><td>".$row["standard_measure"]."</td><td>".$row["units"]."</td><td>".$row["itemprice"]."</td></tr>";
 $i++;
  }
  ?>
