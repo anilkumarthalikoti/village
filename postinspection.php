@@ -43,21 +43,49 @@ $spacing3=$row["spacing3"];
 }
 
  ?>
+ <link href="css/pivot.css" type="text/css" rel="stylesheet"/>
+ <script type="text/javascript" src="js/pivot.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
- // $("[crop1='crop1']").hide();
-  //  $("[crop2='crop2']").hide();
-//	  $("[crop3='crop3']").hide();
+  $("[crop1='crop1']").hide();
+    $("[crop2='crop2']").hide();
+ 	  $("[crop3='crop3']").hide();
   if(<?php print $item1?>!="-1"){
     $("[crop1='crop1']").show();
+	$("select[name='crop1'] ").val(<?php print $item1?>);
   }
     if(<?php print $item2?>!="-1"){
       $("[crop2='crop2']").show();
+	  $("select[name='crop2'] ").val(<?php print $item2?>);
   }
     if(<?php print $item3?>!="-1"){
       $("[crop3='crop3']").show();
+	  $("select[name='crop3'] ").val(<?php print $item3?>);
   }
+  //
+  //div_mater
+  //mat_list
   
+  $("#div_mater").pivot($("#mat_list"), 
+        { 
+            rows: ["Name","Unit","Type","Qty"] 
+        });
+		
+		$("[class='pvtRowLabel']").css("height","16px");
+							  $("[class='pvtVal']").css("padding","5px");
+							  $("[class='pvtAxisLabel']").css("height","16px");
+							   $("[class='pvtColLabel']").css("height","16px");
+						 
+							   $("[class='pvtColLabel']").css("background-color","#FFFFFF");
+							     $("[class='pvtVal']").css("background-color","#FFFFFF");
+							  $("[class='pvtAxisLabel']").css("background-color","#FFFFFF");
+							  var i=1;
+				$("#div_mater table   td ").each(function(){
+				var mid="#mat_list tr:eq("+i+")";
+				i++;
+				mid=$(mid).attr("inputid");
+				$(this).prev().closest("th").html("<input type='text'  mid='"+mid+"' class='tiny'/>");
+				});
   });
   
   </script>
@@ -72,7 +100,7 @@ $spacing3=$row["spacing3"];
 <input type="hidden" name="filling_id" value="<?php print $filling_id;?>"/>
 <input type="hidden" name="inspected_by" value="<?php print $user["id"]?>"/>
 <input type="hidden" name="material_save"/>
-  <table class="form large">
+  <table class="form excel">
    
 <tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td>  
  <td class="label small">Post-inspection date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> </tr>
@@ -80,7 +108,8 @@ $spacing3=$row["spacing3"];
 <td >Crop Name </td>
 <td >Area in hector </td>
 <td  colspan="2">Row spacing </td>
- <td></td></tr>
+ <td>Plant Distance </td>
+</tr>
 <tr crop1="crop1">
 <td>Crop -1 </td>
 <td><select name="crop1" class="tiny1"  >
@@ -107,7 +136,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 }
 ?>
 
-</select></td><td></td>
+</select></td><td><input type="text" name="pspacing1" class="tiny"  /></td>
 </tr>
 <tr  crop2="crop2">
 <td>Crop-2</td>
@@ -139,7 +168,7 @@ foreach($result as $row){
 echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td></td>
+</select></td><td><input type="text" name="pspacing2" class="tiny" /></td>
 </tr>
 <tr crop3="crop3">
 <td>Crop-3</td>
@@ -161,10 +190,10 @@ foreach($result as $row){
 echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td></td>
+</select></td><td><input type="text" name="spacing3" class="tiny" /></td>
 </tr>
  
- <tr><td>Pre-allocated</td><td>:</td><td><input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td></tr>
+ <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
  <tr class="hide"><td>Material</td><td>:</td><td colspan="4"><select name="material" onchange="postinspection.updatePrice();">
  
  <?php 
@@ -179,17 +208,19 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
   <tr  class="hide"><td>GGRC Price/Qty</td><td>:</td><td><input name='gAmount' disabled="disabled" type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='gQty' type='text' class='tiny1'/></td></tr>
   <tr><td colspan="6">
   <div style="height:280px; overflow:auto">
-  <table class="form_grid xlarge margin ">
+  <div id="div_mater"></div>
+  <table class="form_grid xlarge margin hide" id="mat_list">
   <thead><tr><th>Name</th><th>Unit</th><th>Type</th><th>Qty</th></tr></thead>
   <tbody>
   <?php 
-  $query="select  id,itemname,standard_measure,units from cropitemsprice order by itemname";
+  $query="select  id,itemname,standard_measure,units from cropitemsprice order by itemname,standard_measure";
   $result=$conn->query($query);
   foreach($result as $row){
-  $tr="<tr><td>param_1</td><td>param_2</td><td>param_3</td><td><input type='text' class='tiny' /></td></tr>";
+  $tr="<tr inputid='param_4'><td>param_1</td><td>param_2</td><td>param_3</td><td><input type='text' class='tiny'  id='param_4' /></td></tr>";
   $tr=str_replace("param_1",$row["itemname"],$tr);
   $tr=str_replace("param_2",$row["units"],$tr);
   $tr=str_replace("param_3",$row["standard_measure"],$tr);
+  $tr=str_replace("param_4",$row["id"],$tr);
   echo $tr;
   }
   ?>
