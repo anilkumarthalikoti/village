@@ -39,7 +39,7 @@ $query="select sf.id schemefillingid, sf.regid, f.firstname_k,f.lastname_k,f.fat
   (select sum(l.totalland) from landdetails l where l.regid=sf.regid  ) ftype,(select s.name from schemes s where s.id= sf.subschemeid) sector,(select cropname_k from cropitems where id= sf.item1 ) crop1
 ,(select cropname_k from cropitems where id= sf.item2 ) crop2
 ,(select cropname_k from cropitems where id= sf.item3 ) crop3,(coalesce(sf.area1,0)+coalesce(sf.area2,0)+coalesce(sf.area3,0)) totalland,(select login_id from app_login where id= sf.regby ) regby,regdate,sf.item1,sf.item2,sf.item3
-from farmerdetails f, schemefilling sf,casts c  where sf.regid= f.id and f.usercast= c.id and sf.id= ".$_GET["fillingid"]."";
+from farmerdetails f, schemefilling sf,postinspection_mstr pm,casts c  where pm.dilling_id= sf.id and  sf.regid= f.id and f.usercast= c.id and sf.id= ".$_GET["fillingid"]."";
 $result =$conn->query($query);
 foreach($result as $row){
 $survayno=$row["survayno"];

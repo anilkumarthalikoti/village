@@ -49,7 +49,7 @@ this.savePostInspection=function(){
  						
  						}).done(function(data){
 						var filling_id=$("input[name='filling_id']").val();
- 						 window.location="form10.php?fillingid="+filling_id;
+ 						 //window.location="form10.php?fillingid="+filling_id;
  							 
  							});
 }
