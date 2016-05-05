@@ -46,21 +46,43 @@ $spacing3=$row["spacing3"];
  <link href="css/pivot.css" type="text/css" rel="stylesheet"/>
  <script type="text/javascript" src="js/pivot.js"></script>
   <script type="text/javascript">
+  
+  function setspacing(spacing,name){
+  var key="select[name='"+name+"'] option";
+  var key1="select[name='"+name+"']";
+  $(key).each(function(){
+			var min=$(this).attr("startfrom");
+			var max=$(this).attr("endsat");
+			if(spacing>= min && spacing<= max){
+			$(key1).val($(this).val());
+			}
+  
+  
+  
+  
+  });
+  }
+  
+  
+  
   $(document).ready(function(){
   $("[crop1='crop1']").hide();
     $("[crop2='crop2']").hide();
  	  $("[crop3='crop3']").hide();
   if(<?php print $item1?>!="-1"){
     $("[crop1='crop1']").show();
-	$("select[name='crop1'] ").val(<?php print $item1?>);
+	$("select[name='crop1'] ").val("<?php print $item1;?>");
+	setspacing("<?php print $spacing1;?>","aspacing1");
   }
     if(<?php print $item2?>!="-1"){
       $("[crop2='crop2']").show();
-	  $("select[name='crop2'] ").val(<?php print $item2?>);
+	 $("select[name='crop2'] ").val("<?php print $item2;?>");
+	 setspacing("<?php print $spacing2;?>","aspacing2");
   }
     if(<?php print $item3?>!="-1"){
       $("[crop3='crop3']").show();
-	  $("select[name='crop3'] ").val(<?php print $item3?>);
+	 $("select[name='crop3'] ").val("<?php print $item3;?>");
+	 setspacing("<?php print $spacing3;?>","aspacing3");
   }
   //
   //div_mater
@@ -127,7 +149,7 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
  <td> 
 <input type="text" name="spacing1" class="tiny" value="<?php print $spacing1;?>"/>
 
-</td><td><select name="aspacing1" class="fit" style="width:70px;"  >
+</td><td><select name="aspacing1" class="fit" disabled="disabled"  style="width:100px;"   >
 <option value="-1">Select</option>
 <?php 
 $result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
@@ -160,7 +182,7 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
  
  
  
- </td><td><select name="aspacing2" class="fit"   style="width:70px;" >
+ </td><td><select name="aspacing2" class="fit" disabled="disabled"    style="width:100px;"  >
  <option value="-1">Select</option>
 <?php 
 $result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
@@ -182,7 +204,7 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
 ?>
 </select></td>
 <td ><input type="text" name="area3" class="tiny" value="<?php print $area3;?>"/></td>
- <td ><input type="text" name="spacing3" class="tiny" value="<?php print $spacing3;?>"/> </td><td><select name="aspacing3" class="fit"  style="width:70px;"  >
+ <td ><input type="text" name="spacing3" class="tiny" value="<?php print $spacing3;?>"/> </td><td><select name="aspacing3" class="fit" disabled="disabled"   style="width:100px;"   >
  <option value="-1">Select</option>
 <?php 
 $result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
