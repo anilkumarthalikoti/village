@@ -80,7 +80,7 @@ $spacing3=$row["spacing3"];
 							     $("[class='pvtVal']").css("background-color","#FFFFFF");
 							  $("[class='pvtAxisLabel']").css("background-color","#FFFFFF");
 							  var i=1;
-				$("#div_mater table   td ").each(function(){
+				$("#div_mater table   td").each(function(){
 				var mid="#mat_list tr:eq("+i+")";
 				i++;
 				mid=$(mid).attr("inputid");
@@ -190,7 +190,7 @@ foreach($result as $row){
 echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td><input type="text" name="spacing3" class="tiny" /></td>
+</select></td><td><input type="text" name="pspacing3" class="tiny" /></td>
 </tr>
  
  <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>

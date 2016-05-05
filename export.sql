@@ -325,7 +325,7 @@ CREATE TABLE  postinspection_mstr
  inspected_by int,
  inspected_date date,
  crop1 int,crop2 int, crop3 int,
- area1 float,area2 float,area3 float,spacing1 float,spacing2 float, spacing3 float,dealerid int,orgid int,vatat float,
+ area1 float,area2 float,area3 float,spacing1 float,spacing2 float, spacing3 float,dealerid int,orgid int,vatat float,pspacing1 float,pspacing2 float, pspacing3 float,
 PRIMARY KEY (filling_id));
 
 

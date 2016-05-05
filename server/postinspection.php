@@ -19,7 +19,7 @@ if(strlen($value)!=0){
 $params[$key]=$value;
 }
 }else{
-$material_list=explode(",",$value);
+$material_list=explode("#",$value);
 }
 }
 
@@ -29,14 +29,15 @@ $material_list=explode(",",$value);
 
 $conn->insert("postinspection_mstr",$params);
 $conn->update("schemefilling",array("status"=>12),array("id"=>$_POST["filling_id"]));
-$dtlkey=array("filling_id","item_id","dealeramt","dealerqty","ggrcamt","ggrcqty");
-for($i=0;$i<sizeof($material_list);$i=$i+5){
+$dtlkey=array("filling_id","item_id","ggrcqty");
+for($i=0;$i<sizeof($material_list);$i=$i+2){
 $dtl=array();
 $dtl[$dtlkey[0]]=$_POST["filling_id"];
 $k=1;
-for($j=$i;$j<$i+5;$j++){
-echo $dtlkey[$k].":".$material_list[$j]."|";
+for($j=$i;$j<$i+2;$j++){
+ 
 $dtl[$dtlkey[$k]]=$material_list[$j];
+ 
 $k++;
 }
  

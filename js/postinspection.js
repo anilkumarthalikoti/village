@@ -34,11 +34,12 @@ $("table[id='material_list'] tfoot td[id='gdAmt']").html((itotal*5.5)/100);
 
 
 this.savePostInspection=function(){
-var tbl = $('table#material_list tbody tr').get().map(function(row) {
-  return $(row).find('td[save="true"]').get().map(function(cell) {
-    return $(cell).attr("value");
-  });
-});
+	var tbl="";
+ $("input[mid] ").each(function(){
+							   if( $(this).val().length>0  && $(this).is(":visible") ){
+							   tbl=tbl+$(this).attr("mid")+"#"+$(this).val()+"#";
+							   }
+							   });
  $("input[name='material_save']").val(tbl);
  
  	$.ajax({
@@ -48,7 +49,7 @@ var tbl = $('table#material_list tbody tr').get().map(function(row) {
  						
  						}).done(function(data){
 						var filling_id=$("input[name='filling_id']").val();
- 							 window.location="form10.php?fillingid="+filling_id;
+ 							// window.location="form10.php?fillingid="+filling_id;
  							 
  							});
 }
