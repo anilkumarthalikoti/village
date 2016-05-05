@@ -223,7 +223,7 @@ if($status=="6A" || $status=="6B" || $status=="6C"){
 $status=6;
 }
 if($status=="9A" || $status=="9B"  ){
-$status=10;
+$status=9;
 }
  $village="select id from landdetails where villageid in (select villageid from village v,actionmapping am where  v.hobliid =am.hobliid and am.regid=".$user["id"].")";
 $query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,";

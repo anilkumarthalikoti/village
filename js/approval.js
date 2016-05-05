@@ -178,15 +178,22 @@
 												
 												
 												
-												if(keyx=="9"){
+												if(keyx=="7C"){
 												$("#recivedfrom_ddh").html(valx);
-												$("#yettoforward_rsk_wo").html(valx);
+												
+												
+												}
+												
+												if(keyx=="9P"){
+													$("#yettoforward_rsk_wo").html(valx);
 												$("#yettoforward_rsk_wo").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9A");
 												$("#forwardto_rsk_wo").html(valx);
 												$("#forwardto_rsk_wo").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9B");
 												
+													
+													}
 												
-												}
+												
 													if(keyx=="10"){
 															$("#postinspection ").html(valx);
 																									 

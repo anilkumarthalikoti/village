@@ -84,11 +84,11 @@ $statusQuery.=" union select count(*),'5R' from schemefilling sf,schemefilling_l
 $statusQuery.=" union select count(*),'6' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=6 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// total forward application
 
 $statusQuery.=" union select count(*),'6C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=7 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
-$statusQuery.=" union select count(*),'7' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=7 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// total forward application
+$statusQuery.=" union select count(*),'7' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=7 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// WORKORDER
 $statusQuery.=" union select count(*),'7P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=7 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'7C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=8 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'7R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-7  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
-$statusQuery.=" union select count(*),'9' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=9 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// total forward application
+$statusQuery.=" union select count(*),'9' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=9 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// FORWARD TO POST INSPECTION
 $statusQuery.=" union select count(*),'9P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=9 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'9C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=10 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
 $statusQuery.=" union select count(*),'9R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-9  and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";
