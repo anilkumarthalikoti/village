@@ -34,7 +34,7 @@ $tab=$_REQUEST["tab"];
 
       <li><a id="tab1">Spacing details </a></li>
 	   <li><a id="tab2">Intallation details</a></li>
-	    <li><a id="tab3">Subcd</a></li>
+	    <li class="hide"><a id="tab3">Subcd</a></li>
       
 	     
        
@@ -92,8 +92,8 @@ echo "<option value='".$row["id"]."'>".$row["spacing"]."</option>";
  
 <tr><td colspan="3"><input type="button" value="Save" onclick="install.installdetails();"/></td></tr>
 </table>
-<div id="p_table_install"></div>
-<table class="grid margin xlarge hide" id="installation_tbl">
+<div id="p_table_install" class="margin pivot xlarge grid" align="center"  style="height:280px; overflow:auto" ></div>
+<table class="grid margin xlarge hide" id="installation_tbl" >
 <thead><tr><th>Area spacing</th><th>Spacing area</th><th>Amount</th></tr></thead>
 <tbody>
 <?php 
@@ -112,7 +112,7 @@ echo "<tr><td>".$row["spacing"]."</td><td>".$row["spacing_area"]."</td><td>".$ro
 
 
 
-<div class="container" id="tab3C">
+<div class="container hide" id="tab3C">
 <form name="subcd">
 <input type="hidden" name="save" value="subcd"/>
 <table class="form margin xlarge">

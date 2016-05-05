@@ -838,3 +838,10 @@ width:1370px;
 	.button{
 	
 	}
+	.pivot table tr:last{
+	display:none;
+	}
+	.pivot table tr th,.pivot table tr td{
+	
+	max-height:20px;
+	}

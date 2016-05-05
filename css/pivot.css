@@ -4,46 +4,57 @@ table.pvtTable {
     font-size: 8pt;
     text-align: left;
     border-collapse: collapse;
+	min-width:100%;
 }
 table.pvtTable tr th, table.pvtTable tr th {
     background-color: #e6EEEE;
     border: 1px solid #CDCDCD;
     font-size: 8pt;
     padding: 5px;
+	max-height:20px;
 }
 
-table.pvtTable .pvtColLabel {text-align: center;}
-table.pvtTable .pvtTotalLabel {text-align: right;}
+table.pvtTable .pvtColLabel {
+text-align: center; 
+max-height:20px;
+}
+table.pvtTable .pvtRowLabel{
+max-height:20px;
+line-height:20px;
+}
+table.pvtTable .pvtTotalLabel {text-align: right; display:none; max-height:20px;}
 
 table.pvtTable tr td {
     color: #3D3D3D;
-    padding: 5px;
+    padding: 1px;
     background-color: #FFF;
     border: 1px solid #CDCDCD;
     vertical-align: top;
     text-align: right;
+	max-height:20px;
 }
 
-.pvtTotal, .pvtGrandTotal { font-weight: bold; }
+.pvtTotal, .pvtGrandTotal { font-weight: bold; display:none; }
 
-.pvtVals { text-align: center;}
-.pvtAggregator { margin-bottom: 5px ;}
+.pvtVals { text-align: center; max-height:20px;}
+.pvtAggregator { margin-bottom: 1px ;}
 
 .pvtAxisContainer, .pvtVals {
     border: 1px solid gray;
     background: #EEE;
-    padding: 5px;
+    padding: 1px;
     min-width: 20px;
     min-height: 20px;
+	max-height:20px;
 }
 .pvtAxisContainer li {
-    padding: 8px 6px;
+    padding: 1px 1px;
     list-style-type: none;
     cursor:move;
 }
 .pvtAxisContainer li.pvtPlaceholder {
     -webkit-border-radius: 5px;
-    padding: 3px 15px;
+    padding: 1px 1px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border: 1px dashed #aaa;
@@ -64,10 +75,10 @@ table.pvtTable tr td {
     color: grey;
 }
 
-.pvtHorizList li { display: inline; }
-.pvtVertList { vertical-align: top; }
+.pvtHorizList li { display: inline; max-height:20px; }
+.pvtVertList { vertical-align: top; max-height:20px; }
 
-.pvtFilteredAttribute { font-style: italic }
+.pvtFilteredAttribute { font-style: italic ;max-height:20px;}
 
 .pvtFilterBox{
     z-index: 100;
@@ -75,8 +86,9 @@ table.pvtTable tr td {
     border: 1px solid gray;
     background-color: #fff;
     position: absolute;
-    padding: 20px;
+    padding: 1px;
     text-align: center;
+	max-height:20px;
 }
 
 .pvtFilterBox h4{ margin:0; }
@@ -85,6 +97,6 @@ table.pvtTable tr td {
     text-align: left;
     overflow: scroll;
     width: 100%;
-    max-height: 200px;
+   max-height:20px;
 }
-.pvtCheckContainer p{ margin: 5px; }
+.pvtCheckContainer p{ margin: 1px;  max-height:20px;}

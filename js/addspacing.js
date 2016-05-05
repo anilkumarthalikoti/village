@@ -53,7 +53,15 @@ var install=new function(){
 																			data.push({SPACING:std_spacing_val, AREA:area_val,value:amount});
 																			 
 																			 });
-							  $("#p_table_install").pivot(data,{rows:["AREA"],cols:["SPACING"]});
+							    var sum = $.pivotUtilities.aggregatorTemplates.sum;
+        var numberFormat = $.pivotUtilities.numberFormat;
+        var intFormat = numberFormat({digitsAfterDecimal: 0});
+							  $("#p_table_install").pivot(data,{rows:["AREA"],cols:["SPACING"],aggregator: sum(intFormat)(["value"])});
+							  $("[class='pvtRowLabel']").css("height","16px");
+							  $("[class='pvtVal']").css("padding","5px");
+							  $("[class='pvtAxisLabel']").css("height","16px");
+							   $("[class='pvtColLabel']").css("height","16px");
+							  
 							   });
 	
 	 
