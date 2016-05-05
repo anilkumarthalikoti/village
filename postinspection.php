@@ -106,7 +106,7 @@ $spacing3=$row["spacing3"];
 				var mid="#mat_list tr:eq("+i+")";
 				i++;
 				mid=$(mid).attr("inputid");
-				$(this).prev().closest("th").html("<input type='text'  mid='"+mid+"' class='tiny'/>");
+				$(this).prev().closest("th").html("<input type='text'  mid='"+mid+"'  class='tiny'/>");
 				});
   });
   

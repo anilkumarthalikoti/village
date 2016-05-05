@@ -41,6 +41,7 @@ this.savePostInspection=function(){
 							   }
 							   });
  $("input[name='material_save']").val(tbl);
+ $("[class='fit']").attr("disabled",false);
  
  	$.ajax({
  						url:"server/postinspection.php",
@@ -49,7 +50,7 @@ this.savePostInspection=function(){
  						
  						}).done(function(data){
 						var filling_id=$("input[name='filling_id']").val();
- 						 //window.location="form10.php?fillingid="+filling_id;
+ 						  window.location="form10.php?fillingid="+filling_id;
  							 
  							});
 }
