@@ -239,6 +239,7 @@ background:url(/images/calendar.png) no-repeat right center;
 	
 	width:100px;
 	}
+	
 	.align_center{
 	text-align:center;
 	}
@@ -844,4 +845,9 @@ width:1370px;
 	.pivot table tr th,.pivot table tr td{
 	
 	max-height:20px;
+	}
+	.fit{
+	width:auto;
+	clear:both;
+	float:right;
 	}

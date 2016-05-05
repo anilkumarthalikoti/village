@@ -27,7 +27,7 @@ $result=$conn->query($query);
 foreach($result as $row){
 $preallocated=$row["preallocated"];
 }
-$query="select s.item1,s.item2,s.item3,p.croparea1,p.croparea2,p.croparea3,p.spacing1,p.spacing2,p.spacing3 from schemefilling s,postinspection p where p.filling_id=s.id and s.id=".$filling_id."";
+$query="select s.item1,s.item2,s.item3,p.croparea1,p.croparea2,p.croparea3,p.spacing1,p.spacing2,p.spacing3 from schemefilling s,preinspection p where p.filling_id=s.id and s.id=".$filling_id."";
 $result=$conn->query($query);
 foreach($result as $row){
 $item1=$row["item1"];
@@ -45,9 +45,9 @@ $spacing3=$row["spacing3"];
  ?>
   <script type="text/javascript">
   $(document).ready(function(){
-  $("[crop1='crop1']").hide();
-    $("[crop2='crop2']").hide();
-	  $("[crop3='crop3']").hide();
+ // $("[crop1='crop1']").hide();
+  //  $("[crop2='crop2']").hide();
+//	  $("[crop3='crop3']").hide();
   if(<?php print $item1?>!="-1"){
     $("[crop1='crop1']").show();
   }
@@ -76,11 +76,15 @@ $spacing3=$row["spacing3"];
    
 <tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td>  
  <td class="label small">Post-inspection date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> </tr>
-<tr class="labelh"><td></td><td crop1="crop1">Crop-1</td><td crop2="crop3">Crop-2</td><td crop3="crop3">Crop-3</td><td></td><td></td></tr>
-<tr>
-<td>Crop </td>
+<tr class="labelh"><td></td>
+<td >Crop Name </td>
+<td >Area in hector </td>
+<td  colspan="2">Row spacing </td>
+ <td></td></tr>
+<tr crop1="crop1">
+<td>Crop -1 </td>
 <td><select name="crop1" class="tiny1"  >
-<option value="-1">Select</option>
+<option value="-1">Select-Crop</option>
 <?php 
 $result=$conn->select("cropitems",array("id","cropname"));
 foreach($result as $row){
@@ -90,40 +94,57 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
 
 </select></td>
  
- <td ><select name="crop2" class="tiny1" crop2="crop2" >
- <option value="-1">Select</option>
-<?php 
-$result=$conn->select("cropitems",array("id","cropname"));
-foreach($result as $row){
-echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
-}
-?>
-</select></td>
- <td><select name="crop3" class="tiny1" crop3="crop3" >
- <option value="-1">Select</option>
-<?php 
-$result=$conn->select("cropitems",array("id","cropname"));
-foreach($result as $row){
-echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
-}
-?>
-</select></td><td></td><td></td>
-</tr>
-<tr>
-<td>Area of spacing </td>
-<td><select name="aspacing1" class="tiny1"  >
+ <td ><input type="text" name="area1" class="tiny" value="<?php print $area1;?>"/></td>
+ <td> 
+<input type="text" name="spacing1" class="tiny" value="<?php print $spacing1;?>"/>
+
+</td><td><select name="aspacing1" class="fit" style="width:70px;"  >
 <option value="-1">Select</option>
 <?php 
-$result=$conn->select("cropitems",array("id","cropname"));
+$result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
 foreach($result as $row){
-echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
+echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
 
-</select></td>
+</select></td><td></td>
+</tr>
+<tr  crop2="crop2">
+<td>Crop-2</td>
+<td>
+
+
+<select name="crop2" class="tiny1"  >
+ <option value="-1">Select-Crop</option>
+<?php 
+$result=$conn->select("cropitems",array("id","cropname"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
+}
+?>
+</select>
+</td>
  
- <td ><select name="aspacing2" class="tiny1" crop2="crop2" >
+ <td ><input type="text" name="area2" class="tiny" value="<?php print $area2;?>"/></td>
+ <td>
+ <input type="text" name="spacing2" class="tiny" value="<?php print $spacing2;?>"/>
+ 
+ 
+ 
+ </td><td><select name="aspacing2" class="fit"   style="width:70px;" >
  <option value="-1">Select</option>
+<?php 
+$result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
+}
+?>
+</select></td><td></td>
+</tr>
+<tr crop3="crop3">
+<td>Crop-3</td>
+<td ><select name="crop3" class="tiny1"  >
+ <option value="-1">Select-Crop</option>
 <?php 
 $result=$conn->select("cropitems",array("id","cropname"));
 foreach($result as $row){
@@ -131,30 +152,20 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
 }
 ?>
 </select></td>
- <td><select name="aspacing3" class="tiny1" crop3="crop3" >
+<td ><input type="text" name="area3" class="tiny" value="<?php print $area3;?>"/></td>
+ <td ><input type="text" name="spacing3" class="tiny" value="<?php print $spacing3;?>"/> </td><td><select name="aspacing3" class="fit"  style="width:70px;"  >
  <option value="-1">Select</option>
 <?php 
-$result=$conn->select("cropitems",array("id","cropname"));
+$result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
 foreach($result as $row){
-echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
+echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td></td><td></td>
+</select></td><td></td>
 </tr>
-<tr>
-<td>Area in hector </td>
-<td crop1="crop1"><input type="text" name="area1" class="tiny" value="<?php print $area1;?>"/></td>
-<td crop2="crop2"><input type="text" name="area2" class="tiny" value="<?php print $area2;?>"/></td>
- <td crop3="crop3"><input type="text" name="area3" class="tiny" value="<?php print $area3;?>"/> </td><td></td><td></td>
-</tr>
-<tr>
-<td>Spacing </td>
-<td crop1="crop1"><input type="text" name="spacing1" class="tiny" value="<?php print $spacing1;?>"/></td>
- <td crop2="crop2"><input type="text" name="spacing2" class="tiny" value="<?php print $spacing2;?>"/></td>
- <td crop3="crop3"> <input type="text" name="spacing3" class="tiny" value="<?php print $spacing3;?>"/></td><td></td><td></td>
-</tr> 
+ 
  <tr><td>Pre-allocated</td><td>:</td><td><input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td></tr>
- <tr><td>Material</td><td>:</td><td colspan="4"><select name="material" onchange="postinspection.updatePrice();">
+ <tr class="hide"><td>Material</td><td>:</td><td colspan="4"><select name="material" onchange="postinspection.updatePrice();">
  
  <?php 
  $result =$conn->select("cropitemsprice",array("id","itemname","itemprice","units"));
@@ -164,12 +175,34 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
  ?>
  
  </select></td> </tr>
-  <tr><td>Dealer Price/Qty</td><td>:</td><td><input name='dAmount' type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='dQty' type='text' class='tiny1'/></td></tr>
-  <tr><td>GGRC Price/Qty</td><td>:</td><td><input name='gAmount' disabled="disabled" type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='gQty' type='text' class='tiny1'/></td></tr>
+  <tr  class="hide"><td>Dealer Price/Qty</td><td>:</td><td><input name='dAmount' type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='dQty' type='text' class='tiny1'/></td></tr>
+  <tr  class="hide"><td>GGRC Price/Qty</td><td>:</td><td><input name='gAmount' disabled="disabled" type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='gQty' type='text' class='tiny1'/></td></tr>
+  <tr><td colspan="6">
+  <div style="height:280px; overflow:auto">
+  <table class="form_grid xlarge margin ">
+  <thead><tr><th>Name</th><th>Unit</th><th>Type</th><th>Qty</th></tr></thead>
+  <tbody>
+  <?php 
+  $query="select  id,itemname,standard_measure,units from cropitemsprice order by itemname";
+  $result=$conn->query($query);
+  foreach($result as $row){
+  $tr="<tr><td>param_1</td><td>param_2</td><td>param_3</td><td><input type='text' class='tiny' /></td></tr>";
+  $tr=str_replace("param_1",$row["itemname"],$tr);
+  $tr=str_replace("param_2",$row["units"],$tr);
+  $tr=str_replace("param_3",$row["standard_measure"],$tr);
+  echo $tr;
+  }
+  ?>
+  
+  </tbody>
+  </table>
+  
+  </div>
+  </td></tr>
   <tr><td colspan="6"> <input type='button' value='Add' onclick='postinspection.addMaterial();' /><input type='button' value='Save' onclick='postinspection.savePostInspection();' /></td></tr>
   </table>
 </form>
-  </td><td valign="top">
+  </td><td valign="top" class="hide">
  <table class="form_grid xlarge margin" id="material_list">
  <thead>
  <tr><th>Material</th><th>Dealer qty</th><th>Price/qty</th><th>Total Price</th><th>Inspected qty</th><th>GGRC Price/qty</th><th>Total Price</th></tr>
