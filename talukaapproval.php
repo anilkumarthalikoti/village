@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Post-inspection</title>
+<title>Taluka-Approval</title>
 <?php 
  require "interceptor.php";
  require "server/app_connector.php";
@@ -90,7 +90,7 @@ $spacing3=$row["spacing3"];
   
   $("#div_mater").pivot($("#mat_list"), 
         { 
-            rows: ["Name","Unit","Type","Qty"] 
+            rows: ["Name","Unit","Type","Qty","ItemPrice","Total"] 
         });
 		
 		$("[class='pvtRowLabel']").css("height","16px");
@@ -102,16 +102,21 @@ $spacing3=$row["spacing3"];
 							     $("[class='pvtVal']").css("background-color","#FFFFFF");
 							  $("[class='pvtAxisLabel']").css("background-color","#FFFFFF");
 							  var i=1;
+							  /*
 				$("#div_mater table   td").each(function(){
 				var mid="#mat_list tr:eq("+i+")";
 				i++;
 				mid=$(mid).attr("inputid");
 				$(this).prev().closest("th").html("<input type='text'  mid='"+mid+"'  class='tiny'/>");
-				});
+				});*/
   });
   
   </script>
  <script type='text/javascript' src="js/postinspection.js"></script>
+ <style type="text/css">
+ 
+ </style>
+ 
 </head>
 
 <body>
@@ -232,18 +237,21 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
   <div style="height:280px; overflow:auto">
   <div id="div_mater"></div>
   <table class="form_grid xlarge margin hide" id="mat_list">
-  <thead><tr><th>Name</th><th>Unit</th><th>Type</th><th>Qty</th></tr></thead>
+  <thead><tr><th>Name</th><th>Unit</th><th>Type</th><th>Qty</th><th>ItemPrice</th><th>Total</th></tr></thead>
   <tbody>
   <?php 
-  $query="select  id,itemname,standard_measure,units from cropitemsprice order by itemname,standard_measure";
-  $result=$conn->query($query);
-  foreach($result as $row){
-  $tr="<tr inputid='param_4'><td>param_1</td><td>param_2</td><td>param_3</td><td><input type='text' class='tiny'  id='param_4' /></td></tr>";
+  $query="select itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip , postinspection_dtl pid  where  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." and pid.item_id!=0  ";
+$result=$conn->query($query);
+$sno=1;
+foreach($result as $row){
+$tr="<tr> <td>param_1</td><td>param_2</td><td>param_3</td><td>param_4</td><td>param_5</td><td>param_6</td></tr>";
   $tr=str_replace("param_1",$row["itemname"],$tr);
   $tr=str_replace("param_2",$row["units"],$tr);
   $tr=str_replace("param_3",$row["standard_measure"],$tr);
-  $tr=str_replace("param_4",$row["id"],$tr);
-  echo $tr;
+  $tr=str_replace("param_4",$row["ggrcqty"],$tr);
+  $tr=str_replace("param_5",$row["itemprice"],$tr);
+ $tr=str_replace("param_6",$row["itemprice"]*$row["ggrcqty"],$tr);
+echo $tr;
   }
   ?>
   
