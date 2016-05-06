@@ -178,15 +178,13 @@
 												$("#workorder_forward").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=8");
 												
 										break;
-										case "9":
-										$("#recivedfrom_ddh").html(valx);
-										break;
+										 
 										case "9P":
 												$("#yettoforward_rsk_wo").html(valx);
 												$("#yettoforward_rsk_wo").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9A");
 												$("#forwardto_rsk_wo").html(valx);
 												$("#forwardto_rsk_wo").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9B");
-												
+											$("#recivedfrom_ddh").html(valx);	
 										break;
 										
 										
