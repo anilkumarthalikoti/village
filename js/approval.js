@@ -216,6 +216,8 @@
 											$("#postinspection_ta_approval_yet").html(valx);
 											$("#postinspection_ta_approval_yet").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=13A");
 											$("#postinspection_ta_approval").html(valx);	
+											$("#postinspection_ta_approval").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=13B");
+											
 										break;
 										
 										case "14":
