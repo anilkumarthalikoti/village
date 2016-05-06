@@ -83,9 +83,19 @@ $(document).ready(function(){
 	 }
 	?>
 	
+	<!-- TALUKA APPROVAL-->
 	
-	
-	
+	<?php
+	if($_GET["status"]=="14"){
+	?>
+	$("table#applications tbody tr td:not(.skip)").click(function(){ 
+	//TALUKA APPROVAL
+	  $("form[name='talukaapproval_form'] input[name='filling_id']").val($(this).parent().attr("filling_id"));
+	  $("form[name='talukaapproval_form']").submit();
+	});
+	<?php
+	 }
+	?>
 	
 	
 	
@@ -527,7 +537,15 @@ echo "<option class='hide'  parent_id='".$row["parent_id"]."' value='".$row["id"
 
 </div>
 
+ <div id="talukaapproval" title="Taluka approval" class="xlarge">
+<form name="talukaapproval_form" target="_self" action="talukaapproval.php" method="post">
+<input name="filling_id" type="hidden"/>
  
+</form>
+
+
+
+</div>
 
 </div>
 

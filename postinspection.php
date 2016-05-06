@@ -252,7 +252,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
   
   </div>
   </td></tr>
-  <tr><td colspan="6"> <input type='button' value='Add' onclick='postinspection.addMaterial();' /><input type='button' value='Save' onclick='postinspection.savePostInspection();' /></td></tr>
+  <tr><td colspan="6">  <input type='button' value='Save' onclick='postinspection.savePostInspection();' /></td></tr>
   </table>
 </form>
   </td><td valign="top" class="hide">
