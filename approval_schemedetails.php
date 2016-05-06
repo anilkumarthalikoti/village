@@ -64,14 +64,14 @@ $count="";
  </li><li> <div>Forward to TA for taluka approval<a href="#"><span id="postinspection_forward">0</span></a> </div>
  </li><li> <div>Received from RSK<a href="#"><span id="postinspection_received">0</span></a></div></li>
    <li> <div> Yet to forward for taluka approval<a href="#"><span id="postinspection_ta_approval_yet">0</span></a></div> </li>
-	<li> <div>Forward for taluka approval <a href="#"><span <span id="postinspection_ta_approval">0</span>></span></a></div> </li>
+	<li> <div>Forward for taluka approval <a href="#">  <span id="postinspection_ta_approval">0</span> </a></div> </li>
  
  </ul> 
  <ul>
  <h1>Taluka Approval</h1>
-   <li> <div>Application for taluka approval <a href="#"><span id="p">0</span></a></div> 
+   <li> <div>Application for taluka approval <a href="#"><span id="taluka_approval">0</span></a></div> 
    </li>
-	<li> <div>Pending <a href="#"><span id="p">0</span></a></div> 
+	<li> <div>Pending <a href="#"><span id="taluka_approval_pending">0</span></a></div> 
 	</li>
 	<li><div>Rejected <a href="#"><span id="p">0</span></a></div></li>
 	  <li><div>Approved <a href="#"><span id="p">0</span></a></div></li>

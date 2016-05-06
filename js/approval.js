@@ -96,135 +96,143 @@
 									  $.each(val,function(keyx,valx){
 														  
 														  
-														  
-										   if(keyx=="A"){
-											   total=valx;
-																			 $("#scheme_filling_val").html(valx);
-																			  
-																			 }
-										if(keyx=="1"){
+										 
+										switch(keyx){
+										
+										case "A":
+											total=valx;
+											$("#scheme_filling_val").html(valx);
+										break;
+										case "1":
+										//Scheme application
 											pending=total-valx;
 											$("#pendding").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=1");
 											$("#pendding").html(valx);
-											}		
-											if(keyx=="-1"){
-												$("#scheme_reject").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=-1");
-												$("#scheme_reject").html(valx);
-												}
-											if(keyx=="2"){
-											 
+											
+										break;
+										case "-1":
+										//Reject by ta at application
+											$("#scheme_reject").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=-1");
+											$("#scheme_reject").html(valx);
+										
+										break;
+										
+										
+										case "2" :
 											$("#yettoapproval").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=2");
 											$("#yettoapproval").html(valx);
 											$("#forwardtorsk").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=4")
 											$("#forwardtorsk").html(valx);
-											}								 
-												
-											if(keyx=="4"){
-												$("#forwardedtorsk").html(valx);
-												
-												}	
-												
-												if(keyx=="5"){
-												$("#preinspection").html(valx);
-												
-												}	
-												if(keyx=="5P"){
-												$("#preinspection_pending").html(valx);
-												$("#preinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=5");
 										
-												}
-												if(keyx=="5R"){
-												$("#preinspection_rejected").html(valx);
-												
-												}
-												
-												if(keyx=="5C"){
-												$("#preinspection_completed").html(valx);
-												$("#forward_preinspection").html(valx);
-												$("#forward_preinspection").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6");
-												
-												}
-												
-												if(keyx=="6"){
-												$("#recivedfrom_rsk").html(valx);
-												 $("#yettoforward_ddh").html(valx);
-												  $("#forwardto_ddh").html(valx);
-												$("#recivedfrom_rsk").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6A");
-												$("#yettoforward_ddh").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6B");
-												$("#forwardto_ddh").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6C");
-												}
-												
-												
-												if(keyx=="7"){
-												$("#workorder").html(valx);
-												
-												}	
-												if(keyx=="7P"){
-												$("#workorder_pending").html(valx);
-												$("#workorder_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=7");
+										break;
 										
-												}
-												if(keyx=="7R"){
-												$("#workorder_rejected").html(valx);
-												
-												}
-												
-												if(keyx=="7C"){
+										case "4":
+											$("#forwardedtorsk").html(valx);
+										break;
+										case "5":
+											$("#preinspection").html(valx);
+										break;
+										
+										case "5P":
+											$("#preinspection_pending").html(valx);
+											$("#preinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=5");
+										
+										break;
+										
+										case "5R":
+										 	$("#preinspection_rejected").html(valx);	
+										break;
+										
+										case "5C":
+										 	$("#preinspection_completed").html(valx);
+											$("#forward_preinspection").html(valx);
+											$("#forward_preinspection").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6");
+													
+										break;
+										case "6":
+										 	$("#recivedfrom_rsk").html(valx);
+											$("#yettoforward_ddh").html(valx);
+											$("#forwardto_ddh").html(valx);
+											$("#recivedfrom_rsk").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6A");
+											$("#yettoforward_ddh").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6B");
+											$("#forwardto_ddh").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=6C");
+											
+										break;
+										case "7":
+										 	$("#workorder").html(valx);	
+										break;
+										
+										case "7P":
+										 	$("#workorder_pending").html(valx);
+											$("#workorder_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=7");
+										
+										break;
+										
+										case "7R":
+										 	$("#workorder_rejected").html(valx);
+										break;
+										
+										case "7C":
 												$("#workorder_completed").html(valx);
 												$("#workorder_forward").html(valx);
 												$("#workorder_forward").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=8");
-												
-												}
-												
-												
-												
-												if(keyx=="7C"){
 												$("#recivedfrom_ddh").html(valx);
-												
-												
-												}
-												
-												if(keyx=="9P"){
-													$("#yettoforward_rsk_wo").html(valx);
+										break;
+										
+										case "9P":
+												$("#yettoforward_rsk_wo").html(valx);
 												$("#yettoforward_rsk_wo").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9A");
 												$("#forwardto_rsk_wo").html(valx);
 												$("#forwardto_rsk_wo").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=9B");
 												
-													
-													}
-												
-												
-													if(keyx=="10"){
-															$("#postinspection ").html(valx);
-																									 
-										         				}	
-												if(keyx=="10C"){
+										break;
+										
+										
+										case "10":
+												$("#postinspection ").html(valx);
+										break;
+										
+										
+											case "10C":
 												$("#postinspection_completed").html(valx);
 												 $("#postinspection_forward").html(valx);
 												 $("#postinspection_forward").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=12");
 												
-												}
-												
-											
-												if(keyx=="10P"){
+										break;
+										
+										
+										case "10P":
 												$("#postinspection_pending").html(valx);
 												$("#postinspection_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=11");
+													
+										break;
 										
-												}
-												if(keyx=="10R"){
-												$("#postinspection_rejected").html(valx);
-												
-												}
-												
-												
-													if(keyx=="13"){
-																								$("#postinspection_received").html(valx);
-																								 $("#postinspection_forward_cv").html(valx);
-																								 $("#postinspection_forward_so").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=13A");
-																								$("#postinspection_forward_s0").html(valx);
-																																																 $("#postinspection_forward_cv").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=13A");
-																																																
-																								}
+										case "10R":
+											$("#postinspection_rejected").html(valx);	
+										break;
+										
+										case "13":
+											$("#postinspection_received").html(valx);
+											$("#postinspection_ta_approval_yet").html(valx);
+											$("#postinspection_ta_approval_yet").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=13A");
+											$("#postinspection_ta_approval").html(valx);	
+										break;
+										
+										case "14":
+										$("#taluka_approval").html(valx);
+										
+										
+										break;
+										
+										case "14P":
+										$("#taluka_approval_pending").html(valx);
+										$("#taluka_approval_pending")..parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=14");
+										
+										break;
+										
+										}									 
+									 
+   												
 												
 												
 												

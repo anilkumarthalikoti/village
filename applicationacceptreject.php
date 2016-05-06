@@ -152,6 +152,10 @@ $titles["8"]="Forward to RSK for post-inspection";
   $titles["9A"]="Cover Letter for Post-inspection ";
    $titles["9B"]="Forward to RSK for post-inspection ";
    $titles["10"]="Post-Inspection";
+   $titles["11"]="Post-Inspection Pending";
+    $titles["12"]="Post-Inspection Forward";
+	 $titles["13A"]="Post-Inspection TO Taluka Approval Cover letter";
+	 $titles["13B"]="Forward TO Taluka Approval";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
@@ -224,6 +228,9 @@ $status=6;
 }
 if($status=="9A" || $status=="9B"  ){
 $status=9;
+}
+if($status=="13A" || $status=="13B"  ){
+$status=13;
 }
  $village="select id from landdetails where villageid in (select villageid from village v,actionmapping am where  v.hobliid =am.hobliid and am.regid=".$user["id"].")";
 $query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,";
@@ -365,6 +372,12 @@ $inputs="<input type='button' value='Forward to RSk for post-inspection' onclick
 break;
 case "12":
 $inputs="<input type='button' value='Forward to RSk for taluka approval' onclick=\"approvaljs.savenewapplication('13');\"/>";
+break;
+case "13A":
+$inputs="<input type='button' value='Cover letter' onclick=\"approvaljs.generatecoverletter('7');\"/>";
+break;
+case "13B":
+$inputs="<input type='button' value='Forward for Taluka Approval' onclick=\"approvaljs.savenewapplication('14');\"/>";
 break;
 }
  
