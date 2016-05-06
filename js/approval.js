@@ -226,7 +226,7 @@
 										
 										case "14P":
 										$("#taluka_approval_pending").html(valx);
-										$("#taluka_approval_pending")..parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=14");
+										$("#taluka_approval_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=14");
 										
 										break;
 										

@@ -156,6 +156,7 @@ $titles["8"]="Forward to RSK for post-inspection";
     $titles["12"]="Post-Inspection Forward";
 	 $titles["13A"]="Post-Inspection TO Taluka Approval Cover letter";
 	 $titles["13B"]="Forward TO Taluka Approval";
+	 $titles["14"]="Taluka Approval Pending";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
