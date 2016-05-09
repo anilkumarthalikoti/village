@@ -454,9 +454,9 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
 </tr>
 
 <td>Spacing </td>
-<td><input type="text" name="spacing1" class="tiny"/>X<input type="text" name="spacing1" class="tiny"/></td>
- <td><input type="text" name="spacing2" class="tiny"/>X<input type="text" name="spacing1" class="tiny"/></td>
- <td> <input type="text" name="spacing3" class="tiny"/>X<input type="text" name="spacing1" class="tiny"/></td>
+<td><input type="text" name="spacing1" class="tiny"/>X<input type="text" name="spacing4" class="tiny"/></td>
+ <td><input type="text" name="spacing2" class="tiny"/>X<input type="text" name="spacing5" class="tiny"/></td>
+ <td> <input type="text" name="spacing3" class="tiny"/>X<input type="text" name="spacing6" class="tiny"/></td>
 </tr>
 <tr>
 <td>Area in hector </td>
