@@ -263,19 +263,8 @@ echo $tr;
   <tr><td colspan="6">  <input type='button' value='Save'  /></td></tr>
   </table>
 </form>
-  </td><td valign="top" class="hide">
- <table class="form_grid xlarge margin" id="material_list">
- <thead>
- <tr><th>Material</th><th>Dealer qty</th><th>Price/qty</th><th>Total Price</th><th>Inspected qty</th><th>GGRC Price/qty</th><th>Total Price</th></tr>
- </thead>
- <tbody>
- 
- </tbody>
- <tfoot> 
- <tr><td></td><td></td><td>Dealer Bill Amount</td><td id="dAmt">0.00</td><td></td><td>Inspection Amount</td><td id="gAmt">0.00</td></tr>
-  <tr><td></td><td></td><td>Vat @ 5.5</td><td id="vdAmt">0.00</td><td></td><td>Inspection Amount</td><td id="gdAmt">0.00</td></tr>
- </tfoot>
- </table></td></tr></table>
+  </td><td valign="top" class="hide">&nbsp;</td>
+</tr></table>
 </div>
 </body>
 </html>
