@@ -45,6 +45,8 @@ $(document).ready(function(){
 			 $("input[name='croparea1']").attr("disabled",true);
 			  $("input[name='spacing1']").val(0);
 			 $("input[name='spacing1']").attr("disabled",true);
+			  $("input[name='spacing4']").val(0);
+			 $("input[name='spacing4']").attr("disabled",true);
 			 }
 		 
 			 if($("select[name='crop2'] option:selected").val()=="-1"){
@@ -52,6 +54,8 @@ $(document).ready(function(){
 			 $("input[name='croparea2']").attr("disabled",true);
 			  $("input[name='spacing2']").val(0);
 			 $("input[name='spacing2']").attr("disabled",true);
+			  $("input[name='spacing5']").val(0);
+			 $("input[name='spacing5']").attr("disabled",true);
 			 }
 			 
 			  if($("select[name='crop3'] option:selected").val()=="-1"){
@@ -59,6 +63,8 @@ $(document).ready(function(){
 			 $("input[name='croparea3']").attr("disabled",true);
 			  $("input[name='spacing3']").val(0);
 			 $("input[name='spacing3']").attr("disabled",true);
+			  $("input[name='spacing6']").val(0);
+			 $("input[name='spacing6']").attr("disabled",true);
 			 }
 			 $("form[name='preinspection_form'] input[name='filling_id']").val($(this).parent().attr("filling_id"));
 	$( "#preinspection" ).dialog( "open" );
@@ -403,23 +409,24 @@ break;
  </table>
 
 </div>
-<div id="preinspection" title="Pre inspection details" class="xlarge">
+<div id="preinspection" title="Pre inspection details" class="xlarge" style="line-height:30px">
 <form name="preinspection_form">
 <input name="filling_id" type="hidden"/>
 <input name="pre-inspection" type="hidden" value="preinspection"/>
 <input name="inspectedby" value="<?php print $user["id"];?>" type="hidden"/>
-<table class="form" style="margin:0px;">
+<table class="form" style="margin:0px; line-height:35px;" cellspacing="5" cellpadding="5">
 <tr  ><td width="146">Logged user</td>
-<td width="179">:</td>
-<td width="264"><strong><?php print $user["login_id"]?></strong></td>
-<td width="144"></td>  
+<td width="299">:<strong><?php print $user["login_id"]?></strong></td>
+<td width="336"></td>
+<td width="382"></td>  
 </tr>
+
 <tr  ><td>Pre-inspection date</td><td>:<input type="text" placeholder="dd/MM/yyyy" name="inspectiondate" class="datepicker" id="inspectiondate"/></td><td>Source of irrigation</td><td>:<select name="irrigation">
 <option value="1">Well</option>
 <option value="2">Kolva</option>
 </select></td>  </tr>
-<tr class="hide"><td colspan="4"></td></tr>
-<tr class="labelh"><td></td><td>Crop-1</td><td>Crop-2</td><td>Crop-3</td></tr>
+
+<tr class="labelh"><td></td><td align="center">Crop-1</td><td align="center">Crop-2</td><td align="center">Crop-3</td></tr>
 <tr>
 <td>Crop </td>
 <td><select name="crop1" class="tiny1" disabled="disabled">
@@ -454,9 +461,9 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
 </tr>
 
 <td>Spacing </td>
-<td><input type="text" name="spacing1" class="tiny"/>X<input type="text" name="spacing4" class="tiny"/></td>
- <td><input type="text" name="spacing2" class="tiny"/>X<input type="text" name="spacing5" class="tiny"/></td>
- <td> <input type="text" name="spacing3" class="tiny"/>X<input type="text" name="spacing6" class="tiny"/></td>
+<td><input type="text" name="spacing1" class="tiny1" placeholder="ROW SPACING"/>X<input type="text" name="spacing4" placeholder="PLANT SPACING" class="tiny1"/></td>
+ <td><input type="text" name="spacing2" class="tiny1"  placeholder="ROW SPACING"/>X<input type="text" name="spacing5" placeholder="PLANT SPACING" class="tiny1"/></td>
+ <td> <input type="text" name="spacing3" class="tiny1"  placeholder="ROW SPACING"/>X<input type="text" name="spacing6" placeholder="PLANT SPACING" class="tiny1"/></td>
 </tr>
 <tr>
 <td>Area in hector </td>

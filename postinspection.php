@@ -18,8 +18,12 @@ $area3=0;
 $sapcing1=0;
 $spacing2=0;
 $spacing3=0;
-
-
+$sapcing4=0;
+$spacing5=0;
+$spacing6=0;
+$plants1=0;
+$plants2=0;
+$plants3=0;
 
 $filling_id= $_POST["filling_id"];
 $query="select sum(coalesce(area1,0))+sum(coalesce(area2,0))+sum(coalesce(area3,0)) preallocated from postinspection_mstr where filling_id in(select id from schemefilling where (regid,schemeid) = (select regid,schemeid from schemefilling where id=".$filling_id."))";
@@ -27,7 +31,7 @@ $result=$conn->query($query);
 foreach($result as $row){
 $preallocated=$row["preallocated"];
 }
-$query="select s.item1,s.item2,s.item3,p.croparea1,p.croparea2,p.croparea3,p.spacing1,p.spacing2,p.spacing3 from schemefilling s,preinspection p where p.filling_id=s.id and s.id=".$filling_id."";
+$query="select s.item1,s.item2,s.item3,p.croparea1,p.croparea2,p.croparea3,p.spacing1,p.spacing2,p.spacing3,p.spacing4,p.spacing5,p.spacing6 from schemefilling s,preinspection p where p.filling_id=s.id and s.id=".$filling_id."";
 $result=$conn->query($query);
 foreach($result as $row){
 $item1=$row["item1"];
@@ -39,6 +43,9 @@ $area3=$row["croparea3"];
 $spacing1=$row["spacing1"];
 $spacing2=$row["spacing2"];
 $spacing3=$row["spacing3"];
+$spacing4=$row["spacing4"];
+$spacing5=$row["spacing5"];
+$spacing6=$row["spacing6"];
 
 }
 
@@ -126,11 +133,11 @@ $spacing3=$row["spacing3"];
    
 <tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td>  
  <td class="label small">Post-inspection date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> </tr>
-<tr class="labelh"><td></td>
+<tr   ><td></td>
 <td >Crop Name </td>
-<td >Area in hector </td>
-<td  colspan="2">Row spacing </td>
- <td>Plant Distance </td>
+<td >Drip installed area  </td>
+<td  colspan="2">Spacing </td>
+ <td>Plants Total </td>
 </tr>
 <tr crop1="crop1">
 <td>Crop -1 </td>
@@ -147,9 +154,9 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
  
  <td ><input type="text" name="area1" class="tiny" value="<?php print $area1;?>"/></td>
  <td> 
-<input type="text" name="spacing1" class="tiny" value="<?php print $spacing1;?>"/>
+<input type="text" name="spacing1" class="tiny" value="<?php print $spacing1;?>" placeholder="ROW SPACING"/>X<input type="text" name="spacing4" class="tiny" value="<?php print $spacing4;?>" placeholder="PLANT SPACING"/>
 
-</td><td><select name="aspacing1" class="fit" disabled="disabled"  style="width:100px;"   >
+</td><td><select name="aspacing1" class="fit hide" disabled="disabled"  style="width:100px;"   >
 <option value="-1">Select</option>
 <?php 
 $result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
@@ -158,7 +165,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 }
 ?>
 
-</select></td><td><input type="text" name="pspacing1" class="tiny"  /></td>
+</select></td><td><input type="text" name="pspacing1" class="tiny" value="<?php print $plants1;?>"  /></td>
 </tr>
 <tr  crop2="crop2">
 <td>Crop-2</td>
@@ -178,11 +185,11 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
  
  <td ><input type="text" name="area2" class="tiny" value="<?php print $area2;?>"/></td>
  <td>
- <input type="text" name="spacing2" class="tiny" value="<?php print $spacing2;?>"/>
+<input type="text" name="spacing2" class="tiny" value="<?php print $spacing2;?>" placeholder="ROW SPACING"/>X<input type="text" name="spacing5" class="tiny" value="<?php print $spacing5;?>" placeholder="PLANT SPACING"/>
  
  
  
- </td><td><select name="aspacing2" class="fit" disabled="disabled"    style="width:100px;"  >
+ </td><td><select name="aspacing2" class="fit hide" disabled="disabled"    style="width:100px;"  >
  <option value="-1">Select</option>
 <?php 
 $result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
@@ -190,7 +197,7 @@ foreach($result as $row){
 echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td><input type="text" name="pspacing2" class="tiny" /></td>
+</select></td><td><input type="text" name="pspacing2" class="tiny"  value="<?php print $plants2;?>" /></td>
 </tr>
 <tr crop3="crop3">
 <td>Crop-3</td>
@@ -204,7 +211,7 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
 ?>
 </select></td>
 <td ><input type="text" name="area3" class="tiny" value="<?php print $area3;?>"/></td>
- <td ><input type="text" name="spacing3" class="tiny" value="<?php print $spacing3;?>"/> </td><td><select name="aspacing3" class="fit" disabled="disabled"   style="width:100px;"   >
+ <td ><input type="text" name="spacing3" class="tiny" value="<?php print $spacing3;?>" placeholder="ROW SPACING"/>X<input type="text" name="spacing6" class="tiny" value="<?php print $spacing6;?>" placeholder="PLANT SPACING"/> </td><td><select name="aspacing3" class="fit hide" disabled="disabled"   style="width:100px;"   >
  <option value="-1">Select</option>
 <?php 
 $result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
@@ -212,7 +219,7 @@ foreach($result as $row){
 echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td><input type="text" name="pspacing3" class="tiny" /></td>
+</select></td><td><input type="text" name="pspacing3" class="tiny"  value="<?php print $plants3;?>" /></td>
 </tr>
  
  <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
