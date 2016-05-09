@@ -21,7 +21,9 @@ $spacing3=0;
 $sapcing4=0;
 $spacing5=0;
 $spacing6=0;
-
+$plants1=0;
+$plants2=0;
+$plants3=0;
 
 $filling_id= $_POST["filling_id"];
 $query="select sum(coalesce(area1,0))+sum(coalesce(area2,0))+sum(coalesce(area3,0)) preallocated from postinspection_mstr where filling_id in(select id from schemefilling where (regid,schemeid) = (select regid,schemeid from schemefilling where id=".$filling_id."))";
@@ -95,7 +97,7 @@ $spacing6=$row["spacing6"];
   
   $("#div_mater").pivot($("#mat_list"), 
         { 
-            rows: ["Name","Unit","Type","Qty","ItemPrice","Total"] 
+            rows: ["NAME","UNIT","TYPE","QTY","GGRC PRICE","FIELD TOTAL","DEALER QTY","DEALER AMT",,"DEALER TOTAL","AMOUNT"] 
         });
 		
 		$("[class='pvtRowLabel']").css("height","16px");
@@ -107,13 +109,16 @@ $spacing6=$row["spacing6"];
 							     $("[class='pvtVal']").css("background-color","#FFFFFF");
 							  $("[class='pvtAxisLabel']").css("background-color","#FFFFFF");
 							  var i=1;
-							  /*
+							  
 				$("#div_mater table   td").each(function(){
 				var mid="#mat_list tr:eq("+i+")";
 				i++;
 				mid=$(mid).attr("inputid");
-				$(this).prev().closest("th").html("<input type='text'  mid='"+mid+"'  class='tiny'/>");
-				});*/
+				$(this).prev().closest("th").prev().closest("th").html("0");
+				$(this).prev().closest("th").prev().closest("th").prev().closest("th").html("0");
+				$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th") .html("<input type='text'  mid='"+mid+"'  class='tiny'/>");
+					$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th") .html("<input type='text'  mid='"+mid+"'  class='tiny'/>");
+				}); 
   });
   
   </script>
@@ -127,12 +132,12 @@ $spacing6=$row["spacing6"];
 <body>
 <div class="title">Taluka approval calculation sheet</div>
 <div class="viewport">
-<table> <tr><td>
+ 
 <form name="post_inspection" >
 <input type="hidden" name="filling_id" value="<?php print $filling_id;?>"/>
 <input type="hidden" name="inspected_by" value="<?php print $user["id"]?>"/>
 <input type="hidden" name="material_save"/>
-  <table class="form excel">
+  <table class="form excel90">
    
 <tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td>  
  <td class="label small">Taluka approval date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> </tr>
@@ -170,7 +175,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 }
 ?>
 
-</select></td><td><input type="text" name="pspacing1" class="tiny"  /></td>
+</select></td><td><input type="text" name="pspacing1" class="tiny"  value="<?php print $plants1;?>"/></td>
 </tr>
 <tr  crop2="crop2">
 <td>Crop-2</td>
@@ -203,7 +208,7 @@ foreach($result as $row){
 echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td><input type="text" name="pspacing2" class="tiny" /></td>
+</select></td><td><input type="text" name="pspacing2" class="tiny"  value="<?php print $plants2;?>" /></td>
 </tr>
 <tr crop3="crop3">
 <td>Crop-3</td>
@@ -226,7 +231,7 @@ foreach($result as $row){
 echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td><input type="text" name="pspacing3" class="tiny" /></td>
+</select></td><td><input type="text" name="pspacing3" class="tiny"  value="<?php print $plants3;?>" /></td>
 </tr>
  
  <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
@@ -246,14 +251,25 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
   <div style="height:280px; overflow:auto">
   <div id="div_mater"></div>
   <table class="form_grid xlarge margin hide" id="mat_list">
-  <thead><tr><th>Name</th><th>Unit</th><th>Type</th><th>Qty</th><th>ItemPrice</th><th>Total</th></tr></thead>
+  <thead><tr>
+    <th>NAME</th>
+    <th>UNIT</th>
+    <th>TYPE</th>
+    <th>QTY</th>
+    <th>GGRC PRICE</th>
+    <th>FIELD TOTAL</th>
+	<th>DEALER QTY</th>
+	<th>DEALER AMT</th>
+	<th>DEALER TOTAL </th>
+		<th>AMOUNT</th>
+  </tr></thead>
   <tbody>
   <?php 
-  $query="select itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip , postinspection_dtl pid  where  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." and pid.item_id!=0  ";
+  $query="select itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." )  ";
 $result=$conn->query($query);
 $sno=1;
 foreach($result as $row){
-$tr="<tr> <td>param_1</td><td>param_2</td><td>param_3</td><td>param_4</td><td>param_5</td><td>param_6</td></tr>";
+$tr="<tr> <td>param_1</td><td>param_2</td><td>param_3</td><td>param_4</td><td>param_5</td><td>param_6</td><td></td><td></td><td></td><td></td></tr>";
   $tr=str_replace("param_1",$row["itemname"],$tr);
   $tr=str_replace("param_2",$row["units"],$tr);
   $tr=str_replace("param_3",$row["standard_measure"],$tr);
@@ -272,8 +288,7 @@ echo $tr;
   <tr><td colspan="6">  <input type='button' value='Save'  /></td></tr>
   </table>
 </form>
-  </td><td valign="top" class="hide">&nbsp;</td>
-</tr></table>
+ 
 </div>
 </body>
 </html>

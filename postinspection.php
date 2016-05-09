@@ -165,7 +165,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 }
 ?>
 
-</select></td><td><input type="text" name="pspacing1" class="tiny" value="<?php print $plants1;?>"  /></td>
+</select></td><td><input type="text" name="pspacing1" class="tiny"    /></td>
 </tr>
 <tr  crop2="crop2">
 <td>Crop-2</td>
@@ -197,7 +197,7 @@ foreach($result as $row){
 echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td><input type="text" name="pspacing2" class="tiny"  value="<?php print $plants2;?>" /></td>
+</select></td><td><input type="text" name="pspacing2" class="tiny"   /></td>
 </tr>
 <tr crop3="crop3">
 <td>Crop-3</td>
@@ -219,7 +219,7 @@ foreach($result as $row){
 echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
 }
 ?>
-</select></td><td><input type="text" name="pspacing3" class="tiny"  value="<?php print $plants3;?>" /></td>
+</select></td><td><input type="text" name="pspacing3" class="tiny"    /></td>
 </tr>
  
  <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
