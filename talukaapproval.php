@@ -115,14 +115,18 @@ $spacing6=$row["spacing6"];
 				i++;
 				mid=$(mid).attr("inputid");
 				$(this).prev().closest("th").prev().closest("th").html("0");
+			 
 				$(this).prev().closest("th").prev().closest("th").prev().closest("th").html("0");
-				$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th") .html("<input type='text'  mid='"+mid+"'  class='tiny'/>");
-					$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th") .html("<input type='text'  mid='"+mid+"'  class='tiny'/>");
+				$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th") .html("<input dlamt='dlamt' type='text'  mid='"+mid+"'  class='tiny' />");
+					$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th") .html("<input type='text'  mid='"+mid+"' dlqty='dlqty' class='tiny' />");
 				}); 
+ 
+  $("#div_mater table   td").prev().closest("th").prev().closest("th").css("background","#FFEEEE");
+    $("#div_mater table   td").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").css("background","#FFEEEE");
   });
   
   </script>
- <script type='text/javascript' src="js/postinspection.js"></script>
+ <script type='text/javascript' src="js/talukaapproval.js"></script>
  <style type="text/css">
  
  </style>
@@ -285,7 +289,11 @@ echo $tr;
   
   </div>
   </td></tr>
-  <tr><td colspan="6">  <input type='button' value='Save'  /></td></tr>
+  <tr><td >Transportation</td><td><input type="text" id="transportationchargers"/></td><td >Install Charges</td><td><input type="text" id="installchargers"/></td></tr>
+  <tr><td colspan="6">  <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
+  <tr><td colspan="5">Total amount(Material)</td><td id="materialAmt" ></td></tr>
+  <tr><td colspan="5">Vat@5.5%</td><td id="vatAmt"></td> </tr>
+  <tr><td colspan="5">Total amount(Material)+Vat@5.5%+Other charges</td><td id="totalBillAmt"></td> </tr>
   </table>
 </form>
  
