@@ -114,15 +114,16 @@ $spacing6=$row["spacing6"];
 				var mid="#mat_list tr:eq("+i+")";
 				i++;
 				mid=$(mid).attr("inputid");
-				$(this).prev().closest("th").prev().closest("th").html("0");
+				var amtid=$(this).prev().closest("th").prev().closest("th");
+				$(amtid).html("0");
 			 
-				$(this).prev().closest("th").prev().closest("th").prev().closest("th").html("0");
-				$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th") .html("<input dlamt='dlamt' type='text'  mid='"+mid+"'  class='tiny' />");
-					$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th") .html("<input type='text'  mid='"+mid+"' dlqty='dlqty' class='tiny' />");
+				$(amtid).prev().closest("th").html("0");
+				$(amtid).prev().closest("th").prev().closest("th") .html("<input dlamt='dlamt' type='text'  mid='"+mid+"'  class='tiny' />");
+					$(amtid).prev().closest("th").prev().closest("th").prev().closest("th") .html("<input type='text'  mid='"+mid+"' dlqty='dlqty' class='tiny' />");
 				}); 
- 
-  $("#div_mater table   td").prev().closest("th").prev().closest("th").css("background","#FFEEEE");
-    $("#div_mater table   td").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").css("background","#FFEEEE");
+ var aid=$("#div_mater table   td").prev().closest("th").prev().closest("th");
+  $(aid).css("background","#FFEEEE");
+    $(aid).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").css("background","#FFEEEE");
   });
   
   </script>
