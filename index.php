@@ -13,45 +13,31 @@
 
 <body bgcolor="#EEEEEE">
  
-<div class="loginbg"
-><table width="100%"><tr><td align="center">&nbsp;</td>
-</tr></table></div>
+
 <div class="content1">
 <form id="form_id" method="post" name="login_form">
 <input type="hidden" name="methodcall" value="validate_login"/>
-<table style="width:100% ">
-<tr><td style="height:120px;" align="center"><img src="images/Seal_of_Karnataka.png" height="150"/></td></tr>
+<table style="width:100% " >
+<tr><td style="height:120px;" align="center"> </td></tr>
 <tr align="center"><td>
- 
-<table  class="login_dialog"   border="0" cellspacing="0" cellpadding="0"  >
-  <tr>
-   
-    <td class="login_dialog" align="center" valign="top" style="background-image:url(/images/lg.png);">
- 
-<div class="dialogTitle">LOGIN FORM</div>
-    <table width="100%" border="0"   style="line-height:15px;   border:0px; padding:0; margin:0; background-color:#FFFFFF" cellpadding="0"  >
+ <div class="login"   > 
+<table   border="0"  width="100%" cellpadding="5px" style="line-height:25px;" >
 
-  <tr><td><input name="username" type="text" id="username" placeholder="USER ID" class="large align_right"/></td></tr>
+<tr><td style="border-bottom:1px solid #CCCCCC; height:35px;"><h3>LOGIN FORM</h3></td></tr>
+  <tr><td><input name="username" type="text" id="username" placeholder="USER ID" class="large" style="height:48px; margin:10px; padding-left:48px; background:url(images/user.png) no-repeat;"/></td></tr>
   
-  <tr><td ><input name="password" type="password" id="password" placeholder="PASSWORD" class="large align_right"  onkeypress="login.checklogin(event)" /></td></tr>
-  <tr><td>
-  		<table width="100%;" cellspacing="0" cellpadding="0">
- 	
-				 <tr>
-    					<td  > <a href="signup.php"><input type="button" value="Sign up"/></a>
-								 </td><td align="right" width="150px">		<input type="button" class="button_login" value=" Login " id="submit" onClick="login.validate()"  />   
-              			</td>
-    </tr>
-	 
-    </table>
-	</td></tr>
+  <tr><td ><input name="password" type="password" id="password" placeholder="PASSWORD" class="large" style="height:48px; margin:10px; padding-left:48px; background:url(images/pwd.png) no-repeat;" onkeypress="login.checklogin(event)" /></td></tr>
+  
+ 
+<tr><td style=" height:45px; background:#CCCCCC" >  <a href="signup.php"><input type="button" value="Sign up" style="height:40px; float:none; width:180px; padding:0; margin:0"/></a>
+								  	<input style="height:40px; float:none; width:180px; padding:0; margin:0" type="button" class="button_login" value=" Login " id="submit" onClick="login.validate()"  />   </td></tr>	
 </table>
 
-<div class="dialogBottom"><span id="errorMsg"></span></div>
+</div>
  </td>
   </tr>
   </table> 
-</table>
+
 </form>
  
 </div>

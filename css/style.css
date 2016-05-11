@@ -851,3 +851,23 @@ width:1370px;
 	clear:both;
 	float:right;
 	}
+	
+	div.login{
+	background-color:#FFFFFF; 
+	 text-align:center;
+	  -webkit-border-radius: 15px 15px 15px 15px;
+		-moz-border-radius:  15px 15px 15px 15px;
+		border-radius:  15px 15px 15px 15px; 
+		font-weight:bold;
+		color:#CCCCCC;
+	 
+		font-size:20px;
+		font-family:"Times New Roman", Times, serif;
+		 
+		 width:400px;
+		 text-align:"center";
+		 height:280px;
+		
+		 
+		text-align:center;
+	}
