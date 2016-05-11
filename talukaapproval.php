@@ -116,13 +116,15 @@ $spacing6=$row["spacing6"];
 				mid=$(mid).attr("inputid");
 				var amtid=$(this).prev().closest("th").prev().closest("th");
 				$(amtid).html("0");
-			 
+			 $(amtid).css("background","#FCF7D8");
 				$(amtid).prev().closest("th").html("0");
 				$(amtid).prev().closest("th").prev().closest("th") .html("<input dlamt='dlamt' type='text'  mid='"+mid+"'  class='tiny' />");
 					$(amtid).prev().closest("th").prev().closest("th").prev().closest("th") .html("<input type='text'  mid='"+mid+"' dlqty='dlqty' class='tiny' />");
 				}); 
  var aid=$("#div_mater table   td").prev().closest("th").prev().closest("th");
-  $(aid).css("background","#FFEEEE");
+   $(aid).prev().closest("th").prev().closest("th").prev().closest("th").css("background","#ECF3FF");
+      $(aid).prev().closest("th").prev().closest("th").css("background","#ECF3FF");
+	  $(aid).prev().closest("th").css("background","#ECF3FF");
     $(aid).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").css("background","#FFEEEE");
   });
   
@@ -146,7 +148,30 @@ $spacing6=$row["spacing6"];
    
 <tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td>  
  <td class="label small">Taluka approval date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> </tr>
- <tr><td class="labelh">Name</td></tr>
+ <tr>
+ <td class="labelh">Name</td>
+ <td class="labelh">&nbsp;</td>
+ <td class="labelh">&nbsp;</td>
+ <td class="labelh">Gender</td>
+ <td class="labelh">&nbsp;</td>
+ <td class="labelh">&nbsp;</td>
+ </tr>
+  <tr>
+ <td class="labelh">Cast</td>
+ <td class="labelh">&nbsp;</td>
+ <td class="labelh">&nbsp;</td>
+ <td class="labelh">Unicode</td>
+ <td class="labelh">&nbsp;</td>
+ <td class="labelh">&nbsp;</td>
+ </tr>
+  <tr>
+ <td class="labelh">Sector</td>
+ <td class="labelh">&nbsp;</td>
+ <td class="labelh">&nbsp;</td>
+ <td class="labelh">Name</td>
+ <td class="labelh">&nbsp;</td>
+ <td class="labelh">&nbsp;</td>
+ </tr>
 <tr class="labelh"><td></td>
 <td >Crop Name </td>
 <td >Area in hector </td>
