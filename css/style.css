@@ -120,7 +120,7 @@
 		-moz-border-radius:  15px 15px 0px 0px;
 		border-radius:  10px 10px 0px 0px; 
 		font-weight:bold;
-		color:#CCCCCC;
+		color:#f2f3f4;
 		padding-top:10px;
 		font-size:20px;
 		font-family:"Times New Roman", Times, serif;
@@ -405,7 +405,7 @@ a {cursor:pointer;}
 	text-align:center;
 	}
 	#fileupload tr:last-child td{
-	background-color:#CCCCCC;
+	background-color:#f2f3f4;
 	margin:10px;
 	height:140px;
 	}
@@ -515,22 +515,25 @@ color:#0066FF;
 .form{
 
 border:1px solid #666666;
-background-color:  #eaecee ;
+//background-color:  #eaecee ;
 margin-left:25px;
 margin-top:25px;
 padding:5px;
 -webkit-border-radius: 10px 10px 10px 10px;
 		-moz-border-radius:  10px 10px 10px 10px;
 		border-radius:  10px 10px 10px 10px; 
+		line-height:35px;
 		
 }
 .form tr:nth-child(odd) td{
-background-color: #f2f3f4 ;
+background-color: #f2f3f4  ;
 border-bottom:1px  solid #666666;
+line-height:35px;
 }
 .form tr:nth-child(even) td{
-background-color:#FFFFFF;
+//background-color:#FFFFFF;
 border-bottom:1px  solid #666666;
+line-height:35px;
 }
 
 
@@ -626,6 +629,7 @@ border-spacing: 0px;
 	background-color:#e5e7e9;
 	cursor:hand;
 	cursor:pointer;
+	line-height:35px;
 	 
 	}
 	table.grid tbody tr.active td:nth-child(1),.form table.grid tbody tr.active td:nth-child(1)
@@ -644,6 +648,7 @@ border-spacing: 0px;
 	}
 	 table.grid tbody tr:last-child td,.form table.grid tbody tr:last-child td{
 	border-bottom:0px;
+	
 	 
 	}
 	.infohighlight{
@@ -784,7 +789,8 @@ width:1370px;
 	
 	}
 	#status_board ul li:nth-child(even) div,#status_board ul li:nth-child(even),#status_board ul li:nth-child(even) div a{
-	background-color:#CCCCCC;
+	background-color:#f2f3f4;
+	 
 	}
 	
 	#status_board ul li:nth-child(odd) div,#status_board ul li:nth-child(odd),#status_board ul li:nth-child(odd) div a{
@@ -859,7 +865,7 @@ width:1370px;
 		-moz-border-radius:  15px 15px 15px 15px;
 		border-radius:  15px 15px 15px 15px; 
 		font-weight:bold;
-		color:#CCCCCC;
+		color:#f2f3f4;
 	 
 		font-size:20px;
 		font-family:"Times New Roman", Times, serif;
