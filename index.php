@@ -20,17 +20,17 @@
 <table style="width:100% " >
 <tr><td style="height:120px;" align="center"> </td></tr>
 <tr align="center"><td>
- <div class="login"   > 
+ <div class="login"  style="border:2px solid #CCCCCC; box-shadow: 15px 15px 5px #888888;"  > 
 <table   border="0"  width="100%" cellpadding="5px" style="line-height:25px;" >
 
 <tr><td style="border-bottom:1px solid #CCCCCC; height:35px;"><h3>LOGIN FORM</h3></td></tr>
-  <tr><td><input name="username" type="text" id="username" placeholder="USER ID" class="large" style="height:48px; margin:10px; padding-left:48px; background:url(images/user.png) no-repeat;"/></td></tr>
+  <tr><td><input name="username" type="text" id="username" placeholder="ACCESS ID" class="large" style="height:48px; margin:10px;  font-size:20px;  padding-left:48px; background:url(images/user.png) no-repeat;"/></td></tr>
   
-  <tr><td ><input name="password" type="password" id="password" placeholder="PASSWORD" class="large" style="height:48px; margin:10px; padding-left:48px; background:url(images/pwd.png) no-repeat;" onkeypress="login.checklogin(event)" /></td></tr>
+  <tr><td ><input name="password" type="password" id="password" placeholder="PASSWORD" class="large" style="height:48px; font-size:20px;  margin:10px; padding-left:48px; background:url(images/pwd.png) no-repeat;" onkeypress="login.checklogin(event)" /></td></tr>
   
  
-<tr><td style=" height:45px; background:#CCCCCC" >  <a href="signup.php"><input type="button" value="Sign up" style="height:40px; float:none; width:180px; padding:0; margin:0"/></a>
-								  	<input style="height:40px; float:none; width:180px; padding:0; margin:0" type="button" class="button_login" value=" Login " id="submit" onClick="login.validate()"  />   </td></tr>	
+<tr><td style=" height:45px;  ;" >  <a href="signup.php"><input type="button" value="Sign up" style="height:40px; float:none; font-size:20px;  width:180px; padding:0; margin:0"/></a>
+								  	<input style="height:40px; float:none; width:180px;  font-size:20px; padding:0; margin:0" type="button" class="button_login" value=" Login " id="submit" onClick="login.validate()"  />   </td></tr>	
 </table>
 
 </div>
