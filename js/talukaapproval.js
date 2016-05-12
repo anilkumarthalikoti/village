@@ -31,6 +31,8 @@ var talukaapproval=new function(){
 				$("#vatAmt").html(vat);
 				var tcharges=Number($("#transportationchargers").val());
 				var icharges=Number($("#installchargers").val());
-				$("#totalBillAmt").html(vat+totalBillAmt+tcharges+icharges);
+				var tbill=Number(vat)+Number(totalBillAmt)+Number(tcharges)+Number(icharges);
+				tbill=tbill.toFixed(2);
+				$("#totalBillAmt").html(tbill);
 	 }
 }
