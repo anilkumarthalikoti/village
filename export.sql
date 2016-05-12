@@ -260,6 +260,8 @@ CREATE TABLE cropitemsprice (
 	itemprice float,
 	units varchar(15),
 	standard_measure varchar(50) NOT NULL,
+	itemorder int,
+	isdeduct varchar(1) default 'N',
 	PRIMARY KEY (id),
 	unique key (itemname,standard_measure)
 );

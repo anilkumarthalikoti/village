@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Taluka-Approval</title>
+ 
 <?php 
  require "interceptor.php";
  require "server/app_connector.php";
@@ -117,10 +118,10 @@ $inpsected_date=$row["inspected_date"];
   //
   //div_mater
   //mat_list
-  
+  /*
   $("#div_mater").pivot($("#mat_list"), 
         { 
-            rows: ["NAME","UNIT","TYPE","QTY","GGRC PRICE","FIELD TOTAL","DEALER QTY","DEALER AMT",,"DEALER TOTAL","AMOUNT"] 
+            rows: ["ORDER","NAME","UNIT","TYPE","QTY","GGRC PRICE","FIELD TOTAL","DEALER QTY","DEALER AMT",,"DEALER TOTAL","Amount considered whichever is less"] 
         });
 		
 		$("[class='pvtRowLabel']").css("height","16px");
@@ -149,8 +150,9 @@ $inpsected_date=$row["inspected_date"];
       $(aid).prev().closest("th").prev().closest("th").css("background","#ECF3FF");
 	  $(aid).prev().closest("th").css("background","#ECF3FF");
     $(aid).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").css("background","#FFEEEE");
-  });
-  
+ */ 
+ });
+ 
   </script>
  <script type='text/javascript' src="js/talukaapproval.js"></script>
  <style type="text/css">
@@ -167,48 +169,64 @@ $inpsected_date=$row["inspected_date"];
 <input type="hidden" name="filling_id" value="<?php print $filling_id;?>"/>
 <input type="hidden" name="inspected_by" value="<?php print $user["id"]?>"/>
 <input type="hidden" name="material_save"/>
-<ul id="tabs">
-
-      <li><a id="tab1">Post inspection details </a></li>
-	   <li><a id="tab2">Calculation sheet</a></li>
-	    <li class="hide"><a id="tab3">Subcd</a></li>
-      
-	     
-       
-
-</ul>
- <div class="container" id="tab1C">
-  <table class="xlarge form">
+ 
+ 
+  <table class="excel90 form">
    
-<tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td>  
- <td class="label small">Taluka approval date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> </tr>
+<tr  ><td width="231" class="labelhhr">Logged user</td>
+<td width="221">: <?php print $user["login_id"]?> </td>
+
+ <td width="296" class="labelhhr">Taluka approval date</td>
+ <td width="100" class="tiny">: <input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> 
+ <td width="144"></td>  
+ <td width="144"></td>  
+ </tr>
  <tr>
- <td class="labelh right">Name</td>
- <td class="labelhx">:<?php print $name?></td>
- <td class="labelh right">Gender</td>
- <td class="labelhx">:<?php print $gender?></td>
- <td class="labelh right">Cast</td>
-  <td class="labelh right">:<?php print $cast?></td>
+ <td class="labelhhr"> Name of Farmer</td>
+ <td class="labelhhrx">:<?php print $name?></td>
+ <td class="labelhhr right">Gender</td>
+ <td class="labelhhrx">:<?php print $gender?></td>
+ <td class="labelhhr right">Cast</td>
+  <td class="labelhhr right">:<?php print $cast?></td>
  </tr>
   <tr>
-   <td class="labelh">Sector</td>
- <td class="labelhx">:<?php print $sector?></td>
- <td class="labelh">Unicode</td>
- <td class="labelhx">:<?php print $uniquecode?></td>
+   <td class="labelhhr">Unicode</td>
+ <td class="labelhhrx">:<?php print $uniquecode?></td>
+   <td class="labelhhr">Sector</td>
+ <td class="labelhhrx">:<?php print $sector?></td>
 
- <td class="labelh"></td>
- <td class="labelh">&nbsp;</td>
+
+ <td class="labelhhr"></td>
+ <td class="labelhhr">&nbsp;</td>
  </tr>
   <tr>
- <td class="labelh">Inspected by</td>
- <td class="labelhx">:<?php print $inspected_by?></td>
-  <td class="labelh">Inspection date</td>
- <td class="labelhx">:<?php print $inspected_date?></td>
- <td class="labelh">&nbsp;</td>
+ <td class="labelhhr">Village</td>
+ <td class="labelhhrx">:<?php print $inspected_by?></td>
+  <td class="labelhhr">Hobli</td>
+ <td class="labelhhrx">:<?php print $inspected_date?></td>
+ <td class="labelhhr">Taluka</td>
 
- <td class="labelh">&nbsp;</td>
+ <td class="labelhhr">:<?php print $inspected_date?></td>
  </tr>
-<tr class="labelh"><td></td>
+ <tr>
+ <td class="labelhhr">Constituency</td>
+ <td class="labelhhrx">:<?php print $inspected_by?></td>
+  <td class="labelhhr">District</td>
+ <td class="labelhhrx">:<?php print $inspected_date?></td>
+ <td class="labelhhr">Taluka</td>
+
+ <td class="labelhhr">:<?php print $inspected_date?></td>
+ </tr>
+  <tr>
+ <td class="labelhhr">Inspected by</td>
+ <td class="labelhhrx">:<?php print $inspected_by?></td>
+  <td class="labelhhr">Inspection date</td>
+ <td class="labelhhrx">:<?php print $inspected_date?></td>
+ <td class="labelhhr">&nbsp;</td>
+
+ <td class="labelhhr">&nbsp;</td>
+ </tr>
+<tr class="labelhhr"><td></td>
 <td >Crop Name </td>
 <td >Area in hector </td>
 <td  colspan="2">Row spacing </td>
@@ -301,42 +319,17 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 </tr>
  
  <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
-</table></div>
-<div class="container" id="tab2C">
-<table class="excel90 margin form">
-
-
-  <tr><td >
-  <div  >
-  <div id="div_mater">
-  <!--Calculation sheet-->
-  </div>
-  
-  
-  </div>
-  </td><td valign="top">
-  <table style="width:400px;" border="1"> <tr><td >Transportation</td><td><input type="text" id="transportationchargers"/></td></tr>
-  <tr>
-  <td >Install Charges</td><td><input type="text" id="installchargers"/></td> </tr>
-  
-  <tr><td >Total amount(Material)</td><td id="materialAmt" ></td></tr>
-  <tr><td >Vat@5.5%</td><td id="vatAmt"></td> </tr>
-  <tr><td >Total amount(Material)+Vat@5.5%+Other charges</td><td id="totalBillAmt"></td> </tr>
-   <tr><td colspan="2">  <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
-  
-  </table></td></tr>
-
-
-</table>
-
- </div>
-</form>
+<tr><td colspan="6">
  
-</div>
-
-
-<table class="form_grid xlarge margin hide" id="mat_list">
+  
+  <div id="div_mater"  >
+   
+ 
+  
+  
+<table class="form_grid excel90 margin " id="mat_list">
   <thead><tr>
+  <th>0RDER</th>
     <th>NAME</th>
     <th>UNIT</th>
     <th>TYPE</th>
@@ -346,27 +339,71 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 	<th>DEALER QTY</th>
 	<th>DEALER AMT</th>
 	<th>DEALER TOTAL </th>
-		<th>AMOUNT</th>
+		<th>Amount considered whichever is less</th>
   </tr></thead>
   <tbody>
   <?php 
-  $query="select itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." )  ";
+  $query="select  itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." )  order by cip.itemorder";
 $result=$conn->query($query);
-$sno=1;
+$lastorder=-1;
+$lastitem="";
+$tr="";
+$rowheight=1;
 foreach($result as $row){
-$tr="<tr> <td>param_1</td><td>param_2</td><td>param_3</td><td>param_4</td><td>param_5</td><td>param_6</td><td></td><td></td><td></td><td></td></tr>";
-  $tr=str_replace("param_1",$row["itemname"],$tr);
+
+if($lastorder!=$row["itemorder"]){
+if($lastorder!=-1){
+$prepend="<tr><td rowspan='".$rowheight."'>".$lastorder."</td><td rowspan='".$rowheight."'>".$lastitem."</td>";
+$tr.=" <td>param_2</td><td>param_3</td><td>param_4</td><td>param_5</td><td>param_6</td><td></td><td></td><td></td><td></td></tr>";
+ 
+ 
+  
   $tr=str_replace("param_2",$row["units"],$tr);
   $tr=str_replace("param_3",$row["standard_measure"],$tr);
   $tr=str_replace("param_4",$row["ggrcqty"],$tr);
   $tr=str_replace("param_5",$row["itemprice"],$tr);
  $tr=str_replace("param_6",$row["itemprice"]*$row["ggrcqty"],$tr);
+$tr=$prepend."".$tr."";
 echo $tr;
+}
+$lastorder=$row["itemorder"];
+$lastitem=$row["itemname"];
+$rowheight=1;
+$tr="";
+}
+$tr.=" <td>param_2</td><td>param_3</td><td>param_4</td><td>param_5</td><td>param_6</td><td></td><td></td><td></td><td></td></tr>";
+ 
+ 
+  
+  $tr=str_replace("param_2",$row["units"],$tr);
+  $tr=str_replace("param_3",$row["standard_measure"],$tr);
+  $tr=str_replace("param_4",$row["ggrcqty"],$tr);
+  $tr=str_replace("param_5",$row["itemprice"],$tr);
+ $tr=str_replace("param_6",$row["itemprice"]*$row["ggrcqty"],$tr);
+ $rowheight++;
+//echo $tr;
   }
   ?>
   
   </tbody>
   </table>
+ </div>
+   </td></tr>
+   
+  <tr>
+  <td >Install Charges</td><td colspan="5"><input type="text" id="installchargers"/></td> </tr>
+  
+  <tr><td >Total amount(Material)</td><td id="materialAmt" colspan="5"></td></tr>
+  <tr><td >Vat@5.5%</td><td id="vatAmt" colspan="5"></td> </tr>
+  <tr><td >Total amount(Material)+Vat@5.5%+Other charges</td><td id="totalBillAmt" colspan="5"></td> </tr>
+   <tr><td colspan="6">  <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
+  
+  </table> 
+ 
+</form>
+ 
+</div>
+
 
 
 </body>
