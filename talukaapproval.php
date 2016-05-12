@@ -24,14 +24,28 @@ $spacing6=0;
 $plants1=0;
 $plants2=0;
 $plants3=0;
-
+$name="";
+$gender="";
+$cast="";
+$sector="";
+$uniquecode="";
+$inspected_by="";
+$inspected_date="";
 $filling_id= $_POST["filling_id"];
 $query="select sum(coalesce(area1,0))+sum(coalesce(area2,0))+sum(coalesce(area3,0)) preallocated from postinspection_mstr where filling_id in(select id from schemefilling where (regid,schemeid) = (select regid,schemeid from schemefilling where id=".$filling_id."))";
 $result=$conn->query($query);
 foreach($result as $row){
 $preallocated=$row["preallocated"];
 }
-$query="select s.item1,s.item2,s.item3,p.croparea1,p.croparea2,p.croparea3,p.spacing1,p.spacing2,p.spacing3,p.spacing4,p.spacing5,p.spacing6 from schemefilling s,preinspection p where p.filling_id=s.id and s.id=".$filling_id."";
+$query="select user.login_id,pm.inspected_date,f.firstname,f.firstname_k,f.fathername,f.fathername_k,c.castname,c.castname_k,";
+$query.=" s.uniquecode ,f.gender, s.item1,s.item2,s.item3,p.croparea1,p.croparea2,p.croparea3,";
+$query.=" p.spacing1,p.spacing2,p.spacing3,p.spacing4,p.spacing5,p.spacing6 ,prj.name sectorname ";
+ 
+$query.=" from schemefilling s,preinspection p,postinspection_mstr pm, farmerdetails f,casts c,schemes prj,app_login user";
+$query.=" where ";
+$query.="  prj.id=s.subschemeid and c.id= f.usercast and f.id=s.regid and user.id= pm.inspected_by ";
+$query.=" and pm.filling_id= p.filling_id and p.filling_id=s.id and s.id=".$filling_id."";
+echo $query;
 $result=$conn->query($query);
 foreach($result as $row){
 $item1=$row["item1"];
@@ -46,7 +60,16 @@ $spacing3=$row["spacing3"];
 $spacing4=$row["spacing4"];
 $spacing5=$row["spacing5"];
 $spacing6=$row["spacing6"];
-
+$name=$row["firstname"]."/".$row["firstname_k"];
+$cast=$row["castname"]."/".$row["castname_k"];
+$uniquecode=$row["uniquecode"];
+$genders=array();
+$genders["M"]="MALE";
+$genders["F"]="FEMALE";
+$gender=$genders[$row["gender"]];
+$sector=$row["sectorname"];
+$inspected_by=$row["login_id"];
+$inpsected_date=$row["inspected_date"];
 }
 
  ?>
@@ -144,32 +167,45 @@ $spacing6=$row["spacing6"];
 <input type="hidden" name="filling_id" value="<?php print $filling_id;?>"/>
 <input type="hidden" name="inspected_by" value="<?php print $user["id"]?>"/>
 <input type="hidden" name="material_save"/>
-  <table class="form excel90">
+<ul id="tabs">
+
+      <li><a id="tab1">Post inspection details </a></li>
+	   <li><a id="tab2">Calculation sheet</a></li>
+	    <li class="hide"><a id="tab3">Subcd</a></li>
+      
+	     
+       
+
+</ul>
+ <div class="container" id="tab1C">
+  <table class="xlarge form">
    
 <tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td>  
  <td class="label small">Taluka approval date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> </tr>
  <tr>
- <td class="labelh">Name</td>
- <td class="labelh">&nbsp;</td>
- <td class="labelh">&nbsp;</td>
- <td class="labelh">Gender</td>
- <td class="labelh">&nbsp;</td>
- <td class="labelh">&nbsp;</td>
+ <td class="labelh right">Name</td>
+ <td class="labelhx">:<?php print $name?></td>
+ <td class="labelh right">Gender</td>
+ <td class="labelhx">:<?php print $gender?></td>
+ <td class="labelh right">Cast</td>
+  <td class="labelh right">:<?php print $cast?></td>
  </tr>
   <tr>
- <td class="labelh">Cast</td>
- <td class="labelh">&nbsp;</td>
- <td class="labelh">&nbsp;</td>
+   <td class="labelh">Sector</td>
+ <td class="labelhx">:<?php print $sector?></td>
  <td class="labelh">Unicode</td>
- <td class="labelh">&nbsp;</td>
+ <td class="labelhx">:<?php print $uniquecode?></td>
+
+ <td class="labelh"></td>
  <td class="labelh">&nbsp;</td>
  </tr>
   <tr>
- <td class="labelh">Sector</td>
+ <td class="labelh">Inspected by</td>
+ <td class="labelhx">:<?php print $inspected_by?></td>
+  <td class="labelh">Inspection date</td>
+ <td class="labelhx">:<?php print $inspected_date?></td>
  <td class="labelh">&nbsp;</td>
- <td class="labelh">&nbsp;</td>
- <td class="labelh">Name</td>
- <td class="labelh">&nbsp;</td>
+
  <td class="labelh">&nbsp;</td>
  </tr>
 <tr class="labelh"><td></td>
@@ -265,22 +301,41 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 </tr>
  
  <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
- <tr class="hide"><td>Material</td><td>:</td><td colspan="4"><select name="material" onchange="postinspection.updatePrice();">
+</table></div>
+<div class="container" id="tab2C">
+<table class="excel90 margin form">
+
+
+  <tr><td >
+  <div  >
+  <div id="div_mater">
+  <!--Calculation sheet-->
+  </div>
+  
+  
+  </div>
+  </td><td valign="top">
+  <table style="width:400px;" border="1"> <tr><td >Transportation</td><td><input type="text" id="transportationchargers"/></td></tr>
+  <tr>
+  <td >Install Charges</td><td><input type="text" id="installchargers"/></td> </tr>
+  
+  <tr><td >Total amount(Material)</td><td id="materialAmt" ></td></tr>
+  <tr><td >Vat@5.5%</td><td id="vatAmt"></td> </tr>
+  <tr><td >Total amount(Material)+Vat@5.5%+Other charges</td><td id="totalBillAmt"></td> </tr>
+   <tr><td colspan="2">  <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
+  
+  </table></td></tr>
+
+
+</table>
+
+ </div>
+</form>
  
- <?php 
- $result =$conn->select("cropitemsprice",array("id","itemname","itemprice","units"));
- foreach($result as $row){
- print "<option value='".$row["id"]."' price='".$row["itemprice"]."' units='".$row["units"]."'>".$row["itemname"]."</option>";
- }
- ?>
- 
- </select></td> </tr>
-  <tr  class="hide"><td>Dealer Price/Qty</td><td>:</td><td><input name='dAmount' type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='dQty' type='text' class='tiny1'/></td></tr>
-  <tr  class="hide"><td>GGRC Price/Qty</td><td>:</td><td><input name='gAmount' disabled="disabled" type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='gQty' type='text' class='tiny1'/></td></tr>
-  <tr><td colspan="6">
-  <div style="height:280px; overflow:auto">
-  <div id="div_mater"></div>
-  <table class="form_grid xlarge margin hide" id="mat_list">
+</div>
+
+
+<table class="form_grid xlarge margin hide" id="mat_list">
   <thead><tr>
     <th>NAME</th>
     <th>UNIT</th>
@@ -312,17 +367,7 @@ echo $tr;
   
   </tbody>
   </table>
-  
-  </div>
-  </td></tr>
-  <tr><td >Transportation</td><td><input type="text" id="transportationchargers"/></td><td >Install Charges</td><td><input type="text" id="installchargers"/></td></tr>
-  <tr><td colspan="6">  <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
-  <tr><td colspan="5">Total amount(Material)</td><td id="materialAmt" ></td></tr>
-  <tr><td colspan="5">Vat@5.5%</td><td id="vatAmt"></td> </tr>
-  <tr><td colspan="5">Total amount(Material)+Vat@5.5%+Other charges</td><td id="totalBillAmt"></td> </tr>
-  </table>
-</form>
- 
-</div>
+
+
 </body>
 </html>

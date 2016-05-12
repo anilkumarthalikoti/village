@@ -880,3 +880,6 @@ width:1370px;
 	.readonly{
 	disabled:"disabled";
 	}
+	.right{
+	text-align:"right";
+	}
