@@ -27,7 +27,7 @@ var talukaapproval=new function(){
 				$("#materialAmt").html(totalBillAmt);
 				var vat=(totalBillAmt)/1.055;
 				vat=totalBillAmt-vat;
-				vat=Math.round(vat);
+				vat=vat.toFixed(2);
 				$("#vatAmt").html(vat);
 				var tcharges=Number($("#transportationchargers").val());
 				var icharges=Number($("#installchargers").val());
