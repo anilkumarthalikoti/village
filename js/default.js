@@ -33,6 +33,7 @@ $('#tabs li a').click(function(){
 	  
 	  showWeek: true
 	  });
+	  $(".readonly").attr("disabled",true);
 			 pramukhIME.addLanguage(PramukhIndic,"kannada"); 
        
         

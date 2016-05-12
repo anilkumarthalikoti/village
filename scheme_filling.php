@@ -95,7 +95,8 @@ $finyear=$row["finyear"];
 		  
 		  <tr><td colspan="6" class="hide" id="cropbase">
 		  <table>
-		 
+		  <tr><td>Unique Code/Reference No</td><td>:</td><td><input type="text" name="uniquecode" placeholder="UNIQUE CODE/REFERENCE NO"/></td></tr>
+		<tr> 
 	    <td class="label">Crop </td>
 	    <td>:</td>
 	    <td><select name="item1" onchange="schemefilling.enableArea(this,'1')" >

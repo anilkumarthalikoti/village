@@ -18,6 +18,7 @@ $params["item3"]=$_POST["item3"];
  $params["area1"]=$_POST["area1"];
 $params["area2"]=$_POST["area2"];
 $params["area3"]=$_POST["area3"];
+$params["uniquecode"]=$_POST["uniquecode"];
 $params["regby"]=$_SESSION["logged_in"];
 $params["regdate"]=date("Y-m-d h:i:sa");
 $query="select finyear from financialyear where current_date between startfrom and endson";

@@ -629,7 +629,7 @@ border-spacing: 0px;
 	background-color:#e5e7e9;
 	cursor:hand;
 	cursor:pointer;
-	line-height:35px;
+	//line-height:35px;
 	 
 	}
 	table.grid tbody tr.active td:nth-child(1),.form table.grid tbody tr.active td:nth-child(1)
@@ -876,4 +876,7 @@ width:1370px;
 		
 		 
 		text-align:center;
+	}
+	.readonly{
+	disabled:"disabled";
 	}

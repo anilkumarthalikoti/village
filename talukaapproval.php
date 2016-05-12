@@ -180,7 +180,7 @@ $spacing6=$row["spacing6"];
 </tr>
 <tr crop1="crop1">
 <td>Crop -1 </td>
-<td><select name="crop1" class="tiny1"  >
+<td><select name="crop1"   class="tiny1 readonly"  >
 <option value="-1">Select-Crop</option>
 <?php 
 $result=$conn->select("cropitems",array("id","cropname"));
@@ -191,12 +191,12 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
 
 </select></td>
  
- <td ><input type="text" name="area1" class="tiny" value="<?php print $area1;?>"/></td>
+ <td ><input type="text" name="area1" class="tiny readonly"   value="<?php print $area1;?>"/></td>
  <td> 
-<input type="text" name="spacing1" class="tiny" value="<?php print $spacing1;?>"/>X
-<input type="text" name="spacing4" class="tiny" value="<?php print $spacing4;?>"/>
+<input type="text" name="spacing1" class="tiny readonly"   value="<?php print $spacing1;?>"/>X
+<input type="text" name="spacing4" class="tiny readonly"   value="<?php print $spacing4;?>"/>
 
-</td><td><select name="aspacing1" class="fit" disabled="disabled"  style="width:100px;"   >
+</td><td><select name="aspacing1" class="fit readonly"    style="width:100px;"   >
 <option value="-1">Select</option>
 <?php 
 $result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
@@ -205,7 +205,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 }
 ?>
 
-</select></td><td><input type="text" name="pspacing1" class="tiny"  value="<?php print $plants1;?>"/></td>
+</select></td><td><input type="text" name="pspacing1" class="tiny readonly"    value="<?php print $plants1;?>"/></td>
 </tr>
 <tr  crop2="crop2">
 <td>Crop-2</td>

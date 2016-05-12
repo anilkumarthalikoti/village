@@ -165,6 +165,7 @@ CREATE TABLE schemefilling (
 	area2 FLOAT,
 	area3 FLOAT,
 	finacyear varchar(30),
+	uniquecode varchar(50),
 	PRIMARY KEY (id)
 	
 ) ;

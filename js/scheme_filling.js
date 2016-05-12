@@ -15,7 +15,7 @@
 	 this.enableArea=function(){
 		 
 		 if($("input[name='landsurvayno[]']:checked").length>0){
-			 
+			 $("input[name='uniquecode']").attr("disabled",false);
 																					    $("input[name='area1']").attr("disabled",false);
 																						   $("input[name='area2']").attr("disabled",false);
 																						   $("input[name='area3']").attr("disabled",false);

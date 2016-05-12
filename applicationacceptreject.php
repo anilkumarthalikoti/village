@@ -204,6 +204,7 @@ $titles["8"]="Forward to RSK for post-inspection";
  }
  ?>
 <th>Reg.No</th>
+<th>Unique/Reference</th>
 <th>Name</th>
 <th>Relation</th>
 <th>Village</th>
@@ -250,7 +251,7 @@ if($status=="13A" || $status=="13B"  ){
 $status=13;
 }
  $village="select id from landdetails where villageid in (select villageid from village v,actionmapping am where  v.hobliid =am.hobliid and am.regid=".$user["id"].")";
-$query="select sf.id schemefillingid, sf.regid, f.firstname,f.fathername,";
+$query="select sf.uniquecode,sf.id schemefillingid, sf.regid, f.firstname,f.fathername,";
 $query.=" ( select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid and ld.id= landdetailsid)";
  $query.=" and villageid= s.id) village,(select state_name from village ,states s where villageid in (select ld.villageid from schemefilling_land, landdetails ld where sf.id= fillingid ";$query.=" and ld.id= landdetailsid) and hobliid= s.id) hobli,c.castname, ";
 $query.=" (select group_concat(l.landsono separator ', ') from schemefilling_land sfl,landdetails l where fillingid=sf.id and l.id= sfl.landdetailsid) survayno, ";
@@ -309,6 +310,7 @@ crop3="<?php print $row["item3"];?>"
  ?>
 
 <td><?php print $row["schemefillingid"];?></td>
+<td><?php print $row["uniquecode"];?></td>
 <td><?php print $row["firstname"];?></td>
 <td><?php print $row["fathername"];?></td>
 <td><?php print $row["village"];?></td>
