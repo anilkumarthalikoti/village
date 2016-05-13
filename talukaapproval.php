@@ -328,8 +328,19 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
   
   
 <table class="form_grid excel90 margin " id="mat_list">
-  <thead><tr>
-  <th>0RDER</th>
+  <thead>
+  <tr style="border-bottom:1px solid #FFFFFF;">
+  <th>&nbsp;</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th colspan="3"  style="border-bottom:1px solid #FFFFFF;" >AS PER FIELD </th>
+  <th colspan="3"  style="border-bottom:1px solid #FFFFFF;">AS PER BILL </th>
+  <th rowspan="2" >Amount considered whichever is less</th>
+  </tr>
+  <tr>
+  
+  <th>S.no</th>
     <th>NAME</th>
     <th>UNIT</th>
     <th>TYPE</th>
@@ -339,52 +350,54 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 	<th>DEALER QTY</th>
 	<th>DEALER AMT</th>
 	<th>DEALER TOTAL </th>
-		<th>Amount considered whichever is less</th>
-  </tr></thead>
+		</tr></thead>
   <tbody>
   <?php 
-  $query="select  itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." )  order by cip.itemorder";
+  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." )  order by cip.itemorder";
 $result=$conn->query($query);
 $lastorder=-1;
 $lastitem="";
 $tr="";
 $rowheight=1;
-foreach($result as $row){
-
-if($lastorder!=$row["itemorder"]){
-if($lastorder!=-1){
-$prepend="<tr><td rowspan='".$rowheight."'>".$lastorder."</td><td rowspan='".$rowheight."'>".$lastitem."</td>";
-$tr.=" <td>param_2</td><td>param_3</td><td>param_4</td><td>param_5</td><td>param_6</td><td></td><td></td><td></td><td></td></tr>";
- 
- 
-  
-  $tr=str_replace("param_2",$row["units"],$tr);
-  $tr=str_replace("param_3",$row["standard_measure"],$tr);
-  $tr=str_replace("param_4",$row["ggrcqty"],$tr);
-  $tr=str_replace("param_5",$row["itemprice"],$tr);
- $tr=str_replace("param_6",$row["itemprice"]*$row["ggrcqty"],$tr);
-$tr=$prepend."".$tr."";
-echo $tr;
+$master=array();
+$itemname=array();
+$dtl=array();
+foreach($result as $row){ 
+if(!isset($master[$row["itemorder"]])){
+$master[$row["itemorder"]]=array();
+$itemname[$row["itemorder"]]=$row["itemname"];
 }
-$lastorder=$row["itemorder"];
-$lastitem=$row["itemname"];
-$rowheight=1;
-$tr="";
-}
-$tr.=" <td>param_2</td><td>param_3</td><td>param_4</td><td>param_5</td><td>param_6</td><td></td><td></td><td></td><td></td></tr>";
- 
- 
-  
-  $tr=str_replace("param_2",$row["units"],$tr);
-  $tr=str_replace("param_3",$row["standard_measure"],$tr);
-  $tr=str_replace("param_4",$row["ggrcqty"],$tr);
-  $tr=str_replace("param_5",$row["itemprice"],$tr);
- $tr=str_replace("param_6",$row["itemprice"]*$row["ggrcqty"],$tr);
- $rowheight++;
-//echo $tr;
+$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"]);
   }
-  ?>
   
+  foreach ($master as $name => $values) {
+  $rowheight=count($values);
+   echo "<tr><td rowspan='$rowheight'>$name</td><td rowspan='$rowheight'>$itemname[$name]</td>";
+   $i=0;
+   foreach ($values as $val1) {
+   if($i==1){
+   echo"<tr>";
+   }
+   $id=-1;
+   
+   foreach($val1 as $val){
+   if($id==-1){
+   $id=$val;
+   }else{
+      echo "<td>$val</td>";
+	  }
+	  }
+	   echo"<td><input type='text' mid='$id' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' dqty='damt' class='tiny'/></td><td> </td><td></td>";
+	  if($i==0){
+	  
+	  $i=1;
+	  }
+	  echo "</tr>";
+   }
+  
+
+   }
+  ?>
   </tbody>
   </table>
  </div>

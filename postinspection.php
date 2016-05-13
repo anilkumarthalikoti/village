@@ -95,26 +95,7 @@ $spacing6=$row["spacing6"];
   //div_mater
   //mat_list
   
-  $("#div_mater").pivot($("#mat_list"), 
-        { 
-            rows: ["Name","Unit","Type","Qty"] 
-        });
-		
-		$("[class='pvtRowLabel']").css("height","16px");
-							  $("[class='pvtVal']").css("padding","5px");
-							  $("[class='pvtAxisLabel']").css("height","16px");
-							   $("[class='pvtColLabel']").css("height","16px");
-						 
-							   $("[class='pvtColLabel']").css("background-color","#FFFFFF");
-							     $("[class='pvtVal']").css("background-color","#FFFFFF");
-							  $("[class='pvtAxisLabel']").css("background-color","#FFFFFF");
-							  var i=1;
-				$("#div_mater table   td").each(function(){
-				var mid="#mat_list tr:eq("+i+")";
-				i++;
-				mid=$(mid).attr("inputid");
-				$(this).prev().closest("th").html("<input type='text'  mid='"+mid+"'  class='tiny'/>");
-				});
+   
   });
   
   </script>
@@ -223,47 +204,76 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 </tr>
  
  <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
- <tr class="hide"><td>Material</td><td>:</td><td colspan="4"><select name="material" onchange="postinspection.updatePrice();">
  
- <?php 
- $result =$conn->select("cropitemsprice",array("id","itemname","itemprice","units"));
- foreach($result as $row){
- print "<option value='".$row["id"]."' price='".$row["itemprice"]."' units='".$row["units"]."'>".$row["itemname"]."</option>";
- }
- ?>
- 
- </select></td> </tr>
-  <tr  class="hide"><td>Dealer Price/Qty</td><td>:</td><td><input name='dAmount' type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='dQty' type='text' class='tiny1'/></td></tr>
-  <tr  class="hide"><td>GGRC Price/Qty</td><td>:</td><td><input name='gAmount' disabled="disabled" type='text' class='tiny1'/></td><td>Qty</td><td>:</td><td><input name='gQty' type='text' class='tiny1'/></td></tr>
   <tr><td colspan="6">
-  <div style="height:280px; overflow:auto">
-  <div id="div_mater"></div>
-  <table class="form_grid xlarge margin hide" id="mat_list">
-  <thead><tr><th>Name</th><th>Unit</th><th>Type</th><th>Qty</th></tr></thead>
+ 
+  
+  
+  </td></tr>
+  
+  </table>
+</form>
+  </td> 
+</tr></table>
+<div id="div_mater" style='background:#ffffff'>
+  
+  <table class=" xlarge margin" border="1px" id="mat_list" style='background:#ffffff'>
+  <thead><tr><th>S.no</th><th>Name</th><th>Unit</th><th>Type</th><th>Qty</th><th>Remarks</th></tr></thead>
   <tbody>
   <?php 
-  $query="select  id,itemname,standard_measure,units from cropitemsprice order by itemname,standard_measure";
+  $query="select  id,itemname,standard_measure,units,itemorder from cropitemsprice order by itemorder";
   $result=$conn->query($query);
-  foreach($result as $row){
-  $tr="<tr inputid='param_4'><td>param_1</td><td>param_2</td><td>param_3</td><td><input type='text' class='tiny'  id='param_4' /></td></tr>";
-  $tr=str_replace("param_1",$row["itemname"],$tr);
-  $tr=str_replace("param_2",$row["units"],$tr);
-  $tr=str_replace("param_3",$row["standard_measure"],$tr);
-  $tr=str_replace("param_4",$row["id"],$tr);
-  echo $tr;
+  $lastorder=-1;
+$lastitem="";
+$tr="";
+$rowheight=1;
+$master=array();
+$itemname=array();
+$dtl=array();
+foreach($result as $row){ 
+if(!isset($master[$row["itemorder"]])){
+$master[$row["itemorder"]]=array();
+$itemname[$row["itemorder"]]=$row["itemname"];
+}
+$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"]);
   }
+  
+  foreach ($master as $name => $values) {
+  $rowheight=count($values);
+   echo "<tr><td rowspan='$rowheight'>$name</td><td rowspan='$rowheight'>$itemname[$name]</td>";
+   $i=0;
+   foreach ($values as $val1) {
+   if($i==1){
+   echo"<tr>";
+   }
+   $id=-1;
+   
+   foreach($val1 as $val){
+   if($id==-1){
+   $id=$val;
+   }else{
+      echo "<td>$val</td>";
+	  }
+	  }
+	   echo"<td><input type='text' mid='$id' class='tiny'/></td>";
+	  if($i==0){
+	  echo "<td rowspan='$rowheight' style='border:1px solid #000000' ><textarea ></textarea></td>";
+	  $i=1;
+	  }
+	  echo "</tr>";
+   }
+  
+
+   }
   ?>
   
   </tbody>
+  <tfoot><tr><td colspan="6"><input type='button' value='Save' onclick='postinspection.savePostInspection();' /></td></tr></tfoot>
   </table>
-  
+ 
   </div>
-  </td></tr>
-  <tr><td colspan="6">  <input type='button' value='Save' onclick='postinspection.savePostInspection();' /></td></tr>
-  </table>
-</form>
-  </td><td valign="top" class="hide">&nbsp;</td>
-</tr></table>
+  
+  
 </div>
 </body>
 </html>
