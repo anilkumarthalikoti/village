@@ -31,6 +31,7 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
 <form name"formcrop"  >
 
  <table class="form margin xlarge">
+ <tr><td>Grouping Id</td><td>:</td><td> <input type="text"   name="itemorder" id="itemorder"/></td></tr>
  <tr><td>Item name</td><td>:</td><td><input type="text" name="itemname" id="itemname" placeholder="Item name"/><input type="hidden" name="mat_id" id="mat_id" value="-1"/></td></tr>
  <tr><td>Item Price</td><td>:</td><td> <input type="text"   name="itemprice" id="itemprice"/></td></tr>
  <tr><td>Standard measure</td><td>:</td><td> <input type="text"   name="standard_measure" id="standard_measure"/></td></tr>
@@ -39,18 +40,22 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
  <option value="No's">No's</option>
  <option value="Meter">Meter</option>
  </select></td></tr>
+ <tr><td>Is Deductable</td><td>:</td><td><select name="isdeduct">
+ <option value="N">NO</option>
+ <option value="Y">YES</option>
+ </select></td></tr>
  <tr><td colspan="3"><input type="button" class="button" value="Clear" onclick="location.reload(); "/><input type="button" class="button" value="Save"  onclick="itemtrn.saveupdate();" /></td></tr>
  
  </table>
  <table class="grid margin xlarge" id="existing">
- <thead><tr><th></th><th>Item name</th><th>Standard Measure</th><th> Units</th><th>Price</th></tr></thead>
+ <thead><tr><th></th><th>Item name</th><th>Standard Measure</th><th>Group Id</th><th>Is deductable</th><th> Units</th><th>Price</th></tr></thead>
  <tbody>
  <?php 
- 
- $result=$conn->select("cropitemsprice",array("id","itemname","standard_measure","units","itemprice"));
+ $query="select id,itemname,standard_measure,itemorder,isdeduct,units,itemprice from cropitemsprice order by itemorder";
+ $result=$conn->query($query);
  $i=1;
  foreach($result as $row){
- echo "<tr id='".$row["id"]."'><td>".$i."</td><td>".$row["itemname"]."</td><td>".$row["standard_measure"]."</td><td>".$row["units"]."</td><td>".$row["itemprice"]."</td></tr>";
+ echo "<tr id='".$row["id"]."'><td>".$i."</td><td>".$row["itemname"]."</td><td>".$row["standard_measure"]."</td><td>".$row["itemorder"]."</td><td>".$row["isdeduct"]."</td><td>".$row["units"]."</td><td>".$row["itemprice"]."</td></tr>";
 $i++;
  }
  ?>
