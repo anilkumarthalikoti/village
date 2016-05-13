@@ -1,29 +1,35 @@
 var talukaapproval=new function(){
  this.calculateSheet=function(){
  
-	 $("input[dlamt]").attr("disabled",true);
-	 $("input[dlqty]").attr("disabled",true);
-	  var i=1;
+	 $("input[damt]").attr("disabled",true);
+	 $("input[dqty]").attr("disabled",true);
+	  var i=0;
 	  var totalBillAmt=0;
-	 	$("#div_mater table   td").each(function(){
-				var mid="#mat_list tr:eq("+i+")";
-				i++;
-				mid=$(mid).attr("inputid");
+	  $( "input[damt]").each(function(){
+    
+          
+		 
+		 var tr="#mat_list tbody tr:eq("+i+")";
+		  
+									 var amt=$(tr).find("input[damt]").val();
+				var qty=$(tr).find("input[dqty]").val();
 				
-			 
-				//$(this).prev().closest("th").prev().closest("th").prev().closest("th").html("0");
-				var amt=$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").find("input").val();
-				var qty=$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").find("input").val();
 				var tamt= amt*qty;
-				var ftotal=$(this).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").text();
-				$(this).prev().closest("th").prev().closest("th").prev().closest("th").html(tamt);
+				
+				var ftotal=$(tr).find("td:eq(7)").text();//field total
+				alert(amt+":"+qty+":"+tamt+":"+ftotal);
+				$(tr).find("td:eq(10)").html(tamt);
 				var setAmt=ftotal;
 				if(tamt<ftotal){
 				ftotal=tamt;
 				}
 				totalBillAmt=Number(totalBillAmt)+Number(ftotal);
-				$(this).prev().closest("th").prev().closest("th").html(ftotal);
-				}); 
+				$(tr).find("td:eq(11)").html(ftotal);
+				 i++;
+     
+});
+	   
+	 	  
 				$("#materialAmt").html(totalBillAmt);
 				var vat=(totalBillAmt)/1.055;
 				vat=totalBillAmt-vat;

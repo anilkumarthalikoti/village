@@ -387,7 +387,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
       echo "<td>$val</td>";
 	  }
 	  }
-	   echo"<td><input type='text' mid='$id' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' dqty='damt' class='tiny'/></td><td> </td><td></td>";
+	   echo"<td><input type='text' mid='$id' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' damt='damt' class='tiny'/></td><td> </td><td></td>";
 	  if($i==0){
 	  
 	  $i=1;
