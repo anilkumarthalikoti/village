@@ -3,7 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Taluka-Approval</title>
- 
+ <style type="text/css">
+ #mat_list tbody tr td:last{
+  #background-color:#FCF7D8;
+ }
+
+ </style>
 <?php 
  require "interceptor.php";
  require "server/app_connector.php";
@@ -46,7 +51,7 @@ $query.=" from schemefilling s,preinspection p,postinspection_mstr pm, farmerdet
 $query.=" where ";
 $query.="  prj.id=s.subschemeid and c.id= f.usercast and f.id=s.regid and user.id= pm.inspected_by ";
 $query.=" and pm.filling_id= p.filling_id and p.filling_id=s.id and s.id=".$filling_id."";
-echo $query;
+ 
 $result=$conn->query($query);
 foreach($result as $row){
 $item1=$row["item1"];
@@ -284,7 +289,7 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
  
  
  
- </td><td><select name="aspacing2" class="fit" disabled="disabled"    style="width:100px;"  >
+ </td><td><select name="aspacing2" class="fit readonly"    style="width:100px;"  >
  <option value="-1">Select</option>
 <?php 
 $result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
@@ -307,7 +312,7 @@ echo "<option value='".$row["id"]."'>".$row["cropname"]."</option>";
 </select></td>
 <td ><input type="text" name="area3" class="tiny" value="<?php print $area3;?>"/></td>
  <td ><input type="text" name="spacing3" class="tiny" value="<?php print $spacing3;?>"/>X
- <input type="text" name="spacing6" class="tiny" value="<?php print $spacing6;?>"/> </td><td><select name="aspacing3" class="fit" disabled="disabled"   style="width:100px;"   >
+ <input type="text" name="spacing6" class="tiny" value="<?php print $spacing6;?>"/> </td><td><select name="aspacing3" class="fit readonly"   style="width:100px;"   >
  <option value="-1">Select</option>
 <?php 
 $result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
@@ -319,15 +324,17 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 </tr>
  
  <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
-<tr><td colspan="6">
+ </table>
+ <table class="excel margin">
+<tr><td>
  
   
-  <div id="div_mater"  >
+  <div id="div_mater" style="width:100%;"  >
    
  
   
   
-<table class="form_grid excel90 margin " id="mat_list">
+<table class="sheet excel90 margin " id="mat_list">
   <thead>
   <tr style="border-bottom:1px solid #FFFFFF;">
   <th>&nbsp;</th>
@@ -336,20 +343,20 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
   <th></th>
   <th colspan="3"  style="border-bottom:1px solid #FFFFFF;" >AS PER FIELD </th>
   <th colspan="3"  style="border-bottom:1px solid #FFFFFF;">AS PER BILL </th>
-  <th rowspan="2" >Amount considered whichever is less</th>
+  <th rowspan="2" width="150" >Amount considered whichever is less</th>
   </tr>
   <tr>
   
   <th>S.no</th>
-    <th>NAME</th>
-    <th>UNIT</th>
-    <th>TYPE</th>
-    <th>QTY</th>
-    <th>GGRC PRICE</th>
-    <th>FIELD TOTAL</th>
+    <th width="150px">NAME</th>
+    <th width="50">UNIT</th>
+    <th width="80">TYPE</th>
+    <th width="50">QTY</th>
+    <th width="100">GGRC PRICE</th>
+    <th width="100">FIELD TOTAL</th>
 	<th>DEALER QTY</th>
 	<th>DEALER AMT</th>
-	<th>DEALER TOTAL </th>
+	<th width="100">DEALER TOTAL </th>
 		</tr></thead>
   <tbody>
   <?php 
@@ -379,11 +386,12 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
    echo"<tr>";
    }
    $id=-1;
-   
+   $col=0;
    foreach($val1 as $val){
    if($id==-1){
    $id=$val;
    }else{
+   
       echo "<td>$val</td>";
 	  }
 	  }
@@ -398,18 +406,155 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
 
    }
   ?>
+  
   </tbody>
+  <tfoot>
+  <tr>
+             <td bgcolor="#FCE9FE" class="text-center">a</td>
+             <td colspan="3" bgcolor="#FCE9FE"><strong>Total Amount (1 to 15)</strong></td>
+             <td bgcolor="#FCE9FE">&nbsp;</td>
+             <td bgcolor="#FCE9FE">&nbsp;</td>
+             <td bgcolor="#FCE9FE"><input disabled type="text" id="fieldtotal" ></td>
+             <td bgcolor="#FCE9FE">&nbsp;</td>
+             <td bgcolor="#FCE9FE">&nbsp;</td>
+             <td bgcolor="#FCE9FE"><input disabled type="text" id="dealertotal" ></td>
+             <td bgcolor="#FCE9FE"><input disabled type="text" id="materialAmt" ></td>
+           </tr>
+           <tr>
+             <td bgcolor="#E8E8E8" class="text-center">b</td>
+             <td colspan="3" bgcolor="#E8E8E8"><strong>Vat at 5.5%</strong></td>
+             <td bgcolor="#E8E8E8">&nbsp;</td>
+             <td bgcolor="#E8E8E8">&nbsp;</td>
+             <td bgcolor="#E8E8E8"><input disabled type="text" id="fieldVat" ></td>
+             <td bgcolor="#E8E8E8">&nbsp;</td>
+             <td bgcolor="#E8E8E8">&nbsp;</td>
+             <td bgcolor="#E8E8E8"><input disabled type="text" id="dealerVat" ></td>
+             <td bgcolor="#E8E8E8"><input disabled type="text" id="vatAmt" ></td>
+           </tr>
+           <tr>
+             <td bgcolor="#E1FFFF" class="text-center">I</td>
+             <td colspan="3" bgcolor="#E1FFFF"><strong>Total (a+b)</strong></td>
+             <td bgcolor="#E1FFFF">&nbsp;</td>
+             <td bgcolor="#E1FFFF">&nbsp;</td>
+             <td bgcolor="#E1FFFF"><input disabled type="text" id="totalFieldVat" ></td>
+             <td bgcolor="#E1FFFF">&nbsp;</td>
+             <td bgcolor="#E1FFFF">&nbsp;</td>
+             <td bgcolor="#E1FFFF"><input disabled type="text" id="dealerTotalVat" ></td>
+             <td bgcolor="#E1FFFF"><input disabled type="text" id="totalBillAmt" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">II</td>
+             <td>Transportation</td>
+             <td>NA</td>
+             <td>NA</td>
+             <td class="bill-bg-light"><input type="text" ></td>
+             <td class="bill-bg-light"><input type="text" ></td>
+             <td class="bill-bg-dark"><input disabled type="text" ></td>
+             <td class="field-bg-light"><input disabled type="text" ></td>
+             <td class="field-bg-light"><input disabled type="text" ></td>
+             <td class="field-bg-dark"><input disabled type="text" ></td>
+             <td class="amnt-consi"><input disabled type="text" ></td> 
+           </tr>
+           <tr>
+             <td class="text-center">III</td>
+             <td>Installation</td>
+             <td>NA</td>
+             <td>NA</td>
+             <td class="bill-bg-light"><input type="text" ></td>
+             <td class="bill-bg-light"><input type="text" ></td>
+             <td class="bill-bg-dark"><input disabled type="text" ></td>
+             <td class="field-bg-light"><input disabled type="text" ></td>
+             <td class="field-bg-light"><input disabled type="text" ></td>
+             <td class="field-bg-dark"><input disabled type="text" ></td>
+             <td class="amnt-consi"><input disabled type="text" ></td> 
+           </tr>
+           <tr>
+             <td bgcolor="#FCFADA" class="text-center">&nbsp;</td>
+             <td colspan="3" bgcolor="#FCFADA"><strong>Grand Total (I+II+III)</strong></td>
+             <td bgcolor="#FCFADA">&nbsp;</td>
+             <td bgcolor="#FCFADA">&nbsp;</td>
+             <td bgcolor="#FCFADA"><input disabled type="text" ></td>
+             <td bgcolor="#FCFADA">&nbsp;</td>
+             <td bgcolor="#FCFADA">&nbsp;</td>
+             <td bgcolor="#FCFADA"><input disabled type="text" ></td>
+             <td bgcolor="#FCFADA"><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">&nbsp;</td>
+             <td colspan="4"><strong>Maximum Cost of Installation as per guidlines</strong></td>
+             <td colspan="2" class="text-center"><strong>Spacing</strong></td>
+             <td colspan="3" class="text-center">&nbsp;</td>
+             <td><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td bgcolor="#F8DAA3" class="text-center">&nbsp;</td>
+             <td colspan="9" bgcolor="#F8DAA3"><strong>Amount considered for subsidy (whichever is less) (round down)</strong></td>
+             <td bgcolor="#F8DAA3"><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">A</td>
+             <td colspan="9">Total land holding  of farmer (in hector)</td>
+             <td><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">B</td>
+             <td colspan="9">Total area for which sibsidy claimed in previous years (in hector)</td>
+             <td><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">C</td>
+             <td colspan="9">Drip installed area in present year (in hector)</td>
+             <td><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">D</td>
+
+             <td colspan="9">Area considered at 90% subsidy (up to 2 hector)</td>
+             <td><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">E</td>
+             <td colspan="9">Subsidy amount at 90% as per guidlines</td>
+             <td><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">F</td>
+             <td colspan="9">Area considered at 50% subsidy (more than 2 hector and up to 5 hector)</td>
+             <td><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">G</td>
+             <td colspan="9">Subsidy amount at 50% as per guidlines</td>
+             <td><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">H</td>
+             <td colspan="9" bgcolor="#B5FF6A">Total (E+G)</td>
+             <td bgcolor="#B5FF6A"><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">I</td>
+             <td>Less if any</td>
+             <td colspan="8"><input disabled type="text"  placeholder="reason for less"></td>
+             <td><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">J</td>
+             <td colspan="9" bgcolor="#B5FF6A">Amount recommended for Subsidy (H-I)</td>
+             <td bgcolor="#B5FF6A"><input disabled type="text" ></td>
+           </tr>
+           <tr>
+             <td class="text-center">K</td>
+             <td>Amount in words</td>
+             <td colspan="9"><input disabled type="text" ></td>
+            </tr>       
+  <tr><td colspan="11"> <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
+  </tfoot>
   </table>
  </div>
    </td></tr>
    
-  <tr>
-  <td >Install Charges</td><td colspan="5"><input type="text" id="installchargers"/></td> </tr>
-  
-  <tr><td >Total amount(Material)</td><td id="materialAmt" colspan="5"></td></tr>
-  <tr><td >Vat@5.5%</td><td id="vatAmt" colspan="5"></td> </tr>
-  <tr><td >Total amount(Material)+Vat@5.5%+Other charges</td><td id="totalBillAmt" colspan="5"></td> </tr>
-   <tr><td colspan="6">  <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
+   
   
   </table> 
  

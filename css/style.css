@@ -889,3 +889,7 @@ width:1370px;
 	font-weight:bold;
 	
 	}
+	.sheet tr td, .sheet tr th{
+	border:1px solid #999999;
+	 
+	}

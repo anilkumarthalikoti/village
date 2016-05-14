@@ -217,7 +217,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 </tr></table>
 <div id="div_mater" style='background:#ffffff'>
   
-  <table class=" xlarge margin" border="1px" id="mat_list" style='background:#ffffff'>
+  <table class=" xlarge margin"   id="mat_list" style='background:#ffffff'>
   <thead><tr><th>S.no</th><th>Name</th><th>Unit</th><th>Type</th><th>Qty</th><th>Remarks</th></tr></thead>
   <tbody>
   <?php 
