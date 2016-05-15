@@ -39,7 +39,12 @@ $inspected_by="";
 $inspected_date="";
 $filling_id= $_POST["filling_id"];
 $farmerland=0;
-
+$village="";
+$hobli="";
+$taluka="";
+$district="";
+$consti="";
+$landsurvaynos="";
 
 $query="select sum(coalesce(area1,0))+sum(coalesce(area2,0))+sum(coalesce(area3,0)) preallocated from postinspection_mstr where filling_id in(select id from schemefilling where (regid,schemeid) = (select regid,schemeid from schemefilling where id=".$filling_id."))";
 $result=$conn->query($query);
@@ -84,6 +89,7 @@ $inpsected_date=$row["inspected_date"];
 
  ?>
  <link href="css/pivot.css" type="text/css" rel="stylesheet"/>
+  <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
  <script type="text/javascript" src="js/pivot.js"></script>
   <script type="text/javascript">
   
@@ -113,6 +119,11 @@ $inpsected_date=$row["inspected_date"];
     $("[crop1='crop1']").show();
 	$("select[name='crop1'] ").val("<?php print $item1;?>");
 	setspacing("<?php print $spacing1;?>","aspacing1");
+	var selectedspacing=$("select[name='aspacing1'] option:selected").val();
+	var maxamtkey="#price tr[spacingid='"+selectedspacing+"']:last";
+ 
+	var maxamt=$(maxamtkey).attr("amount");
+	$("#maxamount_a1").val(maxamt);
   }
     if(<?php print $item2?>!="-1"){
       $("[crop2='crop2']").show();
@@ -124,48 +135,49 @@ $inpsected_date=$row["inspected_date"];
 	 $("select[name='crop3'] ").val("<?php print $item3;?>");
 	 setspacing("<?php print $spacing3;?>","aspacing3");
   }
-  //
-  //div_mater
-  //mat_list
-  /*
-  $("#div_mater").pivot($("#mat_list"), 
-        { 
-            rows: ["ORDER","NAME","UNIT","TYPE","QTY","GGRC PRICE","FIELD TOTAL","DEALER QTY","DEALER AMT",,"DEALER TOTAL","Amount considered whichever is less"] 
-        });
-		
-		$("[class='pvtRowLabel']").css("height","16px");
-							  $("[class='pvtVal']").css("padding","5px");
-							  $("[class='pvtAxisLabel']").css("height","16px");
-							   $("[class='pvtColLabel']").css("height","16px");
-						 
-							   $("[class='pvtColLabel']").css("background-color","#FFFFFF");
-							     $("[class='pvtVal']").css("background-color","#FFFFFF");
-							  $("[class='pvtAxisLabel']").css("background-color","#FFFFFF");
-							  var i=1;
-							  
-				$("#div_mater table   td").each(function(){
-				var mid="#mat_list tr:eq("+i+")";
-				i++;
-				mid=$(mid).attr("inputid");
-				var amtid=$(this).prev().closest("th").prev().closest("th");
-				$(amtid).html("0");
-			 $(amtid).css("background","#FCF7D8");
-				$(amtid).prev().closest("th").html("0");
-				$(amtid).prev().closest("th").prev().closest("th") .html("<input dlamt='dlamt' type='text'  mid='"+mid+"'  class='tiny' />");
-					$(amtid).prev().closest("th").prev().closest("th").prev().closest("th") .html("<input type='text'  mid='"+mid+"' dlqty='dlqty' class='tiny' />");
-				}); 
- var aid=$("#div_mater table   td").prev().closest("th").prev().closest("th");
-   $(aid).prev().closest("th").prev().closest("th").prev().closest("th").css("background","#ECF3FF");
-      $(aid).prev().closest("th").prev().closest("th").css("background","#ECF3FF");
-	  $(aid).prev().closest("th").css("background","#ECF3FF");
-    $(aid).prev().closest("th").prev().closest("th").prev().closest("th").prev().closest("th").css("background","#FFEEEE");
- */ 
+   
  });
  
   </script>
  <script type='text/javascript' src="js/talukaapproval.js"></script>
  <style type="text/css">
+ input[type='text']{
  
+ border-radius: 0px;
+ height:30px;
+ }
+ 
+ .mrgn-left	{
+	  margin-left:30px;
+  }
+  
+  .mrgn-right	{
+	  margin-right:30px;
+  } 
+ 
+   
+  .bill-bg-light	{
+	background-color:#ECF3FF;
+  }
+  .bill-bg-dark	{
+	background-color:#E1E8FF;
+  }
+  
+  .field-bg-light	{
+	background-color:#F1FDE8;
+  }
+  .field-bg-dark	{
+	background-color:#E3FAD3;
+  }
+  .amnt-consi	{
+	  background-color:#FCF7D8;
+  }
+  .txt-bold	{
+	  font-weight:bold;
+  }
+  .txt-undrln	{
+	  text-decoration:underline;
+  }
  </style>
  
 </head>
@@ -179,62 +191,98 @@ $inpsected_date=$row["inspected_date"];
 <input type="hidden" name="inspected_by" value="<?php print $user["id"]?>"/>
 <input type="hidden" name="material_save"/>
  
- 
-  <table class="excel90 form">
+ <div style="width:90%">
+ <div>
+      <div class="modal-body">
+        <br>
+ <table class="table table-bordered table-condensed">
    
-<tr  ><td width="231" class="labelhhr">Logged user</td>
-<td width="221">: <?php print $user["login_id"]?> </td>
+<tr  ><td   class="txt-bold">Logged user:</td>
+<td  ><input type='text' class='form-control input-sm readonly' style="width:150px" value="<?php print $user["login_id"]?>"/> </td>
 
- <td width="296" class="labelhhr">Taluka approval date</td>
- <td width="100" class="tiny">: <input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> 
- <td width="144"></td>  
- <td width="144"></td>  
+ <td  class="txt-bold" >Taluka approval date:</td>
+ <td    ><input type="text" placeholder="dd/MM/yyyy" name="inspected_date " class="datepicker" style="width:120px" id="inspectiondate"/>  </td> 
+ 
  </tr>
- <tr>
- <td class="labelhhr"> Name of Farmer</td>
- <td class="labelhhrx">:<?php print $name?></td>
- <td class="labelhhr right">Gender</td>
- <td class="labelhhrx">:<?php print $gender?></td>
- <td class="labelhhr right">Cast</td>
-  <td class="labelhhr right">:<?php print $cast?></td>
- </tr>
-  <tr>
-   <td class="labelhhr">Unicode</td>
- <td class="labelhhrx">:<?php print $uniquecode?></td>
-   <td class="labelhhr">Sector</td>
- <td class="labelhhrx">:<?php print $sector?></td>
-
-
- <td class="labelhhr"></td>
- <td class="labelhhr">&nbsp;</td>
- </tr>
-  <tr>
- <td class="labelhhr">Village</td>
- <td class="labelhhrx">:<?php print $inspected_by?></td>
-  <td class="labelhhr">Hobli</td>
- <td class="labelhhrx">:<?php print $inspected_date?></td>
- <td class="labelhhr">Taluka</td>
-
- <td class="labelhhr">:<?php print $inspected_date?></td>
- </tr>
- <tr>
- <td class="labelhhr">Constituency</td>
- <td class="labelhhrx">:<?php print $inspected_by?></td>
-  <td class="labelhhr">District</td>
- <td class="labelhhrx">:<?php print $inspected_date?></td>
- <td class="labelhhr">Taluka</td>
-
- <td class="labelhhr">:<?php print $inspected_date?></td>
- </tr>
-  <tr>
- <td class="labelhhr">Inspected by</td>
- <td class="labelhhrx">:<?php print $inspected_by?></td>
-  <td class="labelhhr">Inspection date</td>
- <td class="labelhhrx">:<?php print $inspected_date?></td>
- <td class="labelhhr">&nbsp;</td>
-
- <td class="labelhhr">&nbsp;</td>
- </tr>
+ </table>
+ 
+ <table class="table table-bordered table-condensed">
+          <tr>
+            <td class="txt-bold">1) Name of Farmer:</td>
+            <td class="txt-bold"><input disabled type="text" value="<?php print $name?>" class="form-control input-sm"></td>
+            <td class="txt-bold">2) Gender:</td>
+            <td class="txt-bold"><input disabled type="text" value="<?php print $gender?>" class="form-control input-sm"></td>
+            <td class="txt-bold">3) Caste:</td>
+            <td class="txt-bold"><input disabled type="text" value="<?php print $cast?>" class="form-control input-sm"></td>
+          </tr>
+        </table>
+    <table class="table table-bordered table-condensed">
+          <tr>
+            <td class="txt-bold">4) Unique Code:</td>
+            <td class="txt-bold"><input disabled type="number" value="<?php print $uniquecode?>" class="form-control input-sm"></td>
+            <td class="txt-bold">5) PMKSY/CHD:</td>
+            <td class="txt-bold"><input disabled type="text"  value="<?php print $sector?>" class="form-control input-sm"></td>
+          </tr>
+ 	 </table>
+   <table class="table table-bordered table-condensed">
+          <tr>
+            <td class="txt-bold">6) Village:</td>
+            <td class="txt-bold"><input disabled type="text"  value="<?php print $village?>"class="form-control input-sm"></td>
+            <td class="txt-bold">7) Hobali:</td>
+            <td class="txt-bold"><input disabled type="text" value="<?php print $hobli?>" class="form-control input-sm"></td>
+            <td class="txt-bold">8) Taluk:</td>
+            <td class="txt-bold"><input disabled type="text" value="<?php print $taluka?>" class="form-control input-sm"></td>
+            <td class="txt-bold">9) Constituency:</td>
+            <td class="txt-bold"><input disabled type="text" value="<?php print $consti?>" class="form-control input-sm"></td>
+            <td class="txt-bold">10) District:</td>
+            <td class="txt-bold"><input disabled type="text" value="<?php print $district?>" class="form-control input-sm"></td>
+          </tr>
+  </table>
+ 
+     <table class="table table-bordered table-condensed">
+          <tr>
+            <td class="txt-bold">11) Land Survey No.:</td>
+            <td class="txt-bold"><input disabled type="text" value="<?php print $landsurvaynos?>" class="form-control input-sm"></td>
+            <td class="txt-bold">12) Total Land holding area of farmer (hector):</td>
+            <td class="txt-bold"><input disabled type="number" value="<?php print $farmerland?>" class="form-control input-sm"></td>
+          </tr>
+  </table>
+ 
+         <table class="table table-bordered table-condensed">
+          <tr>
+            <td class="txt-bold bg-danger">13) Area for which subsidy availed in previous years (hector):</td>
+            <td class="txt-bold bg-danger"><input type="text" class="form-control input-sm" id="preallocatedtemp" placeholder="Must enter this field"></td>
+            <td class="txt-bold">14) Remaining area (hector):</td>
+            <td class="txt-bold"><input disabled type="text" class="form-control input-sm"></td>
+          </tr>
+  </table>
+ 
+     <table class="table table-bordered table-condensed">
+          <tr>
+            <td class="txt-bold bg-danger">15) Deduct:</td>
+            <td class="txt-bold bg-danger" width="90px"><select class="form-control">
+            	<option selected>No</option>
+                <option>Yes</option>
+                </select>
+            </td>
+            <td class="txt-bold">Screen Filter:</td>
+            <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
+            <td class="txt-bold">By-pass Assembly:</td>
+            <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
+            <td class="txt-bold">Ventury & Manifold:</td>
+            <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
+            <td class="txt-bold">Total Amount:</td>
+            <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>            
+          </tr>
+ 		</table>
+    <table class="table table-bordered table-condensed">
+          <tr>
+            <td width="15%" class="txt-bold bg-danger">16) Reason for deduction:</td>
+            <td class="txt-bold bg-danger"><input type="text" class="form-control input-sm"></td>
+          </tr>
+ 		</table>
+		
+		 <table class="table table-bordered table-condensed">
 <tr class="labelhhr"><td></td>
 <td >Crop Name </td>
 <td >Area in hector </td>
@@ -326,11 +374,23 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 ?>
 </select></td><td><input type="text" name="pspacing3" class="tiny"  value="<?php print $plants3;?>" /></td>
 </tr>
- 
- <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated"   value="0" id="preallocatedtemp"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
  </table>
+    
+        <table class="table table-bordered table-condensed">
+          <tr>
+            <td class="txt-bold">28) Field Inspected Officer Name and Designation:</td>
+            <td class="txt-bold"><input disabled value="<?php print $inspected_by?>" type="text" class="form-control input-sm"></td>
+            <td class="txt-bold">29) Date of Inspection:</td>
+            <td class="txt-bold"><input disabled   value="<?php print $inspected_date?>" class="form-control input-sm"></td>            
+          </tr>
+	 	</table>
  
-  
+ 
+   </div>
+    </div>
+
+ </div>
+ 
   <div id="div_mater" class="margin"  >
    
  
@@ -349,12 +409,12 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
   </tr>
   <tr>
   
-  <th  >S.no</th>
-    <th  >NAME</th>
-    <th  >UNIT</th>
-    <th  >TYPE</th>
-    <th >QTY</th>
-    <th  >GGRC PRICE</th>
+  <th >S.no</th>
+    <th >NAME</th>
+    <th >UNIT</th>
+    <th >TYPE</th>
+    <th>QTY</th>
+    <th >GGRC PRICE</th>
     <th >FIELD TOTAL</th>
 	<th  >DEALER QTY</th>
 	<th  >DEALER AMT</th>
@@ -485,8 +545,17 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td class="text-center">&nbsp;</td>
              <td colspan="4"><strong>Maximum Cost of Installation as per guidlines</strong></td>
              <td colspan="2" class="text-center"><strong>Spacing</strong></td>
-             <td colspan="3" class="text-center">&nbsp;</td>
-             <td><input disabled type="text" ></td>
+             <td colspan="3" class="text-center"><select name="aspacing1" class="fit readonly"    style="width:100px;"   >
+<option value="-1">Select</option>
+<?php 
+$result=$conn->select("spacing",array("id","spacing","startfrom","endsat"));
+foreach($result as $row){
+echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$row["endsat"].">".$row["spacing"]."</option>";
+}
+?>
+
+</select></td>
+             <td><input disabled type="text" id="maxamount_a1"></td>
            </tr>
            <tr>
              <td bgcolor="#F8DAA3" class="text-center">&nbsp;</td>
@@ -559,7 +628,18 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
 </form>
  
 </div>
+<div CLASS="hide">
+<table id="price">
+<?php 
+$query="SELECT s.spacing, s.id, si.spacing_area, si.amount FROM  spacing_installdetails si, spacing s WHERE s.id = si.spacingid ORDER BY s.id, si.amount";
+$result  =$conn->query($query);
+foreach($result as $row){
+echo "<tr spacingid='".$row['id']."' spacingarea='".$row['spacing_area']."' amount='".$row['amount']."'   ><td>".$row['id']."</td><td>".$row['spacing']."</td><td>".$row['spacing_area']."</td><td>".$row['amount']."</td></tr>";
+}
+?>
+</table>
 
+</div>
 
 
 </body>
