@@ -38,12 +38,15 @@ $uniquecode="";
 $inspected_by="";
 $inspected_date="";
 $filling_id= $_POST["filling_id"];
+$farmerland=0;
+
+
 $query="select sum(coalesce(area1,0))+sum(coalesce(area2,0))+sum(coalesce(area3,0)) preallocated from postinspection_mstr where filling_id in(select id from schemefilling where (regid,schemeid) = (select regid,schemeid from schemefilling where id=".$filling_id."))";
 $result=$conn->query($query);
 foreach($result as $row){
 $preallocated=$row["preallocated"];
 }
-$query="select user.login_id,pm.inspected_date,f.firstname,f.firstname_k,f.fathername,f.fathername_k,c.castname,c.castname_k,";
+$query="select user.login_id,(select sum(totalland) from landdetails where regid=f.id) farmerland,pm.inspected_date,f.firstname,f.firstname_k,f.fathername,f.fathername_k,c.castname,c.castname_k,";
 $query.=" s.uniquecode ,f.gender, s.item1,s.item2,s.item3,p.croparea1,p.croparea2,p.croparea3,";
 $query.=" p.spacing1,p.spacing2,p.spacing3,p.spacing4,p.spacing5,p.spacing6 ,prj.name sectorname ";
  
@@ -54,6 +57,7 @@ $query.=" and pm.filling_id= p.filling_id and p.filling_id=s.id and s.id=".$fill
  
 $result=$conn->query($query);
 foreach($result as $row){
+$farmerland=$row["farmerland"];
 $item1=$row["item1"];
 $item2=$row["item2"];
 $item3=$row["item3"];
@@ -323,18 +327,16 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 </select></td><td><input type="text" name="pspacing3" class="tiny"  value="<?php print $plants3;?>" /></td>
 </tr>
  
- <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
+ <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated"   value="0" id="preallocatedtemp"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
  </table>
- <table class="excel margin">
-<tr><td>
  
   
-  <div id="div_mater" style="width:100%;"  >
+  <div id="div_mater" class="margin"  >
    
  
   
   
-<table class="sheet excel90 margin " id="mat_list">
+<table class="sheet excel90" id="mat_list">
   <thead>
   <tr style="border-bottom:1px solid #FFFFFF;">
   <th>&nbsp;</th>
@@ -343,20 +345,20 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
   <th></th>
   <th colspan="3"  style="border-bottom:1px solid #FFFFFF;" >AS PER FIELD </th>
   <th colspan="3"  style="border-bottom:1px solid #FFFFFF;">AS PER BILL </th>
-  <th rowspan="2" width="150" >Amount considered whichever is less</th>
+  <th rowspan="2"   >Amount considered whichever is less</th>
   </tr>
   <tr>
   
-  <th>S.no</th>
-    <th width="150px">NAME</th>
-    <th width="50">UNIT</th>
-    <th width="80">TYPE</th>
-    <th width="50">QTY</th>
-    <th width="100">GGRC PRICE</th>
-    <th width="100">FIELD TOTAL</th>
-	<th>DEALER QTY</th>
-	<th>DEALER AMT</th>
-	<th width="100">DEALER TOTAL </th>
+  <th  >S.no</th>
+    <th  >NAME</th>
+    <th  >UNIT</th>
+    <th  >TYPE</th>
+    <th >QTY</th>
+    <th  >GGRC PRICE</th>
+    <th >FIELD TOTAL</th>
+	<th  >DEALER QTY</th>
+	<th  >DEALER AMT</th>
+	<th  >DEALER TOTAL </th>
 		</tr></thead>
   <tbody>
   <?php 
@@ -379,7 +381,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
   
   foreach ($master as $name => $values) {
   $rowheight=count($values);
-   echo "<tr><td rowspan='$rowheight'>$name</td><td rowspan='$rowheight'>$itemname[$name]</td>";
+   echo "<tr><td rowspan='$rowheight'>$name</td><td rowspan='$rowheight' style='width:250px;'>$itemname[$name]</td>";
    $i=0;
    foreach ($values as $val1) {
    if($i==1){
@@ -429,7 +431,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td bgcolor="#E8E8E8">&nbsp;</td>
              <td bgcolor="#E8E8E8">&nbsp;</td>
              <td bgcolor="#E8E8E8"><input disabled type="text" id="dealerVat" ></td>
-             <td bgcolor="#E8E8E8"><input disabled type="text" id="vatAmt" ></td>
+             <td bgcolor="#E8E8E8"><input disabled type="text" id="totalVatAmt" ></td>
            </tr>
            <tr>
              <td bgcolor="#E1FFFF" class="text-center">I</td>
@@ -494,69 +496,65 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
            <tr>
              <td class="text-center">A</td>
              <td colspan="9">Total land holding  of farmer (in hector)</td>
-             <td><input disabled type="text" ></td>
+             <td><input disabled type="text" id="totalLandHolding" value="<?php echo $farmerland?>" ></td>
            </tr>
            <tr>
              <td class="text-center">B</td>
              <td colspan="9">Total area for which sibsidy claimed in previous years (in hector)</td>
-             <td><input disabled type="text" ></td>
+             <td><input disabled type="text" id="preAllocatedLand" ></td>
            </tr>
            <tr>
              <td class="text-center">C</td>
              <td colspan="9">Drip installed area in present year (in hector)</td>
-             <td><input disabled type="text" ></td>
+             <td><input disabled type="text" id="presentLand" ></td>
            </tr>
            <tr>
              <td class="text-center">D</td>
 
              <td colspan="9">Area considered at 90% subsidy (up to 2 hector)</td>
-             <td><input disabled type="text" ></td>
+             <td><input disabled type="text" id="land90" ></td>
            </tr>
            <tr>
              <td class="text-center">E</td>
              <td colspan="9">Subsidy amount at 90% as per guidlines</td>
-             <td><input disabled type="text" ></td>
+             <td><input disabled type="text" id='land90subsidy' ></td>
            </tr>
            <tr>
              <td class="text-center">F</td>
              <td colspan="9">Area considered at 50% subsidy (more than 2 hector and up to 5 hector)</td>
-             <td><input disabled type="text" ></td>
+             <td><input disabled type="text" id='land50' ></td>
            </tr>
            <tr>
              <td class="text-center">G</td>
              <td colspan="9">Subsidy amount at 50% as per guidlines</td>
-             <td><input disabled type="text" ></td>
+             <td><input disabled type="text" id='land50subsidy' ></td>
            </tr>
            <tr>
              <td class="text-center">H</td>
              <td colspan="9" bgcolor="#B5FF6A">Total (E+G)</td>
-             <td bgcolor="#B5FF6A"><input disabled type="text" ></td>
+             <td bgcolor="#B5FF6A"><input disabled type="text" id='totalSubsidy' ></td>
            </tr>
            <tr>
              <td class="text-center">I</td>
              <td>Less if any</td>
              <td colspan="8"><input disabled type="text"  placeholder="reason for less"></td>
-             <td><input disabled type="text" ></td>
+             <td><input disabled type="text" id='lessAmount' ></td>
            </tr>
            <tr>
              <td class="text-center">J</td>
              <td colspan="9" bgcolor="#B5FF6A">Amount recommended for Subsidy (H-I)</td>
-             <td bgcolor="#B5FF6A"><input disabled type="text" ></td>
+             <td bgcolor="#B5FF6A"><input disabled type="text" id='avalibleSubsidy'></td>
            </tr>
            <tr>
              <td class="text-center">K</td>
              <td>Amount in words</td>
-             <td colspan="9"><input disabled type="text" ></td>
+             <td colspan="9"><input disabled type="text" id='amountinwords' ></td>
             </tr>       
   <tr><td colspan="11"> <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
   </tfoot>
   </table>
  </div>
-   </td></tr>
-   
-   
-  
-  </table> 
+    
  
 </form>
  
