@@ -59,8 +59,9 @@ $query.=" from schemefilling s,preinspection p,postinspection_mstr pm, farmerdet
 $query.=" where ";
 $query.="  prj.id=s.subschemeid and c.id= f.usercast and f.id=s.regid and user.id= pm.inspected_by ";
 $query.=" and pm.filling_id= p.filling_id and p.filling_id=s.id and s.id=".$filling_id."";
- 
+ echo $query;
 $result=$conn->query($query);
+
 foreach($result as $row){
 $farmerland=$row["farmerland"];
 $item1=$row["item1"];
@@ -422,7 +423,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 		</tr></thead>
   <tbody>
   <?php 
-  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." )  order by cip.itemorder";
+  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='Y'  order by cip.itemorder";
 $result=$conn->query($query);
 $lastorder=-1;
 $lastitem="";
@@ -504,32 +505,53 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td bgcolor="#E1FFFF"><input disabled type="text" id="dealerTotalVat" ></td>
              <td bgcolor="#E1FFFF"><input disabled type="text" id="totalBillAmt" ></td>
            </tr>
-           <tr>
-             <td class="text-center">II</td>
-             <td>Transportation</td>
-             <td>NA</td>
-             <td>NA</td>
-             <td class="bill-bg-light"><input type="text" ></td>
-             <td class="bill-bg-light"><input type="text" ></td>
-             <td class="bill-bg-dark"><input disabled type="text" ></td>
-             <td class="field-bg-light"><input disabled type="text" ></td>
-             <td class="field-bg-light"><input disabled type="text" ></td>
-             <td class="field-bg-dark"><input disabled type="text" ></td>
-             <td class="amnt-consi"><input disabled type="text" ></td> 
-           </tr>
-           <tr>
-             <td class="text-center">III</td>
-             <td>Installation</td>
-             <td>NA</td>
-             <td>NA</td>
-             <td class="bill-bg-light"><input type="text" ></td>
-             <td class="bill-bg-light"><input type="text" ></td>
-             <td class="bill-bg-dark"><input disabled type="text" ></td>
-             <td class="field-bg-light"><input disabled type="text" ></td>
-             <td class="field-bg-light"><input disabled type="text" ></td>
-             <td class="field-bg-dark"><input disabled type="text" ></td>
-             <td class="amnt-consi"><input disabled type="text" ></td> 
-           </tr>
+		    <?php 
+  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='N'  order by cip.itemorder";
+$result=$conn->query($query);
+$lastorder=-1;
+$lastitem="";
+$tr="";
+$rowheight=1;
+$master=array();
+$itemname=array();
+$dtl=array();
+foreach($result as $row){ 
+if(!isset($master[$row["itemorder"]])){
+$master[$row["itemorder"]]=array();
+$itemname[$row["itemorder"]]=$row["itemname"];
+}
+$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"]);
+  }
+  
+  foreach ($master as $name => $values) {
+  $rowheight=count($values);
+   echo "<tr><td rowspan='$rowheight'>$name</td><td rowspan='$rowheight' style='width:250px;'>$itemname[$name]</td>";
+   $i=0;
+   foreach ($values as $val1) {
+   if($i==1){
+   echo"<tr>";
+   }
+   $id=-1;
+   $col=0;
+   foreach($val1 as $val){
+   if($id==-1){
+   $id=$val;
+   }else{
+   
+      echo "<td>$val</td>";
+	  }
+	  }
+	   echo"<td><input type='text' mid='$id' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' damt='damt' class='tiny'/></td><td> </td><td></td>";
+	  if($i==0){
+	  
+	  $i=1;
+	  }
+	  echo "</tr>";
+   }
+  
+
+   }
+  ?>
            <tr>
              <td bgcolor="#FCFADA" class="text-center">&nbsp;</td>
              <td colspan="3" bgcolor="#FCFADA"><strong>Grand Total (I+II+III)</strong></td>

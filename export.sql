@@ -262,6 +262,7 @@ CREATE TABLE cropitemsprice (
 	standard_measure varchar(50) NOT NULL,
 	itemorder int,
 	isdeduct varchar(1) default 'N',
+	isvat varchar(1) default 'Y',
 	PRIMARY KEY (id),
 	unique key (itemname,standard_measure)
 );
