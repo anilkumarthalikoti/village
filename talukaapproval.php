@@ -423,7 +423,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 		</tr></thead>
   <tbody>
   <?php 
-  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='Y'  order by cip.itemorder";
+  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice,isdeduct from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='Y'  order by cip.itemorder";
 $result=$conn->query($query);
 $lastorder=-1;
 $lastitem="";
@@ -437,7 +437,7 @@ if(!isset($master[$row["itemorder"]])){
 $master[$row["itemorder"]]=array();
 $itemname[$row["itemorder"]]=$row["itemname"];
 }
-$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"]);
+$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"],$row["isdeduct"]);
   }
   
   foreach ($master as $name => $values) {
@@ -450,15 +450,21 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
    }
    $id=-1;
    $col=0;
+   $isdeduct='Y';
    foreach($val1 as $val){
    if($id==-1){
    $id=$val;
    }else{
-   
+   if($col==6){
+   $isdeduct=$val;
+   }
+   if($col!=6){
       echo "<td>$val</td>";
 	  }
 	  }
-	   echo"<td><input type='text' mid='$id' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' damt='damt' class='tiny'/></td><td> </td><td></td>";
+	  $col++;
+	  }
+	   echo"<td><input type='text' mid='$id' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' isdeduct='$isdeduct' damt='damt' class='tiny'/></td><td> </td><td></td>";
 	  if($i==0){
 	  
 	  $i=1;
