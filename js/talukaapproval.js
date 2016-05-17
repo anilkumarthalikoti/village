@@ -7,6 +7,7 @@ var talukaapproval=new function(){
 	  var totalBillAmt=0;
 	  var fieldTotal=0;
 	  var dealerTotal=0;
+	  var nonVatAmt=0;
 	  $( "input[damt]").each(function(){
     
           
@@ -135,8 +136,9 @@ var talukaapproval=new function(){
 				}else{
 				var spacingselected=$("select[name='aspacing1'] option:selected").val();
 				var roundval=Math.round10(final90,-1);
-				var trkey="#price tr[spacingid='"+spacingselected+"'] [spacingarea='"+roundval.toFixed(2)+"']";
-				$("#land90subsidy").val($(trkey).attr("amount"));
+				var trkey="#price tr[spacingid='"+spacingselected+"'][spacingarea='"+roundval.toFixed(2)+"']";
+				var amtat90=($(trkey).attr("amount")*90)/100;
+				$("#land90subsidy").val(amtat90);
 				}
 				if(final50==0){
 				$("#land50subsidy").val(0);
@@ -147,8 +149,8 @@ var talukaapproval=new function(){
 				var roundval=Math.round10(final50,-1);
 				
 				var trkey="#price tr[spacingid='"+spacingselected+"'][spacingarea='"+roundval.toFixed(2)+"']";
-				 
-				$("#land50subsidy").val($(trkey).attr("amount"));
+				 var amtat50=($(trkey).attr("amount")*50)/100;
+				$("#land50subsidy").val(amtat50);
 				}
 				var totalAvlAmt=Number($("#land90subsidy").val())+Number($("#land50subsidy").val());
 				$("#totalSubsidy").val(totalAvlAmt);
