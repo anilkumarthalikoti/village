@@ -8,16 +8,24 @@ var talukaapproval=new function(){
 	  var fieldTotal=0;
 	  var dealerTotal=0;
 	  var nonVatAmt=0;
+	  var deduction=0;
 	  $( "input[damt]").each(function(){
     
-          
+         
+		  
+		  var applydeduction=$("#isdeduct option:selected").val();
+		 
+		 
 		 
 		 var tr="#mat_list tbody tr:eq("+i+")";
 		   
-									 var amt=$(tr).find("input[damt]").val();
-				var qty=$(tr).find("input[dqty]").val();
+									 var amt=toNumber($(tr).find("input[damt]").val());
+									  
+									  var isvat=$(tr).find("input[damt]").attr("isvat");
+									   var isdeduct=$(tr).find("input[damt]").attr("isdeduct");
+				var qty=toNumber($(tr).find("input[dqty]").val());
 				
-				var tamt= amt*qty;
+				var tamt= toNumber(amt*qty);
 				var ftotal=0;
 				var rowspan=false;
 				 
@@ -26,21 +34,37 @@ var talukaapproval=new function(){
 					}
 				if(rowspan==true){
 					
-					ftotal=$(tr).find("td:eq(5)").text();
+					ftotal=toNumber($(tr).find("td:eq(5)").text());
 	  
 					$(tr).find("td:eq(9)").html(tamt);
 				 
 					}else{
-						ftotal=$(tr).find("td:eq(4)").text();
+						ftotal=toNumber($(tr).find("td:eq(4)").text());
 				 
 						$(tr).find("td:eq(7)").html(tamt);
 					 
 						}
-				 
-				 fieldTotal=fieldTotal+Number(ftotal);
-				 dealerTotal=dealerTotal+Number(tamt);
+				 if(applydeduction=="Y"){
+					 var ded= (toNumber(tamt)*90)/100;
+					  
+					  
+					 deduction=toNumber(deduction)+toNumber(ded);
+					 if(rowspan==true){
+						  $(tr).find("td:eq(11)").html(ded);
+						 }else{
+						 $(tr).find("td:eq(9)").html(ded);
+						 }
+					 }else{
+						 if(rowspan==true){
+						  $(tr).find("td:eq(11)").html('0');
+						 }else{
+						 $(tr).find("td:eq(9)").html('0');
+						 }
+						 }
+				 fieldTotal=toNumber(fieldTotal)+toNumber(ftotal);
+				 dealerTotal=toNumber(dealerTotal)+toNumber(tamt);
 				
-				var setAmt=ftotal;
+				var setAmt=toNumber(ftotal);
 				if(tamt<ftotal){
 				ftotal=tamt;
 				}
@@ -52,11 +76,17 @@ var talukaapproval=new function(){
 					 
 						$(tr).find("td:eq(8)").html(ftotal);
 						}
-				totalBillAmt=Number(totalBillAmt)+Number(ftotal);
-				 
+						if(isvat="Y"){
+				totalBillAmt=toNumber(totalBillAmt)+toNumber(ftotal);
+						}else{
+							nonVatAmt=toNumber(nonVatAmt)+toNumber(ftotal);
+							}
 				 i++;
      
 });
+	  
+	  $("#tdlessamt").html(deduction);
+	  $("#deducationAmtView").val(deduction);
 	   $("#fieldtotal").val(fieldTotal.toFixed(2));
 	   $("#dealertotal").val(dealerTotal.toFixed(2));
 	   var fieldVat=(fieldTotal-(fieldTotal/1.055));
@@ -72,9 +102,9 @@ var talukaapproval=new function(){
 				$("#totalFieldVat").val((fieldTotal+fieldVat).toFixed(2));
 				$("#dealerTotalVat").val((dealerTotal+dealerVat).toFixed(2));
 				$("#totalBillAmt").val((totalBillAmt+totalValCalc).toFixed(2));
-				var tcharges=Number($("#transportationchargers").val());
-				var icharges=Number($("#installchargers").val());
-				var tbill=Number(totalValCalc)+Number(totalBillAmt)+Number(tcharges)+Number(icharges);
+				var tcharges=toNumber($("#transportationchargers").val());
+				var icharges=toNumber($("#installchargers").val());
+				var tbill=toNumber(totalValCalc)+toNumber(totalBillAmt)+toNumber(tcharges)+toNumber(icharges);
 				 
 				$("#totalBillAmt").html(tbill.toFixed(2));
 				// Calculation of 50 &90
@@ -85,7 +115,7 @@ var talukaapproval=new function(){
 				$("#presentLand").val(totalFileLand);
 				var land50=0;
 				var land90=2-preallocated;
-				var tempFarmerLand=Number(preallocated)+Number(totalFileLand);
+				var tempFarmerLand=toNumber(preallocated)+toNumber(totalFileLand);
 				 if(preallocated>2){
 				 land50=preallocated-2;
 				}
@@ -191,6 +221,10 @@ console.log("0:"+max);
   return max;
 }
 
+function toNumber(val){
+val=val?val:0;
+return val;
+}
 
 (function() {
   /**

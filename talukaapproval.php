@@ -264,9 +264,9 @@ $inpsected_date=$row["inspected_date"];
      <table class="table table-bordered table-condensed">
           <tr>
             <td class="txt-bold bg-danger">15) Deduct:</td>
-            <td class="txt-bold bg-danger" width="90px"><select class="form-control">
-            	<option selected>No</option>
-                <option>Yes</option>
+            <td class="txt-bold bg-danger" width="90px"><select class="form-control" id="isdeduct">
+            	<option value="N">No</option>
+                <option value="Y">Yes</option>
                 </select>
             </td>
             <td class="txt-bold">Screen Filter:</td>
@@ -276,7 +276,7 @@ $inpsected_date=$row["inspected_date"];
             <td class="txt-bold">Ventury & Manifold:</td>
             <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
             <td class="txt-bold">Total Amount:</td>
-            <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>            
+            <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="deducationAmtView"></td>            
           </tr>
  		</table>
     <table class="table table-bordered table-condensed">
@@ -407,9 +407,10 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
   <th></th>
   <th></th>
   <th></th>
-  <th colspan="3"  style="border-bottom:1px solid #FFFFFF;" >AS PER FIELD </th>
-  <th colspan="3"  style="border-bottom:1px solid #FFFFFF;">AS PER BILL </th>
+  <th colspan="3"  style="border-bottom:1px solid #CCCCCC;" align="center" >AS PER FIELD </th>
+  <th colspan="3"  style="border-bottom:1px solid #CCCCCC;" align="center">AS PER BILL </th>
   <th rowspan="2"   >Amount considered whichever is less</th>
+  <th rowspan="2">Less Amount</th>
   </tr>
   <tr>
   
@@ -426,7 +427,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 		</tr></thead>
   <tbody>
   <?php 
-  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice,isdeduct from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='Y'  order by cip.itemorder";
+  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice,isdeduct,isvat from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='Y'  order by cip.itemorder";
 $result=$conn->query($query);
 $lastorder=-1;
 $lastitem="";
@@ -440,7 +441,7 @@ if(!isset($master[$row["itemorder"]])){
 $master[$row["itemorder"]]=array();
 $itemname[$row["itemorder"]]=$row["itemname"];
 }
-$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"],$row["isdeduct"]);
+$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"],$row["isdeduct"],$row["isvat"]);
   }
   
   foreach ($master as $name => $values) {
@@ -453,21 +454,28 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
    }
    $id=-1;
    $col=0;
-   $isdeduct='Y';
+   $isdeduct='N';
+   $isvat='Y';
    foreach($val1 as $val){
    if($id==-1){
    $id=$val;
    }else{
+   $print=true;
    if($col==6){
    $isdeduct=$val;
+   $print=false;
    }
-   if($col!=6){
+   if($col==7){
+   $print=false;
+   $isvat=$val;
+   }
+   if($print){
       echo "<td>$val</td>";
 	  }
 	  }
 	  $col++;
 	  }
-	   echo"<td><input type='text' mid='$id' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' isdeduct='$isdeduct' damt='damt' class='tiny'/></td><td> </td><td></td>";
+	   echo"<td><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' damt='damt' class='tiny'/></td><td> </td><td></td><td></td>";
 	  if($i==0){
 	  
 	  $i=1;
@@ -478,7 +486,6 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
 
    }
   ?>
-  
   </tbody>
   <tfoot>
   <tr>
@@ -491,6 +498,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td bgcolor="#FCE9FE">&nbsp;</td>
              <td bgcolor="#FCE9FE"><input disabled type="text" id="dealertotal" ></td>
              <td bgcolor="#FCE9FE"><input disabled type="text" id="materialAmt" ></td>
+			 <td rowspan="3" class="txt-bold bg-danger" id="tdlessamt"></td>
            </tr>
            <tr>
              <td bgcolor="#E8E8E8" class="text-center">b</td>
@@ -502,7 +510,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td bgcolor="#E8E8E8">&nbsp;</td>
              <td bgcolor="#E8E8E8"><input disabled type="text" id="dealerVat" ></td>
              <td bgcolor="#E8E8E8"><input disabled type="text" id="totalVatAmt" ></td>
-           </tr>
+		   </tr>
            <tr>
              <td bgcolor="#E1FFFF" class="text-center">I</td>
              <td colspan="3" bgcolor="#E1FFFF"><strong>Total (a+b)</strong></td>
@@ -513,9 +521,9 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td bgcolor="#E1FFFF">&nbsp;</td>
              <td bgcolor="#E1FFFF"><input disabled type="text" id="dealerTotalVat" ></td>
              <td bgcolor="#E1FFFF"><input disabled type="text" id="totalBillAmt" ></td>
-           </tr>
+		   </tr>
 		    <?php 
-  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='N'  order by cip.itemorder";
+  $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice,isdeduct,isvat from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='N'  order by cip.itemorder";
 $result=$conn->query($query);
 $lastorder=-1;
 $lastitem="";
@@ -542,15 +550,29 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
    }
    $id=-1;
    $col=0;
+   $isdeduct='N';
+   $isvat='Y';
    foreach($val1 as $val){
+  
    if($id==-1){
    $id=$val;
    }else{
-   
+   $print =true;
+   if($col==6){
+   $isdeduct=$val;
+     $print =false;
+   }
+   if($col==7){
+   $isvat=$val;
+     $print =false;
+   }
+   if($print){
       echo "<td>$val</td>";
 	  }
 	  }
-	   echo"<td><input type='text' mid='$id' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' damt='damt' class='tiny'/></td><td> </td><td></td>";
+	   $col++;
+	  }
+	   echo"<td><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' dqty='dqty' class='tiny'/></td><td><input  type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' damt='damt' class='tiny'/></td><td> </td><td></td><td></td>";
 	  if($i==0){
 	  
 	  $i=1;
@@ -571,6 +593,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td bgcolor="#FCFADA">&nbsp;</td>
              <td bgcolor="#FCFADA"><input disabled type="text" ></td>
              <td bgcolor="#FCFADA"><input disabled type="text" ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">&nbsp;</td>
@@ -587,70 +610,83 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 
 </select></td>
              <td><input disabled type="text" id="maxamount_a1"></td>
+			 <td></td>
            </tr>
            <tr>
              <td bgcolor="#F8DAA3" class="text-center">&nbsp;</td>
              <td colspan="9" bgcolor="#F8DAA3"><strong>Amount considered for subsidy (whichever is less) (round down)</strong></td>
              <td bgcolor="#F8DAA3"><input disabled type="text" ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">A</td>
              <td colspan="9">Total land holding  of farmer (in hector)</td>
              <td><input disabled type="text" id="totalLandHolding" value="<?php echo $farmerland?>" ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">B</td>
              <td colspan="9">Total area for which sibsidy claimed in previous years (in hector)</td>
              <td><input disabled type="text" id="preAllocatedLand" ></td>
+			 
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">C</td>
              <td colspan="9">Drip installed area in present year (in hector)</td>
              <td><input disabled type="text" id="presentLand" ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">D</td>
 
              <td colspan="9">Area considered at 90% subsidy (up to 2 hector)</td>
              <td><input disabled type="text" id="land90" ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">E</td>
              <td colspan="9">Subsidy amount at 90% as per guidlines</td>
              <td><input disabled type="text" id='land90subsidy' ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">F</td>
              <td colspan="9">Area considered at 50% subsidy (more than 2 hector and up to 5 hector)</td>
              <td><input disabled type="text" id='land50' ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">G</td>
              <td colspan="9">Subsidy amount at 50% as per guidlines</td>
              <td><input disabled type="text" id='land50subsidy' ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">H</td>
              <td colspan="9" bgcolor="#B5FF6A">Total (E+G)</td>
              <td bgcolor="#B5FF6A"><input disabled type="text" id='totalSubsidy' ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">I</td>
              <td>Less if any</td>
              <td colspan="8"><input disabled type="text"  placeholder="reason for less"></td>
              <td><input disabled type="text" id='lessAmount' ></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">J</td>
              <td colspan="9" bgcolor="#B5FF6A">Amount recommended for Subsidy (H-I)</td>
              <td bgcolor="#B5FF6A"><input disabled type="text" id='avalibleSubsidy'></td>
+			 <td></td>
            </tr>
            <tr>
              <td class="text-center">K</td>
              <td>Amount in words</td>
-             <td colspan="9"><input disabled type="text" id='amountinwords' ></td>
+             <td colspan="10"><input disabled type="text" id='amountinwords' ></td>
             </tr>       
-  <tr><td colspan="11"> <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
+  <tr><td colspan="12"> <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
   </tfoot>
   </table>
  </div>
