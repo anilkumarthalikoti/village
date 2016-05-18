@@ -59,7 +59,7 @@ $query.=" from schemefilling s,preinspection p,postinspection_mstr pm, farmerdet
 $query.=" where ";
 $query.="  prj.id=s.subschemeid and c.id= f.usercast and f.id=s.regid and user.id= pm.inspected_by ";
 $query.=" and pm.filling_id= p.filling_id and p.filling_id=s.id and s.id=".$filling_id."";
- echo $query;
+  
 $result=$conn->query($query);
 
 foreach($result as $row){
@@ -182,6 +182,9 @@ $inpsected_date=$row["inspected_date"];
   .txt-undrln	{
 	  text-decoration:underline;
   }
+  #div_mater table td{
+  border:1px solid #cccccc;
+  }
  </style>
  
 </head>
@@ -269,12 +272,7 @@ $inpsected_date=$row["inspected_date"];
                 <option value="Y">Yes</option>
                 </select>
             </td>
-            <td class="txt-bold">Screen Filter:</td>
-            <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
-            <td class="txt-bold">By-pass Assembly:</td>
-            <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
-            <td class="txt-bold">Ventury & Manifold:</td>
-            <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
+             
             <td class="txt-bold">Total Amount:</td>
             <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="deducationAmtView"></td>            
           </tr>
