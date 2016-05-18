@@ -12,6 +12,7 @@
 			}).done(function(data){
 				 
 				 if(data.length>0){
+					 $("tr#rolemapping").removeClass("hide");
 					 $("tr#rolemapping").show();
 					 $("input[name='userregid']").val(data);
 					 $("select#hobli_select").focus();
@@ -22,6 +23,7 @@
 						 }
 				});
 	 }else{
+		  $("tr#rolemapping").addClass("hide");
 		 $("tr#rolemapping").hide();
 		  $("input[name='userregid']").val("");
 		 }

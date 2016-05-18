@@ -46,7 +46,7 @@ var rolecreate=new function(){
 				   
 				   
 				   }).done(function(data){
-					   
+					   location.reload();
 					   });
 		}
 	this.checkAll=function(){

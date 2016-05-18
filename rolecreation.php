@@ -16,7 +16,7 @@ $conn=$database;
 <body >
  <?php 
 
- 
+ $msg="";
  
 if(!empty( $_POST ) )
 {
@@ -26,7 +26,7 @@ if(strlen(trim($_POST["role_name"]))!=0){
 $role_name=strtoupper(trim($_POST["role_name"]));
 
 $conn->insert("role_mstr",array("role_name"=>$role_name));
-  
+  $msg="New Role Created";
 }
 }
 //Update role dtls
@@ -38,20 +38,20 @@ if($_POST["method_call"]=="update_role_dtl"){
  $conn->insert("role_dtl",array("role_id"=>$role_id,"page_link_id"=>$link));
  
  }
- 
+ $msg="Updated role permission";
 }
 }
 ?>
 <div class="title"><span>Permission Creation</span></div> 
 <div class="viewport">
+<div class="msg"><?php print $msg?></div>
 
-
-  <table class="form margin-left margin-top excel"  border="0" cellspacing="0" cellpadding="0">
+  <table class="form margin-left margin-top excel90"  border="0" cellspacing="0" cellpadding="0">
     
     <tr>
 <td  ><form id="newRole" action="rolecreation.php" method="post">New Role:<input type="text" name="role_name" id="role_name"/>
 <input type="hidden" name="method_call" value="newrole" />
-<input type="button" onClick="rolecreate.createRole()" value="Add Role" class="button_login"/></form></td>
+<input type="button" onClick="rolecreate.createRole()" value="Add Role" class="button_login"/> &nbsp;</form></td>
     </tr>
       <tr><td>
 	  <div>
@@ -96,7 +96,7 @@ if($_POST["method_call"]=="update_role_dtl"){
 	 </table>
 	 </form>
 	 </div>
-	 <div style="height:40px; max-width:450px; "><input type="button" class="button_login" value="Save" onClick="rolecreate.updateRole();" style="float:right; margin-right:0;"/></div>
+	 <div style="height:40px; max-width:450px; "><input type="button" class="button_login" value="Save" onClick="rolecreate.updateRole();" style="float:right; margin-right:0;"/> &nbsp;</div>
  </td></tr></table></div>
 	 </td></tr>
   </table>
