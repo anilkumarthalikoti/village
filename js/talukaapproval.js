@@ -70,7 +70,7 @@ var talukaapproval = new function() {
             if (tamt < ftotal) {
                 ftotal = tamt;
             }
-
+ftotal=ftotal?ftotal:0;
             if (rowspan == true) {
 
                 $(tr).find("td:eq(10)").html(ftotal);
@@ -79,7 +79,8 @@ var talukaapproval = new function() {
                 $(tr).find("td:eq(8)").html(ftotal);
             }
             if (isvat = "Y") {
-                totalBillAmt = Number(totalBillAmt) + ftotal;
+			totalBillAmt=totalBillAmt?totalBillAmt:0;
+                totalBillAmt = totalBillAmt + ftotal;
             } else {
                 nonVatAmt = Number(nonVatAmt) + ftotal;
             }
@@ -101,10 +102,13 @@ dealerTotal=Number(dealerTotal);
         var fieldVat = fieldTotal - (fieldTotal / 1.055);
 
         var dealerVat = (dealerTotal - (dealerTotal / 1.055));
+		
         $("#fieldVat").val(fieldVat.toFixed(2));
         $("#dealerVat").val(dealerVat.toFixed(2));
-
-        $("#materialAmt").val(totalBillAmt.toFixed(2));
+totalBillAmt=totalBillAmt?totalBillAmt:0;
+totalBillAmt=Number(totalBillAmt);
+totalBillAmt= totalBillAmt.toFixed(2)
+        $("#materialAmt").val(totalBillAmt);
         var totalValCalc = totalBillAmt - (totalBillAmt / 1.055);
 
 
@@ -112,10 +116,14 @@ dealerTotal=Number(dealerTotal);
         $("#totalFieldVat").val((fieldTotal + fieldVat).toFixed(2));
         $("#dealerTotalVat").val((dealerTotal + dealerVat).toFixed(2));
         $("#totalBillAmt").val((totalBillAmt + totalValCalc).toFixed(2));
+		alert('');
         var tcharges = toNumber($("#transportationchargers").val());
+		 
         var icharges = toNumber($("#installchargers").val());
+		 
         var tbill = totalValCalc + totalBillAmt + tcharges + icharges;
-
+		tbill=tbill?tbill:0;
+		tbill=Number(tbill);
         $("#totalBillAmt").html(tbill.toFixed(2));
         // Calculation of 50 &90
         var preallocated = $("#preallocatedtemp").val();
