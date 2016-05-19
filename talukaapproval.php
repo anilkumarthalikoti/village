@@ -126,10 +126,11 @@ $inpsected_date=$row["inspected_date"];
 	$("select[name='crop1'] ").val("<?php print $item1;?>");
 	
 	setspacing("<?php print $spacing1;?>","aspacing1");
-	var spacing=Math.round10("<?php print $spacing1;?>",-1);
-	spacing=spacing.toFixed(2);
+	var area=Math.round10("<?php print $area1;?>",-1);
+	area=area.toFixed(2);
+	$("[name='area1']").val(area);
 	var selectedspacing=$("select[name='aspacing1'] option:selected").val();
-	var maxamtkey="#price tr[spacingid='"+selectedspacing+"'][spacingarea='"+spacing+"']:last";
+	var maxamtkey="#price tr[spacingid='"+selectedspacing+"'][spacingarea='"+area+"']";
  
 	var maxamt=$(maxamtkey).attr("amount");
 	$("#maxamount_a1").val(maxamt);
