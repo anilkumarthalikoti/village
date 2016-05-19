@@ -7,7 +7,12 @@
  #mat_list tbody tr td:last{
   #background-color:#FCF7D8;
  }
-
+.fielddata{
+background-color:#990000;
+}
+.dealerdata{
+background-color:#990000;
+}
  </style>
 <?php 
  require "interceptor.php";
@@ -145,6 +150,7 @@ $inpsected_date=$row["inspected_date"];
   </script>
  <script type='text/javascript' src="js/talukaapproval.js"></script>
  <style type="text/css">
+ 
  input[type='text']{
  
  border-radius: 0px;
@@ -190,7 +196,7 @@ $inpsected_date=$row["inspected_date"];
 </head>
 
 <body>
-<div class="title">Taluka approval calculation sheet</div>
+<div class="title">Calculation sheet</div>
 <div class="viewport">
  
 <form name="post_inspection" >
@@ -468,12 +474,20 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
    $isvat=$val;
    }
    if($print){
-      echo "<td>$val</td>";
+   $class="";
+   if($col==3 || $col==4){
+   $class="field-bg-light";
+   }
+   if($col==5 ){
+   $class="field-bg-dark";
+   }
+    
+      echo "<td class='$class'>$val</td>";
 	  }
 	  }
 	  $col++;
 	  }
-	   echo"<td><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' dqty='dqty' class='tiny'/></td><td><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' damt='damt' class='tiny'/></td><td> </td><td></td><td></td>";
+	   echo"<td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' dqty='dqty' class='tiny'/></td><td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' damt='damt' class='tiny'/></td><td class='bill-bg-dark'> </td><td class='amnt-consi'></td><td class='amnt-consi'></td>";
 	  if($i==0){
 	  
 	  $i=1;
@@ -565,12 +579,21 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
      $print =false;
    }
    if($print){
-      echo "<td>$val</td>";
+      
+   $class="";
+   if($col==3 || $col==4){
+   $class="field-bg-light";
+   }
+   if($col==5 ){
+   $class="field-bg-dark";
+   }
+    
+      echo "<td class='$class'>$val</td>";
 	  }
 	  }
 	   $col++;
 	  }
-	   echo"<td><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' dqty='dqty' class='tiny'/></td><td><input  type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' damt='damt' class='tiny'/></td><td> </td><td></td><td></td>";
+	   echo"<td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' dqty='dqty' class='tiny'/></td><td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' damt='damt' class='tiny'/></td><td class='bill-bg-dark'> </td><td class='amnt-consi'></td><td class='amnt-consi'></td>";
 	  if($i==0){
 	  
 	  $i=1;

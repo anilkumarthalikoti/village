@@ -20,15 +20,15 @@ $user=$_SESSION["logged_in"];
 <form name="actions">
 <div class="title"><span>Proposal</span></div>
 <div class="viewport">
-<ul id="tabs">
+<ul id="tabs" style="margin:0;">
              <li><a id="tab1">Proposal Status</a></li>
            <li><a id="tab2">Proposal Action</a></li>
            
          </ul>
-             <div class="container" id="tab1C">
+             <div class="container" id="tab1C" style="margin:0">
 			  
 
-<table class="form expand"   >
+<table class="form excel90"  style="margin:0; padding:0"  >
 <tr>
 <td>Scheme</td><td>:</td><td><select name="scheme_select" id="scheme_select" tabid="1" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails();">
 <option value="-1">Select</option>
@@ -48,8 +48,8 @@ foreach ($result as $row)
 <td>Crop-3</td><td>:</td><td><select name="component_3" tabid="6" id="component_3"><option value="-1">Select</option></select></td>
 <td>Crop-4</td><td>:</td><td><select name="component_4" tabid="7" id="component_4"><option value="-1">Select</option></select></td>
 </tr>
-<tr><td colspan="12" style="border:0px;">
-<div id="details_schema" >
+<tr><td colspan="12" style="border:0px; margin:0; padding:0;">
+<div id="details_schema" style="zoom:97%"  >
  
 </div>
 </td></tr>

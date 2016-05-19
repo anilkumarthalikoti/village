@@ -119,7 +119,7 @@ $count="";
 	  <li><div>Approved <a href="#"><span id="p">0</span></a></div></li>
 	  <li> <div>Yet to forward to DDH  <a href="#"><span id="p">0</span></a></div>
 	  </li>
-	<li>Forward to DDH for sanaction order <a href="#"><span id="p">0</span></a></li>
+	<li><div>Forward to DDH for sanaction order <a href="#"><span id="p">0</span></a></div></li>
 	  <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	<li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	 
@@ -133,7 +133,7 @@ $count="";
 	  <li><div>Approved <a href="#"><span id="p">0</span></a></div></li>
 	  <li> <div>Yet to forward to DDH  <a href="#"><span id="p">0</span></a></div>
 	  </li>
-	<li>Forward to DDH for sanaction order <a href="#"><span id="p">0</span></a></li>
+	<li><div>Forward to DDH for sanaction order <a href="#"><span id="p">0</span></a></div></li>
 	  <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	<li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	 

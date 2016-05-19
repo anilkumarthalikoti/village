@@ -3,53 +3,48 @@ var talukaapproval = new function() {
 
         $("input[damt]").attr("disabled", true);
         $("input[dqty]").attr("disabled", true);
-        var i = 0;
+        
         var totalBillAmt = 0;
         var fieldTotal = 0;
         var dealerTotal = 0;
         var nonVatAmt = 0;
         var deduction = 0;
-        $("input[damt]").each(function() {
-
-
-
-            var applydeduction = $("#isdeduct option:selected").val();
-
-
-
-            var tr = "#mat_list tbody tr:eq(" + i + ")";
-
+		//Calculation of vatable fields
+		var ctype=["tbody","tfoot"];
+		for(var j=0;j<ctype.length;j++){
+		var i=0;
+		var forkey=ctype[j]+" input[damt]";
+		var trkey=ctype[j];
+		 
+        $(forkey).each(function() {
+		    var applydeduction = $("#isdeduct option:selected").val();
+			 
+			var tr = "#mat_list "+trkey+" tr:eq(" + i + ")";
+			if(j==1){
+			tr="#mat_list "+trkey+" tr:eq(" + (i+3) + ")";
+			}
             var amt = toNumber($(tr).find("input[damt]").val());
-
             var isvat = $(tr).find("input[damt]").attr("isvat");
             var isdeduct = $(tr).find("input[damt]").attr("isdeduct");
             var qty = toNumber($(tr).find("input[dqty]").val());
-
             var tamt = amt * qty;
-
             var ftotal = 0;
             var rowspan = false;
-
             if ($(tr).find("td:eq(0)").is("[rowspan]")) {
                 rowspan = true;
             }
             if (rowspan == true) {
-
                 ftotal = $(tr).find("td:eq(5)").text();
-
                 $(tr).find("td:eq(9)").html(tamt);
 
             } else {
                 ftotal = $(tr).find("td:eq(4)").text();
-
                 $(tr).find("td:eq(7)").html(tamt);
-
             }
             ftotal = ftotal ? ftotal : 0;
+		
             if (applydeduction == "Y") {
                 var ded = (tamt * 90) / 100;
-
-
                 deduction = deduction + ded;
                 if (rowspan == true) {
                     $(tr).find("td:eq(11)").html(ded);
@@ -63,14 +58,15 @@ var talukaapproval = new function() {
                     $(tr).find("td:eq(9)").html('0');
                 }
             }
-            fieldTotal = Number(fieldTotal) + Number(ftotal);
-            dealerTotal = Number(dealerTotal) + tamt;
+            fieldTotal = sum(fieldTotal,ftotal);
+            dealerTotal =sum(dealerTotal,tamt);
 
             var setAmt = ftotal;
             if (tamt < ftotal) {
                 ftotal = tamt;
             }
-ftotal=ftotal?ftotal:0;
+				ftotal=ftotal?ftotal:0;
+					ftotal=Number(ftotal);
             if (rowspan == true) {
 
                 $(tr).find("td:eq(10)").html(ftotal);
@@ -79,44 +75,47 @@ ftotal=ftotal?ftotal:0;
                 $(tr).find("td:eq(8)").html(ftotal);
             }
             if (isvat = "Y") {
-			totalBillAmt=totalBillAmt?totalBillAmt:0;
-                totalBillAmt = totalBillAmt + ftotal;
+                totalBillAmt = sum(totalBillAmt,ftotal);
             } else {
-                nonVatAmt = Number(nonVatAmt) + ftotal;
+			            nonVatAmt =sum(nonVatAmt,ftotal);
             }
             i++;
 
         });
-
+		
+		}
+ 
         $("#tdlessamt").html(deduction);
         $("#deducationAmtView").val(deduction);
 		$("#lessAmount").val(deduction);
-        fliedTotal = fieldTotal ? fieldTotal : 0;
-        dealerTotal = dealerTotal ? dealerTotal : 0;
-fieldTotal=Number(fieldTotal);
-dealerTotal=Number(dealerTotal);
+        fieldTotal = fieldTotal ? fieldTotal : 0;
+         dealerTotal = dealerTotal ? dealerTotal : 0;
+		 
+ 
 
-        $("#fieldtotal").val(fieldTotal.toFixed(2));
-        $("#dealertotal").val(dealerTotal.toFixed(2));
+        $("#fieldtotal").val(fieldTotal);
+        $("#dealertotal").val(dealerTotal);
 
         var fieldVat = fieldTotal - (fieldTotal / 1.055);
-
+		fieldVat=fieldVat?fieldVat:0;
+		fieldVat=fieldVat.toFixed(2);
         var dealerVat = (dealerTotal - (dealerTotal / 1.055));
-		
-        $("#fieldVat").val(fieldVat.toFixed(2));
-        $("#dealerVat").val(dealerVat.toFixed(2));
-totalBillAmt=totalBillAmt?totalBillAmt:0;
-totalBillAmt=Number(totalBillAmt);
-totalBillAmt= totalBillAmt.toFixed(2)
+		dealerVat=dealerVat?dealerVat:0;
+		dealerVat=dealerVat.toFixed(2);
+        $("#fieldVat").val(fieldVat);
+        $("#dealerVat").val(dealerVat);
+		totalBillAmt=totalBillAmt?totalBillAmt:0;
+		totalBillAmt=Number(totalBillAmt);
+		totalBillAmt= totalBillAmt.toFixed(2)
         $("#materialAmt").val(totalBillAmt);
         var totalValCalc = totalBillAmt - (totalBillAmt / 1.055);
-
-
-        $("#totalVatAmt").val(totalValCalc);
-        $("#totalFieldVat").val((fieldTotal + fieldVat).toFixed(2));
-        $("#dealerTotalVat").val((dealerTotal + dealerVat).toFixed(2));
-        $("#totalBillAmt").val((totalBillAmt + totalValCalc).toFixed(2));
-		alert('');
+		totalValCalc=totalValCalc?totalValCalc:0;
+		totalValCalc=totalValCalc.toFixed(2);
+	     $("#totalVatAmt").val(totalValCalc);
+	     $("#totalFieldVat").val(sum(fieldTotal,fieldVat));
+        $("#dealerTotalVat").val(sum(dealerTotal,dealerVat));
+        $("#totalBillAmt").val(sum(totalBillAmt,totalValCalc));
+		 
         var tcharges = toNumber($("#transportationchargers").val());
 		 
         var icharges = toNumber($("#installchargers").val());
@@ -243,7 +242,15 @@ function toNumber(val) {
     val = val ? val : 0;
     return val;
 }
+function sum(f1,f2){
+f1=f1?f1:0;
+f2=f2?f2:0;
+var total=Number(f1)+Number(f2);
+total=total?total:0;
+total=total.toFixed(2);
 
+return total;
+}
 (function() {
     /**
      * Decimal adjustment of a number.
