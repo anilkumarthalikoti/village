@@ -219,7 +219,7 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
         $("#totalSubsidy").val(totalAvlAmt);
 	 
 $("#avalibleSubsidy").val(totalAvlAmt-deduction90);
-alert(inWords(Math.round($("#avalibleSubsidy").val())));
+ 
 $("#amountinwords").val(inWords(Math.round($("#avalibleSubsidy").val())));
     }
 }
