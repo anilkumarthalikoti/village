@@ -46,8 +46,19 @@ var talukaapproval = new function() {
             }
             ftotal = ftotal ? ftotal : 0;
 		
-            if (applydeduction == "Y") {
-                var ded = (tamt * 90) / 100;
+            
+			console.log("Total amt:"+fieldTotal+"current amt:"+ftotal+" IN "+ctype[j]);
+            fieldTotal = sum(fieldTotal,ftotal);
+            dealerTotal =sum(dealerTotal,tamt);
+
+            
+            if (tamt < ftotal) {
+                ftotal = tamt;
+            }
+				ftotal=ftotal?ftotal:0;
+					ftotal=Number(ftotal);
+					if (applydeduction == "Y") {
+                var ded = ftotal;
                 deduction = deduction + ded;
                 if (rowspan == true) {
                     $(tr).find("td:eq(11)").html(ded);
@@ -61,16 +72,6 @@ var talukaapproval = new function() {
                     $(tr).find("td:eq(9)").html('0');
                 }
             }
-			console.log("Total amt:"+fieldTotal+"current amt:"+ftotal+" IN "+ctype[j]);
-            fieldTotal = sum(fieldTotal,ftotal);
-            dealerTotal =sum(dealerTotal,tamt);
-
-            var setAmt = ftotal;
-            if (tamt < ftotal) {
-                ftotal = tamt;
-            }
-				ftotal=ftotal?ftotal:0;
-					ftotal=Number(ftotal);
             if (rowspan == true) {
 
                 $(tr).find("td:eq(10)").html(ftotal);
@@ -88,10 +89,13 @@ var talukaapproval = new function() {
         });
 		
 		}
- 
+		deduction=deduction?deduction:0;
+ var deduction90= (deduction*90)/100;
+ deduction90=deduction90.toFixed(2)
         $("#tdlessamt").html(deduction);
-        $("#deducationAmtView").val(deduction);
-		$("#lessAmount").val(deduction);
+		$("#tdlessamt90").html(deduction90);
+        $("#deducationAmtView").val(deduction90);
+		$("#lessAmount").val(deduction90);
         fieldTotal = fieldTotal ? fieldTotal : 0;
          dealerTotal = dealerTotal ? dealerTotal : 0;
 		 

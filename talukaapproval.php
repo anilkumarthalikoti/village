@@ -510,7 +510,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td bgcolor="#FCE9FE">&nbsp;</td>
              <td bgcolor="#FCE9FE"><input disabled type="text" id="dealertotal" ></td>
              <td bgcolor="#FCE9FE"><input disabled type="text" id="materialAmt" ></td>
-			 <td rowspan="3" class="txt-bold bg-danger" id="tdlessamt"></td>
+			 <td class="txt-bold bg-danger" id="tdlessamt"></td>
            </tr>
            <tr>
              <td bgcolor="#E8E8E8" class="text-center">b</td>
@@ -522,7 +522,8 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td bgcolor="#E8E8E8">&nbsp;</td>
              <td bgcolor="#E8E8E8"><input disabled type="text" id="dealerVat" ></td>
              <td bgcolor="#E8E8E8"><input disabled type="text" id="totalVatAmt" ></td>
-		   </tr>
+		     <td class="txt-bold bg-danger" id="tdlessamt90"></td>
+           </tr>
            <tr>
              <td bgcolor="#E1FFFF" class="text-center">I</td>
              <td colspan="3" bgcolor="#E1FFFF"><strong>Total (a+b)</strong></td>
@@ -533,7 +534,8 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td bgcolor="#E1FFFF">&nbsp;</td>
              <td bgcolor="#E1FFFF"><input disabled type="text" id="dealerTotalVat" ></td>
              <td bgcolor="#E1FFFF"><input disabled type="text" id="totalBillAmt" ></td>
-		   </tr>
+		     <td class="txt-bold bg-danger" ></td>
+           </tr>
 		    <?php 
   $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice,isdeduct,isvat from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='N'  order by cip.itemorder";
 $result=$conn->query($query);
