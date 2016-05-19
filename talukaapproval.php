@@ -551,7 +551,8 @@ if(!isset($master[$row["itemorder"]])){
 $master[$row["itemorder"]]=array();
 $itemname[$row["itemorder"]]=$row["itemname"];
 }
-$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"]);
+$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"],$row["isdeduct"],$row["isvat"]);
+  
   }
   
   foreach ($master as $name => $values) {

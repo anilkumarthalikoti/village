@@ -48,9 +48,10 @@ var talukaapproval = new function() {
 		
             
 			console.log("Total amt:"+fieldTotal+"current amt:"+ftotal+" IN "+ctype[j]);
+			if (isvat == "Y") {
             fieldTotal = sum(fieldTotal,ftotal);
             dealerTotal =sum(dealerTotal,tamt);
-
+}
             
             if (tamt < ftotal) {
                 ftotal = tamt;
@@ -79,7 +80,7 @@ var talukaapproval = new function() {
 
                 $(tr).find("td:eq(8)").html(ftotal);
             }
-            if (isvat = "Y") {
+            if (isvat == "Y") {
                 totalBillAmt = sum(totalBillAmt,ftotal);
             } else {
 			            nonVatAmt =sum(nonVatAmt,ftotal);
