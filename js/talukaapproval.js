@@ -7,7 +7,9 @@ var talukaapproval = new function() {
         var totalBillAmt = 0;
         var fieldTotal = 0;
         var dealerTotal = 0;
-        var nonVatAmt = 0;
+        var nonVatDealerAmt = 0;
+		 var nonVatFieldAmt = 0;
+		 var nonVatTotalBill=0;
         var deduction = 0;
 		//Calculation of vatable fields
 		var ctype=["tbody","tfoot"];
@@ -51,6 +53,9 @@ var talukaapproval = new function() {
 			if (isvat == "Y") {
             fieldTotal = sum(fieldTotal,ftotal);
             dealerTotal =sum(dealerTotal,tamt);
+}else{
+nonVatFieldAmt=sum(nonVatFieldAmt,ftotal);
+nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
 }
             
             if (tamt < ftotal) {
@@ -83,7 +88,7 @@ var talukaapproval = new function() {
             if (isvat == "Y") {
                 totalBillAmt = sum(totalBillAmt,ftotal);
             } else {
-			            nonVatAmt =sum(nonVatAmt,ftotal);
+			            nonVatTotalBill =sum(nonVatTotalBill,ftotal);
             }
             i++;
 
@@ -125,15 +130,17 @@ var talukaapproval = new function() {
         $("#dealerTotalVat").val(sum(dealerTotal,dealerVat));
         $("#totalBillAmt").val(sum(totalBillAmt,totalValCalc));
 		 
-        var tcharges = toNumber($("#transportationchargers").val());
-		 
-        var icharges = toNumber($("#installchargers").val());
-		 
-        var tbill = totalValCalc + totalBillAmt + tcharges + icharges;
+        var tbill = totalValCalc + totalBillAmt;
 		tbill=tbill?tbill:0;
 		tbill=Number(tbill);
         $("#totalBillAmt").html(tbill.toFixed(2));
-        // Calculation of 50 &90
+        var finalFieldBill=sum($("#totalFieldVat").val(),nonVatFieldAmt);
+		var finalDealerBill=sum($("#dealerTotalVat").val(),nonVatDealerAmt);
+		var finalCalculationBill=sum($("#totalBillAmt").val(),nonVatTotalBill);
+		$("#finalFieldBill").val(finalFieldBill);
+		$("#finalDealarBill").val(finalDealerBill);
+		$("#finalCalculationBill").val(finalCalculationBill);
+		// Calculation of 50 &90
         var preallocated = $("#preallocatedtemp").val();
         $("#preAllocatedLand").val(preallocated);
         var totalLandHolding = $("#totalLandHolding").val();
@@ -210,7 +217,7 @@ var talukaapproval = new function() {
         }
         var totalAvlAmt = Number($("#land90subsidy").val()) + Number($("#land50subsidy").val());
         $("#totalSubsidy").val(totalAvlAmt);
-		
+	 
 $("#avalibleSubsidy").val(totalAvlAmt-deduction90);
     }
 }

@@ -612,11 +612,11 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td colspan="3" bgcolor="#FCFADA"><strong>Grand Total (I+II+III)</strong></td>
              <td bgcolor="#FCFADA">&nbsp;</td>
              <td bgcolor="#FCFADA">&nbsp;</td>
-             <td bgcolor="#FCFADA"><input disabled type="text" ></td>
+             <td bgcolor="#FCFADA"><input disabled type="text" id="finalFieldBill" ></td>
              <td bgcolor="#FCFADA">&nbsp;</td>
              <td bgcolor="#FCFADA">&nbsp;</td>
-             <td bgcolor="#FCFADA"><input disabled type="text" ></td>
-             <td bgcolor="#FCFADA"><input disabled type="text" ></td>
+             <td bgcolor="#FCFADA"><input disabled type="text" id="finalDealarBill" ></td>
+             <td bgcolor="#FCFADA"><input disabled type="text" id="finalCalculationBill"></td>
 			 <td></td>
            </tr>
            <tr>
