@@ -34,11 +34,14 @@ var talukaapproval = new function() {
                 rowspan = true;
             }
             if (rowspan == true) {
-                ftotal = $(tr).find("td:eq(5)").text();
+			 
+                ftotal = $(tr).find("td:eq(6)").text();
+				 
                 $(tr).find("td:eq(9)").html(tamt);
 
             } else {
                 ftotal = $(tr).find("td:eq(4)").text();
+			 
                 $(tr).find("td:eq(7)").html(tamt);
             }
             ftotal = ftotal ? ftotal : 0;
@@ -58,6 +61,7 @@ var talukaapproval = new function() {
                     $(tr).find("td:eq(9)").html('0');
                 }
             }
+			console.log("Total amt:"+fieldTotal+"current amt:"+ftotal+" IN "+ctype[j]);
             fieldTotal = sum(fieldTotal,ftotal);
             dealerTotal =sum(dealerTotal,tamt);
 
