@@ -708,7 +708,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
            <tr>
              <td class="text-center">K</td>
              <td>Amount in words</td>
-             <td colspan="10"><input disabled type="text" id='amountinwords' ></td>
+             <td colspan="10"><input disabled type="text" id='amountinwords' style="width:100%; text-transform:uppercase" ></td>
             </tr>       
   <tr><td colspan="12"> <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
   </tfoot>
