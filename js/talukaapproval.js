@@ -209,7 +209,8 @@ var talukaapproval = new function() {
         }
         var totalAvlAmt = Number($("#land90subsidy").val()) + Number($("#land50subsidy").val());
         $("#totalSubsidy").val(totalAvlAmt);
-
+		
+$("#avalibleSubsidy").val(totalAvlAmt-deduction90);
     }
 }
 
