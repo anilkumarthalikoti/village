@@ -1,4 +1,20 @@
 var talukaapproval = new function() {
+
+this.saveCalculationSheet=function(){
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
     this.calculateSheet = function() {
 
         $("input[damt]").attr("disabled", true);
