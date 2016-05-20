@@ -49,7 +49,7 @@ var talukaapproval = new function() {
             ftotal = ftotal ? ftotal : 0;
 		
             
-			console.log("Total amt:"+fieldTotal+"current amt:"+ftotal+" IN "+ctype[j]);
+			 
 			if (isvat == "Y") {
             fieldTotal = sum(fieldTotal,ftotal);
             dealerTotal =sum(dealerTotal,tamt);
@@ -63,7 +63,7 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
             }
 				ftotal=ftotal?ftotal:0;
 					ftotal=Number(ftotal);
-					if (applydeduction == "Y") {
+					if (applydeduction == "Y" && isdeduct=="Y") {
                 var ded = ftotal;
                 deduction = deduction + ded;
                 if (rowspan == true) {
