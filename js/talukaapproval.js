@@ -110,10 +110,10 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
         $("#fieldtotal").val(fieldTotal);
         $("#dealertotal").val(dealerTotal);
 
-        var fieldVat = fieldTotal - (fieldTotal / 1.055);
+        var fieldVat = (fieldTotal * 5.5)/100;
 		fieldVat=fieldVat?fieldVat:0;
 		fieldVat=fieldVat.toFixed(2);
-        var dealerVat = (dealerTotal - (dealerTotal / 1.055));
+        var dealerVat = (dealerTotal * 5.5)/100;
 		dealerVat=dealerVat?dealerVat:0;
 		dealerVat=dealerVat.toFixed(2);
         $("#fieldVat").val(fieldVat);
@@ -122,7 +122,7 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
 		totalBillAmt=Number(totalBillAmt);
 		totalBillAmt= totalBillAmt.toFixed(2)
         $("#materialAmt").val(totalBillAmt);
-        var totalValCalc = totalBillAmt - (totalBillAmt / 1.055);
+        var totalValCalc = (totalBillAmt* 5.5)/100;
 		totalValCalc=totalValCalc?totalValCalc:0;
 		totalValCalc=totalValCalc.toFixed(2);
 	     $("#totalVatAmt").val(totalValCalc);
@@ -137,9 +137,9 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
         var finalFieldBill=sum($("#totalFieldVat").val(),nonVatFieldAmt);
 		var finalDealerBill=sum($("#dealerTotalVat").val(),nonVatDealerAmt);
 		var finalCalculationBill=sum($("#totalBillAmt").val(),nonVatTotalBill);
-		$("#finalFieldBill").val(finalFieldBill);
-		$("#finalDealarBill").val(finalDealerBill);
-		$("#finalCalculationBill").val(finalCalculationBill);
+		$("#finalFieldBill").val(Math.round(finalFieldBill));
+		$("#finalDealarBill").val(Math.round(finalDealerBill));
+		$("#finalCalculationBill").val(Math.round(finalCalculationBill));
 		// Calculation of 50 &90
         var preallocated = $("#preallocatedtemp").val();
         $("#preAllocatedLand").val(preallocated);
@@ -193,16 +193,46 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
 
         $("#land90").val(final90);
         $("#land50").val(final50);
-
-        if (final90 == 0) {
+				var applicableAmt=$("#maxamount_a1").val();
+		applicableAmt=applicableAmt?applicableAmt:0;
+		var minCalcAmt=arrayMin({finalFieldBill,finalDealerBill,finalCalculationBill});
+		minCalcAmt=minCalcAmt?minCalcAmt:0;
+		var remainingAmt=applicableAmt-minCalcAmt;
+		var amountToConsider=0;
+		if(minCalcAmt<remainingAmt){
+		amountToConsider=remainingAmt;
+		}
+		var CA65=amountToConsider/(totalFileLand*100);
+		final90=Math.round10(final90, -1);
+		var final90_100=final90*100;
+		 var sub90Amt=final90_100*CA65;
+		 
+		 var maxAmtFor90=sub90Amt*0.9;
+		 final50=Math.round10(final50, -1);
+		 var final50_100=final50*100;
+		var sub50Amt=final50_100*CA65;
+		var maxAmtFor50=sub50Amt*0.5;
+			console.log("CA65"+CA65);
+				console.log("final90_100"+final90_100);
+		console.log("sub90Amt"+sub90Amt);
+		console.log("maxAmtFor90"+maxAmtFor90);
+			console.log("final50_100"+final50_100);
+		console.log("sub50Amt"+sub50Amt);
+		console.log("maxAmtFor50"+maxAmtFor50);
+		if (final90 == 0) {
             $("#land90subsidy").val(0);
         } else {
+		
             var spacingselected = $("select[name='aspacing1'] option:selected").val();
             var roundval = Math.round10(final90, -1);
             var trkey = "#price tr[spacingid='" + spacingselected + "'][spacingarea='" + roundval.toFixed(2) + "']";
+			 
             var amtat90 = ($(trkey).attr("amount") * 90) / 100;
-            $("#land90subsidy").val(amtat90);
+					console.log("Row amt:"+$(trkey).attr("amount")+" 90% Amt:"+amtat90+" maxAmtFor90:"+maxAmtFor90+" 90Subsidy:"+(amtat90-maxAmtFor90));
+            $("#land90subsidy").val(Math.abs(amtat90-maxAmtFor90));
+			
         }
+		 
         if (final50 == 0) {
             $("#land50subsidy").val(0);
 
@@ -213,11 +243,16 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
 
             var trkey = "#price tr[spacingid='" + spacingselected + "'][spacingarea='" + roundval.toFixed(2) + "']";
             var amtat50 = ($(trkey).attr("amount") * 50) / 100;
-            $("#land50subsidy").val(amtat50);
+			console.log("Row amt:"+$(trkey).attr("amount")+" 50% Amt:"+amtat50+" maxAmtFor50:"+maxAmtFor50+" 50Subsidy:"+(amtat50-maxAmtFor50));
+           
+            $("#land50subsidy").val(Math.abs(amtat50-maxAmtFor50));
         }
+		
         var totalAvlAmt = Number($("#land90subsidy").val()) + Number($("#land50subsidy").val());
         $("#totalSubsidy").val(totalAvlAmt);
-	 
+		//Calculation of subsidy amt
+	
+		
 $("#avalibleSubsidy").val(totalAvlAmt-deduction90);
  
 $("#amountinwords").val(inWords(Math.round($("#avalibleSubsidy").val())));

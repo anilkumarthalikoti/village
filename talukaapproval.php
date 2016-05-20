@@ -99,6 +99,8 @@ $inpsected_date=$row["inspected_date"];
  <script type="text/javascript" src="js/pivot.js"></script>
   <script type="text/javascript">
   
+  
+  
   function setspacing(spacing,name){
   var key="select[name='"+name+"'] option";
   var key1="select[name='"+name+"']";
