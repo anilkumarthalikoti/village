@@ -24,9 +24,8 @@ mapping.setUser(this);
 
 <div class="title">Permission manager</div>
 <div class="viewport">
-<form name="rolemapping" onsubmit="return false;">
-<input type="hidden" name="methodcall" value="validate_user"/>
-<input type="hidden" name="userregid" />
+<form name="rolemapping_data" onsubmit="return false;">
+
    <table class="form margin-left  xlarge"  filter='Y' id="tbl_users">
    <thead>
    <tr>
@@ -47,8 +46,10 @@ mapping.setUser(this);
    </tbody>
    </table>
    <div id="rolemapping">
+   <input type="hidden" name="methodcall" value="validate_user"/>
+<input type="hidden" name="userregid" />
    <table>
-   <tr><td><select name="roleid[]" id="role_select" multiple="multiple" style="height:200px;">
+   <tr><td><select name="selected_role[]" id="role_select" multiple="multiple" style="height:200px;">
    <?php
  $result=  $conn->select("role_mstr",array("role_id","role_name"));
    foreach($result as $row){

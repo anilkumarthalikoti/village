@@ -31,7 +31,7 @@ $conn->delete("actionmapping",array("regid"=>$id));
   $database->insert("actionmapping",array("regid"=>$id,"hobliid"=>$hobli));
  }}
  if($_POST["methodcall"]=="save_role_mapping"){
-$roleid=$_POST["roleid"];
+$roleid=$_POST["selected_role"];
 $id=$_POST["userregid"];
 $result=$database->select("app_login",array("login_id"),array("id"=>$id));
 foreach($result as $row){

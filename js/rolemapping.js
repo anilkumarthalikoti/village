@@ -1,7 +1,7 @@
 // JavaScript Document
 
  var mapping=new function(){
-	 
+	 /*
 	 this.validateuser=function(e){
 	 
 		  if(e.which == 13) {
@@ -27,15 +27,15 @@
 		  $("input[name='userregid']").val("");
 		 }
 	 }
-	 
+	 */
 	 this.savedata=function(){
 		 $("input[name='methodcall']").val("save_role_mapping");
 		  $.ajax({
 			url:"server/login.php",
 			method:"post",
-			data:$("form[name='rolemapping']").serialize()
+			data:$("#rolemapping").find("input,select").serialize()
 			}).done(function(data){
-				 location.reload();
+				 	$( "#rolemapping" ).dialog( "close" );
 				});
 		 }
 	 
@@ -45,7 +45,7 @@
 		 
 	 
 		 $(tr).addClass("active");
-		 
+		 alert($(tr).attr("userid"));
 			$("input[name='userregid']").val($(tr).attr("userid"));
 				$( "#rolemapping" ).dialog( "open" );
 			}
