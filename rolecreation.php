@@ -10,7 +10,13 @@
 $conn=$database;
  ?>
  <script src="js/rolecreation.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+createDialog("link_dtl");
 
+});
+
+</script>
 </head>
 
 <body >
@@ -46,7 +52,7 @@ if($_POST["method_call"]=="update_role_dtl"){
 <div class="viewport">
 <div class="msg"><?php print $msg?></div>
 
-  <table class="form margin-left margin-top excel90"  border="0" cellspacing="0" cellpadding="0">
+  <table class="form margin-left margin-top xlarge"  border="0" cellspacing="0" cellpadding="0">
     
     <tr>
 <td  ><form id="newRole" action="rolecreation.php" method="post">New Role:<input type="text" name="role_name" id="role_name"/>
@@ -75,7 +81,12 @@ if($_POST["method_call"]=="update_role_dtl"){
 	 </table></td>
 	 <td  valign="top">
  
-	 <div style="height:auto; max-height:300px; margin-left:40px;  max-width:400px; overflow:auto;">
+	 
+	
+ </td></tr></table></div>
+	 </td></tr>
+  </table>
+  <div style="height:auto; max-height:300px;    max-width:400px; overflow:auto; min-width:400px;"   id="link_dtl">
 	 <form name="role_dtl">
 	 <input type="hidden" name="role_id_selected" id="role_id_selected"/>
 	 <input type="hidden" name="method_call" value="update_role_dtl"/>
@@ -94,12 +105,9 @@ if($_POST["method_call"]=="update_role_dtl"){
 	 ?>
 	 </tbody>
 	 </table>
+	  <div style="height:40px; max-width:450px; "><input type="button" class="button_login" value="Save" onClick="rolecreate.updateRole();" style="float:right; margin-right:0;"/> &nbsp;</div>
 	 </form>
 	 </div>
-	 <div style="height:40px; max-width:450px; "><input type="button" class="button_login" value="Save" onClick="rolecreate.updateRole();" style="float:right; margin-right:0;"/> &nbsp;</div>
- </td></tr></table></div>
-	 </td></tr>
-  </table>
  </div>
 </body>
 </html>

@@ -90,3 +90,22 @@ function isNull(element){
 			}
 		return false;
 		}	
+		
+		
+		function createDialog(id){
+ var key="#"+id;
+$(key).dialog({
+      autoOpen: false,
+	  width:'auto',
+	  position: { my: "center", at: "top" },
+	  maxWidth:'600px',
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "blind",
+        duration: 1000
+      }
+    });
+ }

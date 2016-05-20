@@ -12,19 +12,18 @@
 			}).done(function(data){
 				 
 				 if(data.length>0){
-					 $("tr#rolemapping").removeClass("hide");
-					 $("tr#rolemapping").show();
+					 $("#rolemapping").dialog("open");
 					 $("input[name='userregid']").val(data);
 					 $("select#hobli_select").focus();
 					 }else{
-						 $("tr#rolemapping").addClass("hide");
+						  $("#rolemapping").dialog("close");
 						  $("input[name='userregid']").val("");
 						 alert("Invalid user");
 						 }
 				});
 	 }else{
-		  $("tr#rolemapping").addClass("hide");
-		 $("tr#rolemapping").hide();
+		  $("#rolemapping").dialog("close");
+		 
 		  $("input[name='userregid']").val("");
 		 }
 	 }
@@ -40,7 +39,16 @@
 				});
 		 }
 	 
+	this.setUser=function(tr){
 	 
+		 $("table[id='tbl_users'] tbody tr").removeClass("active");
+		 
+	 
+		 $(tr).addClass("active");
+		 
+			$("input[name='userregid']").val($(tr).attr("userid"));
+				$( "#rolemapping" ).dialog( "open" );
+			}
 	 
 	 }
 	 

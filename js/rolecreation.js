@@ -19,7 +19,7 @@ var rolecreate=new function(){
 				   
 				   
 				   }).done(function(data){
-					   
+					    location.reload();
 					   });
 			
 			 
@@ -66,5 +66,6 @@ var rolecreate=new function(){
 		 $(key).addClass("active");
 		 
 			$("input[name='role_id_selected']").val($(key).attr("role_id"));
+				$( "#link_dtl" ).dialog( "open" );
 			}
 	}
