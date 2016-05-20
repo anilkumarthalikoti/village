@@ -167,7 +167,7 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
         if (tempFarmerLand > 2) {
             maxArea = arrayMax(maxArray);
         }
-
+/*
         console.log("Already:" + preallocated);
         console.log("Present:" + totalFileLand);
         console.log("Total farmer land:" + tempFarmerLand);
@@ -176,7 +176,7 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
         console.log("Total land subsidy:" + totalSubsidy);
         console.log("minArea:" + minarea);
         console.log("max area:" + maxArea);
-        console.log("Temp pre allocated" + _tempPreallocted);
+        console.log("Temp pre allocated" + _tempPreallocted);*/
         var final90 = maxArea;
         if (tempFarmerLand <= 2) {
             final90 = totalFileLand;
@@ -195,8 +195,9 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
         $("#land50").val(final50);
 				var applicableAmt=$("#maxamount_a1").val();
 		applicableAmt=applicableAmt?applicableAmt:0;
-		var minCalcAmt=arrayMin({finalFieldBill,finalDealerBill,finalCalculationBill});
-		minCalcAmt=minCalcAmt?minCalcAmt:0;
+		var minCalcAmt=arrayMin([finalFieldBill,finalDealerBill,finalCalculationBill]);
+		console.log("minCalcAmt:"+minCalcAmt);
+	 
 		var remainingAmt=applicableAmt-minCalcAmt;
 		var amountToConsider=0;
 		if(minCalcAmt<remainingAmt){
@@ -212,13 +213,17 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
 		 var final50_100=final50*100;
 		var sub50Amt=final50_100*CA65;
 		var maxAmtFor50=sub50Amt*0.5;
-			console.log("CA65"+CA65);
-				console.log("final90_100"+final90_100);
-		console.log("sub90Amt"+sub90Amt);
-		console.log("maxAmtFor90"+maxAmtFor90);
-			console.log("final50_100"+final50_100);
-		console.log("sub50Amt"+sub50Amt);
-		console.log("maxAmtFor50"+maxAmtFor50);
+		console.log("==============================================================================");
+		console.log("minCalcAmt:"+minCalcAmt);
+		console.log("remainingAmt:"+remainingAmt);
+		console.log("amountToConsider:"+amountToConsider);
+			console.log("CA65:"+CA65);
+				console.log("final90_100:"+final90_100);
+		console.log("sub90Amt:"+sub90Amt);
+		console.log("maxAmtFor90:"+maxAmtFor90);
+			console.log("final50_100:"+final50_100);
+		console.log("sub50Amt:"+sub50Amt);
+		console.log("maxAmtFor50:"+maxAmtFor50);
 		if (final90 == 0) {
             $("#land90subsidy").val(0);
         } else {
@@ -229,7 +234,9 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
 			 
             var amtat90 = ($(trkey).attr("amount") * 90) / 100;
 					console.log("Row amt:"+$(trkey).attr("amount")+" 90% Amt:"+amtat90+" maxAmtFor90:"+maxAmtFor90+" 90Subsidy:"+(amtat90-maxAmtFor90));
-            $("#land90subsidy").val(Math.abs(amtat90-maxAmtFor90));
+var tempAmt=Math.abs(amtat90-maxAmtFor90);
+           tempAmt=Math.round10(tempAmt,-1);
+		   $("#land90subsidy").val(tempAmt);
 			
         }
 		 
@@ -244,8 +251,9 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
             var trkey = "#price tr[spacingid='" + spacingselected + "'][spacingarea='" + roundval.toFixed(2) + "']";
             var amtat50 = ($(trkey).attr("amount") * 50) / 100;
 			console.log("Row amt:"+$(trkey).attr("amount")+" 50% Amt:"+amtat50+" maxAmtFor50:"+maxAmtFor50+" 50Subsidy:"+(amtat50-maxAmtFor50));
-           
-            $("#land50subsidy").val(Math.abs(amtat50-maxAmtFor50));
+           var tempAmt=Math.abs(amtat50-maxAmtFor50);
+           tempAmt=Math.round10(tempAmt,-1);
+            $("#land50subsidy").val(tempAmt);
         }
 		
         var totalAvlAmt = Number($("#land90subsidy").val()) + Number($("#land50subsidy").val());
@@ -262,33 +270,33 @@ $("#amountinwords").val(inWords(Math.round($("#avalibleSubsidy").val())));
 
 function arrayMin(arr) {
     var len = arr.length;
-    console.log("-------MIN ARRAY-----");
+   // console.log("-------MIN ARRAY-----");
     var min = arr[0];
     console.log("0:" + min);
     for (var i = 1; i < len; i++) {
         if (arr[i] < min) {
             min = arr[i];
         }
-        console.log(i + ":" + arr[i]);
+   //     console.log(i + ":" + arr[i]);
     }
-    console.log("-------MIN VAL-----");
-    console.log(min);
+   // console.log("-------MIN VAL-----");
+   // console.log(min);
     return min;
 }
 
 function arrayMax(arr) {
     var len = arr.length;
-    console.log("-------MAX ARRAY-----");
+   // console.log("-------MAX ARRAY-----");
     var max = arr[0];
     console.log("0:" + max);
     for (var i = 1; i < len; i++) {
         if (arr[i] > max) {
             max = arr[i];
         }
-        console.log(i + ":" + arr[i]);
+     //   console.log(i + ":" + arr[i]);
     }
-    console.log("-------MAX VAL-----");
-    console.log(max);
+   // console.log("-------MAX VAL-----");
+  //  console.log(max);
     return max;
 }
 
