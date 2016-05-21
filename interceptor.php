@@ -40,11 +40,11 @@ function endsWith($haystack, $needle) {
  
 <script src="js/autocomplete.js" type="text/javascript"></script>
 <script src="js/default.js" type="text/javascript"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/montserrat.css" rel="stylesheet" type="text/css">
+  <link href="lato.css" rel="stylesheet" type="text/css">
  
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
  

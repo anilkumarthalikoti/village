@@ -9,18 +9,45 @@
 $conn=$database;
  ?>
 <script src="js/actionmapping.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+createDialog("hobli");
+$("#tbl_users tbody tr").click(function(){
+ 
+mapping.setUser(this);
 
+});
+});
+</script>
 </head>
 <body>
 
 <div class="title">Action Mapping</div>
 <div class="viewport">
 <form name="actionmapping" onsubmit="return false;">
-<input type="hidden" name="methodcall" value="validate_user"/>
-<input type="hidden" name="userregid" />
-   <table class="form margin-left margin-top">
+      <table class="form margin-left  xlarge"  filter='Y' id="tbl_users">
+   <thead>
+   <tr>
+   <th style="width:10px;"></th><th>User</th><th>Designation</th>
+   </tr>
+   </thead>
+   <tbody>
+   <!--
    <tr><td>Enter user id</td><td>:</td><td><input type="text" name="userid" id="userid" onkeypress="mapping.validateuser(event)"/></td></tr>
-   <tr id="hobli" class="hide"><td valign="top">Select hobli</td><td valign="top">:</td><td>
+   -->
+   <?php 
+   $query="select * from app_login";
+   $result=$conn->query($query);
+   foreach($result as $row){
+   echo "<tr userid='".$row['id']."' ><td></td><td>".$row['login_id']."</td><td>".$row['designation']."</td></tr>";
+   }
+   ?>
+   </tbody>
+   </table>
+     <div id="hobli">
+  
+<input type="hidden" name="userregid" />
+ 
    <table>
    <tr><td><select name="hobli[]" id="hobli_select" multiple="multiple" style="height:200px;">
    <?php
@@ -34,8 +61,7 @@ $conn=$database;
    </td></tr>
    <tr><td><input type="button" class="button_login" value="Save" onclick="mapping.savedata()"/></td></tr>
    </table>
-   </td></tr>
-   </table>
+ </div>
    </form>
 </div>
 </body>
