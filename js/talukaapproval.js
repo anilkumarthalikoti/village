@@ -17,9 +17,11 @@ this.saveCalculationSheet=function(){
 
     this.calculateSheet = function() {
 
-        $("input[damt]").attr("disabled", true);
-        $("input[dqty]").attr("disabled", true);
-        
+       // $("input[damt]").attr("disabled", true);
+        //$("input[dqty]").attr("disabled", true);
+        var d_10=0;
+		var d_11=0;
+		var d_12=0;
         var totalBillAmt = 0;
         var fieldTotal = 0;
         var dealerTotal = 0;
@@ -41,6 +43,7 @@ this.saveCalculationSheet=function(){
 			if(j==1){
 			tr="#mat_list "+trkey+" tr:eq(" + (i+3) + ")";
 			}
+			var itemorder=$(tr).find("input[damt]").attr("itemorder");
             var amt = toNumber($(tr).find("input[damt]").val());
             var isvat = $(tr).find("input[damt]").attr("isvat");
             var isdeduct = $(tr).find("input[damt]").attr("isdeduct");
@@ -87,6 +90,16 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
                 } else {
                     $(tr).find("td:eq(9)").html(ded);
                 }
+				if(itemorder=="10"){
+				d_10=d_10+ded;
+				}
+				
+				if(itemorder=="11"){
+				d_11=d_11+ded;
+				}
+				if(itemorder=="12"){
+				d_12=d_12+ded;
+				}
             } else {
                 if (rowspan == true) {
                     $(tr).find("td:eq(11)").html('0');
@@ -111,6 +124,9 @@ nonVatDealerAmt=sum(nonVatDealerAmt,tamt);
         });
 		
 		}
+		$("#d_10").val(d_10);
+		$("#d_11").val(d_11);
+		$("#d_12").val(d_12);
 		deduction=deduction?deduction:0;
  var deduction90= (deduction*90)/100;
  deduction90=deduction90.toFixed(2)

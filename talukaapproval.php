@@ -281,7 +281,12 @@ $inpsected_date=$row["inspected_date"];
                 <option value="Y">Yes</option>
                 </select>
             </td>
-             
+             <td class="txt-bold">Screen Filter:</td>
+            <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="d_10"></td>
+            <td class="txt-bold">By-pass Assembly:</td>
+            <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="d_11"></td>
+            <td class="txt-bold">Ventury & Manifold:</td>
+            <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="d_12"></td>
             <td class="txt-bold">Total Amount:</td>
             <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="deducationAmtView"></td>            
           </tr>
@@ -448,7 +453,7 @@ if(!isset($master[$row["itemorder"]])){
 $master[$row["itemorder"]]=array();
 $itemname[$row["itemorder"]]=$row["itemname"];
 }
-$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"],$row["isdeduct"],$row["isvat"]);
+$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"],$row["isdeduct"],$row["isvat"],$row["itemorder"]);
   }
   
   foreach ($master as $name => $values) {
@@ -463,6 +468,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
    $col=0;
    $isdeduct='N';
    $isvat='Y';
+   $itemorder=-1;
    foreach($val1 as $val){
    if($id==-1){
    $id=$val;
@@ -475,6 +481,10 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
    if($col==7){
    $print=false;
    $isvat=$val;
+   }
+    if($col==8){
+   $print=false;
+   $itemorder=$val;
    }
    if($print){
    $class="";
@@ -490,7 +500,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
 	  }
 	  $col++;
 	  }
-	   echo"<td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' dqty='dqty' class='tiny'/></td><td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' damt='damt' class='tiny'/></td><td class='bill-bg-dark'> </td><td class='amnt-consi'></td><td class='amnt-consi'></td>";
+	   echo"<td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' onblur='talukaapproval.calculateSheet()' itemorder='$itemorder' dqty='dqty' class='tiny'/></td><td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' itemorder='$itemorder' damt='damt' class='tiny' onblur='talukaapproval.calculateSheet()'/></td><td class='bill-bg-dark'> </td><td class='amnt-consi'></td><td class='amnt-consi'></td>";
 	  if($i==0){
 	  
 	  $i=1;
@@ -554,7 +564,7 @@ if(!isset($master[$row["itemorder"]])){
 $master[$row["itemorder"]]=array();
 $itemname[$row["itemorder"]]=$row["itemname"];
 }
-$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"],$row["isdeduct"],$row["isvat"]);
+$master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measure"],$row["ggrcqty"],$row["itemprice"],$row["ggrcqty"]*$row["itemprice"],$row["isdeduct"],$row["isvat"],$row["itemorder"]);
   
   }
   
@@ -570,6 +580,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
    $col=0;
    $isdeduct='N';
    $isvat='Y';
+   $itemorder=-1;
    foreach($val1 as $val){
   
    if($id==-1){
@@ -582,6 +593,10 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
    }
    if($col==7){
    $isvat=$val;
+     $print =false;
+   }
+   if($col==8){
+   $itemorder=$val;
      $print =false;
    }
    if($print){
@@ -599,7 +614,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
 	  }
 	   $col++;
 	  }
-	   echo"<td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' dqty='dqty' class='tiny'/></td><td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' damt='damt' class='tiny'/></td><td class='bill-bg-dark'> </td><td class='amnt-consi'></td><td class='amnt-consi'></td>";
+	   echo"<td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' isvat='$isvat' itemorder='$itemorder' dqty='dqty' class='tiny'/></td><td class='bill-bg-light'><input type='text' mid='$id' isdeduct='$isdeduct' onblur='talukaapproval.calculateSheet()' isvat='$isvat' itemorder='$itemorder' damt='damt' class='tiny' onblur='talukaapproval.calculateSheet()'/></td><td class='bill-bg-dark'> </td><td class='amnt-consi'></td><td class='amnt-consi'></td>";
 	  if($i==0){
 	  
 	  $i=1;
