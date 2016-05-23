@@ -364,6 +364,7 @@ approveddate date NOT NULL,
 isdeductable VARCHAR(1),
 preallocted FLOAT,
 reasonfor_deduction TEXT,
+approvedamount float,
 PRIMARY KEY (filling_id));
 
 CREATE TABLE  talukaapproval_dtl(

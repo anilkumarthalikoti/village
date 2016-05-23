@@ -1,20 +1,5 @@
 var talukaapproval = new function() {
 
-this.saveCalculationSheet=function(){
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
     this.calculateSheet = function() {
 
        // $("input[damt]").attr("disabled", true);
@@ -296,6 +281,7 @@ var tempAmt=Math.abs(amtat90-maxAmtFor90);
 $("#avalibleSubsidy").val(totalAvlAmt-deduction90);
  
 $("#amountinwords").val(inWords(Math.round($("#avalibleSubsidy").val())));
+
     }
 }
 
@@ -408,3 +394,61 @@ function inWords (num) {
         };
     }
 })();
+
+
+
+function saveSheet(){
+var tbl="";
+$('input[name="approvedamount"]').val($("#avalibleSubsidy").val());
+var ctype=["tbody","tfoot"];
+		for(var j=0;j<ctype.length;j++){
+		var i=0;
+		var forkey=ctype[j]+" input[damt]";
+		var trkey=ctype[j];
+		 
+        $(forkey).each(function() {
+		    var applydeduction = $("#isdeduct option:selected").val();
+			 
+			var tr = "#mat_list "+trkey+" tr:eq(" + i + ")";
+			if(j==1){
+			tr="#mat_list "+trkey+" tr:eq(" + (i+3) + ")";
+			}
+			var itemid=$(tr).find("input[damt]").attr("mid");
+			var dealeramt=$(tr).find("input[damt]").val();
+			var dealerqty=$(tr).find("input[dqty]").val();
+			var rowspan = false;
+			var ggrcprice=0;
+			var fieldqty=0;
+            if ($(tr).find("td:eq(0)").is("[rowspan]")) {
+                rowspan = true;
+            }
+			
+			if (rowspan == true) {
+			 
+                ggrcprice = $(tr).find("td:eq(5)").text();
+				fieldqty= $(tr).find("td:eq(4)").text();
+                
+
+            } else {
+                ggrcprice = $(tr).find("td:eq(3)").text();
+                fieldqty= $(tr).find("td:eq(2)").text();
+			 
+            
+            }
+			tbl=tbl+itemid+"#"+fieldqty+"#"+ggrcprice+"#"+dealeramt+"#"+dealerqty+"#";
+			
+			});
+			}
+			$("#material_save").val(tbl);
+			 
+ 	$.ajax({
+ 						url:"server/talukaapproval.php",
+ 						method:"post",
+ 						data:$("form[name='talukaapproval_form']").serialize()
+ 						
+ 						}).done(function(data){
+						 
+ 							 
+ 							});
+ 
+}

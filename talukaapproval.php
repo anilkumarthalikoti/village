@@ -147,6 +147,12 @@ $inpsected_date=$row["inspected_date"];
 	 $("select[name='crop3'] ").val("<?php print $item3;?>");
 	 setspacing("<?php print $spacing3;?>","aspacing3");
   }
+   $("input[damt]").blur(function(){
+   talukaapproval.calculateSheet();
+   });
+   $("input[dqty]").blur(function(){
+   talukaapproval.calculateSheet();
+   });
    
  });
  
@@ -202,10 +208,11 @@ $inpsected_date=$row["inspected_date"];
 <div class="title">Calculation sheet</div>
 <div class="viewport">
  
-<form name="post_inspection" >
+<form name="talukaapproval_form" >
 <input type="hidden" name="filling_id" value="<?php print $filling_id;?>"/>
-<input type="hidden" name="inspected_by" value="<?php print $user["id"]?>"/>
+<input type="hidden" name="approvedby" value="<?php print $user["id"]?>"/>
 <input type="hidden" name="material_save"/>
+<input type="hidden" name="approvedamount"/>
  
  <div style="width:90%">
  <div>
@@ -217,7 +224,7 @@ $inpsected_date=$row["inspected_date"];
 <td  ><input type='text' class='form-control input-sm readonly' style="width:150px" value="<?php print $user["login_id"]?>"/> </td>
 
  <td  class="txt-bold" >Taluka approval date:</td>
- <td    ><input type="text" placeholder="dd/MM/yyyy" name="inspected_date " class="datepicker" style="width:120px" id="inspectiondate"/>  </td> 
+ <td    ><input type="text" placeholder="dd/MM/yyyy" name="approveddate " class="datepicker" style="width:120px" id="approveddate"/>  </td> 
  
  </tr>
  </table>
@@ -267,7 +274,7 @@ $inpsected_date=$row["inspected_date"];
          <table class="table table-bordered table-condensed">
           <tr>
             <td class="txt-bold bg-danger">13) Area for which subsidy availed in previous years (hector):</td>
-            <td class="txt-bold bg-danger"><input type="text" class="form-control input-sm" id="preallocatedtemp" placeholder="Must enter this field"></td>
+            <td class="txt-bold bg-danger"><input type="text" class="form-control input-sm" name="preallocted" id="preallocatedtemp" placeholder="Must enter this field"></td>
             <td class="txt-bold">14) Remaining area (hector):</td>
             <td class="txt-bold"><input disabled type="text" class="form-control input-sm"></td>
           </tr>
@@ -276,7 +283,7 @@ $inpsected_date=$row["inspected_date"];
      <table class="table table-bordered table-condensed">
           <tr>
             <td class="txt-bold bg-danger">15) Deduct:</td>
-            <td class="txt-bold bg-danger" width="90px"><select class="form-control" id="isdeduct">
+            <td class="txt-bold bg-danger" width="90px"><select class="form-control" name="isdeductable" id="isdeduct">
             	<option value="N">No</option>
                 <option value="Y">Yes</option>
                 </select>
@@ -294,7 +301,7 @@ $inpsected_date=$row["inspected_date"];
     <table class="table table-bordered table-condensed">
           <tr>
             <td width="15%" class="txt-bold bg-danger">16) Reason for deduction:</td>
-            <td class="txt-bold bg-danger"><input type="text" class="form-control input-sm"></td>
+            <td class="txt-bold bg-danger"><input type="text" class="form-control input-sm" name="reasonfor_deduction"></td>
           </tr>
  		</table>
 		
@@ -720,7 +727,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
            <tr>
              <td class="text-center">J</td>
              <td colspan="9" bgcolor="#B5FF6A">Amount recommended for Subsidy (H-I)</td>
-             <td bgcolor="#B5FF6A"><input disabled type="text" id='avalibleSubsidy'></td>
+             <td bgcolor="#B5FF6A"><input disabled type="text"  id='avalibleSubsidy'></td>
 			 <td></td>
            </tr>
            <tr>
@@ -728,7 +735,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
              <td>Amount in words</td>
              <td colspan="10"><input disabled type="text" id='amountinwords' style="width:100%; text-transform:uppercase" ></td>
             </tr>       
-  <tr><td colspan="12"> <input type='button' value='Calculate' onclick="talukaapproval.calculateSheet()"  /></td></tr>
+  <tr><td colspan="12"> <input type='button' value='Save' onclick="saveSheet()"  /></td></tr>
   </tfoot>
   </table>
  </div>
