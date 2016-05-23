@@ -55,7 +55,7 @@ $("table[filter='Y']").DataTable({
  
  });
  
- 
+ $("#office_desig").val("<?php print $role?>");
 $("input[type='search']").addClass("search");
  
 });

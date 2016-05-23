@@ -357,6 +357,18 @@ PRIMARY KEY (filling_id));
 CREATE TABLE  postinspection_dtl(
 filling_id int,item_id int, dealeramt float,dealerqty float, ggrcamt float,ggrcqty float
 );
+CREATE TABLE talukaapproval_mstr
+(filling_id INT NOT NULL,
+approvedby int NOT NULL,
+approveddate date NOT NULL,
+isdeductable VARCHAR(1),
+preallocted FLOAT,
+reasonfor_deduction TEXT,
+PRIMARY KEY (filling_id));
+
+CREATE TABLE  talukaapproval_dtl(
+filling_id int,item_id int, dealeramt float,dealerqty float, ggrcamt float,ggrcqty float
+);
 
 INSERT INTO app_login(id, login_id, login_password, isactive, isadmin,designation) VALUES (1, 'ADMIN', 'ADMIN', 'Y', 'Y','ALL');
 
