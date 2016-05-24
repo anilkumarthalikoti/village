@@ -44,7 +44,7 @@ function endsWith($haystack, $needle) {
   <link href="css/montserrat.css" rel="stylesheet" type="text/css">
   <link href="lato.css" rel="stylesheet" type="text/css">
  
-  <script src="js/bootstrap.min.js"></script>
+ 
 <script type="text/javascript">
 $(document).ready(function(){
  

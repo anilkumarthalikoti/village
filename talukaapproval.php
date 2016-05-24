@@ -224,7 +224,7 @@ $inpsected_date=$row["inspected_date"];
 <td  ><input type='text' class='form-control input-sm readonly' style="width:150px" value="<?php print $user["login_id"]?>"/> </td>
 
  <td  class="txt-bold" >Taluka approval date:</td>
- <td    ><input type="text" placeholder="dd/MM/yyyy" name="approveddate " class="datepicker" style="width:120px" id="approveddate"/>  </td> 
+ <td    ><input type="text" placeholder="dd/MM/yyyy" name="approveddate" class="datepicker" style="width:120px" id="approveddate"/>  </td> 
  
  </tr>
  </table>

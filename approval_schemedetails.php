@@ -74,18 +74,18 @@ $count="";
 	<li> <div>Pending <a href="#"><span id="taluka_approval_pending">0</span></a></div> 
 	</li>
 	<li><div>Rejected <a href="#"><span id="p">0</span></a></div></li>
-	  <li><div>Approved <a href="#"><span id="p">0</span></a></div></li>
+	  <li><div>Approved <a href="#"><span id="talukaapproval_done">0</span></a></div></li>
 	  <li> <div>Yet to forward to DDH  <a href="#"><span id="p">0</span></a></div>
 	  </li>
 	<li><div>Forward to DDH   <a href="#"><span id="p">0</span></a></div></li> 
-	  <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
+	  <li> <div>Application for sanaction order <a href="#"><span id="applicationfor_sanctionorder">0</span></a></div> </li>
 	<li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	 
  </ul>
  <ul>
  <h1>Sanction Order</h1>
-   <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
-	<li> <div>Pending <a href="#"><span id="p">0</span></a></div> 
+   <li> <div>Application for post-inspection <a href="#"><span id="sanctionorder_applications">0</span></a></div> </li>
+	<li> <div>Pending <a href="#"><span id="sanctionorder_applications_pending">0</span></a></div> 
 	</li>
 	<li><div>Rejected <a href="#"><span id="p">0</span></a></div></li>
 	  <li><div>Approved <a href="#"><span id="p">0</span></a></div></li>

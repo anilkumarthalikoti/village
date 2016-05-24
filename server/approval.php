@@ -101,6 +101,9 @@ $statusQuery.=" union select count(*),'14' from schemefilling sf,schemefilling_l
 $statusQuery.=" union select count(*),'14P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=14 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// POST INSPECTION FORWARDED
 $statusQuery.=" union select count(*),'14C' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=15 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// POST INSPECTION FORWARDED
 $statusQuery.=" union select count(*),'14R' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=-14 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// POST INSPECTION FORWARDED
+$statusQuery.=" union select count(*),'16' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=16 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// POST INSPECTION FORWARDED
+$statusQuery.=" union select count(*),'17' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status>=17 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// POST INSPECTION FORWARDED
+$statusQuery.=" union select count(*),'17P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=17 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// POST INSPECTION FORWARDED
         
 	    $result = $conn->query($statusQuery);
         $jsontext = "[";

@@ -29,10 +29,13 @@ $('#tabs li a').click(function(){
 });			 
 		 
 	 $("input[class='datepicker']").datepicker({changeMonth: true,
+	 dateFormat:"dd/mm/yy",
+	 
       changeYear: true,
 	  
 	  showWeek: true
-	  });
+	  }).datepicker("setDate", new Date());
+	  
 	  $(".readonly").attr("disabled",true);
 			 pramukhIME.addLanguage(PramukhIndic,"kannada"); 
        
@@ -54,6 +57,8 @@ $("select[class='ui-datepicker-year']").removeClass("selectcls");
 $("div[class='header']").load("header.html");
 $("div[class='viewport1']").after("<div class='fotter'><div>@2016 All rights reserved</div></div>");			 
 	}
+	
+	$("input:visible:first").focus();
 						   });
 
  document.onmousedown=disableclick;

@@ -117,6 +117,18 @@ $(document).ready(function(){
 	 }
 	?>
 	
+		<?php
+	if($_GET["status"]=="17"){
+	?>
+	$("table#applications tbody tr").click(function(){
+	 
+	 $("form[name='sanactionorder_form'] input[name='filling_id']").val($(this).attr("filling_id"));
+	  $("form[name='sanactionorder_form']").submit();
+	});
+	<?php
+	 }
+	?>
+	
 });
  function updatedealers(){
  $("select[name='dealer'] option").addClass("hide");
@@ -173,6 +185,9 @@ $titles["8"]="Forward to RSK for post-inspection";
 	 $titles["13A"]="Post-Inspection TO Taluka Approval Cover letter";
 	 $titles["13B"]="Forward TO Taluka Approval";
 	 $titles["14"]="Taluka Approval Pending";
+	  $titles["15"]="Taluka Approved Files";
+	   $titles["16"]="Sanction order request";
+	    $titles["17"]="Sanction order pending";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
@@ -398,6 +413,12 @@ break;
 case "13B":
 $inputs="<input type='button' value='Forward for Taluka Approval' onclick=\"approvaljs.savenewapplication('14');\"/>";
 break;
+case "15":
+$inputs="<input type='button' value='Forward to TA' onclick=\"approvaljs.savenewapplication('16');\"/>";
+break;
+case "16":
+$inputs="<input type='button' value='Forward for sanaction order' onclick=\"approvaljs.savenewapplication('17');\"/>";
+break;
 }
  
  ?>
@@ -559,7 +580,15 @@ echo "<option class='hide'  parent_id='".$row["parent_id"]."' value='".$row["id"
 
 
 </div>
+ <div id="sanactionorder" title="Sanction order" class="xlarge">
+<form name="sanactionorder_form" target="_self" action="sanctionorder.php" method="post">
+<input name="filling_id" type="hidden"/>
+ 
+</form>
 
+
+
+</div>
 </div>
 
 </body>

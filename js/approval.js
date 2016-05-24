@@ -231,7 +231,23 @@
 										$("#taluka_approval_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=14");
 										
 										break;
+										case "14C":
+										$("#talukaapproval_done").html(valx);
+										$("#talukaapproval_done").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=15");
 										
+										break;
+										case "16":
+										$("#applicationfor_sanctionorder").html(valx);
+										$("#applicationfor_sanctionorder").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=16");
+										break;
+										case "17":
+										$("#sanctionorder_applications").html(valx);
+										//$("#applicationfor_sanctionorder").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=16");
+										break;
+										case "17P":
+										$("#sanctionorder_applications_pending").html(valx);
+										$("#sanctionorder_applications_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=17");
+										break;
 										}									 
 									 
    												

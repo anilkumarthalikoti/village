@@ -12,7 +12,7 @@ foreach ($_POST as $key => $value){
 if(!(in_array($key, $skip))){
 if($key!="material_save"){
 if($key=="inspection_date"){
-$value=date("Y-m-d",strtotime($value));
+$value=DateTime::createFromFormat('d/m/Y', $value)->format('Y-m-d');
 }
 if(strlen($value)!=0){
 echo $key.":".$value;
@@ -30,15 +30,15 @@ $material_list=explode("#",$value);
 $conn->insert("postinspection_mstr",$params);
 $conn->update("schemefilling",array("status"=>12),array("id"=>$_POST["filling_id"]));
 $dtlkey=array("filling_id","item_id","ggrcqty");
-for($i=0;$i<sizeof($material_list);$i=$i+2){
+for($i=0;$i<sizeof($material_list)-1;){
 $dtl=array();
 $dtl[$dtlkey[0]]=$_POST["filling_id"];
-$k=1;
-for($j=$i;$j<$i+2;$j++){
  
-$dtl[$dtlkey[$k]]=$material_list[$j];
+for($j=1;$j<3;$j++){
  
-$k++;
+$dtl[$dtlkey[$j]]=$material_list[$i];
+ 
+$i++;
 }
  
 $conn->insert("postinspection_dtl",$dtl);
