@@ -25,13 +25,7 @@ $conn=$database;
          <option value="1">Individual</option>
          <option value="2">Cooperative Society</option></select>
 		 </td><td align="right"><table align="right"> <tr>
-         <td ><input  type="text" class="search" placeholder="Search" />
-             <select name="select">
-               <option>Reg.No</option>
-               <option>Name</option>
-               <option>Ration card no</option>
-               <option>Adhar</option>
-             </select>
+         <td > 
           </td>
        </tr></table></td></tr></table>
      </div>

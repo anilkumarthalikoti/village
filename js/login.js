@@ -3,6 +3,10 @@
  var login=new function(){
 	 
 	 this.validate=function(){
+	 validation.validate();
+	 if($("[class='error']").length>0){
+	 return false;
+	 }
 	 $.ajax({
 			url:"server/login.php",
 			method:"post",
@@ -11,7 +15,7 @@
 				if(data=="valid_login"){
 					window.location="home.php";
 					}else{
-						$("#errorMsg").html("Invalid user name/password");
+						 
 						}
 				});
 	 }

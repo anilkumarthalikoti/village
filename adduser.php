@@ -16,15 +16,27 @@ header('Location: '."adduser.php");
 die();
 }
  ?>
+ <script type="text/javascript">
+ function validate(){
+ validation.validate();
+ 
+ if($("[class='error']").length>0){
+ return false;
+ }
+ 
+ return true;
+ 
+ }
+ </script>
 </head>
 
 <body>
 <div class="title">User Creation</div>
 <div class="viewport">
-<form name="userform" method="post" action="adduser.php">
+<form name="userform" method="post" action="adduser.php" onSubmit="return validate()">
 <table class="form xlarge">
-<tr><td>Enter user name</td><td>:</td><td><input name="login_id" type="text" /></td></tr>
-<tr><td>User Designation</td><td>:</td><td><select name="designation">
+<tr><td>Enter user name</td><td>:</td><td><input rules="required," placeholder="Login Id" name="login_id" type="text" /></td></tr>
+<tr><td>User Designation</td><td>:</td><td><select name="designation" rules="required,">
 <option value="-1">Select</option>
 <option value="TA">TA</option>
 <option value="TA-SADH">TA-SADH</option>

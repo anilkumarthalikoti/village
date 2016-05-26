@@ -529,11 +529,12 @@ padding:5px;
 }
 .form tr td{
 	color:#000;
+	border-bottom:1px  solid #666666;
 	}
 .form tr:nth-child(odd) td{
 background-color: #f2f3f4  ;
-border-bottom:1px  solid #666666;
-line-height:35px;
+
+
 padding-left:10px; 
 }
 .form tr:nth-child(even) td{
@@ -896,3 +897,12 @@ width:1370px;
 	font-weight:bold; color:
 	
 	}
+	 .error{
+	 
+	
+ 
+	   box-shadow: 1px 1px 1px 1px #A00000;
+ 
+	   
+	 
+	 }

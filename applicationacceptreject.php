@@ -199,8 +199,8 @@ $titles["8"]="Forward to RSK for post-inspection";
  <form name="application" method="post">
 <input type="hidden" name="application" value="application"/>
 <div    style="max-height:420px; min-height:420px;">
-<table class="excel90 margin" id="applications" filter='Y'>
-<thead>
+<table class="grid excel90 margin" id="applications" filter='Y'>
+<thead >
  <tr>
  <?php
  $select="Y" ;

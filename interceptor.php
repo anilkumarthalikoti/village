@@ -33,6 +33,7 @@ function endsWith($haystack, $needle) {
 <link href="css/jquery.dataTables.css" type="text/css" rel="stylesheet"/>
 
 <script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/validation.js" type="text/javascript"></script>
 <script src="js/jquery-ui.js" type="text/javascript"></script>
 <script src="js/datatable/jquery.dataTables.js" type="text/javascript"></script>
  <script src="js/pramukhindic.js" type="text/javascript"></script>

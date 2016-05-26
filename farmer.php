@@ -10,20 +10,25 @@ $conn=$database;
 
  ?>
  <script type="text/javascript" src="js/farmer.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+ $("div.dataTables_filter").append('<a href="farmer_reg.php"><img src="images/addnew.png"  style="float:left; margin:10px;"/></a>');
+ });
+ </script>
 </head>
 
 <body>
 <div class="title">Farmer details</div>
 <div class="viewport">
 <form name"farmer" onsubmit="return false">
-<table class="excel90" >
-<tr><td> <a href="farmer_reg.php"><img src="images/addnew.png"/></a></td><td></td><td style="width:550px;"> </td></tr>
+<table class="excel90 margin" >
+ 
 			 <tr>
 			 <td colspan="4" valign="top">
 			 <div style="height:400px; overflow:auto">
  <div style="height:360px; overflow:auto">
  
-<table class="excel90 margin"  filter='Y'  cellpadding="0" cellspacing="0">
+<table class="grid excel90 margin"  filter='Y'  cellpadding="0" cellspacing="0">
 <thead><th>Benficary Id</th><th>Name</th><th>Relation name</th><th>Village name</th><th>Total land</th><th>Land Register</th><th>Scheme Register</th></thead>
 <tbody>
 <?php 
