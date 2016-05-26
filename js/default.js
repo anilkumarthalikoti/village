@@ -59,6 +59,8 @@ $("div[class='viewport1']").after("<div class='fotter'><div>@2016 All rights res
 	}
 	
 	$("input:visible:first").focus();
+	$("td[class='label']").removeClass("label");
+	$("[class='container']").css("margin","0");
 						   });
 
  document.onmousedown=disableclick;
