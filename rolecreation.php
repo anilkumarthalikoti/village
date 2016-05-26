@@ -55,7 +55,7 @@ if($_POST["method_call"]=="update_role_dtl"){
   <table class="form margin-left margin-top xlarge"  border="0" cellspacing="0" cellpadding="0">
     
     <tr>
-<td  ><form id="newRole" action="rolecreation.php" method="post">New Role:<input type="text" name="role_name" id="role_name"/>
+<td  ><form id="newRole" action="rolecreation.php" method="post">New Role:<input rules="required," type="text" name="role_name" id="role_name"/>
 <input type="hidden" name="method_call" value="newrole" />
 <input type="button" onClick="rolecreate.createRole()" value="Add Role" class="button_login"/> &nbsp;</form></td>
     </tr>
