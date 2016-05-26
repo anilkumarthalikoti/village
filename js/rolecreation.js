@@ -4,11 +4,12 @@ var rolecreate=new function(){
 	
 	
 	this.createRole=function(){
+		validation.validate();
 		
-		if(isNull("role_name")){
-			alert("Enter role name");
-			return;
+		if($("[class='error']").length>0){
+			return false;
 			}
+		
 			var _params={};
 			_params["method_call"]="newrole";
 			_params["role_name"]=tval("role_name");

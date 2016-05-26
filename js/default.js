@@ -58,6 +58,7 @@ $("div[class='header']").load("header.html");
 $("div[class='viewport1']").after("<div class='fotter'><div>@2016 All rights reserved</div></div>");			 
 	}
 	
+	$("[placeholder]").attr("defaultholder",$(this).attr("placeholder"));
 	$("input:visible:first").focus();
 	$("td[class='label']").removeClass("label");
 	$("[class='container']").css("margin","0");

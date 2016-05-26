@@ -15,7 +15,7 @@ $(this).removeClass("error");
 
 
 var rules=$(this).attr("rules").split(",");
-
+//Not null rule
 if(rules.indexOf("required")!=-1){
 var error=false;
 console.log("Required rule");
@@ -45,3 +45,4 @@ $(this).addClass("error");
 
 
 }
+
