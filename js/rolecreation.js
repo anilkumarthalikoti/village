@@ -12,7 +12,7 @@ var rolecreate=new function(){
 		
 			var _params={};
 			_params["method_call"]="newrole";
-			_params["role_name"]=tval("role_name");
+			_params["role_name"]=$("input[name='role_name']").val();
 			$.ajax({
 				   method:"POST",
 				   data:_params,

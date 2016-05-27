@@ -55,7 +55,8 @@ die();
 </table>
 </form>
  </div>
-<table class="grid xlarge margin"  filter='Y'  >
+ <div class="xlarge margin">
+<table class="grid margin"  filter='Y'  >
 <thead><tr><th>Login id</th><th>IS ACTIVE</th><th>IS ADMIN</th><th>Designation</th></tr></thead>
 <tbody>
 <?php 
@@ -67,7 +68,7 @@ echo "<tr><td>".$row["login_id"]."</td><td>".$row["isactive"]."</td><td>".$row["
 ?>
 </tbody>
 </table>
- 
+ </div>
 </div>
 </body>
 </html>

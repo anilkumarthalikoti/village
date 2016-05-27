@@ -59,14 +59,14 @@ if($_POST["method_call"]=="update_role_dtl"){
 <div class="viewport">
 <div class="msg"><?php print $msg?></div>
 
-<div id="formdialog">
-<form id="newRole" action="rolecreation.php" method="post">New Role:<input rules="required," type="text" name="role_name" id="role_name"/>
+<div id="formdialog" class="form">
+<form id="newRole"  action="rolecreation.php" method="post">New Role:<input rules="required," type="text" name="role_name" id="role_name"/>
 <input type="hidden" name="method_call" value="newrole" />
 <input type="button" onClick="rolecreate.createRole()" value="Add Role" class="button_login"/> &nbsp;</form>
 </div>
  
-	 
-	 <table width="100%" class="grid margin xlarge"   id="role_mstr" filter='Y'>
+	  <div class="xlarge margin" >
+	 <table  class="grid"   id="role_mstr" filter='Y'>
 	 <thead>
 	  <tr><th width="50"></th><th>Permission</th> </tr>
 	  </thead>
@@ -82,8 +82,8 @@ if($_POST["method_call"]=="update_role_dtl"){
 	  </tbody>
 	 </table> 
 	 
-  </table>
-  <div style="height:auto; max-height:300px;    max-width:400px; overflow:auto; min-width:400px;"   id="link_dtl">
+ </div>
+  <div style="  max-height:100px;    max-width:400px; overflow:auto; min-width:400px;"   id="link_dtl">
 	 <form name="role_dtl">
 	 <input type="hidden" name="role_id_selected" id="role_id_selected"/>
 	 <input type="hidden" name="method_call" value="update_role_dtl"/>
