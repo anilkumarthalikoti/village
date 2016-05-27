@@ -66,6 +66,13 @@ function endsWith($haystack, $needle) {
   margin:0;
  padding:0;
  }
+ .ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.9;
+    z-index: 1040;    
+}
  </style>
 <script type="text/javascript">
 $(document).ready(function(){

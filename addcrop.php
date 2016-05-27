@@ -14,19 +14,34 @@ header('Location: '."addcrop.php");
 die();
 }
  ?>
+ <script type="text/javascript">
  
+  function addUser(){
+ $("#formdialog").dialog("open");
+ }
+ $(document).ready(function(){
+ $("div.dataTables_filter").append('<a href="#" onclick="addUser()"><img src="images/addnew.png"  style="float:left;  "/></a>');
+ createDialogSmall("formdialog") ;
+ });
+ 
+</script>
 </head>
 
 <body>
 <div class="title">Add crop details</div>
 <div class="viewport">
+
+<div id="formdialog">
 <form name"crop" onsubmit="addcrop.php" method="post">
- <table class="form margin xlarge">
+ <table class="form" style="margin:0; padding:0" >
  <tr><td>Crop name</td><td>:</td><td><input type="text" name="cropname" id="cropname" placeholder="Crop name"/> <input type="text" alt="ka" name="cropname_k" id="cropname_k"/></td></tr>
  <tr><td colspan="3"><input type="submit" class="button" value="Save"/></td></tr>
  
  </table>
- <table class="grid margin xlarge">
+  </form>
+ </div>
+ <div class="margin xlarge">
+ <table class="grid " filter='Y'>
  <thead><tr><th></th><th>Crop name</th><th> Crop name(K)</th></tr></thead>
  <tbody>
  <?php 
@@ -40,7 +55,8 @@ die();
  ?>
  </tbody>
  </table> 
- </form>
+ </div>
+
  
 </div>
 </body>

@@ -40,7 +40,7 @@ die();
 <body>
 <div class="title">User Creation</div>
 <div class="viewport">
-<div id="formdialog">
+<div id="formdialog" title="Create new user">
 <form name="userform" method="post" action="adduser.php" onSubmit="return validate()">
 <table class="form" style="margin:0; padding:0">
 <tr><td>Enter user name</td><td>:</td><td><input rules="required," placeholder="Login Id" name="login_id" type="text" /></td></tr>

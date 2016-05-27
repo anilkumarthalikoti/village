@@ -44,5 +44,6 @@ var itemtrn=new function(){
  $("#standard_measure").val($(this).find("td:eq(2)").html());
  $("#units").val($(this).find("td:eq(5)").html());
  $("#isdeduct").val($(this).find("td:eq(4)").html());
+ $("#formdialog").dialog("open");
  });
  });

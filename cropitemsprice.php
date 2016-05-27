@@ -23,13 +23,22 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
 }
  ?>
  <script type="text/javascript" src="js/itemdetails.js"></script>
+ <script type="text/javascript">
+  function addUser(){
+ $("#formdialog").dialog("open");
+ }
+ $(document).ready(function(){
+ $("div.dataTables_filter").append('<a href="#" onclick="addUser()"><img src="images/addnew.png"  style="float:left;  "/></a>');
+ createDialogSmall("formdialog") ;
+ });
+ </script>
 </head>
 
 <body>
 <div class="title">Drip material </div>
 <div class="viewport">
 <form name"formcrop"  >
-
+<div id="formdialog" title="Material Price">
  <table class="form margin xlarge">
  <tr><td>Grouping Id</td><td>:</td><td> <input type="text"   name="itemorder" id="itemorder"/></td></tr>
  <tr><td>Item name</td><td>:</td><td><input type="text" name="itemname" id="itemname" placeholder="Item name"/><input type="hidden" name="mat_id" id="mat_id" value="-1"/></td></tr>
@@ -47,7 +56,9 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
  <tr><td colspan="3"><input type="button" class="button" value="Clear" onclick="location.reload(); "/><input type="button" class="button" value="Save"  onclick="itemtrn.saveupdate();" /></td></tr>
  
  </table>
- <table class="grid margin xlarge" id="existing">
+ </div>
+ <div class="xlarge margin">
+ <table class="grid" id="existing" filter='Y'>
  <thead><tr><th></th><th>Item name</th><th>Standard Measure</th><th>Group Id</th><th>Is deductable</th><th> Units</th><th>Price</th></tr></thead>
  <tbody>
  <?php 
@@ -61,6 +72,7 @@ $i++;
  ?>
  </tbody>
  </table> 
+ </div>
  </form>
  
 </div>

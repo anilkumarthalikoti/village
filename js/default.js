@@ -105,6 +105,7 @@ function isNull(element){
 $(key).dialog({
       autoOpen: false,
 	  width:'auto',
+	  modal:true,
 	  position: { my: "center", at: "center" },
 	  maxWidth:'600px',
       show: {
@@ -126,6 +127,7 @@ $(key).dialog({
 $(key).dialog({
       autoOpen: false,
 	  width:'auto',
+	  modal:true,
 	  position: { my: "center", at: "center" },
 	  maxWidth:'600px',
       show: {
