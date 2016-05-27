@@ -27,14 +27,22 @@ die();
  return true;
  
  }
+ function addUser(){
+ $("#formdialog").dialog("open");
+ }
+ $(document).ready(function(){
+ $("div.dataTables_filter").append('<a href="#" onclick="addUser()"><img src="images/addnew.png"  style="float:left;  "/></a>');
+ createDialogSmall("formdialog") ;
+ });
  </script>
 </head>
 
 <body>
 <div class="title">User Creation</div>
 <div class="viewport">
+<div id="formdialog">
 <form name="userform" method="post" action="adduser.php" onSubmit="return validate()">
-<table class="form xlarge">
+<table class="form" style="margin:0; padding:0">
 <tr><td>Enter user name</td><td>:</td><td><input rules="required," placeholder="Login Id" name="login_id" type="text" /></td></tr>
 <tr><td>User Designation</td><td>:</td><td><select name="designation" rules="required,">
 <option value="-1">Select</option>
@@ -46,8 +54,8 @@ die();
  
 </table>
 </form>
- 
-<table class="grid xlarge margin"   >
+ </div>
+<table class="grid xlarge margin"  filter='Y'  >
 <thead><tr><th>Login id</th><th>IS ACTIVE</th><th>IS ADMIN</th><th>Designation</th></tr></thead>
 <tbody>
 <?php 

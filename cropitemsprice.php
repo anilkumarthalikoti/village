@@ -40,7 +40,7 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
  <option value="No's">No's</option>
  <option value="Meter">Meter</option>
  </select></td></tr>
- <tr><td>Is Deductable</td><td>:</td><td><select name="isdeduct">
+ <tr><td>Is Deductable</td><td>:</td><td><select name="isdeduct" id="isdeduct">
  <option value="N">NO</option>
  <option value="Y">YES</option>
  </select></td></tr>

@@ -45,17 +45,39 @@ function endsWith($haystack, $needle) {
   <link href="css/montserrat.css" rel="stylesheet" type="text/css">
   <link href="lato.css" rel="stylesheet" type="text/css">
  
+ <style type="text/css">
+ .dataTables_filter{
+ background:#CCCCCC;
+ width:100%;
+ height:45px;
+ max-height:45px;
+ margin-top:0;
+ padding:0;
+ vertical-align:middel;
+   -webkit-border-radius: 15px 15px 0px 0px;
+		-moz-border-radius:  15px 15px 0px 0px;
+		border-radius:  10px 10px 0px 0px; 
+		padding:10px;
+		padding-bottom:5px;
+	 
+ }
  
+ .dataTables_filter input{
+  margin:0;
+ padding:0;
+ }
+ </style>
 <script type="text/javascript">
 $(document).ready(function(){
  
  $("span#cloudoffice_role").html("<?php print $role ?>");
- $("table[filter='Y']").addClass("form_grid");
+// $("table[filter='Y']").addClass("form_grid");
 $("table[filter='Y']").DataTable({
     "sDom": 'Rfrtlip'  
  
  });
- 
+ $("table[role='grid']").css("border","0");
+  
  $("#office_desig").val("<?php print $role?>");
 $("input[type='search']").addClass("search");
  

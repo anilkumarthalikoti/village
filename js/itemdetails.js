@@ -34,11 +34,15 @@ var itemtrn=new function(){
  $("#itemname").attr("disabled","disabled");
  $("#units").attr("disabled","disabled");
   $("#standard_measure").attr("disabled","disabled");
+  $("#itemorder").attr("disabled","disabled");
+   $("#isdeduct").attr("disabled","disabled");
   
+   $("#itemorder").val($(this).find("td:eq(3)").html())
  $("#mat_id").val($(this).attr("id"));
  $("#itemname").val($(this).find("td:eq(1)").html());
- $("#itemprice").val($(this).find("td:eq(4)").html());
+ $("#itemprice").val($(this).find("td:eq(6)").html());
  $("#standard_measure").val($(this).find("td:eq(2)").html());
- $("#units").val($(this).find("td:eq(3)").html());
+ $("#units").val($(this).find("td:eq(5)").html());
+ $("#isdeduct").val($(this).find("td:eq(4)").html());
  });
  });

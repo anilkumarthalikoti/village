@@ -15,7 +15,14 @@ $(document).ready(function(){
 createDialog("link_dtl");
 
 });
-
+ function addUser(){
+ $("#formdialog").dialog("open");
+ }
+ $(document).ready(function(){
+ $("div.dataTables_filter").append('<a href="#" onclick="addUser()"><img src="images/addnew.png"  style="float:left;  "/></a>');
+ createDialogSmall("formdialog") ;
+ });
+ 
 </script>
 </head>
 
@@ -52,19 +59,14 @@ if($_POST["method_call"]=="update_role_dtl"){
 <div class="viewport">
 <div class="msg"><?php print $msg?></div>
 
-  <table class="form margin-left margin-top xlarge"  border="0" cellspacing="0" cellpadding="0">
-    
-    <tr>
-<td  ><form id="newRole" action="rolecreation.php" method="post">New Role:<input rules="required," type="text" name="role_name" id="role_name"/>
+<div id="formdialog">
+<form id="newRole" action="rolecreation.php" method="post">New Role:<input rules="required," type="text" name="role_name" id="role_name"/>
 <input type="hidden" name="method_call" value="newrole" />
-<input type="button" onClick="rolecreate.createRole()" value="Add Role" class="button_login"/> &nbsp;</form></td>
-    </tr>
-      <tr><td>
-	  <div>
-	  <table width="100%">
-	 <tr><td width="350" valign="top" >
+<input type="button" onClick="rolecreate.createRole()" value="Add Role" class="button_login"/> &nbsp;</form>
+</div>
+ 
 	 
-	 <table width="100%" class="grid margin xlarge"   id="role_mstr">
+	 <table width="100%" class="grid margin xlarge"   id="role_mstr" filter='Y'>
 	 <thead>
 	  <tr><th width="50"></th><th>Permission</th> </tr>
 	  </thead>
@@ -78,13 +80,8 @@ if($_POST["method_call"]=="update_role_dtl"){
 	 }
 	 ?>
 	  </tbody>
-	 </table></td>
-	 <td  valign="top">
- 
+	 </table> 
 	 
-	
- </td></tr></table></div>
-	 </td></tr>
   </table>
   <div style="height:auto; max-height:300px;    max-width:400px; overflow:auto; min-width:400px;"   id="link_dtl">
 	 <form name="role_dtl">

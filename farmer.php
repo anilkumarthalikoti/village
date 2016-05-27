@@ -12,7 +12,7 @@ $conn=$database;
  <script type="text/javascript" src="js/farmer.js"></script>
  <script type="text/javascript">
  $(document).ready(function(){
- $("div.dataTables_filter").append('<a href="farmer_reg.php"><img src="images/addnew.png"  style="float:left; margin:10px;"/></a>');
+ $("div.dataTables_filter").append('<a href="farmer_reg.php"><img src="images/addnew.png"  style="float:left;  "/></a>');
  });
  </script>
 </head>

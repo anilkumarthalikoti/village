@@ -105,7 +105,7 @@ function isNull(element){
 $(key).dialog({
       autoOpen: false,
 	  width:'auto',
-	  position: { my: "center", at: "top" },
+	  position: { my: "center", at: "center" },
 	  maxWidth:'600px',
       show: {
         effect: "blind",
@@ -114,6 +114,27 @@ $(key).dialog({
       hide: {
         effect: "blind",
         duration: 1000
+      }
+    });
+ }
+ 	function createDialogSmall(id){
+ var key="#"+id;
+ 
+ $(key).css("padding","5");
+  
+
+$(key).dialog({
+      autoOpen: false,
+	  width:'auto',
+	  position: { my: "center", at: "center" },
+	  maxWidth:'600px',
+      show: {
+        effect: "blind",
+        duration: 100
+      },
+      hide: {
+        effect: "blind",
+        duration: 10
       }
     });
  }
