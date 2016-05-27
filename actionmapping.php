@@ -11,7 +11,7 @@ $conn=$database;
 <script src="js/actionmapping.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-createDialog("hobli");
+createDialogSmall("hobli");
 $("#tbl_users tbody tr").click(function(){
  
 mapping.setUser(this);
@@ -25,7 +25,8 @@ mapping.setUser(this);
 <div class="title">Action Mapping</div>
 <div class="viewport">
 <form name="actionmapping" onsubmit="return false;">
-      <table class="form margin-left  xlarge"  filter='Y' id="tbl_users">
+<div class="xlarge margin">
+      <table class="grid"  filter='Y' id="tbl_users">
    <thead>
    <tr>
    <th style="width:10px;"></th><th>User</th><th>Designation</th>
@@ -44,6 +45,7 @@ mapping.setUser(this);
    ?>
    </tbody>
    </table>
+   </div>
      <div id="hobli">
   
 <input type="hidden" name="userregid" />

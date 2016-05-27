@@ -140,7 +140,7 @@ CREATE TABLE role_dtl (
 ) ;
 
 CREATE TABLE role_mstr (
-	role_id int(10) NOT NULL,
+	role_id int(10) NOT NULL auto_increment,
 	role_name varchar(100) NOT NULL,
 	PRIMARY KEY (role_id)
 ) ;

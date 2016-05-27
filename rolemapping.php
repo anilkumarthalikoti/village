@@ -11,7 +11,7 @@ $conn=$database;
 <script src="js/rolemapping.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-createDialog("rolemapping");
+createDialogSmall("rolemapping");
 $("#tbl_users tbody tr").click(function(){
  
 mapping.setUser(this);
@@ -25,8 +25,8 @@ mapping.setUser(this);
 <div class="title">Permission manager</div>
 <div class="viewport">
 <form name="rolemapping_data" onsubmit="return false;">
-
-   <table class="form margin-left  xlarge"  filter='Y' id="tbl_users">
+<div class="xlarge margin">
+   <table class="grid"  filter='Y' id="tbl_users">
    <thead>
    <tr>
    <th style="width:10px;"></th><th>User</th><th>Designation</th>
@@ -45,6 +45,7 @@ mapping.setUser(this);
    ?>
    </tbody>
    </table>
+   </div>
    <div id="rolemapping">
    <input type="hidden" name="methodcall" value="validate_user"/>
 <input type="hidden" name="userregid" />

@@ -37,7 +37,7 @@ if(!empty( $_POST ) )
 if($_POST["method_call"]=="newrole"){
 if(strlen(trim($_POST["role_name"]))!=0){
 $role_name=strtoupper(trim($_POST["role_name"]));
-
+ 
 $conn->insert("role_mstr",array("role_name"=>$role_name));
   $msg="New Role Created";
 }
@@ -65,7 +65,7 @@ if($_POST["method_call"]=="update_role_dtl"){
 <input type="button" onClick="rolecreate.createRole()" value="Add Role" class="button_login"/> &nbsp;</form>
 </div>
  
-	  <div class="xlarge margin" >
+	  <div class="medium xlarge" >
 	 <table  class="grid"   id="role_mstr" filter='Y'>
 	 <thead>
 	  <tr><th width="50"></th><th>Permission</th> </tr>

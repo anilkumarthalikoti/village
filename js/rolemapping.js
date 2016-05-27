@@ -45,7 +45,7 @@
 		 
 	 
 		 $(tr).addClass("active");
-		 alert($(tr).attr("userid"));
+	 
 			$("input[name='userregid']").val($(tr).attr("userid"));
 				$( "#rolemapping" ).dialog( "open" );
 			}
