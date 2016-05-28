@@ -41,7 +41,7 @@ $conn=$database;
  
 </table>
 <table class="grid xlarge margin" grid='addState'>
-<thead><th colspan="3">State</th></thead>
+<thead><th>Slno.</th><th colspan="2">State</th></thead>
 <tbody>
 <?php 
 $query="select * from states where item_type=0";
@@ -83,7 +83,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </table>
 <table class="grid xlarge margin" grid='district'>
 <thead>
-<tr><th colspan="3">Districts</th></tr>
+<tr><th>Slno.</th><th colspan="2">Districts</th></tr>
 
 
 </thead>
@@ -136,7 +136,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 </table>
 <table class="grid margin xlarge" grid='taluka'>
 <thead>
-<tr><th colspan="4">Taluka</th></tr>
+<tr><th>Slno.</th><th colspan="3">Taluka</th></tr>
  
 </thead>
 <tbody>
@@ -198,7 +198,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 <table class="grid margin xlarge" grid="constituency">
 <thead>
 <tr>
-  <th colspan="4"><span class="label">Constituency</span></th>
+ <th>Slno.</th> <th colspan="3">Constituency</th>
 </tr>
  
 </thead>
@@ -272,7 +272,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 <table class="grid margin xlarge" grid="hobli">
 <thead>
 <tr>
-  <th colspan="4">Hobli</th>
+  <th>Slno.</th><th colspan="3">Hobli</th>
 </tr>
  
 
@@ -352,7 +352,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 
 <table class="grid margin xlarge" grid="panchaitay">
 <thead>
-<tr><th colspan="3">Panchayat</th></tr>
+<tr><th>Slno.</th><th colspan="2">Panchayat</th></tr>
  
 </thead>
 <tbody>
@@ -443,7 +443,7 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 
 <table class="grid margin xlarge" grid="village">
 <thead>
-<tr><th colspan="3">Village</th></tr>
+<tr><th>Slno.</th><th colspan="2">Village</th></tr>
  
 </thead>
 <tbody>

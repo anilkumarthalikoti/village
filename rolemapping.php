@@ -29,7 +29,7 @@ mapping.setUser(this);
    <table class="grid"  filter='Y' id="tbl_users">
    <thead>
    <tr>
-   <th style="width:10px;"></th><th>User</th><th>Designation</th>
+   <th class="tablehd">Sl.No.</th><th>User</th><th>Designation</th>
    </tr>
    </thead>
    <tbody>

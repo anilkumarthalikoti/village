@@ -42,7 +42,7 @@ die();
  </div>
  <div class="margin xlarge">
  <table class="grid " filter='Y'>
- <thead><tr><th></th><th>Crop name</th><th> Crop name(K)</th></tr></thead>
+ <thead><tr><th class="tablehd">Slno.</th><th>Crop name</th><th> Crop name(K)</th></tr></thead>
  <tbody>
  <?php 
  

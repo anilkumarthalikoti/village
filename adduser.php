@@ -56,7 +56,7 @@ die();
 </form>
  </div>
  <div class="xlarge margin">
-<table class="grid margin"  filter='Y'  >
+<table class="grid margin"  filter='Y'>
 <thead><tr><th>Login id</th><th>IS ACTIVE</th><th>IS ADMIN</th><th>Designation</th></tr></thead>
 <tbody>
 <?php 

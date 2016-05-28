@@ -179,7 +179,7 @@ $conn=$database;
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td><marquee direction="left" behavior="scroll" scrollamount="2" width="100%" onmouseover="this.stop()" onmouseout="this.start()" style="color:#06F">Welcome to Office Suite. </marquee></td>
     </tr>
   </table>
 </div>

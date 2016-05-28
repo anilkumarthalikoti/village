@@ -56,8 +56,8 @@ if($_POST["method_call"]=="update_role_dtl"){
 }
 ?>
 <div class="title"><span>Permission Creation</span></div> 
-<div class="viewport">
-<div class="msg"><?php print $msg?></div>
+<div class="viewport" style="margin:20px; ">
+<div class="msg" ><?php print $msg?></div>
 
 <div id="formdialog" class="form">
 <form id="newRole"  action="rolecreation.php" method="post">New Role:<input rules="required," type="text" name="role_name" id="role_name"/>
@@ -68,7 +68,8 @@ if($_POST["method_call"]=="update_role_dtl"){
 	  <div class="medium xlarge" >
 	 <table  class="grid"   id="role_mstr" filter='Y'>
 	 <thead>
-	  <tr><th width="50"></th><th>Permission</th> </tr>
+	  <tr>
+	    <th class="tablehd">Slno.</th><th>Permission</th> </tr>
 	  </thead>
 	  <tbody>
 	  <?php

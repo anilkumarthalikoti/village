@@ -19,7 +19,7 @@ $conn=$database;
   <ul id="tabs">
 
       <li><a id="tab1">Scheme</a></li>
-	   <li><a id="tab2">Sub-Schema</a></li>
+	   <li><a id="tab2">Sub-scheme</a></li>
       <li><a id="tab3">Component</a></li>
 	   <li><a id="tab4">Sub component-1</a></li>
 	      <li><a id="tab5">Sub component-2</a></li>
@@ -34,13 +34,13 @@ $conn=$database;
 <input type="hidden" name="saveType" value="scheme"/>
 <input type="hidden" name="parent_id" value="0"/>
 <table class="form margin-left margin-top">
-<tr><td class="label">Schema name</td>
-<td>:</td><td><input type="text" name="item_name" placeholder="Enter schema" /> <input type="button" value="Save" onclick="scheme.saveData('addScheme');"/></td>
+<tr><td class="label">scheme name</td>
+<td>:</td><td><input type="text" name="item_name" placeholder="Enter scheme" /> <input type="button" value="Save" onclick="scheme.saveData('addScheme');"/></td>
 </tr>
  
 </table>
 <table class="grid xlarge margin">
-<thead><th colspan="2">Schemes</th></thead>
+<thead><th>Slno.</th><th colspan="2">Schemes</th></thead>
 <tbody>
 <?php 
 $query="select * from schemes where parent_id=0";
@@ -76,17 +76,17 @@ foreach($result as $row)
 echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 ?>
 </select></td></tr>
-<tr><td class="label">Enter sub scheme</td><td>:</td><td><input type="text" name="item_name" placeholder="Enter sub-schema" /> <select name='schemetype'>
+<tr><td class="label">Enter sub scheme</td><td>:</td><td><input type="text" name="item_name" placeholder="Enter sub-scheme" /> <select name='schemetype'>
 <option value="C">Crop based</option>
 <option value="N">Component based</option>
 </select></td></tr>
-<tr><td class="label">Select Action flow</td><td>:</td><td><input type="checkbox" name="actions[]" value="A"/>Action<input type="checkbox" name="actions[]" value="P"/>Pre-inspection<input type="checkbox" name="actions[]" value="I"/>Post-inspection<input type="checkbox" name="actions[]" value="W"/>Work-order<input type="checkbox" name="actions[]" value="D"/>DC</td></tr>
+<tr><td class="label">Select Action flow</td><td>:</td><td><input type="checkbox" name="actions[]" value="A"/>Action&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="actions[]" value="P"/>Pre-inspection&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="actions[]" value="I"/>Post-inspection&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="actions[]" value="W"/>Work-order&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="actions[]" value="D"/>DC&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
 <tr><td colspan="3"> <input type="button" value="Save" onclick="scheme.saveData('subScheme')" /></td></tr>
  </table>
 <table class="grid xlarge margin">
 <thead>
-<tr><th colspan="3">Sub schema</th></tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th></tr>
+<tr><th colspan="3">Sub scheme</th></tr>
+<tr><th>Slno.</th><th >scheme</th><th >Sub scheme</th></tr>
 
 </thead>
 <tbody>
@@ -136,7 +136,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <table class="grid xlarge margin">
 <thead>
 <tr><th colspan="4">Components</th></tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th></tr>
+<tr><th>Slno.</th><th >scheme</th><th >Sub scheme</th><th>Component</th></tr>
 
 </thead>
 <tbody>
@@ -187,12 +187,16 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 
 <tr><td colspan="3">
 
+
+
+</td></tr>
+</table>
 <table class="grid xlarge margin">
 <thead>
 <tr>
   <th colspan="5">Sub Components-1</th>
 </tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th><th>Sub Component-1</th></tr>
+<tr><th>Slno.</th><th >scheme</th><th >Sub scheme</th><th>Component</th><th>Sub Component-1</th></tr>
 
 </thead>
 <tbody>
@@ -209,10 +213,6 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 
 </tbody>
 </table>
-
-</td></tr>
-</table>
-
 
 </form>
  
@@ -250,7 +250,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <tr>
   <th colspan="6">Sub Components-2</th>
 </tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th><th>Sc-1</th><th>Sc-2</th></tr>
+<tr><th>Slno.</th><th >scheme</th><th >Sub scheme</th><th>Component</th><th>Sc-1</th><th>Sc-2</th></tr>
 
 </thead>
 <tbody>
@@ -304,7 +304,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <tr>
   <th colspan="7">Sub Components-3</th>
 </tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th><th>Sc-1</th><th>Sc-2</th><th>Sc-3</th></tr>
+<tr><th>Slno.</th><th >scheme</th><th >Sub scheme</th><th>Component</th><th>Sc-1</th><th>Sc-2</th><th>Sc-3</th></tr>
 
 </thead>
 <tbody>
@@ -371,7 +371,7 @@ echo "<option value='".$row["id"]."'>".$row["name"]."</option>";
 <tr>
   <th colspan="8">Sub Components-4</th>
 </tr>
-<tr><th >&nbsp;</th><th >Schema</th><th >Sub schema</th><th>Component</th><th>Sc-1</th><th>Sc-2</th><th>Sc-3</th><th>Sc-4</th></tr>
+<tr><th>Slno.</th><th >scheme</th><th >Sub scheme</th><th>Component</th><th>Sc-1</th><th>Sc-2</th><th>Sc-3</th><th>Sc-4</th></tr>
 
 </thead>
 <tbody>

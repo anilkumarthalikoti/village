@@ -59,7 +59,7 @@ $conn->update("cropitemsprice",array("itemprice"=>$_POST["itemprice"]),array("id
  </div>
  <div class="xlarge margin">
  <table class="grid" id="existing" filter='Y'>
- <thead><tr><th></th><th>Item name</th><th>Standard Measure</th><th>Group Id</th><th>Is deductable</th><th> Units</th><th>Price</th></tr></thead>
+ <thead><tr><th class="tablehd">Slno.</th><th>Item name</th><th>Standard Measure</th><th>Group Id</th><th>Is deductable</th><th> Units</th><th>Price</th></tr></thead>
  <tbody>
  <?php 
  $query="select id,itemname,standard_measure,itemorder,isdeduct,units,itemprice from cropitemsprice order by itemorder";
