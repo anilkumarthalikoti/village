@@ -36,7 +36,7 @@ $conn=$database;
 <input type="hidden" name="item_type" value="0"/>
 <table class="form margin-left margin-top">
 <tr><td class="label">State</td>
-<td>:</td><td><input type="text" name="state_name" placeholder="Enter state" /> <input type="text" alt="ka" name="state_name_ka" id="s1"/><input type="button" value="Save" onClick="states.saveData('addState');"/></td>
+<td>:</td><td><input rules="required," type="text" name="state_name" placeholder="Enter state" /> <input type="text" alt="ka" name="state_name_ka" id="s1"/><input type="button" value="Save" onClick="states.saveData('addState');"/></td>
 </tr>
  
 </table>

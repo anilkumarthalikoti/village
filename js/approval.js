@@ -248,6 +248,11 @@
 										$("#sanctionorder_applications_pending").html(valx);
 										$("#sanctionorder_applications_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=17");
 										break;
+										case "18":
+										$("#sanctionorder_applications_approved").html(valx);
+										$("#sanctionorder_applications_approved_forward").html(valx);
+										$("#sanctionorder_applications_approved_forward").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=18");
+										break;
 										}									 
 									 
    												

@@ -108,7 +108,7 @@ $conn=$database;
                <table  class="form xlarge" border="0" cellspacing="0" cellpadding="0">
                  <tr>
                    <td class="label">Aadhar No</td><td>:</td>
-                   <td class="label"><input name="aadhar" type="text" id="aadhar" placeholder="0000 0000 0000" maxlength="14"  />
+                   <td class="label"><input name="aadhar" rules="required,numberspace,length_8" type="text" id="aadhar" defaultplaceholder="0000 0000 0000" maxlength="14"  />
                        <span class="error">* </span></td>
                    <td class="label">EPIC No</td><td>: </td>
                    <td class="label"><input name="voter" type="text" id="voter" placeholder="Enter Voter Id Card No."  />
@@ -134,7 +134,7 @@ $conn=$database;
                    <td class="label">Income Per Annum </td><td>:</td>
                    <td class="label"><input name="income" type="text" id="income" placeholder="Enter Income."  /></td>
                    <td class="label">Email ID </td><td>: </td>
-                   <td class="label"><input name="mailid" type="text" id="mailid" placeholder="Enter Email ID"  /></td>
+                   <td class="label"><input rules="required,email" name="mailid" type="text" id="mailid" placeholder="Enter Email ID"  /></td>
                  </tr>
 				 <tr><td colspan="6"><input type="button" value="NEXT>>" onclick="$('#tab3').click()"/><input type="button" value="<< Previous" onclick="$('#tab1').click()"/></td></tr>
                </table>

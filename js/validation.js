@@ -8,7 +8,7 @@ $("[rules]").each(function(){
 
 $(this).on("focus",function(){
 $(this).removeClass("error");
- $(this).attr("placeholder",$(this).attr("tempplaceholder"));
+ $(this).attr("placeholder",$(this).attr("defaultplaceholder"));
 });
 
  
@@ -22,7 +22,7 @@ console.log("Required rule");
 if($(this).is("input")){
 if($(this).val().trim().length==0){
 error=true;
-$(this).attr("tempplaceholder",$(this).attr("placeholder"));
+ 
  $(this).attr("placeholder","Required");
 }
 }

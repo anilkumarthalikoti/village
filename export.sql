@@ -3,6 +3,18 @@ CREATE TABLE app_login (id bigint(10) NOT NULL auto_increment,login_id varchar(2
 	PRIMARY KEY (id),
 	unique key(login_id)
 ) ;
+CREATE TABLE  sanctionorder ( `filling_id` INT NOT NULL , 
+`approvedby` INT NOT NULL ,
+ `approveddate` TIMESTAMP NOT NULL ,
+ `billno` VARCHAR(25) NOT NULL ,
+ `billamount` FLOAT NOT NULL , 
+ `sanctionamt` FLOAT NOT NULL ,
+ `installment_1` FLOAT NOT NULL ,
+ `installment_2` FLOAT NOT NULL ,
+ `ref_1` BLOB ,
+ `ref_2` BLOB  ,
+ `ref_3` BLOB  , 
+ `ref_4` BLOB  );
  CREATE TABLE  financialyear
 (finyear varchar(8),
 startfrom DATE,

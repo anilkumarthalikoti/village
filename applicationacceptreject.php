@@ -188,6 +188,7 @@ $titles["8"]="Forward to RSK for post-inspection";
 	  $titles["15"]="Taluka Approved Files";
 	   $titles["16"]="Sanction order request";
 	    $titles["17"]="Sanction order pending";
+		 $titles["18"]="Sanction order Approved";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
@@ -418,6 +419,9 @@ $inputs="<input type='button' value='Forward to TA' onclick=\"approvaljs.savenew
 break;
 case "16":
 $inputs="<input type='button' value='Forward for sanaction order' onclick=\"approvaljs.savenewapplication('17');\"/>";
+break;
+case "18":
+$inputs="<input type='button' value='Forward to TA for DC Bill' onclick=\"approvaljs.savenewapplication('19');\"/>";
 break;
 }
  

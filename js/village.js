@@ -1,6 +1,10 @@
  var states=new function(){
  
 	this.saveData=function(form_name){
+		validation.validate();
+		if($("[class='error']").length>0){
+			return false;
+			}
 		
 		var formKey="form[name='"+form_name+"']";
 		

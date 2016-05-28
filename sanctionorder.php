@@ -157,7 +157,7 @@ $inpsected_date=$row["inspected_date"];
  });
  
   </script>
- <script type='text/javascript' src="js/talukaapproval.js"></script>
+ <script type='text/javascript' src="js/sanctionorder.js"></script>
  <style type="text/css">
  
  input[type='text']{
@@ -209,7 +209,7 @@ $inpsected_date=$row["inspected_date"];
 <div class="viewport">
  
 <form name="talukaapproval_form" >
-<input type="hidden" name="filling_id" value="<?php print $filling_id;?>"/>
+<input type="hidden" form-field='Y' name="filling_id" value="<?php print $filling_id;?>"/>
 <input type="hidden" name="approvedby" value="<?php print $user["id"]?>"/>
 <input type="hidden" name="material_save"/>
 <input type="hidden" name="approvedamount"/>
@@ -402,9 +402,9 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
             <td class="txt-bold">25) Drip Installed Date:</td>
             <td class="txt-bold"><input disabled type="date" class="form-control input-sm"></td>
             <td class="txt-bold bg-danger">26) Bill No.:</td>
-            <td class="txt-bold bg-danger"><input type="number" class="form-control input-sm"></td>
+            <td class="txt-bold bg-danger"><input type="text" form-field='Y' name="billno" class="form-control input-sm"></td>
             <td class="txt-bold bg-danger">27) Bill Amount</td>
-            <td class="txt-bold bg-danger"><input type="number" class="form-control input-sm"></td>
+            <td class="txt-bold bg-danger"><input form-field='Y' type="text" name="billamount" class="form-control input-sm"></td>
           </tr>
 	 	</table>
         
@@ -417,18 +417,18 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
             <td class="txt-bold">27) Taluk Approved Amount:</td>
             <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
             <td class="txt-bold bg-danger">27) Sanctioned Amount:</td>
-            <td class="txt-bold bg-danger"><input type="number" class="form-control input-sm"></td>
+            <td class="txt-bold bg-danger"><input form-field='Y' name="sanctionamt" type="number" class="form-control input-sm"></td>
           </tr>
 	 	</table>
         
     <table class="table table-bordered table-condensed">
       <tr>
         <td class="txt-bold bg-danger">25) 1st Installment at %:</td>
-        <td width="60px" class="txt-bold bg-danger"><input type="number" value="85" class="form-control input-sm"></td>
+        <td width="60px" class="txt-bold bg-danger"><input form-field='Y' type="text" name="installment_1" value="85" class="form-control input-sm"></td>
         <td class="txt-bold">26) Amount:</td>
         <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
         <td class="txt-bold">27) 2nd Installment at %:</td>
-        <td width="60px" class="txt-bold bg-danger"><input type="number" value="15" class="form-control input-sm"></td>
+        <td width="60px" class="txt-bold bg-danger"><input type="text" form-field='Y' name="installment_2" value="15" class="form-control input-sm"></td>
         <td class="txt-bold bg-danger">27) Amount:</td>
         <td class="txt-bold"><input disabled type="number" class="form-control input-sm"></td>
         <td class="txt-bold">27) Total Amount:</td>
@@ -439,22 +439,22 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
     <table class="table table-bordered table-condensed bg-danger">
       <tr>
         <td width="130px" class="txt-bold">25) Reference-1:</td>        
-        <td class="txt-bold"><input type="text" class="form-control input-sm"></td>
+        <td class="txt-bold"><input form-field='Y' name="ref_1" type="text" class="form-control input-sm"></td>
       </tr>
       <tr>
         <td class="txt-bold">25) Reference-2:</td>        
-        <td class="txt-bold"><input type="text" class="form-control input-sm"></td>
+        <td class="txt-bold"><input form-field='Y' name="ref_2" type="text" class="form-control input-sm"></td>
       </tr>
       <tr>
         <td class="txt-bold">25) Reference-3:</td>        
-        <td class="txt-bold"><input type="text" class="form-control input-sm"></td>
+        <td class="txt-bold"><input form-field='Y' name="ref_3" type="text" class="form-control input-sm"></td>
       </tr>
       <tr>
         <td class="txt-bold">25) Reference-4:</td>        
-        <td class="txt-bold"><input type="text" class="form-control input-sm"></td>
+        <td class="txt-bold"><input form-field='Y' name="ref_4" type="text" class="form-control input-sm"></td>
       </tr>
     </table>
-   
+   <input type="button" value="Save" onclick="sanctionorder.sanctiondetails()"/>
  </div>
     
  
