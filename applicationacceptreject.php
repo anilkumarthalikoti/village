@@ -429,7 +429,7 @@ case "18":
 $inputs="<input type='button' value='Forward to TA for DC Bill' onclick=\"approvaljs.savenewapplication('19');\"/>";
 break;
 case "18A":
-$inputs="<input type='button' value='Cover Letter' onclick=\"approvaljs.savenewapplication('8');\"/>";
+$inputs="<input type='button' value='Cover Letter' onclick=\"approvaljs.generatecoverletter('8');\"/>";
 break;
 case "19":
 $inputs="<input type='button' value='Forward  for DC Bill' onclick=\"approvaljs.savenewapplication('20');\"/>";
