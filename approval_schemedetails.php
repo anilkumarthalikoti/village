@@ -89,11 +89,11 @@ $count="";
 	</li>
 	<li><div>Rejected <a href="#"><span id="p">0</span></a></div></li>
 	  <li><div>Approved <a href="#"><span id="sanctionorder_applications_approved">0</span></a></div></li>
-	  <li> <div>Yet to forward to DDH  <a href="#"><span id="p">0</span></a></div>
+	  <li> <div>Yet to forward to DDH  <a href="#"><span id="sanctionorder_applications_yet">0</span></a></div>
 	  </li>
 	<li><div>Forward to DDH <a href="#"><span  id="sanctionorder_applications_approved_forward">0</span></a></div></li>
-	  <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
-	<li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
+	  <li> <div>Application for DC Bill <a href="#"><span id="sanctionorder_applications_received_view">0</span></a></div> </li>
+	<li> <div>Application for post-inspection <a href="#"><span id="sanctionorder_applications_received">0</span></a></div> </li>
 	 
  </ul>
 <ul>

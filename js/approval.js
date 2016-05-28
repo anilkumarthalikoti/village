@@ -251,7 +251,15 @@
 										case "18":
 										$("#sanctionorder_applications_approved").html(valx);
 										$("#sanctionorder_applications_approved_forward").html(valx);
+										$("#sanctionorder_applications_yet").html(valx);
+										$("#sanctionorder_applications_yet").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=18A");
 										$("#sanctionorder_applications_approved_forward").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=18");
+										break;
+										case "19":
+										$("#sanctionorder_applications_received_view").html(valx);
+										$("#sanctionorder_applications_received").html(valx);
+
+										 
 										break;
 										}									 
 									 

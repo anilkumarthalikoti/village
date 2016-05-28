@@ -106,7 +106,7 @@ $statusQuery.=" union select count(*),'17' from schemefilling sf,schemefilling_l
 $statusQuery.=" union select count(*),'17P' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=17 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// POST INSPECTION FORWARDED
 $statusQuery.=" union select count(*),'18' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=18 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// SANCTION ORDER INSPECTION FORWARDED
 $statusQuery.=" union select count(*),'19' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=19 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// SANCTION ORDER INSPECTION FORWARDED
-        
+$statusQuery.=" union select count(*),'20' from schemefilling sf,schemefilling_land sfl where sf.schemeid=".$_POST["schemeid"]." and sf.status=20 and sfl.fillingid= sf.id and sfl.landdetailsid in (".$village.")";// SANCTION ORDER INSPECTION FORWARDED        
 	    $result = $conn->query($statusQuery);
         $jsontext = "[";
         foreach ($result as $row) {

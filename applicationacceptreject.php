@@ -189,6 +189,8 @@ $titles["8"]="Forward to RSK for post-inspection";
 	   $titles["16"]="Sanction order request";
 	    $titles["17"]="Sanction order pending";
 		 $titles["18"]="Sanction order Approved";
+		  $titles["18A"]="Sanction order Approved Cover Letter ";
+		  $titles["19"]="Sanction order Received";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
@@ -265,6 +267,9 @@ $status=9;
 }
 if($status=="13A" || $status=="13B"  ){
 $status=13;
+}
+if($status=="18A"  ){
+$status=18;
 }
  $village="select id from landdetails where villageid in (select villageid from village v,actionmapping am where  v.hobliid =am.hobliid and am.regid=".$user["id"].")";
 $query="select sf.uniquecode,sf.id schemefillingid, sf.regid, f.firstname,f.fathername,";
@@ -422,6 +427,12 @@ $inputs="<input type='button' value='Forward for sanaction order' onclick=\"appr
 break;
 case "18":
 $inputs="<input type='button' value='Forward to TA for DC Bill' onclick=\"approvaljs.savenewapplication('19');\"/>";
+break;
+case "18A":
+$inputs="<input type='button' value='Cover Letter' onclick=\"approvaljs.savenewapplication('8');\"/>";
+break;
+case "19":
+$inputs="<input type='button' value='Forward  for DC Bill' onclick=\"approvaljs.savenewapplication('20');\"/>";
 break;
 }
  
