@@ -191,6 +191,7 @@ $titles["8"]="Forward to RSK for post-inspection";
 		 $titles["18"]="Sanction order Approved";
 		  $titles["18A"]="Sanction order Approved Cover Letter ";
 		  $titles["19"]="Sanction order Received";
+		  $titles["20"]="Pending DC Bills";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
@@ -433,6 +434,9 @@ $inputs="<input type='button' value='Cover Letter' onclick=\"approvaljs.generate
 break;
 case "19":
 $inputs="<input type='button' value='Forward  for DC Bill' onclick=\"approvaljs.savenewapplication('20');\"/>";
+break;
+case "20":
+$inputs="<input type='button' value='Generate DC Bill' onclick=\"approvaljs.generateDCBill();\"/>";
 break;
 }
  

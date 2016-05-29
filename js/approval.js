@@ -1,4 +1,9 @@
  var approvaljs=new function(){
+	 
+	 this.generateDCBill=function(){
+		 
+		 window.open('dcbill.php');
+		 }
  
 	this.saveData=function(form_name){
 		

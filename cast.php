@@ -28,7 +28,7 @@ die();
 </form>
  
 <table class="grid medium" style="margin:25px;" >
-<thead><tr><th>Cast</th><th>Cast kannada</th></tr></thead>
+<thead><tr><th>Cast</th><th>Cast kannada</th><th>Cast Code</th></tr></thead>
 <tbody>
 <?php 
 $result=$conn->select("casts",array("castname","castname_k","castcode"));
