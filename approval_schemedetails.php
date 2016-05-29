@@ -93,7 +93,22 @@ $count="";
 	  </li>
 	<li><div>Forward to DDH <a href="#"><span  id="sanctionorder_applications_approved_forward">0</span></a></div></li>
 	  <li> <div>Application for DC Bill <a href="#"><span id="sanctionorder_applications_received_view">0</span></a></div> </li>
-	<li> <div>Application for post-inspection <a href="#"><span id="sanctionorder_applications_received">0</span></a></div> </li>
+	<li> <div>Application DC Bill <a href="#"><span id="sanctionorder_applications_received">0</span></a></div> </li>
+	 
+ </ul>
+ <ul>
+ <h1>DC Bills</h1>
+   <li> <div>Application for DC <a href="#"><span id="dc_bills">0</span></a></div> 
+   </li>
+	<li> <div>Pending <a href="#"><span id="dc_bills_pending">0</span></a></div> 
+	</li>
+	<li><div>Rejected <a href="#"><span id="p">0</span></a></div></li>
+	  <li><div>Approved <a href="#"><span id="p">0</span></a></div></li>
+	  <li> <div>Yet to forward to DDH  <a href="#"><span id="p">0</span></a></div>
+	  </li>
+	<li><div>Forward to DDH for sanaction order <a href="#"><span id="p">0</span></a></div></li>
+	  <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
+	<li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	 
  </ul>
 <ul>
@@ -110,20 +125,7 @@ $count="";
 	<li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
 	 
  </ul>
- <ul>
- <h1>DC Bills</h1>
-   <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
-	<li> <div>Pending <a href="#"><span id="p">0</span></a></div> 
-	</li>
-	<li><div>Rejected <a href="#"><span id="p">0</span></a></div></li>
-	  <li><div>Approved <a href="#"><span id="p">0</span></a></div></li>
-	  <li> <div>Yet to forward to DDH  <a href="#"><span id="p">0</span></a></div>
-	  </li>
-	<li><div>Forward to DDH for sanaction order <a href="#"><span id="p">0</span></a></div></li>
-	  <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
-	<li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>
-	 
- </ul>
+ 
   <ul>
  <h1>Payments</h1>
    <li> <div>Application for post-inspection <a href="#"><span id="p">0</span></a></div> </li>

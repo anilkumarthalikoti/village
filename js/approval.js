@@ -258,7 +258,18 @@
 										case "19":
 										$("#sanctionorder_applications_received_view").html(valx);
 										$("#sanctionorder_applications_received").html(valx);
-
+						 $("#sanctionorder_applications_received").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=19");
+										 
+										break;
+										
+										case "20":
+										$("#dc_bills").html(valx);
+										 
+										 
+										break;
+										case "20P":
+										$("#dc_bills_pending").html(valx);
+						$("#dc_bills_pending").parent().attr("href","applicationacceptreject.php?schemeid="+params["schemeid"]+"&status=20");
 										 
 										break;
 										}									 
