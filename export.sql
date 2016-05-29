@@ -240,6 +240,7 @@ CREATE TABLE  casts
 (id INT NOT NULL auto_increment,
 castname varchar(255),
 castname_k blob,
+castcode varchar(5),
 PRIMARY KEY (id),
 unique key(castname)
 );
