@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+
+body	{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#000;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse:collapse;
+	empty-cells: hide;
+}
+
+
+.no-border	{
+	border:none;
+}
+
+.text-center	{
+	text-align:center;
+}
+
+.text-left	{
+	text-align:left;
+}
+
+.text-right	{
+	text-align:right;
+}
+
+
+.h1	{
+	font-size:14px;
+}
+
+.h2	{
+	font-size:16px;
+}
+
+.h3	{
+	font-size:18px;
+}
+
+.h4	{
+	font-size:20px;
+}
+
+.h5	{
+	font-size:22px;
+}
+
+.h6	{
+	font-size:24px;
+}
+
+.h7	{
+	font-size:28px;
+}
+
+.h8	{
+	font-size:30px;
+}
+
+.h9	{
+	font-size:32px;
+}
+
+.h10	{
+	font-size:34px;
+}
+
