@@ -37,14 +37,14 @@
 		 }
 	 
 	 this.viewEntries=function(){
-		  $("td#cropbase").hide();
-		   $("td#componentbased").hide();
+		  $("td#cropbase").addClass();
+		   $("td#componentbased").addClass();
 		 if($("#subscheme_select option:selected").attr("ftype")=="C"){
 			  this.updateLandDetails();
-			 $("td#cropbase").show();
+			 $("td#cropbase").removeClass("hide");
 			
 			 }else{
-				  $("td#componentbased").show();
+				  $("td#componentbased").removeClass("hide");
 				 }
 		 
 		 }

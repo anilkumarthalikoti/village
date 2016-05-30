@@ -22,6 +22,7 @@ if(!empty($_POST)){
  }
  }}
 if(!empty($_GET['getschemes'])){
+ 
 $result="";
 if(!empty($_GET['skip'])){
 $result=$conn->select("schemes" ,array("id","name","fillingtype"),array("AND"=>array("parent_id"=>$_GET["parent_id"])));
