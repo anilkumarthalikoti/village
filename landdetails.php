@@ -51,6 +51,7 @@ $conn=$database;
 			   $query="select s.id, concat(s.state_name,'/',s.state_name_k,'(', ";
 			   $query.="  (select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.talukaid)";
 			  $query.=" ,')') vname from village v ,states s where s.id= v.villageid and v.hobliid in (select am.hobliid from actionmapping am where am.hobliid=v.hobliid and am.regid=".$user["id"].")";
+			  echo $query;
 			   $result=$conn->query($query);
 			   echo $query;
 			   foreach($result as $row){

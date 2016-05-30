@@ -2,7 +2,9 @@
 	 
 	 this.generateDCBill=function(){
 		 
-		 window.open('dcbill.php');
+		 //window.open('dcbill.php');
+		$("form[name='application']").attr("action","dcbill.php")
+		$("form[name='application']").submit();
 		 }
  
 	this.saveData=function(form_name){

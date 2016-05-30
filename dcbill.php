@@ -7,6 +7,8 @@
  require "interceptor.php";
  require "server/app_connector.php";
 $conn=$database;
+$files=$_POST['schemefillingid'];
+
 ?>
 <link href="dc_bill.css" rel="stylesheet" type="text/css">
 </head>

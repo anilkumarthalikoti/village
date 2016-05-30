@@ -200,7 +200,7 @@ $titles["8"]="Forward to RSK for post-inspection";
  <tr>
  <tr><td>
  
- <form name="application" method="post">
+ <form name="application" method="post" target="_self">
 <input type="hidden" name="application" value="application"/>
 <div    style="max-height:420px; min-height:420px;">
 <table class="grid excel90 margin" id="applications" filter='Y'>

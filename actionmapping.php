@@ -49,6 +49,7 @@ mapping.setUser(this);
      <div id="hobli">
   
 <input type="hidden" name="userregid" />
+<input type="hidden" name="methodcall" value="save_action_mapping"/>
  
    <table>
    <tr><td><select name="hobli[]" id="hobli_select" multiple="multiple" style="height:200px;">
