@@ -206,10 +206,12 @@ foreach($castwise as $cast){
   <tr>
     <td class="no-border"><table width="100%" class="no-border text-center">
       <tr>
-        <td width="40%">&nbsp;</td>
-        <td width="20%">0</td>
-        <td width="20%">5</td>
-        <td width="20%">9</td>
+        <?php
+          for($i=0;$i<strlen($cast["castcode"]);$i++){		 
+		 ?>
+        <td width="20%"><?php print  substr( $cast["castcode"], $i, 1 )?></td>
+        <?php
+		} ?>
       </tr>
       <tr>
         <td>&nbsp;</td>
