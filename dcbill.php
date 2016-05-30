@@ -8,11 +8,25 @@
  require "server/app_connector.php";
 $conn=$database;
 $files=$_POST['schemefillingid'];
+$query=""; 
+$conn->debug();
+$result=$conn->select("schemefilling",[
+"[<>]sanctionorder"=>["id"=>"filling_id"],
+"[<>]farmerdetails"=>["regid"=>"id"],
+"[<>]casts"=>["farmerdetails.usercast"=>"id"]
 
+
+],["sanctionorder.filling_id","farmerdetails.firstname"],["schemefilling.id"=>$files]);
+
+ 
 ?>
-<link href="dc_bill.css" rel="stylesheet" type="text/css">
+<link href="css/dc_bill.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<?php 
+
+
+?>
 <table width="1000px">
   <tr>
     <td class="h5 text-center">ಕರ್ನಾಟಕ ಸರ್ಕಾರ</td>
