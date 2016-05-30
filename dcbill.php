@@ -8,7 +8,7 @@
  require "server/app_connector.php";
 $conn=$database;
 $files=$_POST['schemefillingid'];
-$query="select s.filling_id, c.id castid,c.castname_k , c.castcode ,fd.fathername_k ,s.sanctionamt, s.installment_1,s.installment_2 from sanctionorder s ,schemefilling sf, farmerdetails fd,casts c,schemes sch where  sch.id= sf. and sf.id= s.filling_id and c.id= fd.usercast and fd.id= sf.regid and s.filling_id in (".implode(',', $files).")"; 
+$query="select sch.name schemename,s.filling_id, c.id castid,c.castname_k castnamek , c.castcode ,fd.fathername_k ,s.sanctionamt, s.installment_1,s.installment_2 from sanctionorder s ,schemefilling sf, farmerdetails fd,casts c,schemes sch where  sch.id= sf.subschemeid and sf.id= s.filling_id and c.id= fd.usercast and fd.id= sf.regid and s.filling_id in (".implode(',', $files).")"; 
  
 $conditions=array(
 "[<>]sanctionorder"=>array("schemefilling.id","sanctionorder.filling_id"),
@@ -63,7 +63,7 @@ foreach($castwise as $cast){
             <td>0</td>
             <td class="no-border"></td>
             <td class="no-border"></td>
-            <td class="no-border"><strong>PMKSY</strong></td>
+            <td class="no-border"><strong><?php print $cast["schemename"]?></strong></td>
           </tr>
           <tr>
             <td>1</td>
@@ -77,7 +77,7 @@ foreach($castwise as $cast){
             <td class="no-border"></td>
             <td class="no-border"></td>
             <td class="no-border"></td>
-            <td class="no-border"><strong>General</strong></td>
+            <td class="no-border"><strong><?php print $cast["castnamek"]?></strong></td>
           </tr>
           <tr>
             <td>3</td>
