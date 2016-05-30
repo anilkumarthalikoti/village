@@ -8,16 +8,23 @@
  require "server/app_connector.php";
 $conn=$database;
 $files=$_POST['schemefillingid'];
-$query=""; 
-$conn->debug();
-$result=$conn->select("schemefilling",[
-"[<>]sanctionorder"=>["id"=>"filling_id"],
-"[<>]farmerdetails"=>["regid"=>"id"],
-"[<>]casts"=>["farmerdetails.usercast"=>"id"]
-
-
-],["sanctionorder.filling_id","farmerdetails.firstname"],["schemefilling.id"=>$files]);
-
+$query="select s.filling_id, c.id castid,c.castname_k , c.castcode ,fd.fathername_k ,s.sanctionamt, s.installment_1,s.installment_2 from sanctionorder s ,schemefilling sf, farmerdetails fd,casts c,schemes sch where  sch.id= sf. and sf.id= s.filling_id and c.id= fd.usercast and fd.id= sf.regid and s.filling_id in (".implode(',', $files).")"; 
+ 
+$conditions=array(
+"[<>]sanctionorder"=>array("schemefilling.id","sanctionorder.filling_id"),
+"[<>]farmerdetails"=>array("schemefilling.regid","farmerdetails.id"),
+"[<>]casts"=>array("farmerdetails.usercast","casts.id"));
+$outercondition=array();
+$outercondition["schemefilling.id"]=$files;
+ 
+$result=$conn->query($query);
+$castwise=array();
+foreach($result as $row)
+ {
+ if(!isset($castwise[$row["castid"]])){
+ $castwise[$row["castid"]]=$row;
+ }
+ }
  
 ?>
 <link href="css/dc_bill.css" rel="stylesheet" type="text/css">
@@ -25,6 +32,7 @@ $result=$conn->select("schemefilling",[
 <body>
 <?php 
 
+foreach($castwise as $cast){
 
 ?>
 <table width="1000px">
@@ -426,5 +434,8 @@ $result=$conn->select("schemefilling",[
   </tr>
 </table>
 <p>ಈ ಅಂಕಣಗಳನ್ನು ಉಪಯೋಗಿಸಿದಾಗ ತಪ್ಪದೆ ಆಬ್ಜೆಕ್ಟಿವ್ ಲೆಕ್ಕ ಶೀರ್ಷಿಕೆ ಕೋಡ್ ಉಪಯೋಗಿಸಿ. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ಪು.ತಿ.ನೋ.</p>
+<?php }
+
+?>
 </body>
 </html>
