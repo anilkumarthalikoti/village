@@ -222,6 +222,7 @@ optgroup {
 
 table {
     border-spacing: 0;
+
     border-collapse: collapse
 }
 
@@ -1770,7 +1771,7 @@ a.bg-warning:hover {
 }
 
 .bg-danger {
-    background-color: #f2dede
+	background-color: #f2dede
 }
 
 a.bg-danger:focus,
@@ -2816,9 +2817,9 @@ th {
 }
 
 .table {
-    width: 100%;
+    width: auto;
     max-width: 100%;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 .table>tbody>tr>td,

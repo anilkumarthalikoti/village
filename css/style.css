@@ -145,14 +145,13 @@
 	input[type='text'],input[type='password'],input[type='text1']{
 	 
 	height: 35px;
-	border: 1px solid #ccc;
+	border: 2px solid #ccc;
 	color: #4f4f4f;
 	border-radius: 5px;
 	margin-left:10px;
 	 margin-right:10px;
-	 margin-top:5px;
-	 margin-bottom:5px;
-	 padding:10px;
+	 margin-top:1px;
+	 margin-bottom:1px;
 	}
 	input[type='search']{
 	 
@@ -476,8 +475,12 @@ max-width:35px;
 width:100%;
 }
 .excel90{
-width:90%;
+width:98%; 
 }
+.excel90 th{
+	text-align:center; padding:5px;
+}
+
 .info{
 
 background:#996600;
@@ -909,3 +912,14 @@ width:1370px;
 	 }
 .tablehd
 {width:50px; text-align:center;}
+.table .txt-bold
+{vertical-align:middle; font-weight:normal; width:auto; text-align:left; padding-right:20px;}
+.table .txt-bold1
+{vertical-align:middle; font-weight:normal; width:130px; text-align:left; padding-right:10px;}
+.table .txt-bold2
+{vertical-align:middle; font-weight:normal; width:90px; text-align:left; padding-right:10px;}
+
+.tablebox
+{width:75px;}
+.tabletext
+{text-align:left; padding-left:10px;}
