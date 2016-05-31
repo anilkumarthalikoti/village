@@ -44,7 +44,7 @@ foreach($result as $row)
 foreach($castwise as $cast){
 
 ?>
-<table width="1000px"  cast="<?php print $cast["castid"]?>">
+<table width="1000px"  >
   <tr>
     <td class="h5 text-center">ಕರ್ನಾಟಕ ಸರ್ಕಾರ</td>
   </tr>
@@ -56,7 +56,7 @@ foreach($castwise as $cast){
 		ಬಿಲ್ ಸಂಖ್ಯೆ : 01/2015-16 ಸಾದಿಲ್ವಾರು ವೆಚ್ಚದ ಸವಿವರ ಬಿಲ್. ಜಿಲ್ಲೆ/ಉಪ ಖಜಾನೆ : ವಿಜಯಪುರ </td>
   </tr>
 </table>
-<table width="1000px">
+<table width="1000px" cast="<?php print $cast["castid"]?>">
   <tr>
 <td width="300px" class="text-center">ಲೆಕ್ಕ ಶೀರ್ಷಿಕೆ<br>
 <table width="100%" class="no-border">
@@ -213,7 +213,7 @@ foreach($castwise as $cast){
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td class="no-border"><table width="100%" class="no-border text-center">
+    <td class="no-border"><table width="100%" class="no-border text-center" >
       <tr>
         <?php
           for($i=0;$i<strlen($cast["castcode"]);$i++){		 
@@ -235,7 +235,7 @@ foreach($castwise as $cast){
         <td>&nbsp;</td>
       </tr>
     </table></td>
-    <td class="no-border"><table width="100%" class="no-border" castfind="tview">
+    <td class="no-border"><table width="100%" class="no-border"  cast_total_view="<?php print $cast["castid"]?>">
       <tr>
         <td class="text-right" id="finalamount_castbill">0</td>
       </tr>
@@ -287,7 +287,7 @@ foreach($castwise as $cast){
     </table>
     </td>
     <td rowspan="3">
-    	<table width="100%" class="no-border">
+    	<table width="100%" class="no-border" cast_total_view_all="<?php print $cast["castid"]?>">
       <tr>
         <td class="text-right">&nbsp;</td>
       </tr>
@@ -311,7 +311,7 @@ foreach($castwise as $cast){
   </tr>
   <tr>
     <td class="text-right">ಒಟ್ಟು</td>
-    <td class="text-right">123456.00</td>
+    <td class="text-right" id="tft">0</td>
   </tr>
   <tr>
     <td class="text-right">(-) ಕಡಿತಗಳು</td>
@@ -329,7 +329,7 @@ foreach($castwise as $cast){
     <td class="text-center">ಮೊಬಲಗು ರೂ.</td>
   </tr>
 </table>
-<table width="1000" class="text-center" castfind="tview1">
+<table width="1000" class="text-center" castfind="tview1" cast_total="<?php print $cast["castid"]?>">
   <tr>
     <td colspan="8">2015-16 ನೇ ಸಾಲಿನ ಪ್ರಧಾನ ಮಂತ್ರಿ ಕೃಷಿ ಸಿಂಚಾಯಿ ಯೋಜನೆಯಡಿ ಹನಿ ನಿರಾವರಿ ಅಳವಡಿಸಿದ ಈ ಕೆಳಕಂಡ ರೈತರಿಗೆ ಪ್ರತಿಶತ 90/50 ಸಹಾಯಧನವನ್ನು ತೋಟಗಾರಿಕೆ ಉಪ ನಿರ್ದೇಶಕರು, (ಜಿಲ್ಲಾ ಪಂಚಯಾತ್) ವಿಜಯಪುರ ರವರ ಮಂಜೂರಾತಿ ಆದೇಶ ಸಂಖ್ಯೆ: ತೋಉನಿ/ಜಿ.ಪಂ./ವಿ/ತಾ.ಸ.-2/ಹನಿ/ಮಂ.ಅ./1, 2, 3, 4, 5 /2015-16 ದಿನಾಂಕ: 01/07/2016 ರ ಪ್ರಕಾರ ಮಂಜೂರಾಗಿದ್ದು, ಪರಿಸ್ಕೃತ ಸರ್ಕಾರದ ಆದೇಶದನುಸಾರ ಮಂಜೂರಾದ ಸಹಾಯಧನದ ಶೇ. 85% ರಷ್ಟು ಸಹಾಯಧನವನ್ನು ರೈತರ ಒಪ್ಪಿಗೆ ಮೇರೆಗೆ ಸಂಬಂಧಿಸಿದ ಹನಿ ನಿರಾವರಿ ವಿತರಕರಾದ Mahalakshmi Enterprises, Kanamadi ಇವರ Jain Irrigation Pvt. Ltd. ಕಂಪನಿಗೆ ಅರ್.ಟಿ.ಜಿ.ಎಸ್. ಮೂಲಕ ಸಹಾಯಧನ ಪಾವತಿಸಲು ತೆಗೆಯಲಾಗಿದೆ.</td>
   </tr>
@@ -361,12 +361,14 @@ foreach($castwise as $cast){
     <td><?php 
 	$pay=($farmer["sanctionamt"]*$farmer["installment_1"])/100;
 	$totalpay=$totalpay+$pay;
-	print  $pay?></td>
+	print  $pay?>
+	
+	</td>
   </tr>
   <?php
    }
   ?>
-  <tr><td colspan="7">Total amount</td><td id="generatedAmt"><?php print $totalpay?></td></tr>
+  <tr><td colspan="7">Total amount</td><td id="generatedAmt"> <input type='text' class="hide" name='generatedAmt' value="<?php print $totalpay?>"/><?php print $totalpay?></td></tr>
 </table>
 <p>ಈ ಅಂಕಣಗಳನ್ನು ಉಪಯೋಗಿಸಿದಾಗ ತಪ್ಪದೆ ಆಬ್ಜೆಕ್ಟಿವ್ ಲೆಕ್ಕ ಶೀರ್ಷಿಕೆ ಕೋಡ್ ಉಪಯೋಗಿಸಿ. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ಪು.ತಿ.ನೋ.</p>
 <?php
@@ -377,8 +379,13 @@ foreach($castwise as $cast){
 $(document).ready(function(){
 
 $("table[cast]").each(function(){
-alert($(this).find("table[castfind='tview1'] td[id='generatedAmt']").html());
-$(this).find("table[castfind='tview'] td[id='finalamount_castbill']").html($(this).find("table[castfind='tview1'] td[id='generatedAmt']").html());
+ var key=$(this).attr("cast");
+ var total="table[cast_total='"+key+"']";
+ var total_view="table[cast_total_view='"+key+"']";
+  var total_view_all="table[cast_total_view_all='"+key+"']";
+ var amt=$(total).find("input[name='generatedAmt']").val();
+ $(total_view).find("td[id='finalamount_castbill']").html(amt);
+ $(this).find("td[id='tft']").html(amt);
 });
 
 });
