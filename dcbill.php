@@ -8,7 +8,12 @@
  require "server/app_connector.php";
 $conn=$database;
 $files=$_POST['schemefillingid'];
-$query="select sch.name schemename,s.filling_id, c.id castid,c.castname_k castnamek , c.castcode ,fd.fathername_k ,s.sanctionamt, s.installment_1,s.installment_2 from sanctionorder s ,schemefilling sf, farmerdetails fd,casts c,schemes sch where  sch.id= sf.subschemeid and sf.id= s.filling_id and c.id= fd.usercast and fd.id= sf.regid and s.filling_id in (".implode(',', $files).")"; 
+$query="select  group_concat(ld.landsono) landsno,group_concat(ci.cropname_k) cropsapp, st.state_name_k,sch.name schemename,s.filling_id, c.id castid,";
+$query.=" c.castname_k castnamek , c.castcode , concat(coalesce(pim.area1,0),coalesce(pim.area2,0),coalesce(pim.area3,0)) totalarea,";
+$query.="fd.firstname_k ,s.sanctionamt, s.installment_1,s.installment_2  from sanctionorder s ,schemefilling sf, farmerdetails fd,casts c,schemes sch,states st,";
+$query.="postinspection_mstr pim,cropitems ci , schemefilling_land sfl, landdetails ld where pim.filling_id= s.filling_id and  st.id= fd.village and sch.id= sf.subschemeid and ";
+$query.=" sfl.fillingid= sf.id and sfl.landdetailsid= ld.id and sf.id= s.filling_id ";
+$query.=" and (ci.id=pim.crop1 or  ci.id=pim.crop2 or ci.id=pim.crop3) and c.id= fd.usercast and fd.id= sf.regid and s.filling_id in (".implode(',', $files).")"; 
  
 $conditions=array(
 "[<>]sanctionorder"=>array("schemefilling.id","sanctionorder.filling_id"),
@@ -19,11 +24,15 @@ $outercondition["schemefilling.id"]=$files;
  
 $result=$conn->query($query);
 $castwise=array();
+$data=array();
 foreach($result as $row)
  {
  if(!isset($castwise[$row["castid"]])){
+ $castwise[$row["castid"]]=array();
  $castwise[$row["castid"]]=$row;
- }
+ } 
+ $castwise[$row["castid"]][]=$row;
+ 
  }
  
 ?>
@@ -334,106 +343,28 @@ foreach($castwise as $cast){
     <td width="100px">ಮಂಜೂರು ನೀಡಿದ ಸಹಾಯಧನ</td>
     <td width="100px">ಪಾವತಿಗೆ ಪರಿಗಣಿಸಿದ ಶೇ. 85% ಸಹಾಯಧನ</td>
   </tr>
+  <?php 
+  $i=0;
+  foreach($castwise as $farmer){
+  $i++;
+
+  ?>
   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td><?php print $i?></td>
+    <td><?php   print $farmer["firstname_k"] ?></td>
+    <td><?php print  $farmer["state_name_k"]?></td>
+   <td><?php print  $farmer["cropsapp"]?></td>
+    <td><?php print  $farmer["landsno"]?></td>
+    <td><?php print  $farmer["totalarea"]?></td>
+    <td><?php print  $farmer["sanctionamt"]?></td>
+    <td><?php 
+	$pay=($farmer["sanctionamt"]*$farmer["installment_1"])/100;
+	
+	print  $pay?></td>
   </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
+  <?php
+   }
+  ?>
 </table>
 <p>ಈ ಅಂಕಣಗಳನ್ನು ಉಪಯೋಗಿಸಿದಾಗ ತಪ್ಪದೆ ಆಬ್ಜೆಕ್ಟಿವ್ ಲೆಕ್ಕ ಶೀರ್ಷಿಕೆ ಕೋಡ್ ಉಪಯೋಗಿಸಿ. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ಪು.ತಿ.ನೋ.</p>
 <?php }
