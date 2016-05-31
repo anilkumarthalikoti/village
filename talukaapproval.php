@@ -221,10 +221,10 @@ $inpsected_date=$row["inspected_date"];
  <table class="table table-bordered table-condensed">
    
 <tr  ><td   class="txt-bold">Logged user:</td>
-<td  ><input type='text' class='form-control input-sm readonly' style="width:150px" value="<?php print $user["login_id"]?>"/> </td>
+<td class="txt-bold"><input type='text' class='form-control input-sm readonly' style="width:150px" value="<?php print $user["login_id"]?>"/> </td>
 
- <td  class="txt-bold" >Taluka approval date:</td>
- <td    ><input type="text" placeholder="dd/MM/yyyy" name="approveddate" class="datepicker" style="width:120px" id="approveddate"/>  </td> 
+ <td class="txt-bold">Taluka approval date:</td>
+ <td class="txt-bold"><input type="text" placeholder="dd/MM/yyyy" name="approveddate" class="datepicker" style="width:120px" id="approveddate"/>  </td> 
  
  </tr>
  </table>
@@ -249,15 +249,15 @@ $inpsected_date=$row["inspected_date"];
  	 </table>
    <table class="table table-bordered table-condensed">
           <tr>
-            <td class="txt-bold">6) Village:</td>
-            <td class="txt-bold"><input disabled type="text"  value="<?php print $village?>"class="form-control input-sm"></td>
-            <td class="txt-bold">7) Hobali:</td>
+            <td class="txt-bold2">6) Village:</td>
+            <td class="txt-bold"><input disabled type="text" value="<?php print $village?>"class="form-control input-sm"></td>
+            <td class="txt-bold2">7) Hobali:</td>
             <td class="txt-bold"><input disabled type="text" value="<?php print $hobli?>" class="form-control input-sm"></td>
-            <td class="txt-bold">8) Taluk:</td>
+            <td class="txt-bold2">8) Taluk:</td>
             <td class="txt-bold"><input disabled type="text" value="<?php print $taluka?>" class="form-control input-sm"></td>
-            <td class="txt-bold">9) Constituency:</td>
+            <td class="txt-bold1">9) Constituency:</td>
             <td class="txt-bold"><input disabled type="text" value="<?php print $consti?>" class="form-control input-sm"></td>
-            <td class="txt-bold">10) District:</td>
+            <td class="txt-bold2">10) District:</td>
             <td class="txt-bold"><input disabled type="text" value="<?php print $district?>" class="form-control input-sm"></td>
           </tr>
   </table>
@@ -282,20 +282,20 @@ $inpsected_date=$row["inspected_date"];
  
      <table class="table table-bordered table-condensed">
           <tr>
-            <td class="txt-bold bg-danger">15) Deduct:</td>
-            <td class="txt-bold bg-danger" width="90px"><select class="form-control" name="isdeductable" id="isdeduct">
+            <td class="txt-bold bg-danger" style="width:100px;">15) Deduct:</td>
+            <td class="txt-bold bg-danger"><select class="form-control" name="isdeductable" id="isdeduct">
             	<option value="N">No</option>
                 <option value="Y">Yes</option>
                 </select>
             </td>
              <td class="txt-bold">Screen Filter:</td>
-            <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="d_10"></td>
+            <td ><input disabled type="number" class="form-control input-sm" id="d_10"></td>
             <td class="txt-bold">By-pass Assembly:</td>
-            <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="d_11"></td>
+            <td ><input disabled type="number" class="form-control input-sm" id="d_11"></td>
             <td class="txt-bold">Ventury & Manifold:</td>
-            <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="d_12"></td>
-            <td class="txt-bold">Total Amount:</td>
-            <td class="txt-bold"><input disabled type="number" class="form-control input-sm" id="deducationAmtView"></td>            
+            <td ><input disabled type="number" class="form-control input-sm" id="d_12"></td>
+            <td >Total Amount:</td>
+            <td><input disabled type="number" class="form-control input-sm" id="deducationAmtView"></td>            
           </tr>
  		</table>
     <table class="table table-bordered table-condensed">
@@ -414,36 +414,34 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 
  </div>
  
-  <div id="div_mater" class="margin"  >
+  <div id="div_mater" class="margin" align="center">
    
  
   
   
-<table class="sheet excel90" id="mat_list">
-  <thead>
+<table class="sheet excel90 text-center" id="mat_list">
+    <thead>
   <tr style="border-bottom:1px solid #FFFFFF;">
-  <th>&nbsp;</th>
-  <th></th>
-  <th></th>
-  <th></th>
-  <th colspan="3"  style="border-bottom:1px solid #CCCCCC;" align="center" >AS PER FIELD </th>
-  <th colspan="3"  style="border-bottom:1px solid #CCCCCC;" align="center">AS PER BILL </th>
-  <th rowspan="2"   >Amount considered whichever is less</th>
-  <th rowspan="2">Less Amount</th>
+  <th rowspan="2">Sl.no.</th>
+  <th rowspan="2" >Name</th>
+  <th rowspan="2" style="width:50px	"> Unit</th>
+  <th rowspan="2" >Type</th>
+  <th colspan="3" >As Per Field</th>
+  <th colspan="3">As Per Bill</th>
+  <th rowspan="2" width="65px;">Amount considered whichever is less</th>
+  <th rowspan="2" style="display:none">Less Amount</th>
   </tr>
   <tr>
   
-  <th >S.no</th>
-    <th >NAME</th>
-    <th >UNIT</th>
-    <th >TYPE</th>
+
     <th>QTY</th>
-    <th >GGRC PRICE</th>
-    <th >FIELD TOTAL</th>
-	<th  >DEALER QTY</th>
-	<th  >DEALER AMT</th>
-	<th  >DEALER TOTAL </th>
+    <th >GGRC Price</th>
+    <th >Field Total</th>
+	<th  >Dealer QTY</th>
+	<th  >Dealer AMT</th>
+	<th  >Dealer Total </th>
 		</tr></thead>
+
   <tbody>
   <?php 
   $query="select  cip.id,itemorder,itemname,units,standard_measure,coalesce(ggrcqty,0) ggrcqty, itemprice,isdeduct,isvat from cropitemsprice cip LEFT JOIN postinspection_dtl pid  ON(  cip.id= pid.item_id  and pid.filling_id=  ".$_POST["filling_id"]." ) where  isvat='Y'  order by cip.itemorder";
@@ -465,7 +463,7 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
   
   foreach ($master as $name => $values) {
   $rowheight=count($values);
-   echo "<tr><td rowspan='$rowheight'>$name</td><td rowspan='$rowheight' style='width:250px;'>$itemname[$name]</td>";
+   echo "<tr><td rowspan='$rowheight'>$name</td><td class='tabletext' rowspan='$rowheight' style='width:250px'>$itemname[$name]</td>";
    $i=0;
    foreach ($values as $val1) {
    if($i==1){
@@ -525,11 +523,11 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td colspan="3" bgcolor="#FCE9FE"><strong>Total Amount (1 to 15)</strong></td>
              <td bgcolor="#FCE9FE">&nbsp;</td>
              <td bgcolor="#FCE9FE">&nbsp;</td>
-             <td bgcolor="#FCE9FE"><input disabled type="text" id="fieldtotal" ></td>
+             <td bgcolor="#FCE9FE"><input disabled type="text" id="fieldtotal" class="tablebox" ></td>
              <td bgcolor="#FCE9FE">&nbsp;</td>
              <td bgcolor="#FCE9FE">&nbsp;</td>
-             <td bgcolor="#FCE9FE"><input disabled type="text" id="dealertotal" ></td>
-             <td bgcolor="#FCE9FE"><input disabled type="text" id="materialAmt" ></td>
+             <td bgcolor="#FCE9FE"><input disabled type="text" id="dealertotal" class="tablebox" ></td>
+             <td bgcolor="#FCE9FE"><input disabled type="text" id="materialAmt" class="tablebox" ></td>
 			 <td class="txt-bold bg-danger" id="tdlessamt"></td>
            </tr>
            <tr>
@@ -537,11 +535,11 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td colspan="3" bgcolor="#E8E8E8"><strong>Vat at 5.5%</strong></td>
              <td bgcolor="#E8E8E8">&nbsp;</td>
              <td bgcolor="#E8E8E8">&nbsp;</td>
-             <td bgcolor="#E8E8E8"><input disabled type="text" id="fieldVat" ></td>
+             <td bgcolor="#E8E8E8"><input disabled type="text" id="fieldVat" class="tablebox" ></td>
              <td bgcolor="#E8E8E8">&nbsp;</td>
              <td bgcolor="#E8E8E8">&nbsp;</td>
-             <td bgcolor="#E8E8E8"><input disabled type="text" id="dealerVat" ></td>
-             <td bgcolor="#E8E8E8"><input disabled type="text" id="totalVatAmt" ></td>
+             <td bgcolor="#E8E8E8"><input disabled type="text" id="dealerVat" class="tablebox" ></td>
+             <td bgcolor="#E8E8E8"><input disabled type="text" id="totalVatAmt" class="tablebox" ></td>
 		     <td class="txt-bold bg-danger" id="tdlessamt90"></td>
            </tr>
            <tr>
@@ -549,11 +547,11 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td colspan="3" bgcolor="#E1FFFF"><strong>Total (a+b)</strong></td>
              <td bgcolor="#E1FFFF">&nbsp;</td>
              <td bgcolor="#E1FFFF">&nbsp;</td>
-             <td bgcolor="#E1FFFF"><input disabled type="text" id="totalFieldVat" ></td>
+             <td bgcolor="#E1FFFF"><input disabled type="text" id="totalFieldVat" class="tablebox" ></td>
              <td bgcolor="#E1FFFF">&nbsp;</td>
              <td bgcolor="#E1FFFF">&nbsp;</td>
-             <td bgcolor="#E1FFFF"><input disabled type="text" id="dealerTotalVat" ></td>
-             <td bgcolor="#E1FFFF"><input disabled type="text" id="totalBillAmt" ></td>
+             <td bgcolor="#E1FFFF"><input disabled type="text" id="dealerTotalVat" class="tablebox" ></td>
+             <td bgcolor="#E1FFFF"><input disabled type="text" id="totalBillAmt" class="tablebox" ></td>
 		     <td class="txt-bold bg-danger" ></td>
            </tr>
 		    <?php 
@@ -637,11 +635,11 @@ $master[$row["itemorder"]][]=array($row["id"],$row["units"],$row["standard_measu
              <td colspan="3" bgcolor="#FCFADA"><strong>Grand Total (I+II+III)</strong></td>
              <td bgcolor="#FCFADA">&nbsp;</td>
              <td bgcolor="#FCFADA">&nbsp;</td>
-             <td bgcolor="#FCFADA"><input disabled type="text" id="finalFieldBill" ></td>
+             <td bgcolor="#FCFADA"><input disabled type="text" id="finalFieldBill" class="tablebox" ></td>
              <td bgcolor="#FCFADA">&nbsp;</td>
              <td bgcolor="#FCFADA">&nbsp;</td>
-             <td bgcolor="#FCFADA"><input disabled type="text" id="finalDealarBill" ></td>
-             <td bgcolor="#FCFADA"><input disabled type="text" id="finalCalculationBill"></td>
+             <td bgcolor="#FCFADA"><input disabled type="text" id="finalDealarBill" class="tablebox" ></td>
+             <td bgcolor="#FCFADA"><input disabled type="text" id="finalCalculationBill" class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
@@ -658,84 +656,84 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 ?>
 
 </select></td>
-             <td><input disabled type="text" id="maxamount_a1"></td>
+             <td><input disabled type="text" id="maxamount_a1" class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td bgcolor="#F8DAA3" class="text-center">&nbsp;</td>
              <td colspan="9" bgcolor="#F8DAA3"><strong>Amount considered for subsidy (whichever is less) (round down)</strong></td>
-             <td bgcolor="#F8DAA3"><input disabled type="text" ></td>
+             <td bgcolor="#F8DAA3"><input disabled type="text" class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">A</td>
-             <td colspan="9">Total land holding  of farmer (in hector)</td>
-             <td><input disabled type="text" id="totalLandHolding" value="<?php echo $farmerland?>" ></td>
+             <td colspan="9" class="tabletext">Total land holding  of farmer (in hector)</td>
+             <td><input disabled type="text" class="tablebox"  id="totalLandHolding" value="<?php echo $farmerland?>" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">B</td>
-             <td colspan="9">Total area for which sibsidy claimed in previous years (in hector)</td>
-             <td><input disabled type="text" id="preAllocatedLand" ></td>
+             <td colspan="9" class="tabletext">Total area for which sibsidy claimed in previous years (in hector)</td>
+             <td><input disabled type="text" id="preAllocatedLand" class="tablebox" ></td>
 			 
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">C</td>
-             <td colspan="9">Drip installed area in present year (in hector)</td>
-             <td><input disabled type="text" id="presentLand" ></td>
+             <td colspan="9" class="tabletext">Drip installed area in present year (in hector)</td>
+             <td><input disabled type="text" id="presentLand" class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">D</td>
 
-             <td colspan="9">Area considered at 90% subsidy (up to 2 hector)</td>
-             <td><input disabled type="text" id="land90" ></td>
+             <td colspan="9" class="tabletext">Area considered at 90% subsidy (up to 2 hector)</td>
+             <td><input disabled type="text" id="land90" class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">E</td>
-             <td colspan="9">Subsidy amount at 90% as per guidlines</td>
-             <td><input disabled type="text" id='land90subsidy' ></td>
+             <td colspan="9" class="tabletext">Subsidy amount at 90% as per guidlines</td>
+             <td><input disabled type="text" id='land90subsidy' class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">F</td>
-             <td colspan="9">Area considered at 50% subsidy (more than 2 hector and up to 5 hector)</td>
-             <td><input disabled type="text" id='land50' ></td>
+             <td colspan="9" class="tabletext">Area considered at 50% subsidy (more than 2 hector and up to 5 hector)</td>
+             <td><input disabled type="text" id='land50' class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">G</td>
-             <td colspan="9">Subsidy amount at 50% as per guidlines</td>
-             <td><input disabled type="text" id='land50subsidy' ></td>
+             <td colspan="9" class="tabletext">Subsidy amount at 50% as per guidlines</td>
+             <td><input disabled type="text" id='land50subsidy' class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">H</td>
              <td colspan="9" bgcolor="#B5FF6A">Total (E+G)</td>
-             <td bgcolor="#B5FF6A"><input disabled type="text" id='totalSubsidy' ></td>
+             <td bgcolor="#B5FF6A"><input disabled type="text" id='totalSubsidy' class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">I</td>
              <td>Less if any</td>
-             <td colspan="8"><input disabled type="text"  placeholder="reason for less"></td>
-             <td><input disabled type="text" id='lessAmount' ></td>
+             <td colspan="8" align="left"><input disabled type="text" style="width:auto"  placeholder="reason for less"></td>
+             <td><input disabled type="text" id='lessAmount' class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">J</td>
              <td colspan="9" bgcolor="#B5FF6A">Amount recommended for Subsidy (H-I)</td>
-             <td bgcolor="#B5FF6A"><input disabled type="text"  id='avalibleSubsidy'></td>
+             <td bgcolor="#B5FF6A"><input disabled type="text"  id='avalibleSubsidy' class="tablebox" ></td>
 			 <td></td>
            </tr>
            <tr>
              <td class="text-center">K</td>
              <td>Amount in words</td>
-             <td colspan="10"><input disabled type="text" id='amountinwords' style="width:100%; text-transform:uppercase" ></td>
+             <td colspan="9" align="left"><input disabled type="text" id='amountinwords' style="width:98%; text-transform:uppercase" ></td>
             </tr>       
-  <tr><td colspan="12"> <input type='button' value='Save' onclick="saveSheet()"  /></td></tr>
+  <tr><td colspan="12" style="padding-right:10px;"> <input type='button' value='Save' onclick="saveSheet()"  /></td></tr>
   </tfoot>
   </table>
  </div>
