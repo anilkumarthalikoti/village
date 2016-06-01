@@ -164,7 +164,7 @@ $(key).dialog({
 
 <?php  
 $canreject="N";
-if($_GET["status"]==1 ||$_GET["status"]==5||$_GET["status"]==8){
+if($_GET["status"]==1 ||$_GET["status"]==5||$_GET["status"]==7){
 $canreject="Y";
 }
 $titles=array();
@@ -358,7 +358,7 @@ print "BIG FRAMER";
 	<td class="skip" style="width:18px">
 	<?php if($_GET["status"]==1){?><span class="close"  onclick="openReject('-1','<?php print $row["schemefillingid"];?>')"></span> <?php }?>
 	<?php if($_GET["status"]==5){?><span class="close" onclick="openReject('-4','<?php print $row["schemefillingid"];?>')"></span> <?php }?>
-	<?php if($_GET["status"]==8){?><span class="close" onclick="openReject('-7','<?php print $row["schemefillingid"];?>')"></span> <?php }?>
+	<?php if($_GET["status"]==7){?><span class="close" onclick="openReject('-7','<?php print $row["schemefillingid"];?>')"></span> <?php }?>
 	</td>
  
   <?php } ?>
