@@ -49,7 +49,7 @@ die();
  
  </table>
  <table class="grid margin xlarge">
- <thead><tr><th></th>
+ <thead><tr><th>Slno.</th>
  <th>Company   name</th>
  <th> Company name(K)</th>
  </tr>
@@ -90,7 +90,7 @@ die();
  
  </table>
  <table class="grid margin xlarge">
- <thead><tr><th></th>
+ <thead><tr><th>Slno.</th>
   <th>Company name</th>
  <th> Company name(K)</th>
  <th>Delear name</th>

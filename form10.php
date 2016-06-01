@@ -173,7 +173,7 @@ ____________ಹೋಬಳಿಯ ರೈತ ಸಂರ್ಕಕೇಂದ್ರ,<br /
 <div class="hide">
 <table id="mdata">
 <thead>
-<tr> <th>Particulars</th><th>Unit</th><th>Type</th><th>Qty</th></tr>
+<tr> <th style="color:#000">Particulars</th><th>Unit</th><th>Type</th><th>Qty</th></tr>
 </thead>
 <tbody>
 <?php 

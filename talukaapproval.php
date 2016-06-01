@@ -232,11 +232,11 @@ $inpsected_date=$row["inspected_date"];
  <table class="table table-bordered table-condensed">
           <tr>
             <td class="txt-bold">1) Name of Farmer:</td>
-            <td class="txt-bold"><input disabled type="text" value="<?php print $name?>" class="form-control input-sm"></td>
+            <td ><input disabled type="text" style="width:auto" value="<?php print $name?>" class="form-control input-sm"></td>
             <td class="txt-bold">2) Gender:</td>
-            <td class="txt-bold"><input disabled type="text" value="<?php print $gender?>" class="form-control input-sm"></td>
+            <td ><input disabled type="text" style="width:50px" value="<?php print $gender?>" class="form-control input-sm"></td>
             <td class="txt-bold">3) Caste:</td>
-            <td class="txt-bold"><input disabled type="text" value="<?php print $cast?>" class="form-control input-sm"></td>
+            <td ><input disabled type="text" style="width:auto" value="<?php print $cast?>" class="form-control input-sm"></td>
           </tr>
         </table>
     <table class="table table-bordered table-condensed">
@@ -265,18 +265,18 @@ $inpsected_date=$row["inspected_date"];
      <table class="table table-bordered table-condensed">
           <tr>
             <td class="txt-bold">11) Land Survey No.:</td>
-            <td class="txt-bold"><input disabled type="text" value="<?php print $landsurvaynos?>" class="form-control input-sm"></td>
+            <td ><input disabled type="text" style="width:auto" value="<?php print $landsurvaynos?>"  class="form-control input-sm"></td>
             <td class="txt-bold">12) Total Land holding area of farmer (hector):</td>
-            <td class="txt-bold"><input disabled type="number" value="<?php print $farmerland?>" class="form-control input-sm"></td>
+            <td ><input disabled type="number" style="width:auto" value="<?php print $farmerland?>" class="form-control input-sm"></td>
           </tr>
   </table>
  
          <table class="table table-bordered table-condensed">
           <tr>
             <td class="txt-bold bg-danger">13) Area for which subsidy availed in previous years (hector):</td>
-            <td class="txt-bold bg-danger"><input type="text" class="form-control input-sm" name="preallocted" id="preallocatedtemp" placeholder="Must enter this field"></td>
+            <td class="txt-bold bg-danger"><input type="text" style="width:100px" class="form-control input-sm" name="preallocted" id="preallocatedtemp" placeholder="Must enter this field"></td>
             <td class="txt-bold">14) Remaining area (hector):</td>
-            <td class="txt-bold"><input disabled type="text" class="form-control input-sm"></td>
+            <td ><input disabled style="width:50px" type="text" class="form-control input-sm"></td>
           </tr>
   </table>
  
@@ -306,10 +306,10 @@ $inpsected_date=$row["inspected_date"];
  		</table>
 		
 		 <table class="table table-bordered table-condensed">
-<tr class="labelhhr"><td></td>
-<td >Crop Name </td>
-<td >Area in hector </td>
-<td  colspan="2">Row spacing </td>
+<tr class="labelhhr">
+<td colspan="2" align="center">Crop Name </td>
+<td>Area in hector </td>
+<td align="center" colspan="2">Row spacing </td>
  <td>Plants Total </td>
 </tr>
 <tr crop1="crop1">
@@ -404,7 +404,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
             <td class="txt-bold">28) Field Inspected Officer Name and Designation:</td>
             <td class="txt-bold"><input disabled value="<?php print $inspected_by?>" type="text" class="form-control input-sm"></td>
             <td class="txt-bold">29) Date of Inspection:</td>
-            <td class="txt-bold"><input disabled   value="<?php print $inspected_date?>" class="form-control input-sm"></td>            
+            <td><input disabled style="width:75px;" value="<?php print $inspected_date?>" class="form-control input-sm"></td>            
           </tr>
 	 	</table>
  

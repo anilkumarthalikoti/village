@@ -112,8 +112,8 @@ $spacing6=$row["spacing6"];
 <input type="hidden" name="material_save"/>
   <table class="form excel">
    
-<tr  ><td>Logged user</td><td>:</td><td><strong><?php print $user["login_id"]?></strong></td>  
- <td class="label small">Post-inspection date</td><td class="tiny">:</td><td><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/>  </td> </tr>
+<tr ><td>Logged user :</td><td align="left" style="font-weight:bold"><?php print $user["login_id"]?></td><td align="right">Post-inspection date : </td>  
+ <td align="left"><input type="text" placeholder="dd/MM/yyyy" name="inspected_date" class="datepicker" id="inspectiondate"/> </td><td align="left"></td><td> </td> </tr>
 <tr   ><td></td>
 <td >Crop Name </td>
 <td >Drip installed area  </td>
@@ -203,7 +203,7 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 </select></td><td><input type="text" name="pspacing3" class="tiny"    /></td>
 </tr>
  
- <tr><td>Pre-allocated</td><td>:<input type="text" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
+ <tr><td>Pre-allocated</td><td>:<input type="text" style="width:75px" name="preallocated" disabled="disabled" value="<?php print $preallocated;?>"/></td><td>Current Applicable</td><td>:</td><td></td><td></td></tr>
  
   <tr><td colspan="6">
  
@@ -217,8 +217,8 @@ echo "<option value='".$row["id"]."' startfrom=".$row["startfrom"]." endsat=".$r
 </tr></table>
 <div id="div_mater" style='background:#ffffff'>
   
-  <table class=" xlarge margin"   id="mat_list" style='background:#ffffff'>
-  <thead><tr><th>S.no</th><th>Name</th><th>Unit</th><th>Type</th><th>Qty</th><th>Remarks</th></tr></thead>
+  <table class="xlarge margin" id="mat_list" style="width:80%; border:1px solid #000;">
+  <thead><tr><th class="textcenter">S.no</th><th class="textcenter">Name</th><th class="textcenter">Unit</th><th class="textcenter">Type</th><th class="textcenter">Qty</th><th class="textcenter">Remarks</th></tr></thead>
   <tbody>
   <?php 
   $query="select  id,itemname,standard_measure,units,itemorder from cropitemsprice order by itemorder";

@@ -8,8 +8,15 @@
  require "server/app_connector.php";
 $conn=$database;
  ?>
+
  <script src="js/farmer_reg.js" type="text/javascript"></script>
- 
+<style>
+input[type='text'],input[type='password'],input[type='text1']{
+	 
+	 margin-top:5px;
+	 margin-bottom:5px;
+	}
+</style>
 
 </head>
 
@@ -67,7 +74,7 @@ $conn=$database;
                  </tr>
                  <tr>
                    <td class="label">Gender </td><td>:</td>
-                   <td class="label"><input type="radio" name="gender" value="M" />Male/ಗಂಡು<input type="radio" name="gender" value="F" />Female/ಹೆಣ್ಣು
+                   <td class="label">&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="M" />Male/ಗಂಡು&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="F" />Female/ಹೆಣ್ಣು
 
                      <span class="error">* </span> </td>
                  </tr>
@@ -96,8 +103,8 @@ $conn=$database;
                  </tr>
                  <tr>
                    <td class="label">Physically Challanged </td><td>:</td>
-                   <td class="label"><input type="radio" value="N" name="physicallychallanged" checked="checked" />
-                     No
+                   <td class="label">&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="N" name="physicallychallanged" checked="checked" />
+                     No&nbsp;&nbsp;
                        <input type="radio" value="Y" name="physicallychallanged" />
                      Yes <input type="button" value="NEXT>>" onclick="$('#tab2').click()"/></td>
                  </tr>
@@ -142,7 +149,7 @@ $conn=$database;
            <div class="container" id="tab3C">
                <table class="xlarge form" border="0" cellspacing="0" cellpadding="0">
 			   <tr>
-			   <td  class="label">Select village</td><td>:</td>
+			   <td  class="label" width="100px">Select village</td><td>:</td>
 			   <td  colspan="3"  ><select name="village" class="excel">
 			   <option value="-1">Select</option>
 			   
@@ -200,7 +207,7 @@ $conn=$database;
            </div>
           
            <div class="container" id="tab5C">
-               <table class="form xlarge" border="0" cellspacing="0" cellpadding="0">
+               <table class="form xlarge" style="width:97%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
                    <td class="label">Name of Bank  </td><td>:</td>
                    <td   class="label"><select name="bank"     id="bank"   >

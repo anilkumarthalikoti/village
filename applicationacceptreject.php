@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Application accept reject</title>
+
 <?php 
   require "interceptor.php";
  require "server/app_connector.php";
@@ -160,6 +161,7 @@ $(key).dialog({
 </head>
 
 <body>
+
 <?php  
 $canreject="N";
 if($_GET["status"]==1 ||$_GET["status"]==5||$_GET["status"]==8){
@@ -195,14 +197,14 @@ $titles["8"]="Forward to RSK for post-inspection";
     ?>
 <div class="title"><?php print $titles[$_GET["status"]]?></div>
  
-<div class="viewport">
- <table class="excel" style="width:96%">
+<div class="viewport" style="padding-left:10px; padding-right:10px; ">
+ <table class="excel" >
  <tr>
  <tr><td>
  
  <form name="application" method="post" target="_self">
 <input type="hidden" name="application" value="application"/>
-<div    style="max-height:420px; min-height:420px;">
+<div style="max-height:420px; min-height:420px; ">
 <table class="grid excel90 margin" id="applications" filter='Y'>
 <thead >
  <tr>
@@ -222,8 +224,8 @@ $titles["8"]="Forward to RSK for post-inspection";
  <?php
  }
  ?>
-<th>Reg.No</th>
-<th>Unique/Reference</th>
+<th class="textcenter">Reg.No</th>
+<th class="textcenter">Unique/Reference</th>
 <th>Name</th>
 <th>Relation</th>
 <th>Village</th>

@@ -36,8 +36,8 @@ $conn=$database;
              </select><input type="button" value="Search" onclick="landdetailsjs.searchRegistration()"/></td></tr>
 </table>
 <form method="POST"  name="form1" onsubmit="return false;">
-<table class="form xlarge">
-<tr><td class="label medium"> First name</td><td>:</td><td><input   type="text"  id="firstname_text" placeholder="First Name"/><input type="hidden" id="regid" name="regid"/></td> </tr>
+<table class="form xlarge text-left" style="width:100%">
+<tr><td class="label"> First name</td><td>:</td><td><input   type="text"  id="firstname_text" placeholder="First Name"/><input type="hidden" id="regid" name="regid"/></td> </tr>
 <tr> <td class="label">Father/Husband Name  </td><td>:</td><td ><input   type="text"  id="fathername_text" placeholder="Father/Husband name"  /></td></tr>
 <tr><td class="label">House No</td><td>:</td><td><input id="houseno_text" type="text" placeholder="House no"></input></td></tr>
 <tr><td class="label">Village</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td></tr>
@@ -68,9 +68,9 @@ $conn=$database;
   <td>:</td><td><input type="text" name="totalland"/><input type="button" class="button" value="Add" onclick="landdetailsjs.saveData();"/></td></tr>
 </table>
 </form>
-</td><td valign="top"><table class="grid margin large" id="existing">
+</td><td valign="top" style="padding-left:20px; padding-top:80px;"><table class="grid margin large" style="width:auto" id="existing">
 							  <thead>
-							  <tr><th>Land survay no</th><th>Village</th><th>Total Land</th><th></th></tr>
+							  <tr><th class="textcenter">Land survay no</th><th class="textcenter">Village</th><th class="textcenter">Total Land</th><th></th></tr>
 							  </thead>
 							  <tbody>
 							  </tbody>

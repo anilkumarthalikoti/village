@@ -34,7 +34,7 @@ $finyear=$row["finyear"];
 <form method="POST"  name="form1" onsubmit="return false;">
  
 <table><tr><td> 
-<table class="form excel margin">
+<table class="form excel margin" >
       <tr class="hide"><td><input  type="text" id="search" class="search" placeholder="Search" onkeypress="schemefilling.search(event)" value="<?php echo $_REQUEST["regid"]; ?>"  />
              <select name="select" id="searchin">
                <option value="id" selected="selected">Reg.No</option>
@@ -44,7 +44,7 @@ $finyear=$row["finyear"];
              </select><input type="button" value="Search" onclick="schemefilling.searchRegistration()"/></td></tr>
 			 
        <tr><td>
-	   <table>
+	   <table style="width:100%;">
       <tr>
         <td  class="label" > Name </td><td>:</td><td ><input   type="text"  id="firstname_text" placeholder="First Name"/><input type="hidden" id="regid" name="regid"/></td>
 		  

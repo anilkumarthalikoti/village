@@ -25,8 +25,8 @@ $conn=$database;
  
 			 <tr>
 			 <td colspan="4" valign="top">
-			 <div style="height:400px; overflow:auto">
- <div style="height:360px; overflow:auto">
+			 <div style="height:400px; overflow:auto; width:98%;">
+ <div style="height:360px; overflow:auto;">
  
 <table class="grid excel90 margin"  filter='Y'  cellpadding="0" cellspacing="0">
 <thead><th>Benficary Id</th><th>Name</th><th>Relation name</th><th>Village name</th><th>Total land</th><th>Land Register</th><th>Scheme Register</th></thead>
