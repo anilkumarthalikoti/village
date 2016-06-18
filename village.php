@@ -381,8 +381,11 @@ $rowid++;
 
 
 <table class="form margin-left margin-top">
-<tr class="hide"><td class="label">Select state</td><td>:</td><td>
+<tr  ><td class="label">Select state</td><td>:</td><td>
+<!--
 <select name="state_selected" id="state_selected" onChange="states.updateview('village','state_selected','district','district_selected');">
+-->
+<select name="state_selected" id="state_selected">
 <option value="-1">Select</option>
 
 <?php 
@@ -391,45 +394,77 @@ foreach($result as $row)
 echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
 ?>
 </select></td></tr>
-<tr class="hide">
+<tr  >
   <td class="label">Select district</td>
   <td>:</td>
 <td>
+<!--
 <select name="district_selected" id="district_selected" onChange="states.updateview('village','district_selected','taluka','taluka_selected');">
+-->
+<select name="district_selected" id="district_selected">
 <option value="-1">Select</option>
- 
+ <?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>1));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
 </select></td></tr>
-<tr class="hide">
+<tr  >
   <td class="label">Select taluka</td>
   <td>:</td>
 <td>
+<!--
 <select name="taluka_selected" id="taluka_selected" onChange="states.updateview('village','taluka_selected','constituency','constituency_selected');">
+-->
+<select name="taluka_selected" id="taluka_selected">
 <option value="-1">Select</option>
- 
+ <?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>2));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
 </select></td></tr>
-<tr class="hide"><td class="label">Select constituency</td>
+<tr  ><td class="label">Select constituency</td>
 <td>:</td>
 <td>
+<!--
 <select name="constituency_selected" id="constituency_selected" onChange="states.updateview('village','constituency_selected','hobli','hobli_selected');">
+-->
+<select name="constituency_selected" id="constituency_selected">
 <option value="-1">Select</option>
- 
+ <?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>3));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
 </select></td></tr>
-<tr class="hide">
+<tr  >
   <td class="label">Select hobli </td>
   <td>:</td>
 <td>
+<!--
 <select name="hobli_selected" id="hobli_selected" onChange="states.updateview('village','hobli_selected','panchaitay','panchaitay_selected');">
+-->
+<select name="hobli_selected" id="hobli_selected">
 <option value="-1">Select</option>
- 
+ <?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>4));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
 </select></td></tr>
 
-<tr class="hide">
+<tr  >
   <td class="label">Select panchayat </td>
   <td>:</td>
 <td>
 <select name="panchaitay_selected" id="panchaitay_selected" >
 <option value="-1">Select</option>
- 
+ <?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>5));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
 </select></td></tr>
 
 <tr><td class="label">Enter village</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter village" /><input type="text" name="state_name_ka" placeholder="Enter village" alt="ka" id="s7" /></td></tr>

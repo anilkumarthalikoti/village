@@ -1,7 +1,7 @@
 var validation=new function(){
 
 this.validate=function(){
-console.log("Validating screen");
+ 
 
 $("[rules]:visible").each(function(){
 
