@@ -20,15 +20,10 @@ $user=$_SESSION["logged_in"];
 <form name="actions">
 <div class="title"><span>Proposal</span></div>
 <div class="viewport">
-<ul id="tabs" style="margin:0;">
-             <li><a id="tab1">Proposal Status</a></li>
-           <li><a id="tab2">Proposal Action</a></li>
-           
-         </ul>
-             <div class="container" id="tab1C" style="margin:0">
+ 
 			  
 
-<table class="form excel90"  style="margin:0; padding:0"  >
+<table class="form excel90 margin"    >
 <tr>
 <td>Scheme</td><td>:</td><td><select name="scheme_select" id="scheme_select" tabid="1" onchange="approvaljs.updateview(this); approvaljs.updateschemadetails();">
 <option value="-1">Select</option>
@@ -40,7 +35,7 @@ foreach ($result as $row)
 </select></td>
 <td>Sub Scheme</td><td>:</td><td><select name="subscheme_select" tabid="2" id="subscheme_select" onchange="approvaljs.updateview(this); "><option value="-1">Select</option></select></td>
 <td>Component</td><td>:</td><td><select name="component_select" tabid="3" id="component_select" onchange="approvaljs.updateview(this); "><option value="-1">Select</option></select></td>
-<td colspan="3"><input type="button" value="Show all"    /></td>
+<td colspan="3"></td>
 </tr>
 <tr class="hide">
 <td>Crop-1</td><td>:</td><td><select name="component_1" tabid="4" id="component_1"  ><option value="-1">Select</option></select></td>
@@ -54,13 +49,10 @@ foreach ($result as $row)
 </div>
 </td></tr>
 </table>
- </div>
  
  
  
-  <div class="container" id="tab2C">
-  
- </div>
+ 
  
  
  
