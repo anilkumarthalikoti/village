@@ -43,7 +43,7 @@ $conn=$database;
 <tr><td class="label">Village</td><td>:</td><td><input id="village_text" type="text" placeholder="Village/City name"/></td></tr>
  						  
 							  
-							  <tr><td class="label">Select village</td><td>:</td>
+							  <tr><td class="label">Select Land village</td><td>:</td>
 							    <td><select name="villageid"  search="search" autofocus="autofocus" autocorrect="off" autocomplete="off"   >
                                   <option>Select</option>
                                   <?php 
