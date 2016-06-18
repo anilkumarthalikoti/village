@@ -30,7 +30,16 @@ var itemtrn=new function(){
 	
 	
 	$(document).ready(function(){
- $("#existing tbody tr").click(function(){
+							   cropitemsclick();
+			$('#existing').on( 'draw.dt', function () {				   
+cropitemsclick();
+ 
+												   });
+ 
+ });
+	
+	function cropitemsclick(){
+		 $("#existing tbody tr").click(function(){
  $("#itemname").attr("disabled","disabled");
  $("#units").attr("disabled","disabled");
   $("#standard_measure").attr("disabled","disabled");
@@ -46,4 +55,4 @@ var itemtrn=new function(){
  $("#isdeduct").val($(this).find("td:eq(4)").html());
  $("#formdialog").dialog("open");
  });
- });
+		}
