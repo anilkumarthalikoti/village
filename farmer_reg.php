@@ -83,9 +83,9 @@ input[type='text'],input[type='password'],input[type='text1']{
                    <td class="label"><select name="usercast"  type="text"  id="usercast"   >
                        <option value="-1">Select</option>
                        <?php 
-					   $result=$conn->select("casts",array("id","castname","castname_k"));
+					   $result=$conn->select("casts",array("id","castname","castname_k","castcode"));
 					   foreach($result as $row){
-					   echo "<option value='".$row["id"]."'>".$row["castname"]."/".$row["castname_k"]."</option>";
+					   echo "<option value='".$row["id"]."'>".$row["castname"]."/".$row["castname_k"]."(".$row['castcode'].")</option>";
 					   }
 					   ?>
                      </select>
@@ -155,13 +155,13 @@ input[type='text'],input[type='password'],input[type='text1']{
 			   
 			   <?php 
 			   
-			   $query="select s.id, concat(s.state_name,'/',s.state_name_k,'      (',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.stateid)";
+			   $query="select s.id, concat(s.state_name,'/',s.state_name_k,'      (',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.hobliid)";
 			  
-			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.districtid)";
-			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.talukaid)";
-			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.constituencyid)";
-			   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.panchayatiid)";
-			    $query.=" ,'') vname from village v ,states s where s.id= v.villageid";
+			//   $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.districtid)";
+			 //  $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.talukaid)";
+			  // $query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.constituencyid)";
+			   //$query.=",'->',(select concat(s1.state_name,'/',s.state_name_k) from states s1 where s1.id=v.panchayatiid)";
+			    $query.=" ,')') vname from village v ,states s where s.id= v.villageid";
 			   $result=$conn->query($query);
 			   echo $query;
 			   foreach($result as $row){

@@ -21,7 +21,8 @@ $id=$conn->insert("states",array("state_name"=>$state_name,"state_name_k"=>$stat
  $constituency_selected=postVal("constituency_selected");
   $panchaitay_selected=postVal("panchaitay_selected");
  $village_selected=postVal("village_selected");
- 
+ $zp_selected=postVal("zp_selected");
+ $tp_selected=postVal("tp_selected");
 
  
  switch($saveType){
@@ -45,7 +46,7 @@ $conn->insert("panchayati",array("stateid"=>$state_selected,"districtid"=>$distr
  
   case "village":
 //  $conn->debug();
-$conn->insert("village",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"constituencyid"=>$constituency_selected,"panchayatiid"=>$panchaitay_selected,"villageid"=>$id));
+$conn->insert("village",array("stateid"=>$state_selected,"districtid"=>$district_selected,"talukaid"=>$taluka_selected,"hobliid"=>$hobli_selected,"constituencyid"=>$constituency_selected,"panchayatiid"=>$panchaitay_selected,"zpid"=>$zp_selected,"tpid"=>$tp_selected,"villageid"=>$id));
 $update=array();
 $update["stateid"]=$state_selected;
 $conn->update("district",$update,array("districtid"=>$district_selected));

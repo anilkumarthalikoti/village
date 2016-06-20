@@ -112,6 +112,8 @@ CREATE TABLE village (
 	constituencyid int(10) not null,
 	panchayatiid int(10) NOT NULL,
 	villageid int(10) NOT NULL,
+	zpid int(10) not null,
+	tpid int(10) not null,
 	PRIMARY KEY (id),
 	unique key(stateid,districtid,talukaid,hobliid,constituencyid,panchayatiid,villageid)
 ) ;

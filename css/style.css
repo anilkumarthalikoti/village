@@ -167,9 +167,10 @@
 	}
 	.datepicker{
 	
-	width:65px;
+	width:120px;
 	padding-right:32px;
-background:url(/images/calendar.png) no-repeat right center;
+ 
+background:url(../images/calendar.png) no-repeat right center;
 	}
 	.small{
 	width:150px;

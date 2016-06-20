@@ -24,6 +24,8 @@ $conn=$database;
       <li><a id="tab3">Taluka</a></li>
 	  <li><a id="tab4">Constituency</a></li>
 	   <li><a id="tab5">Hobli</a></li>
+	    <li><a id="tab8">Zp-Constituency</a></li>
+		 <li><a id="tab9">Tp-Constituency</a></li>
 	  	    <li><a id="tab6">Panchayat</a></li>
 		<li><a id="tab7">Village</a></li>
 	     
@@ -454,6 +456,38 @@ echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name
 ?>
 </select></td></tr>
 
+
+<tr  >
+  <td class="label">Select zp constituency </td>
+  <td>:</td>
+<td>
+<!--
+<select name="hobli_selected" id="hobli_selected" onChange="states.updateview('village','hobli_selected','panchaitay','panchaitay_selected');">
+-->
+<select name="zp_selected" id="zp_selected">
+<option value="-1">Select</option>
+ <?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>7));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
+</select></td></tr>
+<tr  >
+  <td class="label">Select tp constituency </td>
+  <td>:</td>
+<td>
+<!--
+<select name="hobli_selected" id="hobli_selected" onChange="states.updateview('village','hobli_selected','panchaitay','panchaitay_selected');">
+-->
+<select name="tp_selected" id="tp_selected">
+<option value="-1">Select</option>
+ <?php 
+$result =$conn->select("states",array("id","state_name","state_name_k"),array("item_type"=>8));
+foreach($result as $row)
+echo "<option   value='".$row["id"]."'>".$row["state_name"]."/".$row["state_name_k"]."</option>";
+?>
+</select></td></tr>
+
 <tr  >
   <td class="label">Select panchayat </td>
   <td>:</td>
@@ -499,8 +533,83 @@ $rowid++;
 </div>
  
 
+ <div class="container" id="tab8C">
+<form name="zpconstituency">
+<input type="hidden" name="saveType" value="zpconstituency"/>
+<input type="hidden" name="item_type" value="7"/>
 
 
+<table class="form margin-left margin-top">
+ 
+<tr><td class="label">Enter Zp-Constituency</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter zp constituency" /><input type="text" name="state_name_ka" placeholder="Enter zp constituency" alt="ka" id="s7" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('zpconstituency')" /></td></tr>
+<tr><td colspan="3">
+
+
+
+</td></tr>
+</table>
+
+<table class="grid margin xlarge" grid="zpconstituency">
+<thead>
+<tr><th>Slno.</th><th colspan="2">zp-constituency</th></tr>
+ 
+</thead>
+<tbody>
+ 
+<?php 
+$query="select * from states where item_type=7";
+$result=$conn->query($query);
+$rowid=0;
+foreach($result as $row){
+echo "<tr><td>".$rowid."</td><td>".$row['state_name']."</td><td>".$row['state_name_k']."</td></tr>";
+$rowid++;
+}
+?>
+</tbody>
+</table>
+</form>
+
+</div>
+
+<div class="container" id="tab9C">
+<form name="tpconstituency">
+<input type="hidden" name="saveType" value="tpconstituency"/>
+<input type="hidden" name="item_type" value="8"/>
+
+
+<table class="form margin-left margin-top">
+ 
+<tr><td class="label">Enter Tp-Constituency</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter tp constituency" /><input type="text" name="state_name_ka" placeholder="Enter tp constituency" alt="ka" id="s7" /></td></tr>
+<tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('zpconstituency')" /></td></tr>
+<tr><td colspan="3">
+
+
+
+</td></tr>
+</table>
+
+<table class="grid margin xlarge" grid="zpconstituency">
+<thead>
+<tr><th>Slno.</th><th colspan="2">Tp-constituency</th></tr>
+ 
+</thead>
+<tbody>
+ 
+<?php 
+$query="select * from states where item_type=7";
+$result=$conn->query($query);
+$rowid=0;
+foreach($result as $row){
+echo "<tr><td>".$rowid."</td><td>".$row['state_name']."</td><td>".$row['state_name_k']."</td></tr>";
+$rowid++;
+}
+?>
+</tbody>
+</table>
+</form>
+
+</div>
 
 </div>
 </body>
