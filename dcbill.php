@@ -14,7 +14,7 @@ $query.=" c.castname_k castnamek , c.castcode , concat(coalesce(pim.area1,0),coa
 $query.="fd.firstname_k ,s.sanctionamt, s.installment_1,s.installment_2  from sanctionorder s ,schemefilling sf, farmerdetails fd,casts c,schemes sch,states st,";
 $query.="postinspection_mstr pim,cropitems ci , schemefilling_land sfl, landdetails ld where pim.filling_id= s.filling_id and  st.id= fd.village and sch.id= sf.subschemeid and ";
 $query.=" sfl.fillingid= sf.id and sfl.landdetailsid= ld.id and sf.id= s.filling_id ";
-$query.=" and (ci.id=pim.crop1 or  ci.id=pim.crop2 or ci.id=pim.crop3) and c.id= fd.usercast and fd.id= sf.regid and s.filling_id in (".implode(',', $files).")"; 
+$query.=" and (ci.id=pim.crop1 or  ci.id=pim.crop2 or ci.id=pim.crop3) and c.id= fd.usercast and fd.id= sf.regid and c.castcode='".$castcode."' and s.filling_id in (".implode(',', $files).")"; 
  
 $conditions=array(
 "[<>]sanctionorder"=>array("schemefilling.id","sanctionorder.filling_id"),
