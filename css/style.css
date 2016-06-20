@@ -142,7 +142,7 @@
 		color:#FFFFFF;
 	}
 	
-	input[type='text'],input[type='password'],input[type='text1']{
+	input[type='text'],input[type='password'],input[type='text1'],input[type='text_as']{
 	 
 	height: 33px;
 	border: 2px solid #ccc;

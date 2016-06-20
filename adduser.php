@@ -11,7 +11,7 @@ if(!empty($_POST)){
 $default="123";
 $isactive='Y';
 $isAdmin='N';
-$conn->insert("app_login",array("login_id"=>strtoupper($_POST["login_id"]),"login_password"=>strtoupper($_POST["login_id"]),"isactive"=>$isactive,"isadmin"=>$isAdmin,"designation"=>$_POST["designation"]));
+$conn->insert("app_login",array("login_id"=>$_POST["login_id"],"login_password"=>$_POST["login_id"],"isactive"=>$isactive,"isadmin"=>$isAdmin,"designation"=>$_POST["designation"]));
 header('Location: '."adduser.php");
 die();
 }
@@ -43,7 +43,7 @@ die();
 <div id="formdialog" title="Create new user">
 <form name="userform" method="post" action="adduser.php" onSubmit="return validate()">
 <table class="form" style="margin:0; padding:0">
-<tr><td>Enter user name</td><td>:</td><td><input rules="required," placeholder="Login Id" name="login_id" type="text" /></td></tr>
+<tr><td>Enter user name</td><td>:</td><td><input rules="required," placeholder="Login Id" name="login_id" type="text_as" /></td></tr>
 <tr><td>User Designation</td><td>:</td><td><select name="designation" rules="required,">
 <option value="-1">Select</option>
 <option value="TA">TA</option>
