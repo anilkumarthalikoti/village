@@ -33,6 +33,7 @@ $(document).ready(function(){
  createDialog("preinspection");
  createDialog("workorder");
   createDialog("postinspection");
+   createDialog("dcbillcast");
 	<?php
 	if($_GET["status"]=="5"){
 	?>
@@ -204,6 +205,7 @@ $titles["8"]="Forward to RSK for post-inspection";
  
  <form name="application" method="post" target="_self">
 <input type="hidden" name="application" value="application"/>
+<input type="hidden" name="castcodeselected" id="castcodeselected" value=""/>
 <div style="max-height:420px; min-height:420px; ">
 <table class="grid excel90 margin" id="applications" filter='Y'>
 <thead >
@@ -438,7 +440,7 @@ case "19":
 $inputs="<input type='button' value='Forward  for DC Bill' onclick=\"approvaljs.savenewapplication('20');\"/>";
 break;
 case "20":
-$inputs="<input type='button' value='Generate DC Bill' onclick=\"approvaljs.generateDCBill();\"/>";
+$inputs="<input type='button' value='Generate DC Bill' onclick=\"approvaljs.selectCastView();\"/>";
 break;
 }
  
@@ -609,6 +611,15 @@ echo "<option class='hide'  parent_id='".$row["parent_id"]."' value='".$row["id"
 
 
 
+</div>
+<div id="dcbillcast">
+<?php 
+$result=$conn->query("select id,castname,castname_k,castcode from casts");
+foreach($result as $row){
+ 
+echo "<input type='button' value='".$row[1]."/".$row[2]."(".$row[3].")' castcode='".$row[3]."' onclick='approvaljs.generateDCBill(this)'/>";
+}
+?>
 </div>
 </div>
 

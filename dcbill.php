@@ -8,6 +8,7 @@
  require "server/app_connector.php";
 $conn=$database;
 $files=$_POST['schemefillingid'];
+$castcode=$_POST["castcodeselected"];
 $query="select  group_concat(ld.landsono) landsno,group_concat(ci.cropname_k) cropsapp, st.state_name_k,sch.name schemename,s.filling_id, c.id castid,";
 $query.=" c.castname_k castnamek , c.castcode , concat(coalesce(pim.area1,0),coalesce(pim.area2,0),coalesce(pim.area3,0)) totalarea,";
 $query.="fd.firstname_k ,s.sanctionamt, s.installment_1,s.installment_2  from sanctionorder s ,schemefilling sf, farmerdetails fd,casts c,schemes sch,states st,";

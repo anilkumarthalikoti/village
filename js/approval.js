@@ -1,8 +1,13 @@
  var approvaljs=new function(){
+	 this.selectCastView=function(){
+	 $( "#dcbillcast" ).dialog( "open" );
 	 
-	 this.generateDCBill=function(){
-		 
+	 }
+	 this.generateDCBill=function(selected){
+		 $( "#dcbillcast" ).dialog( "close" );
 		 //window.open('dcbill.php');
+		 $("#castcodeselected").val($(selected).attr("castcode"));
+		 var url="dcbill.php?castcode="+$(selected).attr("castcode");
 		$("form[name='application']").attr("action","dcbill.php")
 		$("form[name='application']").submit();
 		 }
