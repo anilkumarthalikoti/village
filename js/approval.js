@@ -369,7 +369,7 @@
 			 
 			 window.location.href=url;
 			}		 
-<!--pre inspection-->				 
+//pre inspection				 
 		this.saveandprint=function(){
 		 
 								$("#preinspection").dialog( "close" );
@@ -390,7 +390,7 @@
 			}	
 			
 			
-<!-- Work order-->			
+//work order		
 			
 			this.workorder=function(){
 		 

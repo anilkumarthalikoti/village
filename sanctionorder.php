@@ -5,7 +5,7 @@
 <title>Sanction-Approval</title>
  <style type="text/css">
  #mat_list tbody tr td:last{
-  #background-color:#FCF7D8;
+  background-color:#FCF7D8;
  }
 .fielddata{
 background-color:#990000;

@@ -43,7 +43,7 @@ function endsWith($haystack, $needle) {
 <script src="js/default.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
   <link href="css/montserrat.css" rel="stylesheet" type="text/css">
-  <link href="lato.css" rel="stylesheet" type="text/css">
+  <link href="css/lato.css" rel="stylesheet" type="text/css">
  
  <style type="text/css">
  .dataTables_filter{

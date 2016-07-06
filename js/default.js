@@ -12,7 +12,7 @@ $("div[class='viewport']").after("<div class='fotter'><div>@2016 All rights rese
 
 $("div[class='viewport']").before("<div class='viewport_menu' id='menu_hide'></div>");
 $("div[class='viewport_menu']").load("menu.php");
-	<!-- Tabs code-->		 
+	//tabcode		 
  $('#tabs li a:not(:first)').addClass('inactive');
 $('.container').hide();
 $('.container:first').show();
