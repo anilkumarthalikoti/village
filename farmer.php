@@ -13,6 +13,9 @@ $conn=$database;
  <script type="text/javascript">
  $(document).ready(function(){
  $("div.dataTables_filter").append('<a href="farmer_reg.php"><img src="images/addnew.png"  style="float:left;  "/></a>');
+ $("#existingFarmer tbody tr").click(function(){
+    window.location.href="farmer_reg.php?id="+$(this).attr("id"); 
+ });
  });
  </script>
 </head>
@@ -28,7 +31,7 @@ $conn=$database;
 			 <div style="height:400px; overflow:auto; width:98%;">
  <div style="height:360px; overflow:auto;">
  
-<table class="grid excel90 margin"  filter='Y'  cellpadding="0" cellspacing="0">
+<table class="grid excel90 margin"  filter='Y'  cellpadding="0" cellspacing="0" id="existingFarmer">
 <thead><th>Benficary Id</th><th>Name</th><th>Relation name</th><th>Village name</th><th>Total land</th><th>Land Register</th><th>Scheme Register</th></thead>
 <tbody>
 <?php 
@@ -42,7 +45,7 @@ $query.=" and f.".$_REQUEST["searchin"]." like '".$_REQUEST["searchval"]."%' ";
 $result=$conn->query($query);
 foreach($result as $row){
 
-echo "<tr><td>".$row["id"]."</td><td>".$row["name"]."</td><td>".$row["fname"]."</td><td>".$row["state_name"]."</td><td>".$row["tland"]."</td><td><a href='landdetails.php?regid=".$row["id"]."'>Land details</a></td><td><a href='scheme_filling.php?regid=".$row["id"]."'>Schemes</a></td></tr>";
+echo "<tr id='".$row["id"]."' ><td>".$row["id"]."</td><td>".$row["name"]."</td><td>".$row["fname"]."</td><td>".$row["state_name"]."</td><td>".$row["tland"]."</td><td><a href='landdetails.php?regid=".$row["id"]."'>Land details</a></td><td><a href='scheme_filling.php?regid=".$row["id"]."'>Schemes</a></td></tr>";
 }
  ?>
 </tbody>

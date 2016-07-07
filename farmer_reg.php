@@ -7,6 +7,17 @@
   require "interceptor.php";
  require "server/app_connector.php";
 $conn=$database;
+$farmer="";
+if(isset($_GET['id'])){
+    
+    if($_GET['id']!='-1'){
+        
+        $result=$conn->select("farmerdetails","*",array("id"=>$_GET['id']));
+        $farmer=json_encode($result);
+      
+    } 
+}
+
  ?>
 
  <script src="js/farmer_reg.js" type="text/javascript"></script>
@@ -37,6 +48,7 @@ input[type='text'],input[type='password'],input[type='text1']{
        </tr></table></td></tr></table>
      </div>
 	  <form method="POST" action="" name="form1" enctype="multipart/form-data">
+              <input type="hidden" name="id" value="-1"/>
     <div id="viewframer" class="hide-1">
 	
 	
@@ -150,7 +162,7 @@ input[type='text'],input[type='password'],input[type='text1']{
                <table class="xlarge form" border="0" cellspacing="0" cellpadding="0">
 			   <tr>
 			   <td  class="label" width="100px">Select village</td><td>:</td>
-			   <td  colspan="3"  ><select name="village" class="excel">
+			   <td  colspan="3"  ><select name="village" id="village" class="excel">
 			   <option value="-1">Select</option>
 			   
 			   <?php 
@@ -183,7 +195,7 @@ input[type='text'],input[type='password'],input[type='text1']{
                  <tr>
                    
                    <td class="label">Location </td><td>:</td>
-                   <td class="label"><input name="location" type="text"   placeholder="Enter Street"  /></td>
+                   <td class="label"><input name="location" type="text" id="location"   placeholder="Enter Street"  /></td>
 				      <td class="label">Land Mark</td><td>:</td>
                    <td class="label"><input name="landmark" type="text" id="landmark" placeholder="Enter Street"  /></td>
                  </tr>
@@ -296,7 +308,18 @@ input[type='text'],input[type='password'],input[type='text1']{
    </div>
  
  
- 
+<script type="text/javascript">
+var farmerdetails=<?php echo $farmer?>;
+  farmerdetails=farmerdetails[0];
+for (var k in farmerdetails){
+    if (typeof farmerdetails[k] !== 'function') {
+        // alert("Key is " + k + ", value is" + farmerdetails[k]);
+         var key="#"+k;
+         $(key).val(farmerdetails[k]);
+    }
+}
+
+</script>
  
 </body>
 </html>

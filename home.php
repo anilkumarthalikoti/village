@@ -35,7 +35,7 @@ $conn=$database;
  
  $(key).each(function(){
  var td="td:eq('"+column+"') a";
- console.log(column+":"+$(this).find(td).html());
+ //console.log(column+":"+$(this).find(td).html());
  total=total+Number($(this).find(td).html());
  });
  
