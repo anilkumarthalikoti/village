@@ -4,7 +4,7 @@ var itemtrn=new function(){
 	this.saveupdate=function(){
 		
 	 var params={};
-	 
+	 params["itemorder"]=$("#itemorder").val();
 	 params["itemname"]=$("#itemname").val();
 	 params["standard_measure"]=$("#standard_measure").val();
 	 params["itemprice"]=$("#itemprice").val();
