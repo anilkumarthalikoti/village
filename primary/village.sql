@@ -1,110 +1,162 @@
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (1, 1, 2, 3, 8, 14, 126, 16, 209, 175);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (2, 1, 2, 3, 8, 13, 127, 17, 209, 176);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (3, 1, 2, 3, 8, 14, 127, 18, 209, 176);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (4, 1, 2, 3, 8, 14, 128, 19, 210, 177);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (5, 1, 2, 3, 8, 14, 129, 20, 211, 178);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (6, 1, 2, 3, 8, 14, 130, 21, 211, 178);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (7, 1, 2, 3, 8, 14, 131, 22, 211, 179);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (8, 1, 2, 3, 8, 14, 132, 23, 211, 180);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (9, 1, 2, 3, 8, 14, 133, 24, 211, 180);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (10, 1, 2, 3, 8, 14, 134, 25, 211, 179);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (11, 1, 2, 3, 8, 14, 134, 26, 211, 179);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (12, 1, 2, 3, 8, 14, 134, 27, 209, 181);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (13, 1, 2, 3, 8, 14, 135, 28, 209, 182);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (14, 1, 2, 3, 8, 14, 135, 29, 209, 182);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (15, 1, 2, 3, 8, 14, 136, 30, 209, 182);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (16, 1, 2, 3, 8, 14, 136, 31, 209, 182);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (17, 1, 2, 3, 8, 14, 137, 32, 209, 181);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (18, 1, 2, 3, 8, 14, 137, 33, 209, 181);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (19, 1, 2, 3, 8, 14, 138, 34, 209, 181);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (20, 1, 2, 3, 8, 14, 138, 35, 209, 181);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (21, 1, 2, 3, 8, 14, 139, 36, 212, 183);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (22, 1, 2, 3, 8, 14, 140, 37, 213, 184);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (23, 1, 2, 3, 8, 14, 140, 38, 213, 184);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (24, 1, 2, 3, 9, 14, 141, 39, 210, 185);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (25, 1, 2, 3, 9, 14, 142, 40, 214, 186);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (26, 1, 2, 3, 9, 14, 128, 41, 210, 177);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (27, 1, 2, 3, 9, 14, 129, 42, 211, 178);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (28, 1, 2, 3, 9, 14, 128, 43, 210, 177);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (29, 1, 2, 3, 9, 14, 143, 44, 214, 187);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (30, 1, 2, 3, 9, 14, 143, 45, 214, 187);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (31, 1, 2, 3, 9, 14, 144, 46, 214, 187);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (32, 1, 2, 3, 9, 14, 144, 47, 215, 188);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (33, 1, 2, 3, 9, 14, 144, 48, 215, 188);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (34, 1, 2, 3, 9, 14, 145, 49, 215, 188);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (35, 1, 2, 3, 9, 14, 146, 50, 215, 189);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (36, 1, 2, 3, 9, 14, 147, 51, 215, 189);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (37, 1, 2, 3, 9, 14, 148, 52, 215, 190);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (38, 1, 2, 3, 9, 14, 146, 53, 215, 191);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (39, 1, 2, 3, 9, 14, 149, 54, 215, 191);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (40, 1, 2, 3, 9, 14, 149, 55, 215, 191);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (41, 1, 2, 3, 9, 14, 147, 56, 215, 190);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (42, 1, 2, 3, 9, 14, 150, 57, 210, 192);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (43, 1, 2, 3, 9, 14, 150, 58, 210, 192);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (44, 1, 2, 3, 9, 14, 148, 59, 210, 192);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (45, 1, 2, 3, 9, 14, 151, 60, 215, 189);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (46, 1, 2, 3, 9, 14, 151, 61, 215, 189);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (47, 1, 2, 3, 9, 14, 151, 62, 215, 189);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (48, 1, 2, 3, 9, 14, 147, 63, 215, 190);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (49, 1, 2, 3, 10, 14, 152, 64, 216, 193);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (50, 1, 2, 3, 10, 14, 152, 65, 216, 193);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (51, 1, 2, 3, 10, 14, 153, 66, 216, 193);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (52, 1, 2, 3, 10, 14, 152, 67, 216, 193);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (53, 1, 2, 3, 10, 14, 154, 68, 215, 191);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (54, 1, 2, 3, 10, 14, 154, 69, 216, 194);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (55, 1, 2, 3, 10, 14, 154, 70, 216, 195);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (56, 1, 2, 3, 10, 14, 151, 71, 215, 189);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (57, 1, 2, 3, 10, 14, 153, 72, 216, 195);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (58, 1, 2, 3, 10, 14, 154, 73, 216, 195);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (59, 1, 2, 3, 10, 14, 153, 74, 216, 195);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (60, 1, 2, 3, 10, 14, 153, 75, 216, 193);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (61, 1, 2, 3, 10, 14, 153, 76, 216, 195);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (62, 1, 2, 3, 10, 14, 153, 77, 216, 195);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (63, 1, 2, 3, 10, 14, 155, 78, 216, 196);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (64, 1, 2, 3, 10, 14, 155, 79, 216, 195);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (65, 1, 2, 3, 10, 14, 155, 80, 216, 196);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (66, 1, 2, 3, 10, 14, 155, 81, 216, 196);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (67, 1, 2, 3, 10, 14, 156, 82, 216, 194);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (68, 1, 2, 3, 10, 14, 156, 83, 216, 194);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (69, 1, 2, 3, 10, 14, 156, 84, 216, 194);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (70, 1, 2, 3, 10, 14, 156, 85, 216, 194);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (71, 1, 2, 3, 11, 15, 157, 86, 213, 197);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (72, 1, 2, 3, 11, 15, 157, 87, 213, 197);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (73, 1, 2, 3, 11, 15, 158, 88, 212, 198);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (74, 1, 2, 3, 11, 15, 158, 89, 212, 198);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (75, 1, 2, 3, 11, 15, 159, 90, 213, 199);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (76, 1, 2, 3, 11, 15, 159, 91, 213, 199);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (77, 1, 2, 3, 11, 15, 160, 92, 213, 200);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (78, 1, 2, 3, 11, 15, 140, 93, 213, 184);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (79, 1, 2, 3, 11, 15, 140, 94, 213, 184);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (80, 1, 2, 3, 11, 15, 161, 95, 212, 201);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (81, 1, 2, 3, 11, 15, 161, 96, 212, 201);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (82, 1, 2, 3, 11, 15, 162, 97, 217, 202);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (83, 1, 2, 3, 11, 15, 163, 98, 212, 201);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (84, 1, 2, 3, 11, 15, 164, 99, 212, 203);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (85, 1, 2, 3, 11, 15, 161, 100, 212, 203);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (86, 1, 2, 3, 11, 15, 164, 101, 212, 203);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (87, 1, 2, 3, 11, 15, 164, 102, 212, 203);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (88, 1, 2, 3, 11, 15, 163, 103, 212, 201);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (89, 1, 2, 3, 11, 15, 160, 104, 213, 200);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (90, 1, 2, 3, 12, 15, 165, 105, 218, 204);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (91, 1, 2, 3, 12, 15, 165, 106, 218, 204);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (92, 1, 2, 3, 12, 15, 166, 107, 217, 202);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (93, 1, 2, 3, 12, 15, 167, 108, 217, 205);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (94, 1, 2, 3, 12, 15, 167, 109, 217, 202);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (95, 1, 2, 3, 12, 15, 168, 110, 217, 206);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (96, 1, 2, 3, 12, 15, 169, 111, 217, 205);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (97, 1, 2, 3, 12, 15, 170, 112, 217, 205);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (98, 1, 2, 3, 12, 15, 171, 113, 214, 207);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (99, 1, 2, 3, 12, 15, 172, 114, 214, 187);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (100, 1, 2, 3, 12, 13, 142, 115, 214, 186);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (101, 1, 2, 3, 12, 15, 171, 116, 214, 207);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (102, 1, 2, 3, 12, 15, 173, 117, 214, 207);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (103, 1, 2, 3, 12, 15, 173, 118, 213, 208);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (104, 1, 2, 3, 12, 15, 173, 119, 213, 208);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (105, 1, 2, 3, 12, 15, 165, 120, 213, 208);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (106, 1, 2, 3, 12, 15, 162, 121, 213, 199);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (107, 1, 2, 3, 12, 15, 170, 122, 213, 208);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (108, 1, 2, 3, 12, 15, 174, 123, 213, 200);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (109, 1, 2, 3, 12, 15, 174, 124, 213, 208);
-INSERT INTO village.village(id, stateid, districtid, talukaid, hobliid, constituencyid, panchayatiid, villageid, ZPID, TPID) VALUES (110, 1, 2, 3, 12, 15, 165, 125, 213, 208);
+-- phpMyAdmin SQL Dump
+-- version 3.5.2.2
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 22, 2016 at 06:11 AM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `village`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `village`
+--
+
+CREATE TABLE IF NOT EXISTS `village` (
+  `id` bigint(19) NOT NULL AUTO_INCREMENT,
+  `stateid` int(10) NOT NULL,
+  `districtid` int(10) NOT NULL,
+  `talukaid` int(10) NOT NULL,
+  `hobliid` int(10) NOT NULL,
+  `constituencyid` int(10) NOT NULL,
+  `panchayatiid` int(10) NOT NULL,
+  `villageid` int(10) NOT NULL,
+  `ZPID` bigint(20) DEFAULT NULL,
+  `TPID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `stateid` (`stateid`,`districtid`,`talukaid`,`hobliid`,`constituencyid`,`panchayatiid`,`villageid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=111 ;
+
+--
+-- Dumping data for table `village`
+--
+
+INSERT INTO `village` (`id`, `stateid`, `districtid`, `talukaid`, `hobliid`, `constituencyid`, `panchayatiid`, `villageid`, `ZPID`, `TPID`) VALUES
+(1, 1, 2, 3, 8, 14, 126, 16, 209, 175),
+(2, 1, 2, 3, 8, 13, 127, 17, 209, 176),
+(3, 1, 2, 3, 8, 14, 127, 18, 209, 176),
+(4, 1, 2, 3, 8, 14, 128, 19, 210, 177),
+(5, 1, 2, 3, 8, 14, 129, 20, 211, 178),
+(6, 1, 2, 3, 8, 14, 130, 21, 211, 178),
+(7, 1, 2, 3, 8, 14, 131, 22, 211, 179),
+(8, 1, 2, 3, 8, 14, 132, 23, 211, 180),
+(9, 1, 2, 3, 8, 14, 133, 24, 211, 180),
+(10, 1, 2, 3, 8, 14, 134, 25, 211, 179),
+(11, 1, 2, 3, 8, 14, 134, 26, 211, 179),
+(12, 1, 2, 3, 8, 14, 134, 27, 209, 181),
+(13, 1, 2, 3, 8, 14, 135, 28, 209, 182),
+(14, 1, 2, 3, 8, 14, 135, 29, 209, 182),
+(15, 1, 2, 3, 8, 14, 136, 30, 209, 182),
+(16, 1, 2, 3, 8, 14, 136, 31, 209, 182),
+(17, 1, 2, 3, 8, 14, 137, 32, 209, 181),
+(18, 1, 2, 3, 8, 14, 137, 33, 209, 181),
+(19, 1, 2, 3, 8, 14, 138, 34, 209, 181),
+(20, 1, 2, 3, 8, 14, 138, 35, 209, 181),
+(21, 1, 2, 3, 8, 14, 139, 36, 212, 183),
+(22, 1, 2, 3, 8, 14, 140, 37, 213, 184),
+(23, 1, 2, 3, 8, 14, 140, 38, 213, 184),
+(24, 1, 2, 3, 9, 14, 141, 39, 210, 185),
+(25, 1, 2, 3, 9, 14, 142, 40, 214, 186),
+(26, 1, 2, 3, 9, 14, 128, 41, 210, 177),
+(27, 1, 2, 3, 9, 14, 129, 42, 211, 178),
+(28, 1, 2, 3, 9, 14, 128, 43, 210, 177),
+(29, 1, 2, 3, 9, 14, 143, 44, 214, 187),
+(30, 1, 2, 3, 9, 14, 143, 45, 214, 187),
+(31, 1, 2, 3, 9, 14, 144, 46, 214, 187),
+(32, 1, 2, 3, 9, 14, 144, 47, 215, 188),
+(33, 1, 2, 3, 9, 14, 144, 48, 215, 188),
+(34, 1, 2, 3, 9, 14, 145, 49, 215, 188),
+(35, 1, 2, 3, 9, 14, 146, 50, 215, 189),
+(36, 1, 2, 3, 9, 14, 147, 51, 215, 189),
+(37, 1, 2, 3, 9, 14, 148, 52, 215, 190),
+(38, 1, 2, 3, 9, 14, 146, 53, 215, 191),
+(39, 1, 2, 3, 9, 14, 149, 54, 215, 191),
+(40, 1, 2, 3, 9, 14, 149, 55, 215, 191),
+(41, 1, 2, 3, 9, 14, 147, 56, 215, 190),
+(42, 1, 2, 3, 9, 14, 150, 57, 210, 192),
+(43, 1, 2, 3, 9, 14, 150, 58, 210, 192),
+(44, 1, 2, 3, 9, 14, 148, 59, 210, 192),
+(45, 1, 2, 3, 9, 14, 151, 60, 215, 189),
+(46, 1, 2, 3, 9, 14, 151, 61, 215, 189),
+(47, 1, 2, 3, 9, 14, 151, 62, 215, 189),
+(48, 1, 2, 3, 9, 14, 147, 63, 215, 190),
+(49, 1, 2, 3, 10, 14, 152, 64, 216, 193),
+(50, 1, 2, 3, 10, 14, 152, 65, 216, 193),
+(51, 1, 2, 3, 10, 14, 153, 66, 216, 193),
+(52, 1, 2, 3, 10, 14, 152, 67, 216, 193),
+(53, 1, 2, 3, 10, 14, 154, 68, 215, 191),
+(54, 1, 2, 3, 10, 14, 154, 69, 216, 194),
+(55, 1, 2, 3, 10, 14, 154, 70, 216, 195),
+(56, 1, 2, 3, 10, 14, 151, 71, 215, 189),
+(57, 1, 2, 3, 10, 14, 153, 72, 216, 195),
+(58, 1, 2, 3, 10, 14, 154, 73, 216, 195),
+(59, 1, 2, 3, 10, 14, 153, 74, 216, 195),
+(60, 1, 2, 3, 10, 14, 153, 75, 216, 193),
+(61, 1, 2, 3, 10, 14, 153, 76, 216, 195),
+(62, 1, 2, 3, 10, 14, 153, 77, 216, 195),
+(63, 1, 2, 3, 10, 14, 155, 78, 216, 196),
+(64, 1, 2, 3, 10, 14, 155, 79, 216, 195),
+(65, 1, 2, 3, 10, 14, 155, 80, 216, 196),
+(66, 1, 2, 3, 10, 14, 155, 81, 216, 196),
+(67, 1, 2, 3, 10, 14, 156, 82, 216, 194),
+(68, 1, 2, 3, 10, 14, 156, 83, 216, 194),
+(69, 1, 2, 3, 10, 14, 156, 84, 216, 194),
+(70, 1, 2, 3, 10, 14, 156, 85, 216, 194),
+(71, 1, 2, 3, 11, 15, 157, 86, 213, 197),
+(72, 1, 2, 3, 11, 15, 157, 87, 213, 197),
+(73, 1, 2, 3, 11, 15, 158, 88, 212, 198),
+(74, 1, 2, 3, 11, 15, 158, 89, 212, 198),
+(75, 1, 2, 3, 11, 15, 159, 90, 213, 199),
+(76, 1, 2, 3, 11, 15, 159, 91, 213, 199),
+(77, 1, 2, 3, 11, 15, 160, 92, 213, 200),
+(78, 1, 2, 3, 11, 15, 140, 93, 213, 184),
+(79, 1, 2, 3, 11, 15, 140, 94, 213, 184),
+(80, 1, 2, 3, 11, 15, 161, 95, 212, 201),
+(81, 1, 2, 3, 11, 15, 161, 96, 212, 201),
+(82, 1, 2, 3, 11, 15, 162, 97, 217, 202),
+(83, 1, 2, 3, 11, 15, 163, 98, 212, 201),
+(84, 1, 2, 3, 11, 15, 164, 99, 212, 203),
+(85, 1, 2, 3, 11, 15, 161, 100, 212, 203),
+(86, 1, 2, 3, 11, 15, 164, 101, 212, 203),
+(87, 1, 2, 3, 11, 15, 164, 102, 212, 203),
+(88, 1, 2, 3, 11, 15, 163, 103, 212, 201),
+(89, 1, 2, 3, 11, 15, 160, 104, 213, 200),
+(90, 1, 2, 3, 12, 15, 165, 105, 218, 204),
+(91, 1, 2, 3, 12, 15, 165, 106, 218, 204),
+(92, 1, 2, 3, 12, 15, 166, 107, 217, 202),
+(93, 1, 2, 3, 12, 15, 167, 108, 217, 205),
+(94, 1, 2, 3, 12, 15, 167, 109, 217, 202),
+(95, 1, 2, 3, 12, 15, 168, 110, 217, 206),
+(96, 1, 2, 3, 12, 15, 169, 111, 217, 205),
+(97, 1, 2, 3, 12, 15, 170, 112, 217, 205),
+(98, 1, 2, 3, 12, 15, 171, 113, 214, 207),
+(99, 1, 2, 3, 12, 15, 172, 114, 214, 187),
+(100, 1, 2, 3, 12, 13, 142, 115, 214, 186),
+(101, 1, 2, 3, 12, 15, 171, 116, 214, 207),
+(102, 1, 2, 3, 12, 15, 173, 117, 214, 207),
+(103, 1, 2, 3, 12, 15, 173, 118, 213, 208),
+(104, 1, 2, 3, 12, 15, 173, 119, 213, 208),
+(105, 1, 2, 3, 12, 15, 165, 120, 213, 208),
+(106, 1, 2, 3, 12, 15, 162, 121, 213, 199),
+(107, 1, 2, 3, 12, 15, 170, 122, 213, 208),
+(108, 1, 2, 3, 12, 15, 174, 123, 213, 200),
+(109, 1, 2, 3, 12, 15, 174, 124, 213, 208),
+(110, 1, 2, 3, 12, 15, 165, 125, 213, 208);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
