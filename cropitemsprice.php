@@ -12,6 +12,7 @@ if(!empty($_POST)){
  
 if($_POST["itemid"]=="-1")
 {
+ 
 $conn->insert("cropitemsprice",array("itemname"=>trim(strtoupper($_POST["itemname"])),"standard_measure"=>trim(strtoupper($_POST["standard_measure"])),"itemprice"=>$_POST["itemprice"],"units"=>$_POST["units"],"itemorder"=>$_POST["itemorder"]));
 
 }else{
