@@ -48,7 +48,7 @@
                             <?php
                             $query = "select * from states where item_type=0";
                             $result = $conn->query($query);
-                            $rowid = 0;
+                            $rowid =1;
                             foreach ($result as $row) {
                                 echo "<tr><td>" . $rowid . "</td><td>" . $row['state_name'] . "</td><td>" . $row['state_name_k'] . "</td></tr>";
                                 $rowid++;
@@ -93,7 +93,7 @@
                             <?php
                             $query = "select * from states where item_type=1";
                             $result = $conn->query($query);
-                            $rowid = 0;
+                            $rowid =1;
                             foreach ($result as $row) {
                                 echo "<tr><td>" . $rowid . "</td><td>" . $row['state_name'] . "</td><td>" . $row['state_name_k'] . "</td></tr>";
                                 $rowid++;
@@ -146,7 +146,7 @@
                             <?php
                             $query = "select * from states where item_type=2";
                             $result = $conn->query($query);
-                            $rowid = 0;
+                            $rowid =1;
                             foreach ($result as $row) {
                                 echo "<tr><td>" . $rowid . "</td><td>" . $row['state_name'] . "</td><td>" . $row['state_name_k'] . "</td></tr>";
                                 $rowid++;
@@ -209,7 +209,7 @@
                             <?php
                             $query = "select * from states where item_type=3";
                             $result = $conn->query($query);
-                            $rowid = 0;
+                            $rowid =1;
                             foreach ($result as $row) {
                                 echo "<tr><td>" . $rowid . "</td><td>" . $row['state_name'] . "</td><td>" . $row['state_name_k'] . "</td></tr>";
                                 $rowid++;
@@ -284,7 +284,7 @@
                             <?php
                             $query = "select * from states where item_type=4";
                             $result = $conn->query($query);
-                            $rowid = 0;
+                            $rowid =1;
                             foreach ($result as $row) {
                                 echo "<tr><td>" . $rowid . "</td><td>" . $row['state_name'] . "</td><td>" . $row['state_name_k'] . "</td></tr>";
                                 $rowid++;
@@ -362,7 +362,7 @@
                             <?php
                             $query = "select * from states where item_type=5";
                             $result = $conn->query($query);
-                            $rowid = 0;
+                            $rowid =1;
                             foreach ($result as $row) {
                                 echo "<tr><td>" . $rowid . "</td><td>" . $row['state_name'] . "</td><td>" . $row['state_name_k'] . "</td></tr>";
                                 $rowid++;
@@ -383,6 +383,7 @@
 
 
                     <table class="form margin-left margin-top">
+					<tr><td class="label">Enter village</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter village" /><input type="text" name="state_name_ka" placeholder="Enter village" alt="ka" id="s7" /></td></tr>
                         <tr  ><td class="label">Select state</td><td>:</td><td>
                                 <!--
                                 <select name="state_selected" id="state_selected" onChange="states.updateview('village','state_selected','district','district_selected');">
@@ -501,7 +502,7 @@
                                     ?>
                                 </select></td></tr>
 
-                        <tr><td class="label">Enter village</td><td>:</td><td><input type="text" name="state_name" placeholder="Enter village" /><input type="text" name="state_name_ka" placeholder="Enter village" alt="ka" id="s7" /></td></tr>
+                        
                         <tr><td colspan="3"> <input type="button" value="Save" onClick="states.saveData('village')" /></td></tr>
                         <tr><td colspan="3">
 
@@ -520,7 +521,7 @@
                             <?php
                             $query = "select * from states where item_type=6";
                             $result = $conn->query($query);
-                            $rowid = 0;
+                            $rowid =1;
                             foreach ($result as $row) {
                                 echo "<tr><td>" . $rowid . "</td><td>" . $row['state_name'] . "</td><td>" . $row['state_name_k'] . "</td></tr>";
                                 $rowid++;
@@ -560,7 +561,7 @@
                             <?php
                             $query = "select * from states where item_type=7";
                             $result = $conn->query($query);
-                            $rowid = 0;
+                            $rowid =1;
                             foreach ($result as $row) {
                                 echo "<tr><td>" . $rowid . "</td><td>" . $row['state_name'] . "</td><td>" . $row['state_name_k'] . "</td></tr>";
                                 $rowid++;
@@ -599,7 +600,7 @@
                             <?php
                             $query = "select * from states where item_type=8";
                             $result = $conn->query($query);
-                            $rowid = 0;
+                            $rowid =1;
                             foreach ($result as $row) {
                                 echo "<tr><td>" . $rowid . "</td><td>" . $row['state_name'] . "</td><td>" . $row['state_name_k'] . "</td></tr>";
                                 $rowid++;
