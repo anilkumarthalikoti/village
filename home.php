@@ -16,38 +16,7 @@ $conn=$database;
  
  }
  </style>
- <script type="text/javascript">
- /*
- $(document).ready(function(){
- $("tr td[class='dash']").each(function(){
- var index=$(this).index();
- var key1="td:eq("+(index-3)+") a";
-  var key2="td:eq("+(index-2)+") a";
-   var key3="td:eq("+(index-1)+") a";
- var t1=Number($(this).parent().find(key1).html())+Number($(this).parent().find(key2).html())+Number($(this).parent().find(key3).html());
- $(this).find("a").html(t1);
- });
- 
- $("tr[class='total'] td").each(function(){
- var column=$(this).index();
- 
- var key="tr[class='schemes']";
- var total=0;
- 
- $(key).each(function(){
- var td="td:eq('"+column+"') a";
- //console.log(column+":"+$(this).find(td).html());
- total=total+Number($(this).find(td).html());
- });
- 
- 
- $(this).html(total);
- 
- });
- 
- 
- });*/
- </script>
+  
 </head>
 <body>
 <div class="title">Home</div>

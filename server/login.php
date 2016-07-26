@@ -10,6 +10,7 @@ $result="";
 if($data["login_password"]==$_POST["password"]){
 $result= "valid_login";
 $_SESSION["logged_in"]=$data;
+ 
 }
 echo $result;
 }

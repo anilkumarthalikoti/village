@@ -17,7 +17,7 @@ foreach($link as $links){
   <div class="ajxmw2">
 
 <ul>
- <li><a href="home.php"><b>&nbsp;&nbsp;Home&nbsp;</b></a></li>
+ 
  <li><a class="ajxsub" href="#"><b>Admin</b></a>
   <ul>
   	<li link_id="4"><a href="adduser.php"><b>Add user</b></a></li>
@@ -78,7 +78,7 @@ foreach($link as $links){
    </ul>
  </li>
  
- <li><a class="ajxsub" href="logout.php"><b>Logout</b></a></li>
+ 
 </ul>
   </div>
  </div>

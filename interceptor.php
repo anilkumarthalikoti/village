@@ -1,11 +1,13 @@
 <?php
     session_start();
 	 $role="";
-    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == 1) {
+	 $user="";
+    if(isset($_SESSION['logged_in'])) {
         //session is set
 		$userdata=$_SESSION["logged_in"];
 		
 		$role=$userdata["designation"];
+		$user=$userdata["login_id"];
 		 if($_SERVER['PHP_SELF']=="/index.php"){
 		 header('Location: '."home.php");
 		 die();
@@ -74,10 +76,54 @@ function endsWith($haystack, $needle) {
     z-index: 1040;    
 }
  </style>
+  
 <script type="text/javascript">
 $(document).ready(function(){
+    
+    
+    $(".account").click(function()
+{
+var X=$(this).attr('id');
+if(X==1)
+{
+$(".submenu").hide();
+$(this).attr('id', '0');
+}
+else
+{
+$(".submenu").show();
+$(this).attr('id', '1');
+}
+
+});
+
+//Mouse click on sub menu
+$(".submenu").mouseup(function()
+{
+return false
+});
+
+//Mouse click on my account link
+$(".account").mouseup(function()
+{
+return false
+});
+
+
+//Document Click
+$(document).mouseup(function()
+{
+$(".submenu").hide();
+$(".account").attr('id', '');
+});
+    
+    
+    
+    
+    
  
- $("span#cloudoffice_role").html("<?php print $role ?>");
+ $("#cloudoffice_role").html("<?php print $role ?>");
+  $("#userdetails").html("<?php print $user ?>");
 // $("table[filter='Y']").addClass("form_grid");
 $("table[filter='Y']").DataTable({
     "sDom": 'Rfrtlip'  
@@ -85,8 +131,34 @@ $("table[filter='Y']").DataTable({
  });
  $("table[role='grid']").css("border","0");
   
- $("#office_desig").val("<?php print $role?>");
+ 
 $("input[type='search']").addClass("search");
  
 });
 </script>
+
+<?php 
+
+if(isset($_SESSION['logged_in'])) {
+    ?>
+ 
+<!-- User profile-->
+
+ <div class="dropdown">
+    <a class="account"  > <span class="btn btn-success" id="cloudoffice_role"></span><span class="btn btn-primary">Welcome !<span id="userdetails"></span></span></a>
+
+<div class="submenu">
+<ul class="root">
+<li ><a href="home.php" >Dashboard</a></li>
+<li ><a href="#Profile" >Profile</a></li>
+<li ><a href="#settings">Settings</a></li>
+<li ><a href="#feedback">Send Feedback</a></li>
+<li ><a href="logout.php">Logout</a></li>
+</ul>
+</div>
+
+</div>
+<?php
+}
+?>
+ 
