@@ -145,7 +145,14 @@ if(isset($_SESSION['logged_in'])) {
 <!-- User profile-->
 
  <div class="dropdown">
-    <a class="account"  > <span class="btn btn-success" id="cloudoffice_role"></span><span class="btn btn-primary">Welcome !<span id="userdetails"></span></span></a>
+    <a class="account"  > 
+        <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary" id="cloudoffice_role">desig</button>
+  <button type="button" class="btn btn-link">Welcome!<span id="userdetails"></span></button>
+   
+</div>
+        
+     </a>
 
 <div class="submenu">
 <ul class="root">
