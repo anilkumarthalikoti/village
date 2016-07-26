@@ -17,6 +17,7 @@ $conn=$database;
  }
  </style>
  <script type="text/javascript">
+ /*
  $(document).ready(function(){
  $("tr td[class='dash']").each(function(){
  var index=$(this).index();
@@ -45,7 +46,7 @@ $conn=$database;
  });
  
  
- });
+ });*/
  </script>
 </head>
 <body>
@@ -105,73 +106,54 @@ $conn=$database;
 		<?php 
 		$query="select * from schemes where parent_id=0";
 		$result =$conn->query($query);
+		$totals=array();
+		for($i=0;$i<28;$i++){
+		$totals[$i]=0;
+		}
 		foreach($result as $row){
+		$current=array();
+		for($i=0,$k=0;$i<28;$i++,$k++){
+		if($k<3){
+		$current[$i]=mt_rand ( 50 , 100 );
+		
+		}else{
+		$k=-1;
+		$current[$i]=$current[$i-1]+$current[$i-2]+$current[$i-3];
+		}
+		$totals[$i]=$totals[$i]+$current[$i];
+		}
 		?>
         <tr class="schemes">
           <td class="dash_a"><?php echo $row["name"]; ?></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">75</a></td>
-          <td class="dash_c"><a href="#">25</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash_c"><a href="#">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
+		  <?php
+		  for($i=0,$k=0;$i<28;$i++,$k++){
+		  if($k<3){
+		  ?>
+          <td class="dash_c"><a href="#"><?php echo $current[$i]?></a></td>
+		  <?php
+		  }else{
+		  $k=-1;
+		  ?>
+       
+          <td class="dash"><a href="#" style="color:#FFF"><?php echo $current[$i] ?></a></td>
+		  <?php 
+		  }
+		  }
+		  ?>
+          
         </tr>
        <?php
 	   
-	    } 
+	     }
+		
 		?>
         <tr class="total">
           <td class="dash"><a href="#">Total</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
-          <td class="dash"><a href="#" style="color:#FFF">100</a></td>
+		  <?php
+		  for($i=0,$k=0;$i<28;$i++){
+		  ?>
+          <td class="dash"><a href="#" style="color:#FFF"><?php echo $totals[$i]?></a></td>
+           <?php }?>
         </tr>
       </table></td>
     </tr>
